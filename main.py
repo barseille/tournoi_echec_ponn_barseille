@@ -1,17 +1,33 @@
 import controllers.controllers_menu_joueur as controllers_menu_joueur
 from views.views_menu_joueur import ViewsMenuJoueur
 from views.accueil import ViewsAccueil
+from views.views_menu_tournoi import ViewsMenuTournoi
+import controllers.controllers_menu_tournoi as controllers_menu_tournoi
 
 
 def main():
-    # ACCUEI TOURNOI
+    # ACCUEIL TOURNOI
     accueil = ViewsAccueil()
     accueil.accueil_principal()
     choix = int(input("Choisissez : "))
     
+    
+    
     # MENU TOURNOI
     if choix == 1:
-        pass
+        menu_tournoi = ViewsMenuTournoi()
+        menu_tournoi.afficher_menu_tournoi()
+        entree = int(input("Faite votre choix : "))
+        
+        if entree == 1:
+            controllers_menu_tournoi.creation_tournoi()
+        else:
+            print("Veuillez saisir un chiffre entre 1 et 3")
+            
+            
+            
+        
+        
     
     # MENU JOUEUR
     elif choix == 2:
@@ -34,8 +50,7 @@ def main():
             print("Veuillez saisir un chiffre entre 1 et 3")
             
     # MENU RAPPORT 
-    elif choix == 3:
-       
+    elif choix == 3:  
         pass
 
 if __name__ == "__main__":

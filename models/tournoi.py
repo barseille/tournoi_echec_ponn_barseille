@@ -2,10 +2,11 @@ MODE_DE_JEU = ("bullet", "blitz", "fast")
 
 
 class Tournoi:
-    def __init__(self, nom, lieu, date, nombre_de_rounds, description, mode_de_jeu):
+    def __init__(self, nom, lieu, date_debut, date_fin, nombre_de_rounds, description, mode_de_jeu):
         self.nom = nom
         self.lieu = lieu
-        self.date = date
+        self.date_debut = date_debut
+        self.date_fin = date_fin
         self.nombre_de_rounds = nombre_de_rounds
         self.description = description
         self.mode_de_jeu = mode_de_jeu
@@ -31,11 +32,12 @@ class Tournoi:
         tournoi_serialiser = {
             'nom': self.nom,
             'lieu': self.lieu,
-            'date': self.date,
+            'date_debut': self.date_debut,
+            'date_fin' : self.date_fin,
             'nombre_de_rounds': self.nombre_de_rounds,
             'description': self.description,
             'mode_de_jeu': self.mode_de_jeu,
-            'participants': self.serialiser_joueur_tournoi(self.participants),
-            'rounds': self.serialiser_round_tournoi(self.rounds)
+            # 'participants': self.serialiser_joueur_tournoi(self.participants),
+            # 'rounds': self.serialiser_round_tournoi(self.rounds)
         }
         return tournoi_serialiser
