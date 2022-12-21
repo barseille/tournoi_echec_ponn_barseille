@@ -15,12 +15,12 @@ class Tournoi:
     def serialiser(self):
         
         tournoi_serialiser = {
-            'nom': self.nom,
-            'lieu': self.lieu,
-            'date_tournoi': self.date_tournoi,
-            'nombres_de_rounds': self.nombre_de_rounds,
-            'description': self.description,
-            'mode_de_jeu': self.mode_de_jeu,
+            "nom": self.nom,
+            "lieu": self.lieu,
+            "date_tournoi": self.date_tournoi,
+            "nombres_de_rounds": self.nombre_de_rounds,
+            "description": self.description,
+            "mode_de_jeu": self.mode_de_jeu,
             # 'participants': self.liste_participants_deserialiser(self.liste_des_participants),
             # 'rounds': self.recuperer_rounds_terminer(self.rounds),
             # 'tournoi_terminer': self.tournoi_terminer

@@ -1,6 +1,6 @@
 JOUEUR_OPTIONS = (
     'Créer un joueur',
-    'Charger un joueur existant'
+    'Charger un joueur existant',
     'Mise à jour classement joueur',
     'Retour'
 )

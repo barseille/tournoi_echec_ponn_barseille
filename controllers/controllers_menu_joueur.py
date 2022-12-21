@@ -1,9 +1,8 @@
-from tinydb import TinyDB
 import views.views_entree_joueur as entree_joueur
 from models.joueur import Joueur
 import json
 
-
+liste_des_joueurs_deserialiser = []
 
 def creation_joueur():
     """ serialiser joueur """
@@ -23,20 +22,20 @@ def creation_joueur():
                     classement)
     
     joueur_serialiser = joueur.serialiser()
-    joueur_serialiser = json.dumps(joueur_serialiser)  
+    with open("joueurs.json", "a") as jd:
+        json.dump(joueur_serialiser, jd, indent=4)
+    # joueur_serialiser = json.dumps(joueur_serialiser)  
    
     """ désérialisation joueur """
-    joueur_deserialiser = json.loads(joueur_serialiser)
+    with open("joueurs.json", "r") as jl:
+        joueur_deserialiser = json.load(jl)
+    # joueur_deserialiser = json.loads(joueur_serialiser)
     
-    joueur_deserialiser = [{'nom' : joueur_deserialiser["nom"],
+    joueur_deserialiser = {'nom' : joueur_deserialiser["nom"],
                             'prenom' : joueur_deserialiser["prenom"],
                             'date_de_naissance' : joueur_deserialiser["date_de_naissance"],
                             'genre' : joueur_deserialiser["genre"],
-                            'classement' : joueur_deserialiser["classement"]}]
-
-
-    
-    liste_des_joueurs_deserialiser = []
+                            'classement' : joueur_deserialiser["classement"]}
     
     autre_joueur = input("Voulez vous créer un autre joueur ? o(oui) / n(non)")
     
@@ -44,16 +43,12 @@ def creation_joueur():
         autre_joueur = creation_joueur()
 
     elif autre_joueur == "n":
-        pass
+        print(joueur_deserialiser)
     else:
         print("Veuillez saisir correctement ! ")
     
-    for joueur in joueur_deserialiser:
-        liste_des_joueurs_deserialiser.append(joueur)
-        
-    
-    print("Voici les joueurs crées : ")
-    print(liste_des_joueurs_deserialiser)
+
+    return joueur_deserialiser
     
     # print(f'Nom : {liste_des_joueurs_deserialiser["nom"]}')
     # print(f'Prénom : {liste_des_joueurs_deserialiser["prenom"]}')

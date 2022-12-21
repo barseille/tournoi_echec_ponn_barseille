@@ -1,3 +1,4 @@
+
 def bienvenue():
     print('-'*40)
     print("-- Créer votre Nouveau Tournoi --")
@@ -90,6 +91,24 @@ def selection_mode_de_jeu():
 
 
 
+def creation_autre_tournoi():
+    
+    autre_tournoi = input("Voulez-vous créer un autre tournoi ? o(oui) / n(non)")
+    
+    if autre_tournoi == "o":
+        return True
+        
+    elif autre_tournoi == "n":
+        return False
+    else:
+        print("Veuillez saisir correctement ! ")
+ 
+  
+
+
+
+
+
 
 def creation_tournoi_confirmee():
     try:
@@ -104,5 +123,8 @@ def creation_tournoi_confirmee():
             return False
     except ValueError:
         print('erreur - veuillez réessayer')
+        
+        
+        
 
 
