@@ -1,8 +1,3 @@
-from models.tournoi import MODE_DE_JEU
-
-
-
-    
 def bienvenue():
     print('-'*40)
     print("-- Créer votre Nouveau Tournoi --")
@@ -25,27 +20,35 @@ def creation_lieu_tournoi():
         print('erreur - veuillez réessayer')
 
 
-def creation_date_debut_tournoi():
-    try:
-        date_debut_tournoi = input('Entrez la date de début du tournoi (JJ-MM-AAAA): ')
-        return date_debut_tournoi
-    except ValueError:
-        print('erreur - veuillez réessayer')
-        
-def creation_date_fin_tournoi():
-    try:
-        date_fin_tournoi = input('Entrez la date de fin du tournoi (JJ-MM-AAAA): ')
-        return date_fin_tournoi
-    except ValueError:
-        print('erreur - veuillez réessayer')
+def creation_date_tournoi():
+
+    date_tournoi = input("Saisissez une date (JJ-MM-AAAA): ")
+    entree = input("Voulez-vous sélectionner una autre date ?  o(oui) / n(non) ")
+    if entree == 'o':
+        return creation_date_tournoi()
+    elif entree == "n":
+       
+        return date_tournoi
+    else:
+        print("Veuillez saisir correctement")
 
 
 def creation_nombre_de_rounds():     
     try:
-        nombre_de_rounds = int(input("Entrez le nombre de round : "))
+        rounds = 4
+        nombre_de_rounds = int(input("Entrez le nombre de rounds : "))
+        if nombre_de_rounds is not 4:
+            print(f'Vous avez saisie {nombre_de_rounds} rounds')
+            return nombre_de_rounds
+
+        else:
+            nombre_de_rounds = rounds
+            print("4 rounds par défaut")
+        
         return nombre_de_rounds
     except ValueError:
         print('erreur - veuillez réessayer')
+        return creation_nombre_de_rounds()
 
 
 def creation_description():      
@@ -56,19 +59,36 @@ def creation_description():
         print('erreur - veuillez réessayer')
 
 
-def selection_mode_de_jeu():      
-    options_utilisateur = 0
+def selection_mode_de_jeu():
+
+    mode_de_jeu = ["bullet", "blitz", "fast"]
 
     def afficher_menu():
-        for elt in MODE_DE_JEU:
-            print(MODE_DE_JEU.index(elt), '-', elt)
+        for elt in mode_de_jeu:
+            print(mode_de_jeu.index(elt) + 1, '-', elt)
+
     afficher_menu()
-    
+
     try:
-        options_utilisateur = int(input('Sélectionnez le mode de jeu par le chiffre correspondant : '))
+        entree = int(input('Sélectionnez le mode de jeu par le chiffre correspondant : '))
+        if entree == 1:
+            entree = mode_de_jeu[0]
+            print(f'Vous avez saisie {mode_de_jeu[0]}')
+        elif entree == 2:
+            entree = mode_de_jeu[1]
+            print(f'Vous avez saisie {mode_de_jeu[1]}')
+        elif entree == 3:
+            entree = mode_de_jeu[2]
+            print(f'Vous avez saisie {mode_de_jeu[2]}')
+        else:
+            print("Erreur ! Recommencez")
+            return selection_mode_de_jeu()
     except ValueError:
-        print('Veuillez le bon chiffre')
-    return options_utilisateur
+        print('Veuillez saisir un chiffre entre 1 et 3 !')
+        return selection_mode_de_jeu()
+    return entree
+
+
 
 
 def creation_tournoi_confirmee():

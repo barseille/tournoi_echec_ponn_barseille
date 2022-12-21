@@ -1,22 +1,25 @@
+
 class Joueur:
-    def __init__(self, data):
+    
+    def __init__(self, nom, prenom, date_de_naissance, genre, classement):
         
-        self.nom = data["Nom"]
-        self.prenom = data["Prenom"]
-        self.date_de_naissance = data["Date de naissance"]
-        self.genre = data["Genre"]
-        self.classement = data["Classement"]
-        self.score = 0
+        self.nom = nom
+        self.prenom = prenom
+        self.date_de_naissance = date_de_naissance
+        self.genre = genre
+        self.classement = classement
 
 
     def serialiser(self):
-        
+
         joueur_serialiser = {
-            'Nom': self.nom,
-            'Prenom': self.prenom,
-            'Date_de_naissance': self.date_de_naissance,
-            'Genre': self.genre,
-            'Classement': self.classement,
-            'Score': self.score
+            'nom': self.nom,
+            'prenom': self.prenom,
+            'date_de_naissance': self.date_de_naissance,
+            'genre': self.genre,
+            'classement': self.classement,
+            # 'score': self.score
         }
+ 
         return joueur_serialiser
+

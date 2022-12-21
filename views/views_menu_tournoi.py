@@ -11,12 +11,21 @@ class ViewsMenuTournoi:
         print("-"*50)
         print("-- Menu Tournoi --" )
         print("-"*50)
-        
-        choix_utilisateur = 0
-  
-        print("Faite votre choix : ")
 
-        
+        print("Faites votre choix : ")
+  
         for elt in TOURNOI_OPTIONS:
             print(TOURNOI_OPTIONS.index(elt) + 1, '-', elt)
             
+    
+    def selectionner_tournoi_existant(self):
+        try:
+            entree = int(input("Saisir le numéro du tournoi : "))
+            if entree > 0:
+                return entree
+            else:
+                print("Veuillez saisir le numéro correspondant ! ")
+        except ValueError:
+            print("Veuillez saisir le numéro correspondant !")
+
+
