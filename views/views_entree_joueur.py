@@ -1,11 +1,6 @@
-from datetime import datetime
+
 
 GENRE = ("homme", "femme")
-
-def accueil_joueur():
-    print("-"*40)
-    print('       -- Créer votre joueur --')
-    print("-"*40)
 
 
 def creation_joueur_nom():

@@ -1,10 +1,4 @@
 
-def bienvenue():
-    print('-'*40)
-    print("-- Créer votre Nouveau Tournoi --")
-    print('-'*40)
-
-
 def creation_nom_tournoi():  
     try:
         nom = input('Entrez le nom du tournoi :')
@@ -34,22 +28,22 @@ def creation_date_tournoi():
         print("Veuillez saisir correctement")
 
 
-def creation_nombre_de_rounds():     
+def creation_nombres_de_rounds():     
     try:
         rounds = 4
-        nombre_de_rounds = int(input("Entrez le nombre de rounds : "))
-        if nombre_de_rounds is not 4:
-            print(f'Vous avez saisie {nombre_de_rounds} rounds')
-            return nombre_de_rounds
+        nombres_de_rounds = int(input("Entrez le nombre de rounds : "))
+        if nombres_de_rounds is not 4:
+            print(f'Vous avez saisie {nombres_de_rounds} rounds')
+            return nombres_de_rounds
 
         else:
-            nombre_de_rounds = rounds
+            nombres_de_rounds = rounds
             print("4 rounds par défaut")
         
-        return nombre_de_rounds
+        return nombres_de_rounds
     except ValueError:
         print('erreur - veuillez réessayer')
-        return creation_nombre_de_rounds()
+        return creation_nombres_de_rounds()
 
 
 def creation_description():      
