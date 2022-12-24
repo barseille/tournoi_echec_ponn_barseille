@@ -1,9 +1,10 @@
 class Tournoi:
     
-    def __init__(self, nom, lieu, date_tournoi, nombres_de_rounds, description, mode_de_jeu):
+    def __init__(self, nom, lieu, date_debut_tournoi, date_fin_tournoi, nombres_de_rounds, description, mode_de_jeu):
         self.nom = nom
         self.lieu = lieu
-        self.date_tournoi = date_tournoi
+        self.date_debut_tournoi = date_debut_tournoi
+        self.date_fin_tournoi = date_fin_tournoi
         self.nombres_de_rounds = nombres_de_rounds
         self.description = description
         self.mode_de_jeu = mode_de_jeu
@@ -17,7 +18,8 @@ class Tournoi:
         tournoi_serialiser = {
             "nom": self.nom,
             "lieu": self.lieu,
-            "date_tournoi": self.date_tournoi,
+            "date_debut_tournoi": self.date_debut_tournoi,
+            "date_fin_tournoi":self.date_fin_tournoi,
             "nombres_de_rounds": self.nombres_de_rounds,
             "description": self.description,
             "mode_de_jeu": self.mode_de_jeu,

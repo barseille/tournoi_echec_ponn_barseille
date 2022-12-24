@@ -1,83 +1,89 @@
 import views.views_entree_joueur as entree_joueur
-from models.joueur import Joueur
 import json
 
 class ControllersJoueurs:
-    
-    liste_des_joueurs_deserialiser = []
 
     def recuperer_entree_joueur(self):
+        """ sérialiser les entrées joueurs"""
         
-        print("Créer votre joueur : ")
-         
-        self.nom = entree_joueur.creation_joueur_nom()
-        self.prenom = entree_joueur.creation_joueur_prenom()
-        self.date_de_naissance = entree_joueur.creation_joueur_date_de_naissance()
-        self.genre = entree_joueur.creation_joueur_genre()
-        self.classement = entree_joueur.creation_joueur_classement()
+        print('-'*50)
+        print("              -- Création Joueur --")
+        print('-'*50)
         
-        joueur = [self.nom,
-                  self.prenom,
-                  self.date_de_naissance,
-                  self.genre,
-                  self.classement]
+        liste_des_joueurs = []
         
-        return joueur
-    
-    
-    def serialiser(self):
-        
-        joueur = Joueur(self.nom,
-                        self.prenom,
-                        self.date_de_naissance,
-                        self.genre,
-                        self.classement)
-        
-        joueur_serialiser = joueur.serialiser()
-        
-        with open("liste_joueurs.json", "w") as jd:
-            json.dump(joueur_serialiser, jd, indent=4)
-        # joueur_serialiser = json.dumps(joueur_serialiser)  
-  
-    
-    def deserialiser(self):
-        """ désérialisation joueur """
-           
-        with open("liste_joueurs.json", "r") as jl:
+        while True:
+                            
+            self.nom = entree_joueur.creation_joueur_nom()
+            self.prenom = entree_joueur.creation_joueur_prenom()
+            self.date_de_naissance = entree_joueur.creation_joueur_date_de_naissance()
+            self.genre = entree_joueur.creation_joueur_genre()
+            self.classement = entree_joueur.creation_joueur_classement()
             
-            joueur_deserialiser = json.load(jl)
-            # joueur_deserialiser = json.loads(joueur_serialiser)
-             
-        self.joueur_deserialiser = [{'nom' : joueur_deserialiser["nom"],
-                                    'prenom' : joueur_deserialiser["prenom"],
-                                    'date_de_naissance' : joueur_deserialiser["date_de_naissance"],
-                                    'genre' : joueur_deserialiser["genre"],
-                                    'classement' : joueur_deserialiser["classement"]}]
-        
-        return self.joueur_deserialiser
-    
-    
-    def afficher_les_joueurs(self):
-        
-        for joueur in self.joueur_deserialiser:
+            joueur = {"nom": self.nom,
+                      "prenom": self.prenom,
+                      "date_de_naissance": self.date_de_naissance,
+                      "genre": self.genre,
+                      "classement": self.classement}
             
-            print(self.joueur_deserialiser.index(joueur) + 1
-                  , '-'
-                  , '| Nom : ', joueur["nom"]
-                  , '| Prenom : ', joueur["prenom"]
-                  , '| Date de naissance : ', joueur["date_de_naissance"]
-                  , '| Genre : ', joueur["genre"]
-                  , '| Classement', joueur["classement"])
+            liste_des_joueurs.append(joueur)
             
-        return self.joueur_deserialiser
-        
-
-        
-
+            autre_joueur = input("Souhaitez_vous créer un autre joueur ? (o/n) : ")
+            if autre_joueur == "n":
+                break
+            
+        with open("liste_joueurs.json", "w") as f:
+            json.dump(liste_des_joueurs, f, indent=4)
+    
  
+    def deserialiser(self):
+        """ désérialisation la liste des joueurs """
+        
+        print('-'*50)
+        print('              -- Liste des joueurs --')
+        print('-'*50)
+           
+        with open("liste_joueurs.json", "r") as f:        
+            self.joueur_deserialiser = json.load(f)
+            
+            for i, joueur in enumerate(self.joueur_deserialiser):
+                print(i,
+                      '-' , joueur['prenom'], joueur['nom'],
+                      ':',
+                      ' née le ', joueur['date_de_naissance'],
+                      '/',
+                      ' genre : ', joueur['genre'],
+                      '/',
+                      'classement : ', joueur['classement'])
+                
+        return self.joueur_deserialiser
+
+            
+    def selectionner_joueur(self):
+        
+        liste_joueurs_pour_tournoi = []
+
+        # Demander à l'utilisateur de saisir l'index du joueur à sélectionner       
+        selectionner = int(input('Sélectionnez un joueur : '))
+        
+        # Initialisez le joueur sélectionné à None
+        selection_joueur = None
+        
+        # Vérifiez si l'index saisi est valide
+        if selectionner >= 0 and selectionner < len(self.joueur_deserialiser):
+
+            selection_joueur = self.joueur_deserialiser[selectionner]
+            liste_joueurs_pour_tournoi.append(selection_joueur)
+            print("vous avec selectionner : ")
+            print(selection_joueur["prenom"], selection_joueur["nom"])
+            
+        print(liste_joueurs_pour_tournoi)
+        
+        
+            
+                
     
-    
-    
+
     
     
     

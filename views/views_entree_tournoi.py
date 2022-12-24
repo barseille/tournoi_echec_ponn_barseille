@@ -15,18 +15,25 @@ def creation_lieu_tournoi():
         print('erreur - veuillez réessayer')
 
 
-def creation_date_tournoi():
-
-    date_tournoi = input("Saisissez une date (JJ-MM-AAAA): ")
-    entree = input("Voulez-vous sélectionner una autre date ?  o(oui) / n(non) ")
+def creation_date_debut_tournoi():
+    try:
+        date_debut_tournoi = input("Saisissez une date (JJ-MM-AAAA): ")
+        return date_debut_tournoi
+    except ValueError:
+        print('erreur - veuillez réessayer')
+        
+     
+def creation_date_fin_tournoi():
+    entree = input("Voulez-vous sélectionner una date de fin de tournoi ?  o(oui) / n(non) ")
     if entree == 'o':
-        return creation_date_tournoi()
+        date_fin_tournoi = input("Saisissez une date (JJ-MM-AAAA): ")
+        return date_fin_tournoi
     elif entree == "n":
-       
-        return date_tournoi
+        pass
     else:
         print("Veuillez saisir correctement")
-
+        creation_date_fin_tournoi()
+    
 
 def creation_nombres_de_rounds():     
     try:
@@ -84,39 +91,7 @@ def selection_mode_de_jeu():
     return entree
 
 
-
-def creation_autre_tournoi():
-    
-    autre_tournoi = input("Voulez-vous créer un autre tournoi ? o(oui) / n(non)")
-    
-    if autre_tournoi == "o":
-        return True
-        
-    elif autre_tournoi == "n":
-        return False
-    else:
-        print("Veuillez saisir correctement ! ")
  
-  
-
-
-
-
-
-
-def creation_tournoi_confirmee():
-    try:
-        print("Tournoi crée avec succes !")
-        entree_utilisateur = input('Voulez-vous lancer ce tournoi ? oui(o) / non(n)')
-        entree_utilisateur = str(entree_utilisateur).lower()
-        if entree_utilisateur == 'o' or entree_utilisateur == 'oui':
-            return True
-        elif entree_utilisateur == 'n' or entree_utilisateur == 'non':
-            return False
-        else:
-            return False
-    except ValueError:
-        print('erreur - veuillez réessayer')
         
         
         

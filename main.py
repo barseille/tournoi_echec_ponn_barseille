@@ -3,6 +3,7 @@ from views.accueil import ViewsAccueil
 from views.views_menu_tournoi import ViewsMenuTournoi
 from controllers.controllers_joueurs import ControllersJoueurs
 from controllers.controllers_tournois import ControllersTournois
+from controllers.controllers_application import ControllersApplication
 
 
 
@@ -40,7 +41,7 @@ def main():
         if entree == 1:
             creer_tournoi()
         elif entree == 2:
-            lancer_tournoi()
+            lancer_tournoi()         
         else:
             print("Veuillez saisir un chiffre entre 1 et 3")
             accueil_principal()
@@ -51,7 +52,7 @@ def main():
         creation_tournoi.recuperer_entree_tournoi()
         creation_tournoi.serialiser()
         creation_tournoi.deserialiser()
-        creation_tournoi.afficher_les_tournois()
+        # creation_tournoi.afficher_les_tournois()
         
         autre_tournoi = input("Voulez-vous créer un autre tournoi ? o(oui) / n(non) ")
         if autre_tournoi == "o":
@@ -62,12 +63,14 @@ def main():
             print("Veuillez saisir un chiffre entre 1 et 3")
             creer_tournoi()
             
-            
+    """----------------------------------------------------"""        
     def lancer_tournoi():
-        # lancer tournoi
-        pass
+        
+        selectionner_tournoi = ControllersApplication()
+        selectionner_tournoi.selectionner_tournoi()
+        
 
-
+    """----------------------------------------------------"""
         # MENU JOUEUR
     def menu_principal_joueur():
       
@@ -82,7 +85,7 @@ def main():
 
         # charger joueur existant
         elif entree == 2:
-            pass
+            selectionner_joueur_existant()
          # mise à jour classement joueur
         elif entree == 3:
             pass
@@ -98,21 +101,13 @@ def main():
         
         creation_joueur = ControllersJoueurs()
         creation_joueur.recuperer_entree_joueur()
-        creation_joueur.serialiser()
         creation_joueur.deserialiser()
-        creation_joueur.afficher_les_joueurs()
-        
-        autre_joueur = input("Voulez-vous créer un autre joueur ? o(oui) / n(non) ")
-        if autre_joueur == "o":
-            creer_joueur()
-        elif autre_joueur == "n":
-            accueil_principal()
-        else:
-            print("Veuillez saisir un chiffre entre 1 et 3")
-            creer_joueur()
-        
-        
-                
+
+    def selectionner_joueur_existant():
+        selection_joueur = ControllersJoueurs()
+        selection_joueur.deserialiser()
+        selection_joueur.selectionner_joueur()
+                    
 
     def menu_rapport():
         # MENU RAPPORT 
