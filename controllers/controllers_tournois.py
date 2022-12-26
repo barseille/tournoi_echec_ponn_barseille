@@ -2,113 +2,116 @@ import  views.views_entree_tournoi as entree_tournoi
 from models.tournoi import Tournoi
 import json
 
+class ControllersTournois:   
 
-class ControllersTournois:
-    
-    # def __init__(self):
-        
-    #     self.tournoi_charger = []
-    
-    
-    
     def recuperer_entree_tournoi(self):
+        """ sérialiser les données du tournoi"""
         
-        print("Créer votre tournoi : ")
+        print('-'*50)
+        print("              -- Création Tournoi --")
+        print('-'*50)
         
-        self.nom = entree_tournoi.creation_nom_tournoi()
-        self.lieu = entree_tournoi.creation_lieu_tournoi()
-        self.date_debut_tournoi = entree_tournoi.creation_date_debut_tournoi()
-        self.date_fin_tournoi = entree_tournoi.creation_date_fin_tournoi()
-        self.nombres_de_rounds = entree_tournoi.creation_nombres_de_rounds()
-        self.description = entree_tournoi.creation_description()
-        self.mode_de_jeu = entree_tournoi.selection_mode_de_jeu()
+        liste_des_tournois = []
         
-        tournoi = [self.nom, 
-                   self.lieu, 
-                   self.date_debut_tournoi, 
-                   self.date_fin_tournoi,
-                   self.nombres_de_rounds, 
-                   self.description, 
-                   self.mode_de_jeu]
-        
-        return tournoi
+        while True:    
+            self.nom = entree_tournoi.demander_nom_tournoi()
+            self.lieu = entree_tournoi.demander_lieu_tournoi()
+            self.dates = entree_tournoi.demander_dates_tournoi()  
+            self.nombres_de_rounds = entree_tournoi.demander_rounds()
+            self.description = entree_tournoi.demander_description()
+            self.mode_de_jeu = entree_tournoi.demander_mode_de_jeu()
+            
+           
+            tournoi = Tournoi(self.nom,
+                              self.lieu,
+                              self.dates,             
+                              self.nombres_de_rounds,
+                              self.description,
+                              self.mode_de_jeu)  
+            
+            tournoi_serialiser = tournoi.serialiser()
+            liste_des_tournois.append(tournoi_serialiser)      
+                    
+            autre_tournoi = input("Souhaitez_vous créer un autre tournoi ? (o/n) : ")
+            if autre_tournoi == "n":
+                break
+            
+        with open("liste_tournois.json", "w") as f:
+            json.dump(liste_des_tournois, f, indent=4)
 
 
-    def serialiser(self):
+    def afficher_les_tournois(self):
+        """deserialiser la liste des tournois"""
         
-        
-        tournoi = Tournoi(self.nom,
-                    self.lieu,
-                    self.date_debut_tournoi,
-                    self.date_fin_tournoi,
-                    self.nombres_de_rounds,
-                    self.description,
-                    self.mode_de_jeu
-                    )
-        
-        tournoi_serialiser = tournoi.serialiser()
-        
-        with open("liste_tournois.json", "w") as td:
-            json.dump(tournoi_serialiser, td, indent=4)
- 
-            
-    def deserialiser(self):
-        """deserialiser"""
-        
-        with open ("liste_tournois.json", "r") as tl:
-            tournoi_charger = json.load(tl)
-            
-        tournoi_charger = {"nom" : tournoi_charger["nom"],
-                        "lieu" : tournoi_charger["lieu"],
-                        "date_debut_tournoi" : tournoi_charger["date_debut_tournoi"],
-                        "date_fin_tournoi" : tournoi_charger["date_fin_tournoi"],
-                        "nombres_de_rounds" : tournoi_charger["nombres_de_rounds"],
-                        "description" : tournoi_charger["description"],
-                        "mode_de_jeu" : tournoi_charger["mode_de_jeu"]}
-        
-        return tournoi_charger
-        # for i in tournoi_charger:
-        #     self.tournoi_deserialiser.append(i)
-            
-        # print(self.tournoi_deserialiser) 
-        
-      
-
-  
-    # def afficher_les_tournois(self):
-   
-    #     for tournoi in self.tournoi_deserialiser:
-            
-    #         print(self.tournoi_deserialiser.index(tournoi) + 1 
-    #               , '-'
-    #               , 'Nom : ', tournoi["nom"]
-    #               , '| Lieu : ', tournoi["lieu"]
-    #               , '| Date de début du tournoi : ', tournoi["date_debut_tournoi"]
-    #               , '| Date de fin du tournoi : ', tournoi["date_fin_tournoi"]
-    #               , '| Nombres de rounds : ', tournoi["nombres_de_rounds"]
-    #               , '| Description : ', tournoi["description"]
-    #               , '| Mode de jeu : ', tournoi["mode_de_jeu"])
-            
-       
-
-        # with open ("liste_tournois.json", "r") as tl:
-        #     tournoi_deserialiser = json.load(tl)
-            
-        # self.tournoi_deserialiser = [{"nom" : tournoi_deserialiser["nom"],
-        #                               "lieu" : tournoi_deserialiser["lieu"],
-        #                               "date_debut_tournoi" : tournoi_deserialiser["date_debut_tournoi"],
-        #                               "date_fin_tournoi" : tournoi_deserialiser["date_fin_tournoi"],
-        #                               "nombres_de_rounds" : tournoi_deserialiser["nombres_de_rounds"],
-        #                               "description" : tournoi_deserialiser["description"],
-        #                               "mode_de_jeu" : tournoi_deserialiser["mode_de_jeu"]}]       
+        print('-'*50)
+        print('              -- Liste des tournois --')
+        print('-'*50)
            
         
-              
-             
+        with open ("liste_tournois.json", "r") as f:
+            self.tournoi_data = json.load(f)
+            
+            for i, tournoi in enumerate(self.tournoi_data):
+                print( i,'-' 
+                      , 'Nom : ', tournoi['nom'], '|', 'Lieu : ', tournoi['lieu'], '|'
+                      , 'Date(s) : ', tournoi['dates'], '|', 'Nombre de rounds : ', tournoi['nombres_de_rounds'], '|'
+                      , 'Description : ', tournoi['description'], '|', 'Mode de jeu : ', tournoi['mode_de_jeu'])
+                
+        return self.tournoi_data
     
+    
+    def selectionner_tournoi(self):
+        """ afficher la liste des tournois"""
         
+        self.liste_des_tournois = []
+        
+        with open('liste_tournois.json', 'r') as f:
+            self.tournoi_data = json.load(f)
 
+        while True:
+            print('-'*50)
+            print('              -- Sélection des tournois -- ')
+            print('-'*50)
 
+            if not self.tournoi_data:
+                print("Il n'y a pas de tournois à sélectionner")
+                break
+            
+            for i, tournoi in enumerate(self.tournoi_data):
+                print( i,'-' 
+                      , 'Nom : ', tournoi['nom'], '|', 'Lieu : ', tournoi['lieu'], '|'
+                      , 'Date(s) : ', tournoi['dates'], '|', 'Nombre de rounds : ', tournoi['nombres_de_rounds'], '|'
+                      , 'Description : ', tournoi['description'], '|', 'Mode de jeu : ', tournoi['mode_de_jeu'])
+             
+            selection = input('Sélectionnez un joueur (entrez "q" pour quitter): ')
+
+            # Si l'utilisateur a saisi "q", quittez la boucle
+            if selection == 'q':
+                break
+
+            # Convertir la sélection en entier
+            try:
+                selection = int(selection)
+            except ValueError:
+                print("Entrez un chiffre valide s'il vous plaît")
+                continue
+             
+            # Vérifiez si l'index est valide
+            if selection >= 0 and selection < len(self.tournoi_data):
+                
+                # Sélectionnez le dictionnaire correspondant
+                tournoi_selectionner = self.tournoi_data[selection]
+                print(f'Vous avez sélectionné : {tournoi_selectionner["nom"]} {tournoi_selectionner["lieu"]}')
+                self.liste_des_tournois.append(tournoi_selectionner)
+
+                # Retirez le dictionnaire de la liste
+                self.tournoi_data.pop(selection)
+                
+            else:
+                print("Entrez un chiffre valide s'il vous plaît")
+                
+    
+        return self.liste_des_tournois  
 
 
 

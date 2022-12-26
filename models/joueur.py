@@ -18,8 +18,6 @@ class Joueur:
             'date_de_naissance': self.date_de_naissance,
             'genre': self.genre,
             'classement': self.classement,
-            # 'score': self.score
         }
- 
         return joueur_serialiser
 

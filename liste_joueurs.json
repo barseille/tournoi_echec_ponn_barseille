@@ -1,16 +1,9 @@
 [
     {
-        "nom": "lee",
-        "prenom": "bruce",
-        "date_de_naissance": "27-11-1921",
+        "nom": "sqdgergf",
+        "prenom": "dsgdherg",
+        "date_de_naissance": "12/01/1236",
         "genre": "homme",
         "classement": 1
-    },
-    {
-        "nom": "lil",
-        "prenom": "john",
-        "date_de_naissance": "13-01-1982",
-        "genre": "homme",
-        "classement": 2
     }
 ]

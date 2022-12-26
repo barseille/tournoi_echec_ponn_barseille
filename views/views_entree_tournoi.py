@@ -1,97 +1,81 @@
-
-def creation_nom_tournoi():  
-    try:
-        nom = input('Entrez le nom du tournoi :')
-        return nom
-    except ValueError:
-        print('erreur - veuillez réessayer')
+def demander_nom_tournoi():
+    nom = input('Entrez le nom du tournoi : ')
+    return nom
 
 
-def creation_lieu_tournoi():
-    try:
-        lieu = input('Entrez le lieu du tournoi : ')
-        return lieu
-    except ValueError:
-        print('erreur - veuillez réessayer')
+def demander_lieu_tournoi():
+    lieu = input('Entrez le lieu du tournoi : ')
+    return lieu
 
 
-def creation_date_debut_tournoi():
-    try:
-        date_debut_tournoi = input("Saisissez une date (JJ-MM-AAAA): ")
-        return date_debut_tournoi
-    except ValueError:
-        print('erreur - veuillez réessayer')
-        
-     
-def creation_date_fin_tournoi():
-    entree = input("Voulez-vous sélectionner una date de fin de tournoi ?  o(oui) / n(non) ")
-    if entree == 'o':
-        date_fin_tournoi = input("Saisissez une date (JJ-MM-AAAA): ")
-        return date_fin_tournoi
-    elif entree == "n":
-        pass
-    else:
-        print("Veuillez saisir correctement")
-        creation_date_fin_tournoi()
-    
+def demander_dates_tournoi():
+    entree_date = input("Souhaitez-vous entrer une date unique ou une plage de dates ? u(unique)/ p(plage de date) : ")
 
-def creation_nombres_de_rounds():     
-    try:
-        rounds = 4
-        nombres_de_rounds = int(input("Entrez le nombre de rounds : "))
-        if nombres_de_rounds is not 4:
-            print(f'Vous avez saisie {nombres_de_rounds} rounds')
-            return nombres_de_rounds
+    if entree_date == 'u':   
+        date_unique = input("Entrez la date unique au format jj/mm/aaaa : ")
+        return date_unique
 
-        else:
-            nombres_de_rounds = rounds
-            print("4 rounds par défaut")
-        
-        return nombres_de_rounds
-    except ValueError:
-        print('erreur - veuillez réessayer')
-        return creation_nombres_de_rounds()
+    elif entree_date == 'p': 
+        plage_date = []   
+        date_debut = input("Entrez la date de début au format jj/mm/aaaa : ")
+        plage_date.append(date_debut)
+
+        date_fin = input("Entrez la date de fin au format jj/mm/aaaa : ")
+        plage_date.append(date_fin)
+
+        return plage_date
 
 
-def creation_description():      
+
+def demander_rounds():
+  rounds = input("Combien de rounds souhaitez-vous jouer ? (4 par défaut) ")
+
+  # Si l'utilisateur n'a pas saisi de nombre, utilise 4 rounds par défaut
+  if not rounds.isdigit():
+    rounds = 4
+  else:
+    # Convertit la chaîne de caractères en entier
+    rounds = int(rounds)
+
+  print(f"Vous avez choisi de jouer {rounds} rounds.")
+  return rounds
+
+
+def demander_description():      
     try:
         description = input("Entrez la description : ")
         return description
     except ValueError:
         print('erreur - veuillez réessayer')
+        
+    return description
 
 
-def selection_mode_de_jeu():
-
+def demander_mode_de_jeu():
     mode_de_jeu = ["bullet", "blitz", "fast"]
 
-    def afficher_menu():
-        for elt in mode_de_jeu:
-            print(mode_de_jeu.index(elt) + 1, '-', elt)
-
-    afficher_menu()
+    for i, mode in enumerate(mode_de_jeu):
+        print(f"{i + 1} - {mode}")
 
     try:
         entree = int(input('Sélectionnez le mode de jeu par le chiffre correspondant : '))
-        if entree == 1:
-            entree = mode_de_jeu[0]
-            print(f'Vous avez saisie {mode_de_jeu[0]}')
-        elif entree == 2:
-            entree = mode_de_jeu[1]
-            print(f'Vous avez saisie {mode_de_jeu[1]}')
-        elif entree == 3:
-            entree = mode_de_jeu[2]
-            print(f'Vous avez saisie {mode_de_jeu[2]}')
-        else:
-            print("Erreur ! Recommencez")
-            return selection_mode_de_jeu()
+        if entree < 1 or entree > 3:
+            raise ValueError
     except ValueError:
         print('Veuillez saisir un chiffre entre 1 et 3 !')
-        return selection_mode_de_jeu()
-    return entree
+        return demander_mode_de_jeu()
+
+    return mode_de_jeu[entree - 1]
 
 
- 
+
+
+
+
+
+
+
+
         
         
         

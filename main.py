@@ -3,7 +3,8 @@ from views.accueil import ViewsAccueil
 from views.views_menu_tournoi import ViewsMenuTournoi
 from controllers.controllers_joueurs import ControllersJoueurs
 from controllers.controllers_tournois import ControllersTournois
-from controllers.controllers_application import ControllersApplication
+
+
 
 
 
@@ -50,25 +51,17 @@ def main():
         
         creation_tournoi = ControllersTournois()
         creation_tournoi.recuperer_entree_tournoi()
-        creation_tournoi.serialiser()
-        creation_tournoi.deserialiser()
-        # creation_tournoi.afficher_les_tournois()
+        creation_tournoi.afficher_les_tournois()
+        menu_principal_tournoi()
         
-        autre_tournoi = input("Voulez-vous créer un autre tournoi ? o(oui) / n(non) ")
-        if autre_tournoi == "o":
-            creer_tournoi()
-        elif autre_tournoi == "n":
-            accueil_principal()
-        else:
-            print("Veuillez saisir un chiffre entre 1 et 3")
-            creer_tournoi()
             
     """----------------------------------------------------"""        
     def lancer_tournoi():
+        # afficher la liste des tournois
+        selection = ControllersTournois()
+        selection.selectionner_tournoi()
         
-        selectionner_tournoi = ControllersApplication()
-        selectionner_tournoi.selectionner_tournoi()
-        
+        pass
 
     """----------------------------------------------------"""
         # MENU JOUEUR
@@ -85,10 +78,12 @@ def main():
 
         # charger joueur existant
         elif entree == 2:
-            selectionner_joueur_existant()
+            # afficher la liste des joueurs
+            selection_joueurs_pour_tournoi()
+            
          # mise à jour classement joueur
         elif entree == 3:
-            pass
+            menu_rapport()
             
         # retour à l'accueil
         elif entree == 4:
@@ -101,18 +96,20 @@ def main():
         
         creation_joueur = ControllersJoueurs()
         creation_joueur.recuperer_entree_joueur()
-        creation_joueur.deserialiser()
+        creation_joueur.afficher_des_joueurs()
 
-    def selectionner_joueur_existant():
+    def selection_joueurs_pour_tournoi():
         selection_joueur = ControllersJoueurs()
-        selection_joueur.deserialiser()
         selection_joueur.selectionner_joueur()
                     
 
     def menu_rapport():
-        # MENU RAPPORT 
-       
-        pass
+        rapport_joueur = ControllersJoueurs()
+        rapport_joueur.afficher_des_joueurs()
+        rapport_tournoi = ControllersTournois()
+        rapport_tournoi.afficher_les_tournois()
+        
+    
 
 
     accueil_principal()

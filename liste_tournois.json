@@ -1,9 +1,10 @@
-{
-    "nom": "dhfdj",
-    "lieu": "gdh",
-    "date_debut_tournoi": "dsfgh",
-    "date_fin_tournoi": null,
-    "nombres_de_rounds": 4,
-    "description": "fg",
-    "mode_de_jeu": "bullet"
-}
+[
+    {
+        "nom": "dggr",
+        "lieu": "sdfsg",
+        "dates": "14/12/2022",
+        "nombres_de_rounds": 4,
+        "description": "hg",
+        "mode_de_jeu": "bullet"
+    }
+]
