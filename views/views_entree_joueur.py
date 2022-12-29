@@ -21,7 +21,7 @@ def creation_joueur_prenom():
 
 def creation_joueur_date_de_naissance():
     try:
-        date_de_naissance = input('Entrez votre date de naissance (JJ-MM-AAAA): ')
+        date_de_naissance = input('Entrez votre date de naissance au format jj/mm/aaaa : ')
         return date_de_naissance
     except ValueError:
         print('erreur - veuillez réessayer')

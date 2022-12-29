@@ -2,6 +2,7 @@ import  views.views_entree_tournoi as entree_tournoi
 from models.tournoi import Tournoi
 import json
 
+
 class ControllersTournois:   
 
     def recuperer_entree_tournoi(self):
@@ -33,19 +34,25 @@ class ControllersTournois:
             liste_des_tournois.append(tournoi_serialiser)      
                     
             autre_tournoi = input("Souhaitez_vous créer un autre tournoi ? (o/n) : ")
-            if autre_tournoi == "n":
+            if autre_tournoi == "o":
+                print('Tournoi sauvegarder avec succès !')
+                
+            elif autre_tournoi == "n":
+                print('Tournoi sauvegarder avec succès !')
                 break
             
         with open("liste_tournois.json", "w") as f:
             json.dump(liste_des_tournois, f, indent=4)
+            
+        
 
 
     def afficher_les_tournois(self):
         """deserialiser la liste des tournois"""
         
-        print('-'*50)
-        print('              -- Liste des tournois --')
-        print('-'*50)
+        
+        print('Voici la liste des tournois : ')
+        
            
         
         with open ("liste_tournois.json", "r") as f:
@@ -67,23 +74,27 @@ class ControllersTournois:
         
         with open('liste_tournois.json', 'r') as f:
             self.tournoi_data = json.load(f)
+            
+        print('-'*50)
+        print('         -- Sélectionnez votre tournoi -- ')
+        print('-'*50)
+        print(' - Sélectionner votre tournoi : ')
+        print(' ')
 
         while True:
-            print('-'*50)
-            print('              -- Sélection des tournois -- ')
-            print('-'*50)
+
 
             if not self.tournoi_data:
-                print("Il n'y a pas de tournois à sélectionner")
+                print("Il n'y a plus de tournoi à sélectionner")
                 break
             
             for i, tournoi in enumerate(self.tournoi_data):
-                print( i,'-' 
+                print( ' ', i,'-' 
                       , 'Nom : ', tournoi['nom'], '|', 'Lieu : ', tournoi['lieu'], '|'
                       , 'Date(s) : ', tournoi['dates'], '|', 'Nombre de rounds : ', tournoi['nombres_de_rounds'], '|'
                       , 'Description : ', tournoi['description'], '|', 'Mode de jeu : ', tournoi['mode_de_jeu'])
              
-            selection = input('Sélectionnez un joueur (entrez "q" pour quitter): ')
+            selection = input(' - Sélectionnez un tournoi (entrez "q" pour quitter): ')
 
             # Si l'utilisateur a saisi "q", quittez la boucle
             if selection == 'q':
@@ -101,28 +112,20 @@ class ControllersTournois:
                 
                 # Sélectionnez le dictionnaire correspondant
                 tournoi_selectionner = self.tournoi_data[selection]
-                print(f'Vous avez sélectionné : {tournoi_selectionner["nom"]} {tournoi_selectionner["lieu"]}')
+               
+                print(f'Vous avez sélectionné  le tournoi : {tournoi_selectionner["nom"]} | lieu : {tournoi_selectionner["lieu"]}')
                 self.liste_des_tournois.append(tournoi_selectionner)
-
+                
                 # Retirez le dictionnaire de la liste
                 self.tournoi_data.pop(selection)
+                break
                 
             else:
                 print("Entrez un chiffre valide s'il vous plaît")
-                
+               
+        return self.liste_des_tournois
     
-        return self.liste_des_tournois  
-
-
-
-
-
-
-
-
-
-
-
+  
 
 
 

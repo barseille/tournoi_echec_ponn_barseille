@@ -8,6 +8,7 @@ class Tournoi:
         self.nombres_de_rounds = nombres_de_rounds
         self.description = description
         self.mode_de_jeu = mode_de_jeu
+        self.liste_des_participants = []
         
         
     def serialiser(self):

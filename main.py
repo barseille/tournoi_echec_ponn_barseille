@@ -3,6 +3,7 @@ from views.accueil import ViewsAccueil
 from views.views_menu_tournoi import ViewsMenuTournoi
 from controllers.controllers_joueurs import ControllersJoueurs
 from controllers.controllers_tournois import ControllersTournois
+from controllers.controllers_application import ControllersApplication
 
 
 
@@ -51,19 +52,21 @@ def main():
         
         creation_tournoi = ControllersTournois()
         creation_tournoi.recuperer_entree_tournoi()
-        creation_tournoi.afficher_les_tournois()
-        menu_principal_tournoi()
+        retour = input("Appuyer sur ENTREE pour revenir au menu")
+        if retour == '':
+            menu_principal_tournoi()
         
             
-    """----------------------------------------------------"""        
-    def lancer_tournoi():
-        # afficher la liste des tournois
-        selection = ControllersTournois()
-        selection.selectionner_tournoi()
         
-        pass
+    def lancer_tournoi():
 
-    """----------------------------------------------------"""
+        appli = ControllersApplication()
+        appli.fusion_tournoi_avec_joueurs()
+        appli.afficher_infos_tournoi()
+        appli.lancer_tournoi()
+       
+   
+       
         # MENU JOUEUR
     def menu_principal_joueur():
       
@@ -75,6 +78,9 @@ def main():
         # creer un joueur
         if entree == 1:
             creer_joueur()
+            retour = input("Appuyer sur ENTREE pour revenir au menu")
+            if retour == '':
+                menu_principal_joueur()
 
         # charger joueur existant
         elif entree == 2:
@@ -83,8 +89,8 @@ def main():
             
          # mise à jour classement joueur
         elif entree == 3:
-            menu_rapport()
-            
+           pass
+    
         # retour à l'accueil
         elif entree == 4:
             accueil_principal()
@@ -99,9 +105,8 @@ def main():
         creation_joueur.afficher_des_joueurs()
 
     def selection_joueurs_pour_tournoi():
-        selection_joueur = ControllersJoueurs()
-        selection_joueur.selectionner_joueur()
-                    
+        pass
+    
 
     def menu_rapport():
         rapport_joueur = ControllersJoueurs()
