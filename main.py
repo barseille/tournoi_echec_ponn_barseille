@@ -52,6 +52,8 @@ def main():
         
         creation_tournoi = ControllersTournois()
         creation_tournoi.recuperer_entree_tournoi()
+        creation_tournoi.afficher_les_tournois()
+        
         retour = input("Appuyer sur ENTREE pour revenir au menu")
         if retour == '':
             menu_principal_tournoi()
@@ -59,13 +61,13 @@ def main():
             
         
     def lancer_tournoi():
-
+        
         appli = ControllersApplication()
         appli.fusion_tournoi_avec_joueurs()
-        appli.afficher_infos_tournoi()
+        appli.afficher_tournoi_en_cours()
         appli.lancer_tournoi()
-       
-   
+        # appli.obtenir_score()
+
        
         # MENU JOUEUR
     def menu_principal_joueur():
@@ -105,7 +107,9 @@ def main():
         creation_joueur.afficher_des_joueurs()
 
     def selection_joueurs_pour_tournoi():
-        pass
+        r = ControllersJoueurs()
+        r.afficher_des_joueurs()
+        r.selectionner_participants()
     
 
     def menu_rapport():

@@ -1,4 +1,4 @@
-
+import json
 
 GENRE = ("homme", "femme")
 
@@ -53,15 +53,36 @@ def creation_joueur_genre():
         return creation_joueur_genre()
     return entree
 
-def creation_joueur_classement():
 
-    try:
-        classement = int(input("Entrez le numéro du joueur dans le classement : "))
-        return classement
-    except ValueError:
-        print('erreur - veuillez réessayer')
+    
+
+def creation_joueur_classement():
+      
+    with open("liste_joueurs.json", "r") as f:
+        data = json.load(f)
         
+        classements_existants = []
         
+        for joueur in data['liste_joueurs']:
+            classements_existants.append(joueur['classement'])     
+        
+          
+    while True:
+        try:
+        
+            classement = int(input("Entrez le numéro du joueur dans le classement : "))
+        
+            if classement not in classements_existants:
+                return classement
+            
+            else:
+                print("Le numéro de classement existe déjà. Veuillez réessayer.")
+                continue
+                
+        except ValueError:
+            print('erreur - veuillez réessayer')
+ 
+ 
 def creation_autre_joueur():
 
     try:           

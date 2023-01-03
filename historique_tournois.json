@@ -1,0 +1,165 @@
+{
+    "liste_des_tournois_en_cours": [
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 0
+                },
+                {
+                    "nom": "enzo",
+                    "prenom": "ferrari",
+                    "date_de_naissance": "12/12/1945",
+                    "genre": "homme",
+                    "classement": 6,
+                    "score": 0
+                },
+                {
+                    "nom": "messi",
+                    "prenom": "lionel",
+                    "date_de_naissance": "11/11/1990",
+                    "genre": "homme",
+                    "classement": 7,
+                    "score": 0
+                },
+                {
+                    "nom": "keys",
+                    "prenom": "alicia",
+                    "date_de_naissance": "16/06/1990",
+                    "genre": "femme",
+                    "classement": 9,
+                    "score": 0
+                },
+                {
+                    "nom": "jordan",
+                    "prenom": "michael",
+                    "date_de_naissance": "18/05/1960",
+                    "genre": "homme",
+                    "classement": 11,
+                    "score": 0
+                }
+            ]
+        },
+        {
+            "nom": "coupe de france",
+            "lieu": "marseille",
+            "dates": [
+                "15/12/2022",
+                "16/12/2022"
+            ],
+            "nombres_de_rounds": 4,
+            "description": "medaille d'argent",
+            "mode_de_jeu": "fast",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1.5
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2.5
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 2.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 3
+                },
+                {
+                    "nom": "enzo",
+                    "prenom": "ferrari",
+                    "date_de_naissance": "12/12/1945",
+                    "genre": "homme",
+                    "classement": 6,
+                    "score": 1.5
+                },
+                {
+                    "nom": "messi",
+                    "prenom": "lionel",
+                    "date_de_naissance": "11/11/1990",
+                    "genre": "homme",
+                    "classement": 7,
+                    "score": 1.5
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 3
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1
+                }
+            ]
+        }
+    ]
+}

@@ -1,34 +1,84 @@
-[
-    {
-        "nom": "lee",
-        "prenom": "bruce",
-        "date_de_naissance": "27/01/1981",
-        "genre": "homme",
-        "classement": 1,
-        "score": 0
-    },
-    {
-        "nom": "tyson",
-        "prenom": "mike",
-        "date_de_naissance": "27/02/1982",
-        "genre": "homme",
-        "classement": 2,
-        "score": 0
-    },
-    {
-        "nom": "ali",
-        "prenom": "muhammed",
-        "date_de_naissance": "23/12/1985",
-        "genre": "homme",
-        "classement": 3,
-        "score": 0
-    },
-    {
-        "nom": "vandamme",
-        "prenom": "jean-claude",
-        "date_de_naissance": "25/12/1981",
-        "genre": "homme",
-        "classement": 4,
-        "score": 0
-    }
-]
+{
+    "liste_joueurs": [
+        {
+            "nom": "lee",
+            "prenom": "bruce",
+            "date_de_naissance": "27/01/1981",
+            "genre": "homme",
+            "classement": 1,
+            "score": 0
+        },
+        {
+            "nom": "tyson",
+            "prenom": "mike",
+            "date_de_naissance": "27/02/1982",
+            "genre": "homme",
+            "classement": 2,
+            "score": 0
+        },
+        {
+            "nom": "ali",
+            "prenom": "muhammed",
+            "date_de_naissance": "23/12/1985",
+            "genre": "homme",
+            "classement": 3,
+            "score": 0
+        },
+        {
+            "nom": "vandamme",
+            "prenom": "jean-claude",
+            "date_de_naissance": "25/12/1981",
+            "genre": "homme",
+            "classement": 4,
+            "score": 0
+        },
+        {
+            "nom": "enzo",
+            "prenom": "ferrari",
+            "date_de_naissance": "12/12/1945",
+            "genre": "homme",
+            "classement": 6,
+            "score": 0
+        },
+        {
+            "nom": "messi",
+            "prenom": "lionel",
+            "date_de_naissance": "11/11/1990",
+            "genre": "homme",
+            "classement": 7,
+            "score": 0
+        },
+        {
+            "nom": "keys",
+            "prenom": "alicia",
+            "date_de_naissance": "16/06/1990",
+            "genre": "femme",
+            "classement": 9,
+            "score": 0
+        },
+        {
+            "nom": "jordan",
+            "prenom": "michael",
+            "date_de_naissance": "18/05/1960",
+            "genre": "homme",
+            "classement": 11,
+            "score": 0
+        },
+        {
+            "nom": "bieber",
+            "prenom": "justin",
+            "date_de_naissance": "14/03/1985",
+            "genre": "homme",
+            "classement": 15,
+            "score": 0
+        },
+        {
+            "nom": "mandela",
+            "prenom": "nelson",
+            "date_de_naissance": "12/12/1926",
+            "genre": "homme",
+            "classement": 16,
+            "score": 0
+        }
+    ]
+}

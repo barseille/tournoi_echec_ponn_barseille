@@ -12,8 +12,6 @@ class ControllersJoueurs:
         print("              -- Création Joueur --")
         print('-'*50)
         
-        self.joueurs_data = []
-        
         while True:                    
             self.nom = entree_joueur.creation_joueur_nom()
             self.prenom = entree_joueur.creation_joueur_prenom()
@@ -27,96 +25,99 @@ class ControllersJoueurs:
                             self.genre,
                             self.classement)
             
-            joueur_serialiser = joueur.serialiser()         
-            self.joueurs_data.append(joueur_serialiser)
-            
-            autre_joueur = input("Souhaitez_vous créer un autre joueur ? (o/n) : ")
+            joueur_serialiser = joueur.serialiser()
+            self.ecrire_json(joueur_serialiser, "liste_joueurs.json")  
+                   
+ 
+            autre_joueur = input("Souhaitez vous créer un autre joueur ? (o/n) : ")
             if autre_joueur == "o":
-                print('Joueur sauvegarder avec succès !')
+                print('Créer un nouveau joueur : ')
             if autre_joueur == "n":
                 print('Tournoi sauvegarder avec succès !')
                 break
-            
-        with open("liste_joueurs.json", "w") as f:
-            json.dump(self.joueurs_data, f, indent=4)
-    
+ 
+ 
+    def ecrire_json(self, joueur_serialiser, dossier = 'liste_joueurs.json'):
+
+        """
+        La méthode prend en premier argument un dictionnaire (tournoi_serialiser) 
+        et en second argument (optionnel) le fichier JSON où enregistrer les données du tournoi.
+        Elle ouvre le fichier JSON en mode lecture/écriture ('r+').
+        Elle charge les données du fichier JSON dans un dictionnaire (liste_tournois).
+        Elle ajoute tournoi_serialiser à liste_tournois.
+        Elle remet le curseur de fichier au début (f.seek(0)) 
+        et écrit le dictionnaire modifié dans le fichier JSON en utilisant la fonction json.dump.
+
+        """
+        
+        with open(dossier, 'r+') as f:
+            liste_joueurs = json.load(f)
+            liste_joueurs["liste_joueurs"].append(joueur_serialiser)
+            f.seek(0)
+            json.dump(liste_joueurs, f, indent=4)       
+ 
  
     def afficher_des_joueurs(self):
         """ désérialisation la liste des joueurs """
         
-        print('Voici la liste des joueurs : ')
+        print('-'*50)
+        print('   -- Liste des joueurs --')
+        print('-'*50)
+        
            
         with open("liste_joueurs.json", "r") as f:        
-            self.joueurs_data = json.load(f)
+            liste_joueurs = json.load(f)
             
-            for i, joueur in enumerate(self.joueurs_data):
-                print(i,
-                      '-' , joueur['prenom'], joueur['nom'],
-                      ':',
-                      ' Née le ', joueur['date_de_naissance'],
-                      '|',
-                      ' Genre : ', joueur['genre'],
-                      '|',
-                      'Classement : ', joueur['classement'])
-                
-        return self.joueurs_data
-
+        for index, joueur in enumerate(liste_joueurs["liste_joueurs"]):
+            print(f" - Joueur n°{index} : {joueur['prenom']} {joueur['nom']}")
+            print(f"                Date de naissance : {joueur['date_de_naissance']} | Genre : {joueur['genre']} | Classement : {joueur['classement']}")
             
+        
     def selectionner_participants(self):
-            
-            self.liste_des_participants = []
-            
-            # Chargez les données de joueurs.json
-            with open('liste_joueurs.json', 'r') as f:
-                joueur_data = json.load(f)
+  
+        with open("liste_joueurs.json", "r") as f:                
+            joueurs_data = json.load(f)
                 
-            print('-'*50)
-            print('            -- Sélectionnez des joueurs -- ')
-            print('-'*50)
-
+            # Récupérer la liste des joueurs
+            liste_joueurs = joueurs_data['liste_joueurs']
+            
+            for i, joueur in enumerate(liste_joueurs):
+                print(f"Joueur {i+1}: {joueur['nom']}")
+            
+            self.joueurs_selectionnes = []       
+            
+            # Demander à l'utilisateur combien de joueurs il souhaite sélectionner
             while True:
-                # Affichez la liste des joueurs
-
-                print(' - Sélectionnez un joueur : ')
-                print(' ')
-                if not joueur_data:
-                    print("Il n'y a pas de joueur à sélectionner")
-                    break
-                
-                for i, joueur in enumerate(joueur_data):
-                    print(f' {i} - {joueur["prenom"]} {joueur["nom"]}')
-
-                selection = input(' - Sélectionnez un joueur (entrez "q" pour quitter): ')
-
-                # Si l'utilisateur a saisi "q", quittez la boucle
-                if selection == 'q':
-                    break
-
-                # Convertir la sélection en entier
                 try:
-                    selection = int(selection)
+                    nombre_joueurs = int(input("Combien de joueurs souhaitez-vous sélectionner (2 minimum) : "))
+                    if nombre_joueurs < 2:
+                        print("Le nombre minimum de joueurs est 2. Veuillez entrer un nombre supérieur ou égal à 2.")
+                    else:
+                        break
                 except ValueError:
-                    print("Entrez un chiffre valide s'il vous plaît")
-                    continue
-
-                # Vérifiez si l'index est valide
-                if selection >= 0 and selection < len(joueur_data):
-                    
-                    # Sélectionnez le dictionnaire correspondant
-                    joueur_selectionner = joueur_data[selection]
-                    print(f'Vous avez sélectionné : {joueur_selectionner["prenom"]} {joueur_selectionner["nom"]}')
-                    self.liste_des_participants.append(joueur_selectionner)
-
-                    # Retirez le dictionnaire de la liste
-                    joueur_data.pop(selection)
+                    print("Veuillez entrer un nombre entier valide")
             
-                else:
-                    print("Entrez un chiffre valide s'il vous plaît")
- 
-            return self.liste_des_participants
-
+            # Demander à l'utilisateur de choisir les joueurs par leur index
+            print(f"Sélectionnez {nombre_joueurs} joueurs :")
+            i = 1
+            while i <= nombre_joueurs:
+                try:
+                    choix_joueur = int(input("Choisissez un joueur : "))
+                    joueur_selectionne = liste_joueurs[choix_joueur - 1]
+                    
+                    # Vérifier si le joueur a déjà été sélectionné
+                    if joueur_selectionne in self.joueurs_selectionnes:
+                        print("Ce joueur a déjà été sélectionné. Veuillez en sélectionner un autre.")
+                    else:
+                        self.joueurs_selectionnes.append(joueur_selectionne)
+                        print("Joueur ajouté !")
+                    i += 1
+                except ValueError:
+                    print("Veuillez entrer un nombre entier valide")
     
-                
+            return self.joueurs_selectionnes
+            
+
            
 
         

@@ -1,10 +1,74 @@
-[
-    {
-        "nom": "tournoi 2023",
-        "lieu": "las vegas",
-        "dates": "14/05/2023",
-        "nombres_de_rounds": 4,
-        "description": "medaille d'or",
-        "mode_de_jeu": "bullet"
-    }
-]
+{
+    "liste_tournois": [
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet"
+        },
+        {
+            "nom": "festival de paris",
+            "lieu": "paris",
+            "dates": "12/01/2023",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet"
+        },
+        {
+            "nom": "festival de nice",
+            "lieu": "nice",
+            "dates": "12/01/2023",
+            "nombres_de_rounds": 4,
+            "description": "coupe de france",
+            "mode_de_jeu": "bullet"
+        },
+        {
+            "nom": "coupe d'europe",
+            "lieu": "espagne",
+            "dates": [
+                "12/12/2022",
+                "13/12//2022"
+            ],
+            "nombres_de_rounds": 4,
+            "description": "medaille de bronze",
+            "mode_de_jeu": "blitz"
+        },
+        {
+            "nom": "coupe de france",
+            "lieu": "marseille",
+            "dates": [
+                "15/12/2022",
+                "16/12/2022"
+            ],
+            "nombres_de_rounds": 4,
+            "description": "medaille d'argent",
+            "mode_de_jeu": "fast"
+        },
+        {
+            "nom": "coupe d'afrique",
+            "lieu": "senegal",
+            "dates": "16/12/2022",
+            "nombres_de_rounds": 4,
+            "description": "medaille d'or",
+            "mode_de_jeu": "blitz"
+        },
+        {
+            "nom": "tournoi regionale",
+            "lieu": "idf",
+            "dates": "12/122022",
+            "nombres_de_rounds": 4,
+            "description": "coupe regionale",
+            "mode_de_jeu": "bullet"
+        },
+        {
+            "nom": "tournoi des champions",
+            "lieu": "las vegas",
+            "dates": "30/05/2023",
+            "nombres_de_rounds": 4,
+            "description": "coupe usa",
+            "mode_de_jeu": "blitz"
+        }
+    ]
+}
