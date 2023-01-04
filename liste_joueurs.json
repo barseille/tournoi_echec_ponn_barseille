@@ -79,6 +79,14 @@
             "genre": "homme",
             "classement": 16,
             "score": 0
+        },
+        {
+            "nom": "dion",
+            "prenom": "celine",
+            "date_de_naissance": "21/01/1971",
+            "genre": "femme",
+            "classement": 5,
+            "score":0
         }
     ]
 }

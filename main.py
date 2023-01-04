@@ -66,10 +66,12 @@ def main():
         appli.fusion_tournoi_avec_joueurs()
         appli.afficher_tournoi_en_cours()
         appli.lancer_tournoi()
-        # appli.obtenir_score()
+        appli.mettre_a_jour_score_historique_tournoi()
+        appli.mettre_a_jour_classement_historique_tournoi()
+
 
        
-        # MENU JOUEUR
+    # MENU JOUEUR
     def menu_principal_joueur():
       
         

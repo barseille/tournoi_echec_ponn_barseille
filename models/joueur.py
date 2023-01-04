@@ -8,7 +8,7 @@ class Joueur:
         self.date_de_naissance = date_de_naissance
         self.genre = genre
         self.classement = classement
-        self.points = 0
+        
 
 
     def serialiser(self):
@@ -19,7 +19,7 @@ class Joueur:
             'date_de_naissance': self.date_de_naissance,
             'genre': self.genre,
             'classement': self.classement,
-            'score': self.points
+            # 'score': self.points
         }
         return joueur_serialiser
 
