@@ -8,7 +8,7 @@ class Tournoi:
         self.nombres_de_rounds = nombres_de_rounds
         self.description = description
         self.mode_de_jeu = mode_de_jeu
-        self.liste_des_participants = []
+        self.liste_de_matchs = []
         self.score = 0
        
         
@@ -20,7 +20,8 @@ class Tournoi:
                               'nombres_de_rounds': self.nombres_de_rounds,
                               'description': self.description,
                               'mode_de_jeu': self.mode_de_jeu,
-                              'score':0
+                              'score':0,
+                              'liste_de_matchs':[]
                              
                               }
         return tournoi_serialiser

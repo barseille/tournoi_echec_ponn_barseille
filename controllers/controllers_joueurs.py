@@ -116,9 +116,8 @@ class ControllersJoueurs:
                     print("Veuillez entrer un nombre entier valide")
     
             return self.joueurs_selectionnes
-            
+        
 
-           
 
         
            

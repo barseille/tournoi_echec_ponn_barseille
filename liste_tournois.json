@@ -78,6 +78,26 @@
             "description": "coupe regionale",
             "mode_de_jeu": "bullet",
             "tournois_termines": []
+        },
+        {
+            "nom": "jo 2022",
+            "lieu": "coree du sud",
+            "dates": "14/02/2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe d'asie",
+            "mode_de_jeu": "blitz",
+            "score": 0,
+            "liste_de_matchs": []
+        },
+        {
+            "nom": "coupe d'europe",
+            "lieu": "bulgarie",
+            "dates": "14/01/2023",
+            "nombres_de_rounds": 10,
+            "description": "medaille d'or",
+            "mode_de_jeu": "fast",
+            "score": 0,
+            "liste_de_matchs": []
         }
     ]
 }

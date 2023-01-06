@@ -3,7 +3,8 @@ from views.accueil import ViewsAccueil
 from views.views_menu_tournoi import ViewsMenuTournoi
 from controllers.controllers_joueurs import ControllersJoueurs
 from controllers.controllers_tournois import ControllersTournois
-from controllers.controllers_application import ControllersApplication
+# from controllers.controllers_application import ControllersApplication
+from controllers.controllers_tournoi_en_cours import ControllersTournoiEnCours
 
 
 
@@ -62,17 +63,25 @@ def main():
         
     def lancer_tournoi():
         
-        appli = ControllersApplication()
-        appli.fusion_tournoi_avec_joueurs()
-        appli.afficher_tournoi_en_cours()
-        appli.lancer_tournoi()
-        appli.mettre_a_jour_score_historique_tournoi()
-        appli.mettre_a_jour_classement_historique_tournoi()
-
+        tournoi = ControllersTournoiEnCours()
+        tournoi.fusion_tournoi_avec_joueurs()
+        tournoi.afficher_tournoi_en_cours()
+        tournoi.lancer_tournoi()
+        
+        
+        
+        # appli = ControllersApplication()
+        # appli.fusion_tournoi_avec_joueurs()
+        # appli.afficher_tournoi_en_cours()
+        # appli.lancer_tournoi()
+        # appli.lancer_matchs()
+        
+      
 
        
     # MENU JOUEUR
     def menu_principal_joueur():
+      
       
         
         menu_joueur = ViewsMenuJoueur()
