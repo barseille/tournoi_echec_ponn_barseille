@@ -1,3 +1,4 @@
+
 class Tournoi:
     
     def __init__(self, nom, lieu, dates, nombres_de_rounds, description, mode_de_jeu):
@@ -8,11 +9,14 @@ class Tournoi:
         self.nombres_de_rounds = nombres_de_rounds
         self.description = description
         self.mode_de_jeu = mode_de_jeu
-        self.liste_de_matchs = []
+        self.liste_des_participants = []
         self.score = 0
-       
+        self.match = []
+        
+        
         
     def serialiser(self):
+        
         
         tournoi_serialiser = {'nom': self.nom,
                               'lieu': self.lieu,
@@ -20,8 +24,8 @@ class Tournoi:
                               'nombres_de_rounds': self.nombres_de_rounds,
                               'description': self.description,
                               'mode_de_jeu': self.mode_de_jeu,
-                              'score':0,
-                              'liste_de_matchs':[]
+                              'score': 0,
+                              'matchs': []
                              
                               }
         return tournoi_serialiser

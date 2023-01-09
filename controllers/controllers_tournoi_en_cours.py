@@ -1,8 +1,9 @@
 from .controllers_tournois import ControllersTournois
 from .controllers_joueurs import ControllersJoueurs
-import json
 import random
-from models.match import Match
+import uuid
+import json
+
 
 
 
@@ -11,10 +12,16 @@ class ControllersTournoiEnCours:
     def fusion_tournoi_avec_joueurs(self):
         "sérialiser les tournois avec ses participants"
         
+        
+        # génération d'un identifiant unique
+        id_tournoi = str(uuid.uuid4())
+        
         print('        -- Liste des tournois -- \n')
         tournoi = ControllersTournois()
         tournoi.selectionner_tournoi()
         self.tournoi_en_cours = tournoi.tournoi_selectionne
+        
+        
         
         print('        -- Liste des joueurs -- \n')
         joueur = ControllersJoueurs()
@@ -22,7 +29,7 @@ class ControllersTournoiEnCours:
         joueurs_en_cours = joueur.joueurs_selectionnes
         
         # ajouter joueurs dans tournoi
-        self.tournoi_en_cours.update({"joueurs": joueurs_en_cours})
+        self.tournoi_en_cours.update({ "id": id_tournoi, "joueurs": joueurs_en_cours})
         
         
         
@@ -60,20 +67,36 @@ class ControllersTournoiEnCours:
     def recuperation_nb_de_rounds(self):
 
         nombres_de_rounds = self.tournoi_en_cours['nombres_de_rounds']
+        self.liste_de_rounds = []
         
         """ Afficher tous les rounds""" 
         for i in range(nombres_de_rounds):
             self.numero_round = i + 1
             print(f"                -- ROUND {i+1}/{nombres_de_rounds} --")
-            self.lancer_round_1()
-            # self.sauvegarder_match()
+            
+            if i == 0:
+                random.shuffle(self.liste_des_joueurs)
+         
+            self.lancer_matchs()
+                
+            round_dict = {"round {}".format(i+1) : {"liste_de_matchs": self.liste_de_matchs}}
+            self.liste_de_rounds.append(round_dict)
+            tournoi_dict = {"liste_de_rounds": self.liste_de_rounds}
+            
+            
+            self.tournoi_en_cours.update(tournoi_dict)   
+            tournoi_en_cours = self.tournoi_en_cours
+            self.ecrire_json(tournoi_en_cours, "historique_tournois.json")
+
             
             if i < nombres_de_rounds -1:     
                 choix = input("Voulez vous passer au round suivant ? (o/n) : ")
                 if choix != "o":
-                    # self.sauvegarder_match()
                     break
-  
+                    
+        self.mettre_a_jour_classement_historique_tournoi()
+       
+        
         print("Le tournoi est terminé ! ")
         
         
@@ -86,18 +109,22 @@ class ControllersTournoiEnCours:
 
     def lancer_matchs(self):
         
-        liste_de_matchs = []
+        
+        # Mélanger la liste des joueurs
+        random.shuffle(self.liste_des_joueurs)
+        
+        self.liste_de_matchs = []
        
         # Pour chaque paire de joueurs, lancer un match
         for i in range(0, len(self.liste_des_joueurs), 2):
             self.joueur1 = self.liste_des_joueurs[i]
             self.joueur2 = self.liste_des_joueurs[i + 1]
             paire = (self.joueur1, self.joueur2)
-            liste_de_matchs.append(paire)
+            self.liste_de_matchs.append(paire)
 
     
         # Lancer chaque match de la liste
-        for i, match in enumerate(liste_de_matchs):
+        for i, match in enumerate(self.liste_de_matchs):
             self.joueur1 = match[0]
             self.joueur2 = match[1]
  
@@ -127,108 +154,53 @@ class ControllersTournoiEnCours:
                 self.joueur2["score"] += 0.5
       
                 print("Match nul !")
-
+        
      
             # Réinitialiser la liste "matchs" du tournoi
-            self.tournoi_en_cours['matchs'] = []
+            self.liste_de_matchs = []
             
             # Pour chaque joueur du tournoi, ajouter ses informations dans la liste "matchs"
             for joueur in self.tournoi_en_cours['joueurs']:
                 nom = joueur['nom']
                 score = joueur['score']
-                self.tournoi_en_cours['matchs'].append((nom, score))
+                self.liste_de_matchs.append((nom, score))
                 print(f"Joueur {nom} = {score}")
+                
+
+            
+        
+    def ecrire_json(self, tournoi_en_cours, dossier="historique_tournois.json"):
+        """ Sérialisation du tournoi choisi avec les joueurs choisis """
+        
+        with open(dossier, 'r+') as f :
+            historique_tournois = json.load(f)
+            historique_tournois["liste_des_tournois_en_cours"].append(tournoi_en_cours)
+            f.seek(0)
+            json.dump(historique_tournois, f, indent=4) 
+            
             
 
-    def sauvegarder_round(self):
-        pass
-        
-
-
-
-
-
-
-
-
-
-
-   
-        
-    # def creation_paire(self):
-        
-    #     self.liste_de_matchs = []
-       
-    #     for i in range(0, len(self.liste_des_joueurs), 2):
-    #         self.joueur1 = self.liste_des_joueurs[i]
-    #         self.joueur2 = self.liste_des_joueurs[i + 1]
-    #         paire = (self.joueur1, self.joueur2)
-    #         self.liste_de_matchs.append(paire)
-
-    #     for i, match in enumerate(self.liste_de_matchs):
-    #         self.joueur1 = match[0]
-    #         self.joueur2 = match[1]
-     
-       
+            
+    def mettre_a_jour_classement_historique_tournoi(self):
     
-    # def lancer_match(self):
-        
-    #     """ recuperation de chaque match dans un tuple rangé dans une liste"""
-    #     self.resultats = []
-             
-    #     for i, match in enumerate(self.liste_de_matchs):
-    #         self.joueur1 = match[0]
-    #         self.joueur2 = match[1]
-           
-    #         print('-'*60)
-    #         print(f"Match n°{i + 1} : {self.joueur1['prenom']} {self.joueur1['nom']} (J1) VS {self.joueur2['prenom']} {self.joueur2['nom']} (J2)")
-    #         print('-'*60)
+        with open("historique_tournois.json", "r+") as f:
+            tournois = json.load(f)
+            self.tournoi_en_cours = tournois["liste_des_tournois_en_cours"][-1]
+            joueurs = self.tournoi_en_cours["joueurs"]
 
-    #         choix = input("Choisissez le gagnant du match (1 pour J1, 2 pour J2, ENTREE pour égalité ou 3 pour aléatoire) : ") 
+        """ 
+        fonction lambda est utilisée pour définir une fonction 
+        qui prend en paramètre un élément de la liste joueurs et 
+        qui renvoie la valeur de la clé "score" de cet élément. 
+        Cette fonction est utilisée en tant que key pour le tri de la liste joueurs.
+        """
+        # Trier la liste des joueurs par score décroissant
+        joueurs.sort(key=lambda x: x["score"], reverse=True)
 
-    #         if choix == "1":
-    #             self.joueur1["score"] += 1
-    #             self.resultats.append((self.joueur1['nom'], self.joueur1["score"]))
-    #             self.resultats.append((self.joueur2['nom'], self.joueur2["score"]))
-    #             print(f"Résultat du match : {self.joueur1['prenom']} {self.joueur1['nom']} a gagné !")
-                    
-    #         elif choix == "2":
-    #             self.joueur2["score"] += 1
-    #             self.resultats.append((self.joueur1['nom'], self.joueur1["score"]))
-    #             self.resultats.append((self.joueur2['nom'], self.joueur2["score"]))
-    #             print(f"Résultat du match : {self.joueur2['prenom']} {self.joueur2['nom']} a gagné !")
-                
-    #         elif choix == "3":
-    #             self.gagnant = random.choice([self.joueur1, self.joueur2])
-    #             self.gagnant["score"] += 1     
-    #             self.resultats.append((self.joueur1['nom'], self.joueur1["score"]))
-    #             self.resultats.append((self.joueur2['nom'], self.joueur2["score"]))
-    #             print(f"Résultat du match : {self.gagnant['prenom']} {self.gagnant['nom']} a gagné aléatoirement !")
-                    
-    #         else:
-    #             self.joueur1["score"] += 0.5
-    #             self.joueur2["score"] += 0.5
-    #             self.resultats.append((self.joueur1['nom'], self.joueur1["score"]))
-    #             self.resultats.append((self.joueur2['nom'], self.joueur2["score"]))
-    #             print("Match nul !")
+        # Mettre à jour le classement de chaque joueur
+        for i, joueur in enumerate(joueurs):
+            joueur["classement"] = i + 1
 
-        
-    #         print('-'*60)
-    #         print("               -- Résultat du match -- ")
-    #         print('-'*60)
-            
-    #         for joueur in self.resultats:
-    #             nom = joueur[0]
-    #             score = joueur[1]
-    #             print(f"Joueur {nom} = {score}")
-                    
-        
-        
-                
-
-                
-           
-
-
-        
- 
+        # Enregistrer les modifications dans le fichier JSON
+        with open("historique_tournois.json", "w") as f:
+            json.dump(tournois, f, indent=4)

@@ -67,17 +67,8 @@ def main():
         tournoi.fusion_tournoi_avec_joueurs()
         tournoi.afficher_tournoi_en_cours()
         tournoi.lancer_tournoi()
+       
         
-        
-        
-        # appli = ControllersApplication()
-        # appli.fusion_tournoi_avec_joueurs()
-        # appli.afficher_tournoi_en_cours()
-        # appli.lancer_tournoi()
-        # appli.lancer_matchs()
-        
-      
-
        
     # MENU JOUEUR
     def menu_principal_joueur():
@@ -130,8 +121,6 @@ def main():
         rapport_tournoi.afficher_les_tournois()
         
     
-
-
     accueil_principal()
 if __name__ == "__main__":
     main()

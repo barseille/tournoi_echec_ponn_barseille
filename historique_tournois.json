@@ -7,6 +7,7 @@
             "nombres_de_rounds": 4,
             "description": "coupe",
             "mode_de_jeu": "bullet",
+            "id": "0b44d605-dc13-46e8-94d9-41a168c3095f",
             "joueurs": [
                 {
                     "nom": "lee",
@@ -14,7 +15,7 @@
                     "date_de_naissance": "27/01/1981",
                     "genre": "homme",
                     "classement": 1,
-                    "score": 0
+                    "score": 0.5
                 },
                 {
                     "nom": "tyson",
@@ -22,7 +23,7 @@
                     "date_de_naissance": "27/02/1982",
                     "genre": "homme",
                     "classement": 2,
-                    "score": 0
+                    "score": 0.5
                 },
                 {
                     "nom": "ali",
@@ -30,7 +31,7 @@
                     "date_de_naissance": "23/12/1985",
                     "genre": "homme",
                     "classement": 3,
-                    "score": 0
+                    "score": 0.5
                 },
                 {
                     "nom": "vandamme",
@@ -38,26 +39,34 @@
                     "date_de_naissance": "25/12/1981",
                     "genre": "homme",
                     "classement": 4,
-                    "score": 0
+                    "score": 0.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ],
+                            [
+                                "ali",
+                                0.5
+                            ],
+                            [
+                                "vandamme",
+                                0.5
+                            ]
+                        ]
+                    }
                 }
             ]
         },
-        [
-            [
-                {
-                    "joueur1": "jean-claude vandamme",
-                    "score1": 0,
-                    "joueur2": "mike tyson",
-                    "score2": 1
-                },
-                {
-                    "joueur1": "muhammed ali",
-                    "score1": 1,
-                    "joueur2": "bruce lee",
-                    "score2": 0
-                }
-            ]
-        ],
         {
             "nom": "festival",
             "lieu": "dubai",
@@ -65,6 +74,207 @@
             "nombres_de_rounds": 4,
             "description": "coupe",
             "mode_de_jeu": "bullet",
+            "id": "0b44d605-dc13-46e8-94d9-41a168c3095f",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1.0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1.0
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 1.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 1.0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ],
+                            [
+                                "ali",
+                                0.5
+                            ],
+                            [
+                                "vandamme",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.0
+                            ],
+                            [
+                                "tyson",
+                                1.0
+                            ],
+                            [
+                                "ali",
+                                1.0
+                            ],
+                            [
+                                "vandamme",
+                                1.0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "0b44d605-dc13-46e8-94d9-41a168c3095f",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1.5
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1.5
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 1.5
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 1.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ],
+                            [
+                                "ali",
+                                0.5
+                            ],
+                            [
+                                "vandamme",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.0
+                            ],
+                            [
+                                "tyson",
+                                1.0
+                            ],
+                            [
+                                "ali",
+                                1.0
+                            ],
+                            [
+                                "vandamme",
+                                1.0
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.5
+                            ],
+                            [
+                                "tyson",
+                                1.5
+                            ],
+                            [
+                                "ali",
+                                1.5
+                            ],
+                            [
+                                "vandamme",
+                                1.5
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "0b44d605-dc13-46e8-94d9-41a168c3095f",
             "joueurs": [
                 {
                     "nom": "lee",
@@ -80,7 +290,2426 @@
                     "date_de_naissance": "27/02/1982",
                     "genre": "homme",
                     "classement": 2,
+                    "score": 1
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 2.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 2.0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ],
+                            [
+                                "ali",
+                                0.5
+                            ],
+                            [
+                                "vandamme",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.0
+                            ],
+                            [
+                                "tyson",
+                                1.0
+                            ],
+                            [
+                                "ali",
+                                1.0
+                            ],
+                            [
+                                "vandamme",
+                                1.0
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.5
+                            ],
+                            [
+                                "tyson",
+                                1.5
+                            ],
+                            [
+                                "ali",
+                                1.5
+                            ],
+                            [
+                                "vandamme",
+                                1.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 4": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                2.0
+                            ],
+                            [
+                                "tyson",
+                                2.0
+                            ],
+                            [
+                                "ali",
+                                2.0
+                            ],
+                            [
+                                "vandamme",
+                                2.0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "0b44d605-dc13-46e8-94d9-41a168c3095f",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
                     "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 2.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 2.0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "0b44d605-dc13-46e8-94d9-41a168c3095f",
+            "joueurs": [
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 2.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2.0
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 0.5
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 0.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                2.0
+                            ],
+                            [
+                                "tyson",
+                                2.0
+                            ],
+                            [
+                                "ali",
+                                2.0
+                            ],
+                            [
+                                "vandamme",
+                                2.0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "0b44d605-dc13-46e8-94d9-41a168c3095f",
+            "joueurs": [
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 2.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2.0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 1.5
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 0.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "0b44d605-dc13-46e8-94d9-41a168c3095f",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 2.5
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 2.0
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 0.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "ali",
+                                2.0
+                            ],
+                            [
+                                "vandamme",
+                                2.0
+                            ],
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "0b44d605-dc13-46e8-94d9-41a168c3095f",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 3.5
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 2.0
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 0.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "ali",
+                                2.0
+                            ],
+                            [
+                                "vandamme",
+                                2.0
+                            ],
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "ali",
+                                2.0
+                            ],
+                            [
+                                "vandamme",
+                                2.0
+                            ],
+                            [
+                                "tyson",
+                                1.5
+                            ],
+                            [
+                                "lee",
+                                0.5
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "0b44d605-dc13-46e8-94d9-41a168c3095f",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 3.5
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 2.0
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 0.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "ali",
+                                2.0
+                            ],
+                            [
+                                "vandamme",
+                                2.0
+                            ],
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "ali",
+                                2.0
+                            ],
+                            [
+                                "vandamme",
+                                2.0
+                            ],
+                            [
+                                "tyson",
+                                1.5
+                            ],
+                            [
+                                "lee",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 4": {
+                        "liste_de_matchs": [
+                            [
+                                "tyson",
+                                2.5
+                            ],
+                            [
+                                "ali",
+                                2.0
+                            ],
+                            [
+                                "vandamme",
+                                2.0
+                            ],
+                            [
+                                "lee",
+                                0.5
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "9a7b5347-baec-425b-9891-9def72049449",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "9a7b5347-baec-425b-9891-9def72049449",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "9a7b5347-baec-425b-9891-9def72049449",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 3
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                3
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "6fcf46e7-11d8-4af7-be3c-bd706843fcf9",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "6fcf46e7-11d8-4af7-be3c-bd706843fcf9",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 2
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "lee",
+                                0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "6fcf46e7-11d8-4af7-be3c-bd706843fcf9",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 3
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "lee",
+                                0
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "lee",
+                                0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "6fcf46e7-11d8-4af7-be3c-bd706843fcf9",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 4
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "lee",
+                                0
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "lee",
+                                0
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 4": {
+                        "liste_de_matchs": [
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "lee",
+                                0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "54be711c-1264-4609-bd8d-5a7ba19960f4",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "54be711c-1264-4609-bd8d-5a7ba19960f4",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "54be711c-1264-4609-bd8d-5a7ba19960f4",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 3
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                3
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "54be711c-1264-4609-bd8d-5a7ba19960f4",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0.5
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 3.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                3
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 4": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                3.5
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "769509e3-d762-470b-a1f6-d837af1be74c",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "769509e3-d762-470b-a1f6-d837af1be74c",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "lee",
+                                0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "769509e3-d762-470b-a1f6-d837af1be74c",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "lee",
+                                0
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "lee",
+                                0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "85ac204d-b575-46e0-bd13-599687c7de3b",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "85ac204d-b575-46e0-bd13-599687c7de3b",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "85ac204d-b575-46e0-bd13-599687c7de3b",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 3
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                3
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "85ac204d-b575-46e0-bd13-599687c7de3b",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 3
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                3
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 4": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1
+                            ],
+                            [
+                                "tyson",
+                                3
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "85d3a5ae-7207-40f8-9718-9d0cee855af4",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "85d3a5ae-7207-40f8-9718-9d0cee855af4",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "85d3a5ae-7207-40f8-9718-9d0cee855af4",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 3
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                3
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "85d3a5ae-7207-40f8-9718-9d0cee855af4",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 3.5
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                3
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 4": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                3.5
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "aea5dbfd-dea2-4e1f-9a71-ede0e9828c72",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "aea5dbfd-dea2-4e1f-9a71-ede0e9828c72",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "aea5dbfd-dea2-4e1f-9a71-ede0e9828c72",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 3
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                3
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "aea5dbfd-dea2-4e1f-9a71-ede0e9828c72",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 4
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                3
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 4": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                4
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "bdf5cd86-fbab-4120-943e-c284e82196f8",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0.5
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 0.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ],
+                            [
+                                "ali",
+                                0
+                            ],
+                            [
+                                "vandamme",
+                                0.5
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "bdf5cd86-fbab-4120-943e-c284e82196f8",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1.5
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 1.0
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 0.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ],
+                            [
+                                "ali",
+                                0
+                            ],
+                            [
+                                "vandamme",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.5
+                            ],
+                            [
+                                "tyson",
+                                1.0
+                            ],
+                            [
+                                "ali",
+                                0.5
+                            ],
+                            [
+                                "vandamme",
+                                1.0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "5b5d1753-eb65-4e93-91a0-92347121b569",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1
                 },
                 {
                     "nom": "ali",
@@ -98,23 +2727,764 @@
                     "classement": 4,
                     "score": 0
                 }
-            ]
-        },
-        [
-            [
+            ],
+            "liste_de_rounds": [
                 {
-                    "joueur1": "jean-claude vandamme",
-                    "score1": 1,
-                    "joueur2": "bruce lee",
-                    "score2": 0
-                },
-                {
-                    "joueur1": "muhammed ali",
-                    "score1": 1,
-                    "joueur2": "mike tyson",
-                    "score2": 0
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "ali",
+                                0
+                            ],
+                            [
+                                "vandamme",
+                                0
+                            ]
+                        ]
+                    }
                 }
             ]
-        ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "5b5d1753-eb65-4e93-91a0-92347121b569",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 1
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "ali",
+                                0
+                            ],
+                            [
+                                "vandamme",
+                                0
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ],
+                            [
+                                "ali",
+                                0
+                            ],
+                            [
+                                "vandamme",
+                                1
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "5b5d1753-eb65-4e93-91a0-92347121b569",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1.5
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2.5
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 0.5
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 1.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "ali",
+                                0
+                            ],
+                            [
+                                "vandamme",
+                                0
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ],
+                            [
+                                "ali",
+                                0
+                            ],
+                            [
+                                "vandamme",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.5
+                            ],
+                            [
+                                "tyson",
+                                2.5
+                            ],
+                            [
+                                "ali",
+                                0.5
+                            ],
+                            [
+                                "vandamme",
+                                1.5
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "5b5d1753-eb65-4e93-91a0-92347121b569",
+            "joueurs": [
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 3.0
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 2.0
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 1.0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1
+                            ],
+                            [
+                                "tyson",
+                                1
+                            ],
+                            [
+                                "ali",
+                                0
+                            ],
+                            [
+                                "vandamme",
+                                0
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1
+                            ],
+                            [
+                                "tyson",
+                                2
+                            ],
+                            [
+                                "ali",
+                                0
+                            ],
+                            [
+                                "vandamme",
+                                1
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.5
+                            ],
+                            [
+                                "tyson",
+                                2.5
+                            ],
+                            [
+                                "ali",
+                                0.5
+                            ],
+                            [
+                                "vandamme",
+                                1.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 4": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                2.0
+                            ],
+                            [
+                                "tyson",
+                                3.0
+                            ],
+                            [
+                                "ali",
+                                1.0
+                            ],
+                            [
+                                "vandamme",
+                                2.0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "943eead3-b6b1-4745-8bdb-edf605c46c92",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0.5
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0.5
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 0.5
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 0.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ],
+                            [
+                                "ali",
+                                0.5
+                            ],
+                            [
+                                "vandamme",
+                                0.5
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "943eead3-b6b1-4745-8bdb-edf605c46c92",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1.0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1.0
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 1.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 1.0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ],
+                            [
+                                "ali",
+                                0.5
+                            ],
+                            [
+                                "vandamme",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.0
+                            ],
+                            [
+                                "tyson",
+                                1.0
+                            ],
+                            [
+                                "ali",
+                                1.0
+                            ],
+                            [
+                                "vandamme",
+                                1.0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "943eead3-b6b1-4745-8bdb-edf605c46c92",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1.5
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1.5
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 1.5
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 1.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ],
+                            [
+                                "ali",
+                                0.5
+                            ],
+                            [
+                                "vandamme",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.0
+                            ],
+                            [
+                                "tyson",
+                                1.0
+                            ],
+                            [
+                                "ali",
+                                1.0
+                            ],
+                            [
+                                "vandamme",
+                                1.0
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.5
+                            ],
+                            [
+                                "tyson",
+                                1.5
+                            ],
+                            [
+                                "ali",
+                                1.5
+                            ],
+                            [
+                                "vandamme",
+                                1.5
+                            ]
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "nom": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "943eead3-b6b1-4745-8bdb-edf605c46c92",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 2.0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 2.0
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 2.0
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 2.0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ],
+                            [
+                                "ali",
+                                0.5
+                            ],
+                            [
+                                "vandamme",
+                                0.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 2": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.0
+                            ],
+                            [
+                                "tyson",
+                                1.0
+                            ],
+                            [
+                                "ali",
+                                1.0
+                            ],
+                            [
+                                "vandamme",
+                                1.0
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 3": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                1.5
+                            ],
+                            [
+                                "tyson",
+                                1.5
+                            ],
+                            [
+                                "ali",
+                                1.5
+                            ],
+                            [
+                                "vandamme",
+                                1.5
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "round 4": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                2.0
+                            ],
+                            [
+                                "tyson",
+                                2.0
+                            ],
+                            [
+                                "ali",
+                                2.0
+                            ],
+                            [
+                                "vandamme",
+                                2.0
+                            ]
+                        ]
+                    }
+                }
+            ]
+        }
     ]
 }
