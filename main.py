@@ -5,6 +5,7 @@ from controllers.controllers_joueurs import ControllersJoueurs
 from controllers.controllers_tournois import ControllersTournois
 # from controllers.controllers_application import ControllersApplication
 from controllers.controllers_tournoi_en_cours import ControllersTournoiEnCours
+from views.views_rapport_menu import ViewsRapportMenu
 
 
 
@@ -67,14 +68,11 @@ def main():
         tournoi.fusion_tournoi_avec_joueurs()
         tournoi.afficher_tournoi_en_cours()
         tournoi.lancer_tournoi()
-       
+        
         
        
     # MENU JOUEUR
     def menu_principal_joueur():
-      
-      
-        
         menu_joueur = ViewsMenuJoueur()
         menu_joueur.afficher_menu_joueur()
         entree = int(input("Faites votre choix : "))
@@ -115,12 +113,9 @@ def main():
     
 
     def menu_rapport():
-        rapport_joueur = ControllersJoueurs()
-        rapport_joueur.afficher_des_joueurs()
-        rapport_tournoi = ControllersTournois()
-        rapport_tournoi.afficher_les_tournois()
-        
-    
+        rapport_joueur = ViewsRapportMenu()
+        rapport_joueur.afficher_menu_rapport()
+  
     accueil_principal()
 if __name__ == "__main__":
     main()

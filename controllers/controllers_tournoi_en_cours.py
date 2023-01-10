@@ -3,6 +3,7 @@ from .controllers_joueurs import ControllersJoueurs
 import random
 import uuid
 import json
+from datetime import datetime
 
 
 
@@ -76,10 +77,12 @@ class ControllersTournoiEnCours:
             
             if i == 0:
                 random.shuffle(self.liste_des_joueurs)
-         
+    
             self.lancer_matchs()
+            date_debut = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+            date_fin = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
                 
-            round_dict = {"round {}".format(i+1) : {"liste_de_matchs": self.liste_de_matchs}}
+            round_dict = {"round {}".format(i+1) : {"liste_de_matchs": self.liste_de_matchs, "date_debut": date_debut, "date_fin": date_fin}}
             self.liste_de_rounds.append(round_dict)
             tournoi_dict = {"liste_de_rounds": self.liste_de_rounds}
             
@@ -87,24 +90,49 @@ class ControllersTournoiEnCours:
             self.tournoi_en_cours.update(tournoi_dict)   
             tournoi_en_cours = self.tournoi_en_cours
             self.ecrire_json(tournoi_en_cours, "historique_tournois.json")
+            
+            
 
             
             if i < nombres_de_rounds -1:     
                 choix = input("Voulez vous passer au round suivant ? (o/n) : ")
                 if choix != "o":
+                    self.tournoi_inacheve = {"nom_tournoi": self.tournoi_en_cours['nom'], 
+                                             "lieu": self.tournoi_en_cours['lieu'], 
+                                             "dates": self.tournoi_en_cours['dates'], 
+                                             "nombres_de_rounds": self.tournoi_en_cours['nombres_de_rounds'], 
+                                             "description": self.tournoi_en_cours['description'], 
+                                             "mode_de_jeu": self.tournoi_en_cours['mode_de_jeu'], 
+                                             "id": self.tournoi_en_cours['id'], 
+                                             "joueurs": self.tournoi_en_cours['joueurs'], 
+                                             "liste_de_rounds": self.liste_de_rounds}
+                    
+                    tournoi_inacheve = self.tournoi_inacheve
+                    self.sauvegarde_tournois_inacheves(tournoi_inacheve, "tournois_inacheves.json")
+                    
                     break
                     
         self.mettre_a_jour_classement_historique_tournoi()
+        self.mettre_a_jour_classement_liste_joueurs()
        
-        
         print("Le tournoi est terminé ! ")
         
         
-    def lancer_round_1(self):
+    def sauvegarde_tournois_inacheves(self, tournoi_inacheve, dossier="tournois_inacheves.json"):
+        """ Sérialisation du tournoi inachevé """
         
-        # Mélanger la liste des joueurs
-        random.shuffle(self.liste_des_joueurs)
-        self.lancer_matchs()
+        with open(dossier, 'r+') as f :
+            tournois_inacheves = json.load(f)
+            tournois_inacheves["tournois_inacheves"].append(tournoi_inacheve)
+            f.seek(0)
+            json.dump(tournois_inacheves, f, indent=4) 
+        
+        
+    # def lancer_round_1(self):
+        
+    #     # Mélanger la liste des joueurs
+    #     random.shuffle(self.liste_des_joueurs)
+    #     self.lancer_matchs()
         
 
     def lancer_matchs(self):
@@ -204,3 +232,22 @@ class ControllersTournoiEnCours:
         # Enregistrer les modifications dans le fichier JSON
         with open("historique_tournois.json", "w") as f:
             json.dump(tournois, f, indent=4)
+            
+        
+            
+            
+    def mettre_a_jour_classement_liste_joueurs(self):
+        
+        with open("historique_tournois.json", "r") as f:
+            historique_tournois = json.load(f)
+        with open("liste_joueurs.json", "r") as f:
+            liste_joueurs = json.load(f)
+
+        for tournoi in historique_tournois["liste_des_tournois_en_cours"]:
+            for joueur_tournoi in tournoi["joueurs"]:
+                for joueur_liste in liste_joueurs["liste_joueurs"]:
+                    if joueur_tournoi["nom"] == joueur_liste["nom"] and joueur_tournoi["prenom"] == joueur_liste["prenom"]:
+                        joueur_liste["classement"] = joueur_tournoi["classement"]
+
+        with open("liste_joueurs.json", "w") as f:
+            json.dump(liste_joueurs, f, indent=4)   

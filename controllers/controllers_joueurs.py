@@ -89,9 +89,9 @@ class ControllersJoueurs:
             # Demander à l'utilisateur combien de joueurs il souhaite sélectionner
             while True:
                 try:
-                    nombre_joueurs = int(input("Combien de joueurs souhaitez-vous sélectionner (2 minimum) : "))
-                    if nombre_joueurs < 2:
-                        print("Le nombre minimum de joueurs est 2. Veuillez entrer un nombre supérieur ou égal à 2.")
+                    nombre_joueurs = int(input("Combien de joueurs souhaitez-vous sélectionner : "))
+                    if nombre_joueurs < 2 or nombre_joueurs > len(liste_joueurs):
+                        print(f"Veuillez choisir un joueur entre 2 et {len(liste_joueurs)} : ")
                     else:
                         break
                 except ValueError:
