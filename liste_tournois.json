@@ -3,7 +3,7 @@
         {
             "nom": "festival",
             "lieu": "dubai",
-            "dates": "12/12//2022",
+            "dates": "12/12/2022",
             "nombres_de_rounds": 4,
             "description": "coupe",
             "mode_de_jeu": "bullet"
@@ -98,6 +98,24 @@
             "mode_de_jeu": "fast",
             "score": 0,
             "liste_de_matchs": []
+        },
+        {
+            "nom": "competitio",
+            "lieu": "c",
+            "dates": "12/12/2022",
+            "nombres_de_rounds": 4,
+            "description": "r",
+            "mode_de_jeu": "bullet",
+            "score": 0,
+            "matchs": []
+        },
+        {
+            "nom": "competition 2022",
+            "lieu": "las vegas",
+            "dates": "14/02/2023",
+            "nombres_de_rounds": 4,
+            "description": "etat-unis",
+            "mode_de_jeu": "bullet"
         }
     ]
 }

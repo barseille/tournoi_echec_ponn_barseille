@@ -68,7 +68,9 @@ def main():
         tournoi.fusion_tournoi_avec_joueurs()
         tournoi.afficher_tournoi_en_cours()
         tournoi.lancer_tournoi()
-        
+        retour = input("Appuyer sur ENTREE pour revenir au menu")
+        if retour == '':
+            menu_principal_tournoi()
         
        
     # MENU JOUEUR
@@ -115,6 +117,15 @@ def main():
     def menu_rapport():
         rapport_joueur = ViewsRapportMenu()
         rapport_joueur.afficher_menu_rapport()
+        entree = input("Faites votre choix : ")
+        if entree == '1':
+            rapport_joueur.affichage_joueur()
+            retour = input("Appuyer sur ENTREE pour revenir au menu")
+            if retour == '':
+                accueil_principal()
+        elif entree == '2':
+            rapport_joueur.affichage_tournoi()
+            rapport_joueur.afficher_details_tournoi()
   
     accueil_principal()
 if __name__ == "__main__":

@@ -116,7 +116,7 @@ class ControllersTournoiEnCours:
         self.mettre_a_jour_classement_liste_joueurs()
        
         print("Le tournoi est terminé ! ")
-        
+            
         
     def sauvegarde_tournois_inacheves(self, tournoi_inacheve, dossier="tournois_inacheves.json"):
         """ Sérialisation du tournoi inachevé """
@@ -126,13 +126,6 @@ class ControllersTournoiEnCours:
             tournois_inacheves["tournois_inacheves"].append(tournoi_inacheve)
             f.seek(0)
             json.dump(tournois_inacheves, f, indent=4) 
-        
-        
-    # def lancer_round_1(self):
-        
-    #     # Mélanger la liste des joueurs
-    #     random.shuffle(self.liste_des_joueurs)
-    #     self.lancer_matchs()
         
 
     def lancer_matchs(self):
@@ -149,6 +142,8 @@ class ControllersTournoiEnCours:
             self.joueur2 = self.liste_des_joueurs[i + 1]
             paire = (self.joueur1, self.joueur2)
             self.liste_de_matchs.append(paire)
+            
+            
 
     
         # Lancer chaque match de la liste

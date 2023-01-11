@@ -185,6 +185,168 @@
                     }
                 }
             ]
+        },
+        {
+            "nom_tournoi": "festival",
+            "lieu": "dubai",
+            "dates": "12/12//2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "a2addae9-ff73-4746-a88f-408b55167b6d",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 0.5
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 0.5
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0.5
+                            ],
+                            [
+                                "tyson",
+                                0.5
+                            ]
+                        ],
+                        "date_debut": "10/01/2023 11:02:10",
+                        "date_fin": "10/01/2023 11:02:10"
+                    }
+                }
+            ]
+        },
+        {
+            "nom_tournoi": "festival de paris",
+            "lieu": "paris",
+            "dates": "12/01/2023",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "d4751bf8-d35a-45af-830e-d22a4d51a6b4",
+            "joueurs": [
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 6,
+                    "score": 0
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "genre": "homme",
+                    "classement": 7,
+                    "score": 0
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "muhammed",
+                    "date_de_naissance": "23/12/1985",
+                    "genre": "homme",
+                    "classement": 1,
+                    "score": 1
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 1
+                },
+                {
+                    "nom": "enzo",
+                    "prenom": "ferrari",
+                    "date_de_naissance": "12/12/1945",
+                    "genre": "homme",
+                    "classement": 4,
+                    "score": 0
+                },
+                {
+                    "nom": "messi",
+                    "prenom": "lionel",
+                    "date_de_naissance": "11/11/1990",
+                    "genre": "homme",
+                    "classement": 5,
+                    "score": 1
+                },
+                {
+                    "nom": "keys",
+                    "prenom": "alicia",
+                    "date_de_naissance": "16/06/1990",
+                    "genre": "femme",
+                    "classement": 8,
+                    "score": 1
+                },
+                {
+                    "nom": "jordan",
+                    "prenom": "michael",
+                    "date_de_naissance": "18/05/1960",
+                    "genre": "homme",
+                    "classement": 3,
+                    "score": 0
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "round 1": {
+                        "liste_de_matchs": [
+                            [
+                                "lee",
+                                0
+                            ],
+                            [
+                                "tyson",
+                                0
+                            ],
+                            [
+                                "ali",
+                                1
+                            ],
+                            [
+                                "vandamme",
+                                1
+                            ],
+                            [
+                                "enzo",
+                                0
+                            ],
+                            [
+                                "messi",
+                                1
+                            ],
+                            [
+                                "keys",
+                                1
+                            ],
+                            [
+                                "jordan",
+                                0
+                            ]
+                        ],
+                        "date_debut": "11/01/2023 19:06:38",
+                        "date_fin": "11/01/2023 19:06:38"
+                    }
+                }
+            ]
         }
     ]
 }
