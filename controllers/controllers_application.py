@@ -1,5 +1,6 @@
 from .controllers_tournois import ControllersTournois
 from .controllers_joueurs import ControllersJoueurs
+from models.match import Match
 import random
 import uuid
 import json
@@ -75,12 +76,13 @@ class ControllersApplication:
             self.numero_round = i + 1
             print(f"                -- ROUND {i+1}/{nombres_de_rounds} --")
             
-            if i == 0:
-                random.shuffle(self.liste_des_joueurs)
+            # if i == 0:
+            #     random.shuffle(self.liste_des_joueurs)
     
             self.lancer_matchs()
             date_debut = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             date_fin = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+            self.trier_les_joueurs_par_points()
                 
             round_dict = {f"round {i+1}" : {"date_debut": date_debut, "date_fin": date_fin, "matchs": self.liste_de_matchs}}
             self.liste_de_rounds.append(round_dict)
@@ -126,12 +128,19 @@ class ControllersApplication:
             tournois_inacheves["tournois_inacheves"].append(tournoi_inacheve)
             f.seek(0)
             json.dump(tournois_inacheves, f, indent=4) 
-        
+    
+
+    def trier_les_joueurs_par_points(self):
+        self.liste_des_joueurs.sort(key=lambda x: x["score"], reverse=True)
+
 
     def lancer_matchs(self):
            
         # Mélanger la liste des joueurs
-        # random.shuffle(self.liste_des_joueurs)
+        if self.numero_round == 1:
+            random.shuffle(self.liste_des_joueurs)
+        else:
+            self.trier_les_joueurs_par_points()
         
         self.liste_de_matchs = []
        
@@ -142,13 +151,12 @@ class ControllersApplication:
             paire = (self.joueur1, self.joueur2)
             self.liste_de_matchs.append(paire)
             
-            
-
     
         # Lancer chaque match de la liste
         for i, match in enumerate(self.liste_de_matchs):
             self.joueur1 = match[0]
             self.joueur2 = match[1]
+            
  
             print('-'*60)
             print(f"Match n°{i + 1} : {self.joueur1['prenom']} {self.joueur1['nom']} (J1) VS {self.joueur2['prenom']} {self.joueur2['nom']} (J2) :")
@@ -177,7 +185,7 @@ class ControllersApplication:
       
                 print("Match nul !")
         
-     
+           
             # Réinitialiser la liste "matchs" du tournoi
             self.liste_de_matchs = []
             

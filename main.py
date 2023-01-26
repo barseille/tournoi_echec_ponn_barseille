@@ -69,6 +69,7 @@ def main():
         tournoi.fusion_tournoi_avec_joueurs()
         tournoi.afficher_tournoi_en_cours()
         tournoi.lancer_nouveau_tournoi()
+        # tournoi.trier_les_joueurs_par_points()
         
         retour = input("Appuyer sur ENTREE pour revenir au menu")
         if retour == '':
