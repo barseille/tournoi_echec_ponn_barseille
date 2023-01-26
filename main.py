@@ -3,9 +3,8 @@ from views.accueil import ViewsAccueil
 from views.views_menu_tournoi import ViewsMenuTournoi
 from controllers.controllers_joueurs import ControllersJoueurs
 from controllers.controllers_tournois import ControllersTournois
-# from controllers.controllers_application import ControllersApplication
-from controllers.controllers_tournoi_en_cours import ControllersTournoiEnCours
 from views.views_rapport_menu import ViewsRapportMenu
+from controllers.controllers_application import ControllersApplication
 
 
 
@@ -45,9 +44,11 @@ def main():
         if entree == 1:
             creer_tournoi()
         elif entree == 2:
-            lancer_tournoi()         
+            lancer_nouveau_tournoi()   
+        elif entree == 3:
+            lancer_tournoi_existant()      
         else:
-            print("Veuillez saisir un chiffre entre 1 et 3")
+            print("Veuillez saisir un chiffre entre 1 et 4")
             accueil_principal()
             
     def creer_tournoi():
@@ -62,15 +63,20 @@ def main():
         
             
         
-    def lancer_tournoi():
+    def lancer_nouveau_tournoi():
         
-        tournoi = ControllersTournoiEnCours()
+        tournoi = ControllersApplication()
         tournoi.fusion_tournoi_avec_joueurs()
         tournoi.afficher_tournoi_en_cours()
-        tournoi.lancer_tournoi()
+        tournoi.lancer_nouveau_tournoi()
+        
         retour = input("Appuyer sur ENTREE pour revenir au menu")
         if retour == '':
             menu_principal_tournoi()
+            
+            
+    def lancer_tournoi_existant():
+        pass
         
        
     # MENU JOUEUR

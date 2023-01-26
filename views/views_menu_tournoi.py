@@ -1,6 +1,7 @@
 TOURNOI_OPTIONS = (
     'Créer un nouveau tournoi',
-    'Lancer un tournoi',
+    'Lancer un nouveau tournoi',
+    'Relancer un tournoi existant',
     'Retour'
 )
 

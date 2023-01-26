@@ -8,9 +8,9 @@ class ControllersJoueurs:
     def recuperer_entree_joueur(self):
         """ sérialiser les entrées joueurs"""
         
-        print('-'*50)
+        print('-'*60)
         print("              -- Création Joueur --")
-        print('-'*50)
+        print('-'*60)
         
         while True:                    
             self.nom = entree_joueur.creation_joueur_nom()
@@ -60,9 +60,9 @@ class ControllersJoueurs:
     def afficher_des_joueurs(self):
         """ désérialisation la liste des joueurs """
         
-        print('-'*50)
-        print('   -- Liste des joueurs --')
-        print('-'*50)
+        print('-'*60)
+        print('        -- Liste des joueurs --')
+        print('-'*60)
         
            
         with open("liste_joueurs.json", "r") as f:        

@@ -8,7 +8,7 @@ from datetime import datetime
 
 
 
-class ControllersTournoiEnCours:
+class ControllersApplication:
     
     def fusion_tournoi_avec_joueurs(self):
         "sérialiser les tournois avec ses participants"
@@ -57,7 +57,7 @@ class ControllersTournoiEnCours:
             print(f" - {joueur['prenom']} {joueur['nom']}")
             self.liste_des_joueurs.append(joueur)
         
-    def lancer_tournoi(self):
+    def lancer_nouveau_tournoi(self):
         
         choix = input("Voulez_vous commencer le tournoi ? (o/n) : ")
         if choix != "o":
@@ -82,7 +82,7 @@ class ControllersTournoiEnCours:
             date_debut = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             date_fin = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
                 
-            round_dict = {"round {}".format(i+1) : {"liste_de_matchs": self.liste_de_matchs, "date_debut": date_debut, "date_fin": date_fin}}
+            round_dict = {f"round {i+1}" : {"date_debut": date_debut, "date_fin": date_fin, "matchs": self.liste_de_matchs}}
             self.liste_de_rounds.append(round_dict)
             tournoi_dict = {"liste_de_rounds": self.liste_de_rounds}
             
@@ -129,10 +129,9 @@ class ControllersTournoiEnCours:
         
 
     def lancer_matchs(self):
-        
-        
+           
         # Mélanger la liste des joueurs
-        random.shuffle(self.liste_des_joueurs)
+        # random.shuffle(self.liste_des_joueurs)
         
         self.liste_de_matchs = []
        
@@ -245,4 +244,4 @@ class ControllersTournoiEnCours:
                         joueur_liste["classement"] = joueur_tournoi["classement"]
 
         with open("liste_joueurs.json", "w") as f:
-            json.dump(liste_joueurs, f, indent=4)   
+            json.dump(liste_joueurs, f, indent=4)  

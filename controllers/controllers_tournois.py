@@ -9,9 +9,9 @@ class ControllersTournois:
     def recuperer_entree_tournoi(self):
         """ sérialiser les données du tournoi"""
         
-        print('-'*50)
+        print('-'*60)
         print("              -- Création Tournoi --")
-        print('-'*50)
+        print('-'*60)
         
         while True:    
             self.nom = entree_tournoi.demander_nom_tournoi()
@@ -65,9 +65,9 @@ class ControllersTournois:
     def afficher_les_tournois(self):
         """deserialiser la liste des tournois"""
         
-        print('-'*50)
-        print('   -- Liste des tournois --')
-        print('-'*50)
+        print('-'*60)
+        print('           -- Liste des tournois --')
+        print('-'*60)
         
         with open ("liste_tournois.json", "r") as f:
             liste_tournois = json.load(f)       
@@ -108,7 +108,9 @@ class ControllersTournois:
                 print("L'index choisi n'est pas valide")
 
         # Afficher les informations du tournoi sélectionné
+        print('-'*60)
         print("Tournoi sélectionné : ")
+        print('-'*60)
         print(f"Nom: {self.tournoi_selectionne['nom']}")
         print(f"Lieu: {self.tournoi_selectionne['lieu']}")
         print(f"Date(s): {self.tournoi_selectionne['dates']}")
