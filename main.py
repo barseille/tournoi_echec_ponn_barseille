@@ -5,6 +5,7 @@ from controllers.controllers_joueurs import ControllersJoueurs
 from controllers.controllers_tournois import ControllersTournois
 from views.views_rapport_menu import ViewsRapportMenu
 from controllers.controllers_application import ControllersApplication
+from controllers.controllers_application_tournoi import ControllersApplicationTournoi
 
 
 
@@ -69,7 +70,7 @@ def main():
         tournoi.fusion_tournoi_avec_joueurs()
         tournoi.afficher_tournoi_en_cours()
         tournoi.lancer_nouveau_tournoi()
-        # tournoi.trier_les_joueurs_par_points()
+       
         
         retour = input("Appuyer sur ENTREE pour revenir au menu")
         if retour == '':
@@ -77,7 +78,8 @@ def main():
             
             
     def lancer_tournoi_existant():
-        pass
+        tounoi_existant = ControllersApplicationTournoi()
+        tounoi_existant.recuperation_tournois_existant()
         
        
     # MENU JOUEUR

@@ -75,14 +75,12 @@ class ControllersApplication:
         for i in range(nombres_de_rounds):
             self.numero_round = i + 1
             print(f"                -- ROUND {i+1}/{nombres_de_rounds} --")
-            
-            # if i == 0:
-            #     random.shuffle(self.liste_des_joueurs)
+
     
             self.lancer_matchs()
             date_debut = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             date_fin = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-            self.trier_les_joueurs_par_points()
+            self.trier_les_joueurs_par_score()
                 
             round_dict = {f"round {i+1}" : {"date_debut": date_debut, "date_fin": date_fin, "matchs": self.liste_de_matchs}}
             self.liste_de_rounds.append(round_dict)
@@ -117,7 +115,9 @@ class ControllersApplication:
         self.mettre_a_jour_classement_historique_tournoi()
         self.mettre_a_jour_classement_liste_joueurs()
        
-        print("Le tournoi est terminé ! ")
+        print('-'*60)
+        print("           -- Tournoi terminé -- ")
+        print('-'*60)
             
         
     def sauvegarde_tournois_inacheves(self, tournoi_inacheve, dossier="tournois_inacheves.json"):
@@ -130,7 +130,7 @@ class ControllersApplication:
             json.dump(tournois_inacheves, f, indent=4) 
     
 
-    def trier_les_joueurs_par_points(self):
+    def trier_les_joueurs_par_score(self):
         self.liste_des_joueurs.sort(key=lambda x: x["score"], reverse=True)
 
 
@@ -140,7 +140,7 @@ class ControllersApplication:
         if self.numero_round == 1:
             random.shuffle(self.liste_des_joueurs)
         else:
-            self.trier_les_joueurs_par_points()
+            self.trier_les_joueurs_par_score()
         
         self.liste_de_matchs = []
        
@@ -158,6 +158,7 @@ class ControllersApplication:
             self.joueur2 = match[1]
             
  
+            
             print('-'*60)
             print(f"Match n°{i + 1} : {self.joueur1['prenom']} {self.joueur1['nom']} (J1) VS {self.joueur2['prenom']} {self.joueur2['nom']} (J2) :")
             print('-'*60)
@@ -171,18 +172,17 @@ class ControllersApplication:
                   
             elif choix == "2":
                 self.joueur2["score"] += 1
+                print(f"Résultat du match : {self.joueur2['prenom']} {self.joueur2['nom']} a gagné !")
        
                 
             elif choix == "3":
                 self.gagnant = random.choice([self.joueur1, self.joueur2])
-                self.gagnant["score"] += 1      
-      
+                self.gagnant["score"] += 1        
                 print(f"Résultat du match : {self.gagnant['prenom']} {self.gagnant['nom']} a gagné aléatoirement !")
                   
             else:
                 self.joueur1["score"] += 0.5
                 self.joueur2["score"] += 0.5
-      
                 print("Match nul !")
         
            
@@ -195,8 +195,6 @@ class ControllersApplication:
                 score = joueur['score']
                 self.liste_de_matchs.append((nom, score))
                 print(f"Joueur {nom} = {score}")
-                
-
             
         
     def ecrire_json(self, tournoi_en_cours, dossier="historique_tournois.json"):
