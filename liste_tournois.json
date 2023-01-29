@@ -1,7 +1,7 @@
 {
     "liste_tournois": [
         {
-            "nom": "festival",
+            "nom": "festival disneyland",
             "lieu": "dubai",
             "dates": "12/12/2022",
             "nombres_de_rounds": 4,
@@ -76,8 +76,8 @@
             "dates": "12/01/2023",
             "nombres_de_rounds": 6,
             "description": "coupe regionale",
-            "mode_de_jeu": "bullet",
-            "tournois_termines": []
+            "mode_de_jeu": "bullet"
+        
         },
         {
             "nom": "jo 2022",
@@ -85,36 +85,33 @@
             "dates": "14/02/2022",
             "nombres_de_rounds": 4,
             "description": "coupe d'asie",
-            "mode_de_jeu": "blitz",
-            "score": 0,
-            "liste_de_matchs": []
+            "mode_de_jeu": "blitz"
+  
         },
         {
             "nom": "coupe d'europe",
             "lieu": "bulgarie",
             "dates": "14/01/2023",
-            "nombres_de_rounds": 10,
+            "nombres_de_rounds": 4,
             "description": "medaille d'or",
-            "mode_de_jeu": "fast",
-            "score": 0,
-            "liste_de_matchs": []
+            "mode_de_jeu": "fast"
+    
         },
         {
-            "nom": "competitio",
-            "lieu": "c",
+            "nom": "competition 2018",
+            "lieu": "coree du sud",
             "dates": "12/12/2022",
             "nombres_de_rounds": 4,
             "description": "r",
-            "mode_de_jeu": "bullet",
-            "score": 0,
-            "matchs": []
+            "mode_de_jeu": "bullet"
+      
         },
         {
             "nom": "competition 2022",
             "lieu": "las vegas",
             "dates": "14/02/2023",
             "nombres_de_rounds": 4,
-            "description": "etat-unis",
+            "description": "état-unis",
             "mode_de_jeu": "bullet"
         }
     ]

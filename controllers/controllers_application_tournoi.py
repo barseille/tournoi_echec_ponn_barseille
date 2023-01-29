@@ -13,7 +13,7 @@ class ControllersApplicationTournoi:
 
         while True:
                 
-            numero_tournoi = int(input("Quel tournoi souhaitez-vous continuer (numéro index)?"))
+            numero_tournoi = int(input("Quel tournoi souhaitez-vous continuer (numéro index) ? "))
             
             tournoi_selectionne = data["tournois_inacheves"][numero_tournoi-1]
             
@@ -26,15 +26,15 @@ class ControllersApplicationTournoi:
             print(f'Description : {tournoi_selectionne["description"]}')
             print(f'Mode de jeu : {tournoi_selectionne["mode_de_jeu"]}')     
             print('-'*60)
-            print("            -- Joueurs --")
+            print("                 -- Joueurs --")
             print('-'*60)
             for joueur in tournoi_selectionne["joueurs"]:
                 print(f'{joueur["prenom"]} {joueur["nom"]}')
                 
-            dernier_round_index = len(tournoi_selectionne["liste_de_rounds"]) - 1
+            dernier_round_index = len(tournoi_selectionne["liste_de_rounds"]) 
             print(f"Dernier Round effectué : {dernier_round_index} Round")
             
-            continuer_tournoi = input("Souhaitez-vous continuer ce tournoi (o/n)?")
+            continuer_tournoi = input("Souhaitez-vous continuer ce tournoi (o/n) ? ")
             if continuer_tournoi == "o":
                 # code pour continuer le tournoi
                 break

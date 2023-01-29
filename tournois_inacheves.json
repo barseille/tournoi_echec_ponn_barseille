@@ -1,20 +1,20 @@
 {
     "tournois_inacheves": [
         {
-            "nom_tournoi": "festival",
-            "lieu": "dubai",
+            "nom": "competition 2018",
+            "lieu": "coree du sud",
             "dates": "12/12/2022",
             "nombres_de_rounds": 4,
-            "description": "coupe",
+            "description": "r",
             "mode_de_jeu": "bullet",
-            "id": "53e52ddc-242a-4073-854f-330ee9c7e211",
+            "id": "c2d42299-bd98-4762-8595-119fb6908d8d",
             "joueurs": [
                 {
                     "nom": "lee",
                     "prenom": "bruce",
                     "date_de_naissance": "27/01/1981",
                     "genre": "homme",
-                    "classement": 2,
+                    "classement": 3,
                     "score": 1
                 },
                 {
@@ -22,7 +22,7 @@
                     "prenom": "mike",
                     "date_de_naissance": "27/02/1982",
                     "genre": "homme",
-                    "classement": 1,
+                    "classement": 6,
                     "score": 0
                 },
                 {
@@ -30,8 +30,8 @@
                     "prenom": "muhammed",
                     "date_de_naissance": "23/12/1985",
                     "genre": "homme",
-                    "classement": 3,
-                    "score": 1
+                    "classement": 5,
+                    "score": 0
                 },
                 {
                     "nom": "vandamme",
@@ -39,15 +39,15 @@
                     "date_de_naissance": "25/12/1981",
                     "genre": "homme",
                     "classement": 4,
-                    "score": 0
+                    "score": 1
                 },
                 {
                     "nom": "enzo",
                     "prenom": "ferrari",
                     "date_de_naissance": "12/12/1945",
                     "genre": "homme",
-                    "classement": 5,
-                    "score": 1
+                    "classement": 1,
+                    "score": 0
                 },
                 {
                     "nom": "messi",
@@ -62,300 +62,23 @@
                     "prenom": "alicia",
                     "date_de_naissance": "16/06/1990",
                     "genre": "femme",
-                    "classement": 8,
-                    "score": 1
-                },
-                {
-                    "nom": "jordan",
-                    "prenom": "michael",
-                    "date_de_naissance": "18/05/1960",
-                    "genre": "homme",
-                    "classement": 6,
-                    "score": 0
-                }
-            ],
-            "liste_de_rounds": [
-                {
-                    "round 1": {
-                        "date_debut": "27/01/2023 18:29:16",
-                        "date_fin": "27/01/2023 18:29:16",
-                        "matchs": [
-                            [
-                                "lee",
-                                1
-                            ],
-                            [
-                                "tyson",
-                                0
-                            ],
-                            [
-                                "ali",
-                                1
-                            ],
-                            [
-                                "vandamme",
-                                0
-                            ],
-                            [
-                                "enzo",
-                                1
-                            ],
-                            [
-                                "messi",
-                                0
-                            ],
-                            [
-                                "keys",
-                                1
-                            ],
-                            [
-                                "jordan",
-                                0
-                            ]
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "nom_tournoi": "festival de paris",
-            "lieu": "paris",
-            "dates": "12/01/2023",
-            "nombres_de_rounds": 4,
-            "description": "coupe",
-            "mode_de_jeu": "bullet",
-            "id": "ec4537b6-8258-429b-a149-d4f9ed399b4c",
-            "joueurs": [
-                {
-                    "nom": "lee",
-                    "prenom": "bruce",
-                    "date_de_naissance": "27/01/1981",
-                    "genre": "homme",
-                    "classement": 1,
-                    "score": 1
-                },
-                {
-                    "nom": "tyson",
-                    "prenom": "mike",
-                    "date_de_naissance": "27/02/1982",
-                    "genre": "homme",
-                    "classement": 3,
-                    "score": 2
-                },
-                {
-                    "nom": "ali",
-                    "prenom": "muhammed",
-                    "date_de_naissance": "23/12/1985",
-                    "genre": "homme",
-                    "classement": 7,
-                    "score": 0
-                },
-                {
-                    "nom": "vandamme",
-                    "prenom": "jean-claude",
-                    "date_de_naissance": "25/12/1981",
-                    "genre": "homme",
-                    "classement": 4,
-                    "score": 0
-                },
-                {
-                    "nom": "enzo",
-                    "prenom": "ferrari",
-                    "date_de_naissance": "12/12/1945",
-                    "genre": "homme",
-                    "classement": 8,
-                    "score": 1
-                },
-                {
-                    "nom": "messi",
-                    "prenom": "lionel",
-                    "date_de_naissance": "11/11/1990",
-                    "genre": "homme",
-                    "classement": 5,
-                    "score": 1
-                },
-                {
-                    "nom": "keys",
-                    "prenom": "alicia",
-                    "date_de_naissance": "16/06/1990",
-                    "genre": "femme",
-                    "classement": 6,
-                    "score": 2
-                },
-                {
-                    "nom": "jordan",
-                    "prenom": "michael",
-                    "date_de_naissance": "18/05/1960",
-                    "genre": "homme",
                     "classement": 2,
                     "score": 1
-                }
-            ],
-            "liste_de_rounds": [
-                {
-                    "round 1": {
-                        "date_debut": "27/01/2023 21:49:57",
-                        "date_fin": "27/01/2023 21:49:57",
-                        "matchs": [
-                            [
-                                "lee",
-                                1
-                            ],
-                            [
-                                "tyson",
-                                1
-                            ],
-                            [
-                                "ali",
-                                0
-                            ],
-                            [
-                                "vandamme",
-                                0
-                            ],
-                            [
-                                "enzo",
-                                1
-                            ],
-                            [
-                                "messi",
-                                0
-                            ],
-                            [
-                                "keys",
-                                1
-                            ],
-                            [
-                                "jordan",
-                                0
-                            ]
-                        ]
-                    }
-                },
-                {
-                    "round 2": {
-                        "date_debut": "27/01/2023 21:50:02",
-                        "date_fin": "27/01/2023 21:50:02",
-                        "matchs": [
-                            [
-                                "lee",
-                                1
-                            ],
-                            [
-                                "tyson",
-                                2
-                            ],
-                            [
-                                "ali",
-                                0
-                            ],
-                            [
-                                "vandamme",
-                                0
-                            ],
-                            [
-                                "enzo",
-                                1
-                            ],
-                            [
-                                "messi",
-                                1
-                            ],
-                            [
-                                "keys",
-                                2
-                            ],
-                            [
-                                "jordan",
-                                1
-                            ]
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "nom_tournoi": "coupe de france",
-            "lieu": "marseille",
-            "dates": [
-                "15/12/2022",
-                "16/12/2022"
-            ],
-            "nombres_de_rounds": 4,
-            "description": "medaille d'argent",
-            "mode_de_jeu": "fast",
-            "id": "d144b19e-a97c-4824-bef0-a5459e82e98e",
-            "joueurs": [
-                {
-                    "nom": "lee",
-                    "prenom": "bruce",
-                    "date_de_naissance": "27/01/1981",
-                    "genre": "homme",
-                    "classement": 3,
-                    "score": 1.5
-                },
-                {
-                    "nom": "tyson",
-                    "prenom": "mike",
-                    "date_de_naissance": "27/02/1982",
-                    "genre": "homme",
-                    "classement": 1,
-                    "score": 1.5
-                },
-                {
-                    "nom": "ali",
-                    "prenom": "muhammed",
-                    "date_de_naissance": "23/12/1985",
-                    "genre": "homme",
-                    "classement": 7,
-                    "score": 0.5
-                },
-                {
-                    "nom": "vandamme",
-                    "prenom": "jean-claude",
-                    "date_de_naissance": "25/12/1981",
-                    "genre": "homme",
-                    "classement": 8,
-                    "score": 1.5
-                },
-                {
-                    "nom": "enzo",
-                    "prenom": "ferrari",
-                    "date_de_naissance": "12/12/1945",
-                    "genre": "homme",
-                    "classement": 4,
-                    "score": 0.5
-                },
-                {
-                    "nom": "messi",
-                    "prenom": "lionel",
-                    "date_de_naissance": "11/11/1990",
-                    "genre": "homme",
-                    "classement": 5,
-                    "score": 0.5
-                },
-                {
-                    "nom": "keys",
-                    "prenom": "alicia",
-                    "date_de_naissance": "16/06/1990",
-                    "genre": "femme",
-                    "classement": 2,
-                    "score": 0.5
                 },
                 {
                     "nom": "jordan",
                     "prenom": "michael",
                     "date_de_naissance": "18/05/1960",
                     "genre": "homme",
-                    "classement": 6,
-                    "score": 1.5
+                    "classement": 8,
+                    "score": 1
                 }
             ],
             "liste_de_rounds": [
                 {
                     "round 1": {
-                        "date_debut": "27/01/2023 21:53:33",
-                        "date_fin": "27/01/2023 21:53:33",
+                        "date_debut": "29/01/2023 19:47:16",
+                        "date_fin": "29/01/2023 19:47:16",
                         "matchs": [
                             [
                                 "lee",
@@ -363,19 +86,19 @@
                             ],
                             [
                                 "tyson",
+                                0
+                            ],
+                            [
+                                "ali",
+                                0
+                            ],
+                            [
+                                "vandamme",
                                 1
                             ],
                             [
-                                "ali",
-                                0.5
-                            ],
-                            [
-                                "vandamme",
-                                0.5
-                            ],
-                            [
                                 "enzo",
-                                0.5
+                                0
                             ],
                             [
                                 "messi",
@@ -383,52 +106,32 @@
                             ],
                             [
                                 "keys",
-                                0
+                                1
                             ],
                             [
                                 "jordan",
-                                0.5
-                            ]
-                        ]
-                    }
-                },
-                {
-                    "round 2": {
-                        "date_debut": "27/01/2023 21:53:47",
-                        "date_fin": "27/01/2023 21:53:47",
-                        "matchs": [
-                            [
-                                "lee",
-                                1.5
+                                1
                             ],
-                            [
-                                "tyson",
-                                1.5
-                            ],
-                            [
-                                "ali",
-                                0.5
-                            ],
-                            [
-                                "vandamme",
-                                1.5
-                            ],
-                            [
-                                "enzo",
-                                0.5
-                            ],
-                            [
-                                "messi",
-                                0.5
-                            ],
-                            [
-                                "keys",
-                                0.5
-                            ],
-                            [
-                                "jordan",
-                                1.5
-                            ]
+                            {
+                                "joueur1": "vandamme",
+                                "joueur2": "enzo",
+                                "score": "1 - 0"
+                            },
+                            {
+                                "joueur1": "tyson",
+                                "joueur2": "keys",
+                                "score": "0 - 1"
+                            },
+                            {
+                                "joueur1": "lee",
+                                "joueur2": "messi",
+                                "score": "1 - 0"
+                            },
+                            {
+                                "joueur1": "ali",
+                                "joueur2": "jordan",
+                                "score": "0 - 1"
+                            }
                         ]
                     }
                 }

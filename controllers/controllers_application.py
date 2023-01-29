@@ -80,46 +80,48 @@ class ControllersApplication:
             self.lancer_matchs()
             date_debut = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             date_fin = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-            self.trier_les_joueurs_par_score()
+            # self.trier_les_joueurs_par_score()
                 
             round_dict = {f"round {i+1}" : {"date_debut": date_debut, "date_fin": date_fin, "matchs": self.liste_de_matchs}}
             self.liste_de_rounds.append(round_dict)
             tournoi_dict = {"liste_de_rounds": self.liste_de_rounds}
             
-            
-            self.tournoi_en_cours.update(tournoi_dict)   
-            tournoi_en_cours = self.tournoi_en_cours
-            self.ecrire_json(tournoi_en_cours, "historique_tournois.json")
-            
-            
-
-            
-            if i < nombres_de_rounds -1:     
+            if i+1 != nombres_de_rounds:
                 choix = input("Voulez vous passer au round suivant ? (o/n) : ")
                 if choix != "o":
-                    self.tournoi_inacheve = {"nom_tournoi": self.tournoi_en_cours['nom'], 
-                                             "lieu": self.tournoi_en_cours['lieu'], 
-                                             "dates": self.tournoi_en_cours['dates'], 
-                                             "nombres_de_rounds": self.tournoi_en_cours['nombres_de_rounds'], 
-                                             "description": self.tournoi_en_cours['description'], 
-                                             "mode_de_jeu": self.tournoi_en_cours['mode_de_jeu'], 
-                                             "id": self.tournoi_en_cours['id'], 
-                                             "joueurs": self.tournoi_en_cours['joueurs'], 
-                                             "liste_de_rounds": self.liste_de_rounds}
-                    
-                    tournoi_inacheve = self.tournoi_inacheve
-                    self.sauvegarde_tournois_inacheves(tournoi_inacheve, "tournois_inacheves.json")
-                    
+                    self.tournois_inacheves()
                     break
-                    
-        self.mettre_a_jour_classement_historique_tournoi()
-        self.mettre_a_jour_classement_liste_joueurs()
-       
-        print('-'*60)
-        print("           -- Tournoi terminé -- ")
-        print('-'*60)
             
+        else:
+            
+            self.tournoi_en_cours.update(tournoi_dict)   
+            tournoi_en_cours = self.tournoi_en_cours            
+            self.ecrire_json(tournoi_en_cours, "historique_tournois.json")           
+            self.mettre_a_jour_classement_historique_tournoi()
+            self.mettre_a_jour_classement_liste_joueurs()
         
+            print('-'*60)
+            print("           -- Tournoi terminé -- ")
+            print('-'*60)
+   
+    
+            
+    def tournois_inacheves(self):
+                
+            self.tournoi_inacheve = {"nom": self.tournoi_en_cours['nom'], 
+                                    "lieu": self.tournoi_en_cours['lieu'], 
+                                    "dates": self.tournoi_en_cours['dates'], 
+                                    "nombres_de_rounds": self.tournoi_en_cours['nombres_de_rounds'], 
+                                    "description": self.tournoi_en_cours['description'], 
+                                    "mode_de_jeu": self.tournoi_en_cours['mode_de_jeu'], 
+                                    "id": self.tournoi_en_cours['id'], 
+                                    "joueurs": self.tournoi_en_cours['joueurs'], 
+                                    "liste_de_rounds": self.liste_de_rounds}
+        
+            tournoi_inacheve = self.tournoi_inacheve
+            self.sauvegarde_tournois_inacheves(tournoi_inacheve, "tournois_inacheves.json")
+                    
+                      
     def sauvegarde_tournois_inacheves(self, tournoi_inacheve, dossier="tournois_inacheves.json"):
         """ Sérialisation du tournoi inachevé """
         
@@ -142,23 +144,22 @@ class ControllersApplication:
         else:
             self.trier_les_joueurs_par_score()
         
-        self.liste_de_matchs = []
+        self.liste_de_paire = []
+        self.liste_de_matchs_infos = []
        
         # Pour chaque paire de joueurs, lancer un match
         for i in range(0, len(self.liste_des_joueurs), 2):
             self.joueur1 = self.liste_des_joueurs[i]
             self.joueur2 = self.liste_des_joueurs[i + 1]
             paire = (self.joueur1, self.joueur2)
-            self.liste_de_matchs.append(paire)
+            self.liste_de_paire.append(paire)
             
     
         # Lancer chaque match de la liste
-        for i, match in enumerate(self.liste_de_matchs):
+        for i, match in enumerate(self.liste_de_paire):
             self.joueur1 = match[0]
             self.joueur2 = match[1]
-            
- 
-            
+                
             print('-'*60)
             print(f"Match n°{i + 1} : {self.joueur1['prenom']} {self.joueur1['nom']} (J1) VS {self.joueur2['prenom']} {self.joueur2['nom']} (J2) :")
             print('-'*60)
@@ -168,22 +169,38 @@ class ControllersApplication:
             if choix == "1":
                 self.joueur1["score"] += 1
                 print(f"Résultat du match : {self.joueur1['prenom']} {self.joueur1['nom']} a gagné !")
-     
+                
+                # Ajouter les informations sur le match à la liste de matchs
+                match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
+                self.liste_de_matchs_infos.append(match_dict)
                   
             elif choix == "2":
                 self.joueur2["score"] += 1
                 print(f"Résultat du match : {self.joueur2['prenom']} {self.joueur2['nom']} a gagné !")
+                
+                 # Ajouter les informations sur le match à la liste de matchs
+                match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
+                self.liste_de_matchs_infos.append(match_dict)
        
                 
             elif choix == "3":
                 self.gagnant = random.choice([self.joueur1, self.joueur2])
                 self.gagnant["score"] += 1        
                 print(f"Résultat du match : {self.gagnant['prenom']} {self.gagnant['nom']} a gagné aléatoirement !")
+
+                 # Ajouter les informations sur le match à la liste de matchs
+                match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
+                self.liste_de_matchs_infos.append(match_dict)               
+                        
                   
             else:
                 self.joueur1["score"] += 0.5
                 self.joueur2["score"] += 0.5
                 print("Match nul !")
+                
+                 # Ajouter les informations sur le match à la liste de matchs
+                match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
+                self.liste_de_matchs.append(match_dict)
         
            
             # Réinitialiser la liste "matchs" du tournoi
@@ -195,8 +212,15 @@ class ControllersApplication:
                 score = joueur['score']
                 self.liste_de_matchs.append((nom, score))
                 print(f"Joueur {nom} = {score}")
+                
+            for match_info in self.liste_de_matchs_infos:
+                self.liste_de_matchs.append(match_info)
             
-        
+
+
+
+           
+
     def ecrire_json(self, tournoi_en_cours, dossier="historique_tournois.json"):
         """ Sérialisation du tournoi choisi avec les joueurs choisis """
         
@@ -204,7 +228,7 @@ class ControllersApplication:
             historique_tournois = json.load(f)
             historique_tournois["liste_des_tournois_en_cours"].append(tournoi_en_cours)
             f.seek(0)
-            json.dump(historique_tournois, f, indent=4) 
+            json.dump(historique_tournois, f, indent=2) 
             
             
 
