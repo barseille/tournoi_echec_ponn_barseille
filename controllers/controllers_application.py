@@ -80,10 +80,16 @@ class ControllersApplication:
             self.lancer_matchs()
             date_debut = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             date_fin = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-            # self.trier_les_joueurs_par_score()
-                
-            round_dict = {f"round {i+1}" : {"date_debut": date_debut, "date_fin": date_fin, "matchs": self.liste_de_matchs}}
-            self.liste_de_rounds.append(round_dict)
+
+            round_info = {
+                          "numero_round": i + 1,
+                          "date_debut": date_debut,
+                          "date_fin": date_fin,
+                          "matchs": self.liste_de_matchs_infos,
+                          "points": self.liste_de_matchs
+                          }
+            
+            self.liste_de_rounds.append(round_info)
             tournoi_dict = {"liste_de_rounds": self.liste_de_rounds}
             
             if i+1 != nombres_de_rounds:
@@ -94,7 +100,7 @@ class ControllersApplication:
             
         else:
             
-            self.tournoi_en_cours.update(tournoi_dict)   
+            self.tournoi_en_cours.update(tournoi_dict)  
             tournoi_en_cours = self.tournoi_en_cours            
             self.ecrire_json(tournoi_en_cours, "historique_tournois.json")           
             self.mettre_a_jour_classement_historique_tournoi()
@@ -103,8 +109,7 @@ class ControllersApplication:
             print('-'*60)
             print("           -- Tournoi terminé -- ")
             print('-'*60)
-   
-    
+
             
     def tournois_inacheves(self):
                 
@@ -213,12 +218,6 @@ class ControllersApplication:
                 self.liste_de_matchs.append((nom, score))
                 print(f"Joueur {nom} = {score}")
                 
-            for match_info in self.liste_de_matchs_infos:
-                self.liste_de_matchs.append(match_info)
-            
-
-
-
            
 
     def ecrire_json(self, tournoi_en_cours, dossier="historique_tournois.json"):
@@ -231,7 +230,6 @@ class ControllersApplication:
             json.dump(historique_tournois, f, indent=2) 
             
             
-
             
     def mettre_a_jour_classement_historique_tournoi(self):
     
@@ -257,7 +255,6 @@ class ControllersApplication:
         with open("historique_tournois.json", "w") as f:
             json.dump(tournois, f, indent=4)
             
-        
             
             
     def mettre_a_jour_classement_liste_joueurs(self):
