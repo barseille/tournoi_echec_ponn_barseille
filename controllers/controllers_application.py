@@ -205,7 +205,7 @@ class ControllersApplication:
                 
                  # Ajouter les informations sur le match à la liste de matchs
                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
-                self.liste_de_matchs.append(match_dict)
+                self.liste_de_matchs_infos.append(match_dict)
         
            
             # Réinitialiser la liste "matchs" du tournoi
