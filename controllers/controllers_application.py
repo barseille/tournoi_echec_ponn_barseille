@@ -73,8 +73,15 @@ class ControllersApplication:
         
         """ Afficher tous les rounds""" 
         for i in range(nombres_de_rounds):
+            
             self.numero_round = i + 1
             print(f"                -- ROUND {i+1}/{nombres_de_rounds} --")
+            
+            # Mélanger la liste des joueurs
+            if self.numero_round == 1:
+                random.shuffle(self.liste_des_joueurs)
+            else:
+                self.trier_les_joueurs_par_score()
 
     
             self.lancer_matchs()
@@ -107,48 +114,16 @@ class ControllersApplication:
             self.mettre_a_jour_classement_liste_joueurs()
         
             print('-'*60)
-            print("           -- Tournoi terminé -- ")
+            print("                -- Tournoi terminé -- ")
             print('-'*60)
 
-            
-    def tournois_inacheves(self):
-                
-            self.tournoi_inacheve = {"nom": self.tournoi_en_cours['nom'], 
-                                    "lieu": self.tournoi_en_cours['lieu'], 
-                                    "dates": self.tournoi_en_cours['dates'], 
-                                    "nombres_de_rounds": self.tournoi_en_cours['nombres_de_rounds'], 
-                                    "description": self.tournoi_en_cours['description'], 
-                                    "mode_de_jeu": self.tournoi_en_cours['mode_de_jeu'], 
-                                    "id": self.tournoi_en_cours['id'], 
-                                    "joueurs": self.tournoi_en_cours['joueurs'], 
-                                    "liste_de_rounds": self.liste_de_rounds}
-        
-            tournoi_inacheve = self.tournoi_inacheve
-            self.sauvegarde_tournois_inacheves(tournoi_inacheve, "tournois_inacheves.json")
-                    
-                      
-    def sauvegarde_tournois_inacheves(self, tournoi_inacheve, dossier="tournois_inacheves.json"):
-        """ Sérialisation du tournoi inachevé """
-        
-        with open(dossier, 'r+') as f :
-            tournois_inacheves = json.load(f)
-            tournois_inacheves["tournois_inacheves"].append(tournoi_inacheve)
-            f.seek(0)
-            json.dump(tournois_inacheves, f, indent=4) 
-    
 
     def trier_les_joueurs_par_score(self):
         self.liste_des_joueurs.sort(key=lambda x: x["score"], reverse=True)
 
 
     def lancer_matchs(self):
-           
-        # Mélanger la liste des joueurs
-        if self.numero_round == 1:
-            random.shuffle(self.liste_des_joueurs)
-        else:
-            self.trier_les_joueurs_par_score()
-        
+  
         self.liste_de_paire = []
         self.liste_de_matchs_infos = []
        
@@ -217,8 +192,35 @@ class ControllersApplication:
                 score = joueur['score']
                 self.liste_de_matchs.append((nom, score))
                 print(f"Joueur {nom} = {score}")
+     
                 
-           
+    def tournois_inacheves(self):
+        
+                
+        self.tournoi_inacheve = {"nom": self.tournoi_en_cours['nom'], 
+                                "lieu": self.tournoi_en_cours['lieu'], 
+                                "dates": self.tournoi_en_cours['dates'], 
+                                "nombres_de_rounds": self.tournoi_en_cours['nombres_de_rounds'], 
+                                "description": self.tournoi_en_cours['description'], 
+                                "mode_de_jeu": self.tournoi_en_cours['mode_de_jeu'], 
+                                "id": self.tournoi_en_cours['id'], 
+                                "joueurs": self.tournoi_en_cours['joueurs'], 
+                                "liste_de_rounds": self.liste_de_rounds}
+    
+        tournoi_inacheve = self.tournoi_inacheve
+        self.sauvegarde_tournois_inacheves(tournoi_inacheve, "tournois_inacheves.json")
+                    
+                      
+    def sauvegarde_tournois_inacheves(self, tournoi_inacheve, dossier="tournois_inacheves.json"):
+        """ Sérialisation du tournoi inachevé """
+        
+        with open(dossier, 'r+') as f :
+            tournois_inacheves = json.load(f)
+            tournois_inacheves["tournois_inacheves"].append(tournoi_inacheve)
+            f.seek(0)
+            json.dump(tournois_inacheves, f, indent=4) 
+
+        
 
     def ecrire_json(self, tournoi_en_cours, dossier="historique_tournois.json"):
         """ Sérialisation du tournoi choisi avec les joueurs choisis """

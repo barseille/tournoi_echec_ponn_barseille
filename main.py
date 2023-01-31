@@ -80,6 +80,9 @@ def main():
     def lancer_tournoi_existant():
         tounoi_existant = ControllersApplicationTournoi()
         tounoi_existant.recuperation_tournois_existant()
+        retour = input("Appuyer sur ENTREE pour revenir au menu")
+        if retour == '':
+            menu_principal_tournoi()
         
        
     # MENU JOUEUR
