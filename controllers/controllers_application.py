@@ -229,7 +229,7 @@ class ControllersApplication:
             historique_tournois = json.load(f)
             historique_tournois["liste_des_tournois_en_cours"].append(tournoi_en_cours)
             f.seek(0)
-            json.dump(historique_tournois, f, indent=2) 
+            json.dump(historique_tournois, f, indent=4) 
             
             
             

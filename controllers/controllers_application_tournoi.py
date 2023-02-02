@@ -46,6 +46,7 @@ class ControllersApplicationTournoi:
             choix = input("Souhaitez-vous continuer ce tournoi (o/n) ? ")
             if choix == "o":
                 self.continuer_tournoi()
+                # print(self.tournoi_selectionne)
  
                 break
             elif choix == "n":
@@ -82,7 +83,7 @@ class ControllersApplicationTournoi:
                     }
     
             self.liste_de_rounds.append(round_info)
-            tournoi_dict = {"liste_de_rounds": self.liste_de_rounds}
+            # tournoi_dict = {"liste_de_rounds": self.liste_de_rounds}
             
             if i + 1 != self.nombre_de_rounds_restants:
                 
@@ -90,17 +91,32 @@ class ControllersApplicationTournoi:
                 
                 if choix != "o":
                     
-                    self.tournoi_selectionne.update(tournoi_dict)
-                    sauvegarde = ControllersApplication()
-                    sauvegarde.sauvegarde_tournois_inacheves(self.tournoi_selectionne, "tournois_inacheves.json")
+                    self.tournoi_selectionne['liste_de_rounds'].append(self.liste_de_rounds)
+                    
+                    with open("tournois_inacheves.json", "r+") as f:
+                        tournoi_en_cours = json.load(f)
+                        tournoi_en_cours["tournois_inacheves"].append(self.tournoi_selectionne)
+                        f.seek(0)
+                        json.dump(tournoi_en_cours, f, indent=4)
+                        
+
+                    self.effacer_tournoi_termine()
                     break
                 
         else:
             
-            self.tournoi_selectionne.update(tournoi_dict)
-            tournoi_en_cours = self.tournoi_selectionne 
-            sauvegarde= ControllersApplication()           
-            sauvegarde.ecrire_json(tournoi_en_cours, "historique_tournois.json")
+            self.tournoi_selectionne['liste_de_rounds'].append(self.liste_de_rounds)
+            
+            with open("historique_tournois.json", "r+") as f:
+                tournoi_fini = json.load(f)
+                tournoi_fini["liste_des_tournois_en_cours"].append(self.tournoi_selectionne)
+                f.seek(0)
+                json.dump(tournoi_fini, f, indent=4)
+            
+            # self.tournoi_selectionne.update(self.liste_de_rounds)
+            # tournoi_en_cours = self.tournoi_selectionne 
+            # sauvegarde= ControllersApplication()           
+            # sauvegarde.ecrire_json(tournoi_en_cours, "historique_tournois.json")
             self.effacer_tournoi_termine()
             
             print('-'*60)
@@ -114,28 +130,28 @@ class ControllersApplicationTournoi:
     def recuperer_match_termines(self):
                 
  
-        liste_de_matchs_finis = []
-        paires_jouees = []
-        joueurs_disponibles = []
+        # liste_de_matchs_finis = []
+        # paires_jouees = []
+        # joueurs_disponibles = []
         
-        # Récupérer les matchs finis
-        for round in self.tournoi_selectionne['liste_de_rounds']:
-            liste_de_matchs_finis.append(round["matchs"])
+        # # Récupérer les matchs finis
+        # for round in self.tournoi_selectionne['liste_de_rounds']:
+        #     liste_de_matchs_finis.append(round["matchs"])
         
-        # Enregistrer les paires de joueurs qui ont déjà joué    
-        for match in liste_de_matchs_finis[0]:
-            self.joueur1 = match['joueur1']
-            self.joueur2 = match['joueur2']
-            paires_jouees.append((self.joueur1, self.joueur2))
+        # # Enregistrer les paires de joueurs qui ont déjà joué    
+        # for match in liste_de_matchs_finis[0]:
+        #     self.joueur1 = match['joueur1']
+        #     self.joueur2 = match['joueur2']
+        #     paires_jouees.append((self.joueur1, self.joueur2))
         
-        # Trouver les paires de joueurs disponibles
-        for self.joueur1 in self.liste_des_joueurs:
-            for self.joueur2 in self.liste_des_joueurs:
-                if (self.joueur1, self.joueur2) not in paires_jouees and (self.joueur2, self.joueur1) not in paires_jouees:
-                    joueurs_disponibles.append((self.joueur1, self.joueur2))
+        # # Trouver les paires de joueurs disponibles
+        # for self.joueur1 in self.liste_des_joueurs:
+        #     for self.joueur2 in self.liste_des_joueurs:
+        #         if (self.joueur1, self.joueur2) not in paires_jouees and (self.joueur2, self.joueur1) not in paires_jouees:
+        #             joueurs_disponibles.append((self.joueur1, self.joueur2))
         
-        # Choisir aléatoirement une paire de joueurs disponibles et lancer un match  
-        self.joueur1, self.joueur2 = random.choice(joueurs_disponibles)
+        # # Choisir aléatoirement une paire de joueurs disponibles et lancer un match  
+        # self.joueur1, self.joueur2 = random.choice(joueurs_disponibles)
         self.lancer_matchs()
         
         
@@ -229,14 +245,16 @@ class ControllersApplicationTournoi:
                 break
 
         with open("tournois_inacheves.json", "w") as f:
-            json.dump(data, f)
-        
-        
-
-
-                          
+            json.dump(data, f, indent=4)
             
-        
-        
             
-          
+            
+    def sauvegarde_round_termine(self, tournoi_inacheve, dossier="tournois_inacheves.json"):
+        """ Sérialisation du tournoi inachevé """
+        
+        with open(dossier, 'r+') as f :
+            tournois_inacheves = json.load(f)
+            tournois_inacheves["tournois_inacheves"].append(tournoi_inacheve)
+            f.seek(0)
+            json.dump(tournois_inacheves, f, indent=4) 
+        
