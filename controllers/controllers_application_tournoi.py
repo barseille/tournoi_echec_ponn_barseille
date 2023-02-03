@@ -151,11 +151,8 @@ class ControllersApplicationTournoi:
         
     def lancer_matchs(self):
         
-        # trier = ControllersApplication()
-        # trier.trier_les_joueurs_par_score()
-        
-        self.trier_les_joueurs_par_score()  
-        
+ 
+        self.trier_les_joueurs_par_score()      
         self.liste_de_paire = []
         self.liste_de_matchs_infos = []
 

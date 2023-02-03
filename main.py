@@ -6,7 +6,7 @@ from controllers.controllers_tournois import ControllersTournois
 from views.views_rapport_menu import ViewsRapportMenu
 from controllers.controllers_application import ControllersApplication
 from controllers.controllers_application_tournoi import ControllersApplicationTournoi
-
+from controllers.controllers_rapport import ControllersRapport
 
 
 
@@ -85,13 +85,7 @@ def main():
         if retour == '':
             menu_principal_tournoi()
         
-        
-        
-        
-        
-        
-        
-        
+
         retour = input("Appuyer sur ENTREE pour revenir au menu")
         if retour == '':
             menu_principal_tournoi()
@@ -139,17 +133,31 @@ def main():
     
 
     def menu_rapport():
-        rapport_joueur = ViewsRapportMenu()
-        rapport_joueur.afficher_menu_rapport()
+        
+        rapport = ViewsRapportMenu()
+        rapport.afficher_menu_rapport()
+        
         entree = input("Faites votre choix : ")
-        if entree == '1':
+        
+        if entree == '1':    
+            rapport_joueur = ControllersRapport()
             rapport_joueur.affichage_joueur()
             retour = input("Appuyer sur ENTREE pour revenir au menu")
+            
             if retour == '':
                 accueil_principal()
+                
         elif entree == '2':
-            rapport_joueur.affichage_tournoi()
-            rapport_joueur.afficher_details_tournoi()
+            rapport_tournoi = ControllersRapport()
+            rapport_tournoi.affichage_tournoi()
+            retour = input("Appuyer sur ENTREE pour revenir au menu")
+            
+            if retour == '':
+                accueil_principal()
+                
+        elif entree == '3':
+            rapport_tournoi_termine = ControllersRapport()
+            rapport_tournoi_termine.afficher_details_tournoi()
   
     accueil_principal()
 if __name__ == "__main__":
