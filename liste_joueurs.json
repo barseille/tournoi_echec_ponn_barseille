@@ -87,6 +87,30 @@
             "genre": "femme",
             "classement": 11,
             "score": 0
+        },
+        {
+            "nom": "marceau",
+            "prenom": "sophie",
+            "date_de_naissance": "12/01/1977",
+            "genre": "femme",
+            "classement": 12,
+            "score": 0
+        },
+        {
+            "nom": "nadal",
+            "prenom": "raphael",
+            "date_de_naissance": "15/01/2000",
+            "genre": "homme",
+            "classement": 14,
+            "score": 0
+        },
+        {
+            "nom": "bond",
+            "prenom": "james",
+            "date_de_naissance": "26/05/1985",
+            "genre": "homme",
+            "classement": 15,
+            "score": 0
         }
     ]
 }

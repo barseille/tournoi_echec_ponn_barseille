@@ -32,7 +32,7 @@ class ControllersTournois:
          
             self.ecrire_json(tournoi_serialiser, "liste_tournois.json")   
                     
-            autre_tournoi = input("Souhaitez_vous créer un autre tournoi ? (o/n) : ")
+            autre_tournoi = input("Souhaitez-vous créer un autre tournoi ? (o/n) : ")
             if autre_tournoi == "o":        
                 print('Créer un nouveau tournoi : ')
                 

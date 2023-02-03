@@ -9,7 +9,7 @@ class ControllersJoueurs:
         """ sérialiser les entrées joueurs"""
         
         print('-'*60)
-        print("              -- Création Joueur --")
+        print("                -- Création Joueur --")
         print('-'*60)
         
         while True:                    
@@ -33,7 +33,7 @@ class ControllersJoueurs:
             if autre_joueur == "o":
                 print('Créer un nouveau joueur : ')
             if autre_joueur == "n":
-                print('Tournoi sauvegarder avec succès !')
+                print('Joueur créé avec succès !')
                 break
  
  
@@ -61,7 +61,7 @@ class ControllersJoueurs:
         """ désérialisation la liste des joueurs """
         
         print('-'*60)
-        print('        -- Liste des joueurs --')
+        print('           -- Liste des joueurs --')
         print('-'*60)
         
            
@@ -69,8 +69,10 @@ class ControllersJoueurs:
             liste_joueurs = json.load(f)
             
         for index, joueur in enumerate(liste_joueurs["liste_joueurs"]):
-            print(f" - Joueur n°{index} : {joueur['prenom']} {joueur['nom']}")
-            print(f"                Date de naissance : {joueur['date_de_naissance']} | Genre : {joueur['genre']} | Classement : {joueur['classement']}")
+            print(f" - Joueur n°{index + 1} : {joueur['prenom']} {joueur['nom']}")
+            print(f"                Date de naissance : {joueur['date_de_naissance']}")
+            print(f"                Genre : {joueur['genre']} | Classement : {joueur['classement']}")
+            print(f"                Classement : {joueur['classement']}")
             
         
     def selectionner_participants(self):
@@ -117,6 +119,22 @@ class ControllersJoueurs:
     
             return self.joueurs_selectionnes
         
+        
+    def trier_joueurs_par_score(self):
+        
+        with open("liste_joueurs.json", "r") as f:        
+            liste_joueurs = json.load(f)
+        
+        liste_joueurs_triee = sorted(liste_joueurs["liste_joueurs"], key=lambda x: x["classement"]) 
+        
+        print('-'*60)
+        print('              -- Classement par score -- ') 
+        print('-'*60) 
+         
+        for joueur in liste_joueurs_triee:
+   
+            print(f"{joueur['classement']} - {joueur['prenom']} {joueur['nom']}")
+            
 
 
         

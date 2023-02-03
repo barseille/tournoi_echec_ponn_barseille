@@ -1,18 +1,18 @@
 OPTIONS = (
     'Tournoi',
     'Joueur',
-    'Rapports'
+    'Rapport'
 )
 
 class ViewsAccueil:
 
     def accueil_principal(self): 
-        print("-"*50) 
-        print("  -- Bienvenue dans le Menu Tournoi d'échec --" )
-        print("-"*50)
+        print("-"*60) 
+        print("      -- Bienvenue dans le Menu Tournoi d'échec --" )
+        print("-"*60)
     
         
-        print('Faite votre choix : ')
+        print('Faites votre choix : ')
         
         for elt in OPTIONS:
             print(OPTIONS.index(elt) + 1 , '-', elt)
