@@ -13,7 +13,7 @@
             "prenom": "mike",
             "date_de_naissance": "27/02/1982",
             "genre": "homme",
-            "classement": 4,
+            "classement": 7,
             "score": 0
         },
         {
@@ -29,7 +29,7 @@
             "prenom": "jean-claude",
             "date_de_naissance": "25/12/1981",
             "genre": "homme",
-            "classement": 2,
+            "classement": 4,
             "score": 0
         },
         {
@@ -45,7 +45,7 @@
             "prenom": "lionel",
             "date_de_naissance": "11/11/1990",
             "genre": "homme",
-            "classement": 7,
+            "classement": 8,
             "score": 0
         },
         {
@@ -53,7 +53,7 @@
             "prenom": "alicia",
             "date_de_naissance": "16/06/1990",
             "genre": "femme",
-            "classement": 8,
+            "classement": 2,
             "score": 0
         },
         {

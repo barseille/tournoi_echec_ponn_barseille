@@ -55,9 +55,9 @@ class ControllersRapport:
     
     def afficher_details_tournoi(self):
         
-        print('-'*70)
+        print('-'*60)
         print('                 -- Liste des tournois terminés --')
-        print('-'*70)
+        print('-'*60)
         
         with open("historique_tournois.json", "r") as f:
             tournoi = json.load(f)
@@ -92,23 +92,29 @@ class ControllersRapport:
         for i, joueur in enumerate(liste_joueurs):
             print(f"Joueur {i+1} : {joueur['prenom']} {joueur['nom']} - Classement {joueur['classement']}")
          
-         
-         
-        # for round in tournoi_selectionne['liste_de_rounds']:
-        #     print(round)
         
         for round in tournoi_selectionne['liste_de_rounds']:
+            
+            
             numero_round = round['numero_round']
             date_debut = round['date_debut']
             date_fin = round['date_fin']
             matchs = round['matchs']
-            points = round['points']
-
-            print("Numéro de round : ", numero_round)
+      
+      
+            print('-'*60)
+            print("                       -- Round", numero_round, "--")
+            print('-'*60)
             print("Date de début : ", date_debut)
             print("Date de fin : ", date_fin)
-            print("Matchs : ", matchs)
-            print("Points : ", points)
+      
+            
+            for match in matchs:
+                joueur1 = match['joueur1']
+                joueur2 = match['joueur2']
+                score = match['score']
+                print(joueur1 + " VS " + joueur2 + " = " + score)
+            
             
 
             

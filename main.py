@@ -143,7 +143,6 @@ def main():
             rapport_joueur = ControllersRapport()
             rapport_joueur.affichage_joueur()
             retour = input("Appuyer sur ENTREE pour revenir au menu")
-            
             if retour == '':
                 accueil_principal()
                 
@@ -158,6 +157,10 @@ def main():
         elif entree == '3':
             rapport_tournoi_termine = ControllersRapport()
             rapport_tournoi_termine.afficher_details_tournoi()
+            retour = input("Appuyer sur ENTREE pour revenir au menu")
+            
+            if retour == '':
+                accueil_principal()
   
     accueil_principal()
 if __name__ == "__main__":

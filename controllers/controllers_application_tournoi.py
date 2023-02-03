@@ -65,7 +65,7 @@ class ControllersApplicationTournoi:
         
     def continuer_tournoi(self):
         
-        self.liste_de_rounds = []
+        # self.liste_de_rounds = []
         
         for i in range(self.nombre_de_rounds_restants):
             print(f"         -- ROUND {i + 1 + self.nb_rounds_effectues}/{self.tournoi_selectionne['nombres_de_rounds']} --")
@@ -74,7 +74,7 @@ class ControllersApplicationTournoi:
             date_debut = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             date_fin = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             
-            round_info = {
+            self.liste_de_rounds = {
                     "numero_round": i + 1+ self.nb_rounds_effectues,
                     "date_debut": date_debut,
                     "date_fin": date_fin,
@@ -82,7 +82,7 @@ class ControllersApplicationTournoi:
                     "points": self.liste_de_matchs
                     }
     
-            self.liste_de_rounds.append(round_info)
+            # self.liste_de_rounds.append(round_info)
             
             if i + 1 != self.nombre_de_rounds_restants:
                 
