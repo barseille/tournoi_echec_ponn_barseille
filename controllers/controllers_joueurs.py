@@ -28,13 +28,21 @@ class ControllersJoueurs:
             joueur_serialiser = joueur.serialiser()
             self.ecrire_json(joueur_serialiser, "liste_joueurs.json")  
                    
- 
-            autre_joueur = input("Souhaitez vous créer un autre joueur ? (o/n) : ")
+
+            autre_joueur = ""
+            while True:
+                autre_joueur = input("Souhaitez vous créer un autre joueur ? (o/n) : ")
+                if autre_joueur in ["o", "n"]:      
+                    break
+                else:
+                    print("Erreur : Veuillez entrer 'o' pour créer un autre joueur ou 'n' pour quitter.")
+
             if autre_joueur == "o":
                 print('Créer un nouveau joueur : ')
             if autre_joueur == "n":
                 print('Joueur créé avec succès !')
                 break
+
  
  
     def ecrire_json(self, joueur_serialiser, dossier = 'liste_joueurs.json'):
@@ -71,7 +79,7 @@ class ControllersJoueurs:
         for index, joueur in enumerate(liste_joueurs["liste_joueurs"]):
             print(f" - Joueur n°{index + 1} : {joueur['prenom']} {joueur['nom']}")
             print(f"                Date de naissance : {joueur['date_de_naissance']}")
-            print(f"                Genre : {joueur['genre']} | Classement : {joueur['classement']}")
+            print(f"                Genre : {joueur['genre']} - Classement : {joueur['classement']}")
             print(f"                Classement : {joueur['classement']}")
             
         
@@ -91,9 +99,9 @@ class ControllersJoueurs:
             # Demander à l'utilisateur combien de joueurs il souhaite sélectionner
             while True:
                 try:
-                    nombre_joueurs = int(input("Combien de joueurs souhaitez-vous sélectionner : "))
-                    if nombre_joueurs < 2 or nombre_joueurs > len(liste_joueurs):
-                        print(f"Veuillez choisir un joueur entre 2 et {len(liste_joueurs)} : ")
+                    nombre_joueurs = int(input("Combien de joueurs souhaitez-vous sélectionner (8 joueurs minimum) : "))
+                    if nombre_joueurs < 8 or nombre_joueurs > len(liste_joueurs):
+                        print(f"Veuillez choisir un joueur entre 8 et {len(liste_joueurs)} : ")
                     else:
                         break
                 except ValueError:
@@ -114,6 +122,7 @@ class ControllersJoueurs:
                         self.joueurs_selectionnes.append(joueur_selectionne)
                         print("Joueur ajouté !")
                     i += 1
+                    
                 except ValueError:
                     print("Veuillez entrer un nombre entier valide")
     
@@ -132,7 +141,6 @@ class ControllersJoueurs:
         print('-'*60) 
          
         for joueur in liste_joueurs_triee:
-   
             print(f"{joueur['classement']} - {joueur['prenom']} {joueur['nom']}")
             
 

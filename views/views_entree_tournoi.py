@@ -1,3 +1,7 @@
+from datetime import datetime
+
+
+
 def demander_nom_tournoi():
     nom = input('Entrez le nom du tournoi : ')
     return nom
@@ -9,21 +13,42 @@ def demander_lieu_tournoi():
 
 
 def demander_dates_tournoi():
+    
     entree_date = input("Souhaitez-vous entrer une date unique ou une plage de dates ? u(unique)/ p(plage de date) : ")
 
     if entree_date == 'u':   
-        date_unique = input("Entrez la date unique au format jj/mm/aaaa : ")
-        return date_unique
+        
+        while True:
+            date_unique = input("Entrez la date unique au format jj/mm/aaaa : ")
+            try:
+                date = datetime.strptime(date_unique, "%d/%m/%Y")
+                return date_unique
+            except ValueError:
+                print("La date n'est pas au bon format (jj/mm/aaaa).")
 
     elif entree_date == 'p': 
+        
         plage_date = []   
-        date_debut = input("Entrez la date de début au format jj/mm/aaaa : ")
-        plage_date.append(date_debut)
+        while True:
+            date_debut = input("Entrez la date de début au format jj/mm/aaaa : ")
+            try:
+                date_debut = datetime.strptime(date_debut, "%d/%m/%Y")
+                plage_date.append(date_debut)
+                break
+            except ValueError:
+                print("La date de début n'est pas au bon format (jj/mm/aaaa).")
 
-        date_fin = input("Entrez la date de fin au format jj/mm/aaaa : ")
-        plage_date.append(date_fin)
+        while True:
+            date_fin = input("Entrez la date de fin au format jj/mm/aaaa : ")
+            try:
+                date_fin = datetime.strptime(date_fin, "%d/%m/%Y")
+                plage_date.append(date_fin)
+                break
+            except ValueError:
+                print("La date de fin n'est pas au bon format (jj/mm/aaaa).")
 
         return plage_date
+
 
 
 

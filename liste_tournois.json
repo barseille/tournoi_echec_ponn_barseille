@@ -77,7 +77,6 @@
             "nombres_de_rounds": 4,
             "description": "coupe regionale",
             "mode_de_jeu": "bullet"
-        
         },
         {
             "nom": "jo 2022",
@@ -86,7 +85,6 @@
             "nombres_de_rounds": 4,
             "description": "coupe d'asie",
             "mode_de_jeu": "blitz"
-  
         },
         {
             "nom": "coupe d'europe",
@@ -95,7 +93,6 @@
             "nombres_de_rounds": 4,
             "description": "medaille d'or",
             "mode_de_jeu": "fast"
-    
         },
         {
             "nom": "competition 2018",
@@ -104,15 +101,7 @@
             "nombres_de_rounds": 4,
             "description": "r",
             "mode_de_jeu": "bullet"
-      
-        },
-        {
-            "nom": "competition 2022",
-            "lieu": "las vegas",
-            "dates": "14/02/2023",
-            "nombres_de_rounds": 4,
-            "description": "état-unis",
-            "mode_de_jeu": "bullet"
         }
+
     ]
 }

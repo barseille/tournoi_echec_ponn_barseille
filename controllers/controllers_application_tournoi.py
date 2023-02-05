@@ -83,14 +83,16 @@ class ControllersApplicationTournoi:
                     }
     
             # self.liste_de_rounds.append(round_info)
-            
+            self.tournoi_selectionne['liste_de_rounds'].append(self.liste_de_rounds)
             if i + 1 != self.nombre_de_rounds_restants:
                 
                 choix = input("Voulez vous passer au round suivant ? (o/n) : ")
                 
                 if choix != "o":
                     
-                    self.tournoi_selectionne['liste_de_rounds'].append(self.liste_de_rounds)
+                    # self.tournoi_selectionne['liste_de_rounds'].append(self.liste_de_rounds)
+                    
+                    # print(self.tournoi_selectionne['liste_de_rounds'])
                     
                     with open("tournois_inacheves.json", "r+") as f:
                         tournoi_en_cours = json.load(f)
@@ -103,7 +105,8 @@ class ControllersApplicationTournoi:
                 
         else:
             
-            self.tournoi_selectionne['liste_de_rounds'].append(self.liste_de_rounds)
+            # self.tournoi_selectionne['liste_de_rounds'].append(self.liste_de_rounds)
+            
             
             with open("historique_tournois.json", "r+") as f:
                 tournoi_fini = json.load(f)
@@ -243,12 +246,12 @@ class ControllersApplicationTournoi:
             
             
             
-    def sauvegarde_round_termine(self, tournoi_inacheve, dossier="tournois_inacheves.json"):
-        """ Sérialisation du tournoi inachevé """
+    # def sauvegarde_round_termine(self, tournoi_inacheve, dossier="tournois_inacheves.json"):
+    #     """ Sérialisation du tournoi inachevé """
         
-        with open(dossier, 'r+') as f :
-            tournois_inacheves = json.load(f)
-            tournois_inacheves["tournois_inacheves"].append(tournoi_inacheve)
-            f.seek(0)
-            json.dump(tournois_inacheves, f, indent=4) 
+    #     with open(dossier, 'r+') as f :
+    #         tournois_inacheves = json.load(f)
+    #         tournois_inacheves["tournois_inacheves"].append(tournoi_inacheve)
+    #         f.seek(0)
+    #         json.dump(tournois_inacheves, f, indent=4) 
         

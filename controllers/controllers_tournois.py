@@ -29,17 +29,23 @@ class ControllersTournois:
                               self.mode_de_jeu)  
             
             tournoi_serialiser = tournoi.serialiser()
-         
             self.ecrire_json(tournoi_serialiser, "liste_tournois.json")   
+            
+            autre_tournoi = ""  
+            while True:      
+                autre_tournoi = input("Souhaitez-vous créer un autre tournoi ? (o/n) : ")
+                if autre_tournoi in ["o", "n"]:
+                    break
+                else:
+                    print("Erreur : Veuillez entrer 'o' pour créer un autre tournoi ou 'n' pour quitter.")
                     
-            autre_tournoi = input("Souhaitez-vous créer un autre tournoi ? (o/n) : ")
             if autre_tournoi == "o":        
                 print('Créer un nouveau tournoi : ')
                 
             elif autre_tournoi == "n":
                 print('Tournoi sauvegarder avec succès !')
                 break
-            
+                
             
     def ecrire_json(self, tournoi_serialiser, dossier ='liste_tournois.json'):
         
@@ -75,8 +81,8 @@ class ControllersTournois:
     
         # Accéder aux index, aux clés et aux valeurs d'un dictionnaire
         for index, tournoi in enumerate(liste_tournois["liste_tournois"]):
-            print(f" - Tournoi n°{index} : {tournoi['nom']} | lieu : {tournoi['lieu']} | Date(s) {tournoi['dates']}.")
-            print(f"                 Nombres de rounds {tournoi['nombres_de_rounds']} | Mode de jeu : {tournoi['mode_de_jeu']}.")
+            print(f" - Tournoi n°{index} : {tournoi['nom']} - lieu : {tournoi['lieu']} - Date(s) {tournoi['dates']}.")
+            print(f"                 Nombres de rounds {tournoi['nombres_de_rounds']} - Mode de jeu : {tournoi['mode_de_jeu']}.")
             print(f"                 Description : {tournoi['description']}\n")
 
 
@@ -109,7 +115,7 @@ class ControllersTournois:
 
         # Afficher les informations du tournoi sélectionné
         print('-'*60)
-        print("Tournoi sélectionné : ")
+        print("             -- Tournoi sélectionné -- ")
         print('-'*60)
         print(f"Nom: {self.tournoi_selectionne['nom']}")
         print(f"Lieu: {self.tournoi_selectionne['lieu']}")

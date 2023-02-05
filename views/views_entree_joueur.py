@@ -1,4 +1,5 @@
 import json
+import datetime
 
 GENRE = ("homme", "femme")
 
@@ -25,9 +26,11 @@ def creation_joueur_date_de_naissance():
     
     try:
         date_de_naissance = input('Entrez votre date de naissance au format jj/mm/aaaa : ')
+        datetime.datetime.strptime(date_de_naissance, '%d/%m/%Y')
         return date_de_naissance
     except ValueError:
-        print('erreur - veuillez réessayer')
+        print("La date entrée n'est pas valide, veuillez la saisir au format jj/mm/aaaa.")
+        creation_joueur_date_de_naissance()
 
 
 def creation_joueur_genre():
@@ -86,20 +89,21 @@ def creation_joueur_classement():
             print('erreur - veuillez réessayer')
  
  
-def creation_autre_joueur():
+# def creation_autre_joueur():
 
-    try:           
-        nouveau_joueur = input('Voulez vous créer un nouveau joueur? oui(o) / non(n)')
+#     try:           
+#         nouveau_joueur = input('Voulez vous créer un nouveau joueur? oui(o) / non(n)')
         
-        if nouveau_joueur == 'o':
-            return True
-        elif nouveau_joueur == 'n':
-            return False
-        else:
-            return False     
+#         if nouveau_joueur == 'o':
+#             return True
+#         elif nouveau_joueur == 'n':
+#             return False
+#         else:
+#             print("Entrée non valide. Veuillez taper 'o' pour oui et 'n' pour non.")
+#             return creation_autre_joueur()
           
-    except ValueError:
-        print('erreur - veuillez réessayer')
+#     except ValueError:
+#         print('erreur - veuillez réessayer')
 
 
 

@@ -18,14 +18,17 @@ class ControllersApplication:
         # génération d'un identifiant unique
         id_tournoi = str(uuid.uuid4())
         
-        print('        -- Liste des tournois -- \n')
+        print('-'*60)
+        print('        -- Liste des tournois -- ')
+        print('-'*60)
         tournoi = ControllersTournois()
         tournoi.selectionner_tournoi()
         self.tournoi_en_cours = tournoi.tournoi_selectionne
         
         
-        
-        print('        -- Liste des joueurs -- \n')
+        print('-'*60)
+        print('        -- Liste des joueurs -- ')
+        print('-'*60)
         joueur = ControllersJoueurs()
         joueur.selectionner_participants()
         joueurs_en_cours = joueur.joueurs_selectionnes
@@ -60,7 +63,7 @@ class ControllersApplication:
         
     def lancer_nouveau_tournoi(self):
         
-        choix = input("Voulez_vous commencer le tournoi ? (o/n) : ")
+        choix = input("Voulez-vous commencer le tournoi ? (o/n) : ")
         if choix != "o":
             return 
         self.recuperation_nb_de_rounds() 

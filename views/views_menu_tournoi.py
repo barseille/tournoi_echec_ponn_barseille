@@ -9,9 +9,9 @@ class ViewsMenuTournoi:
     
     def afficher_menu_tournoi(self):
         
-        print("-"*50)
-        print("-- Menu Tournoi --" )
-        print("-"*50)
+        print("-"*60)
+        print("           -- Menu Tournoi --" )
+        print("-"*60)
 
         print("Faites votre choix : ")
   
