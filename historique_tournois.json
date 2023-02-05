@@ -7,46 +7,38 @@
             "nombres_de_rounds": 4,
             "description": "coupe",
             "mode_de_jeu": "bullet",
-            "id": "acd1a667-c4ea-4241-ae8b-43aae9ea14c6",
+            "id": "f8100f57-d365-4b63-99e7-84c9bbc72786",
             "joueurs": [
-                {
-                    "nom": "lee",
-                    "prenom": "bruce",
-                    "date_de_naissance": "27/01/1981",
-                    "genre": "homme",
-                    "classement": 3,
-                    "score": 4
-                },
-                {
-                    "nom": "tyson",
-                    "prenom": "mike",
-                    "date_de_naissance": "27/02/1982",
-                    "genre": "homme",
-                    "classement": 7,
-                    "score": 3
-                },
                 {
                     "nom": "ali",
                     "prenom": "muhammed",
                     "date_de_naissance": "23/12/1985",
                     "genre": "homme",
                     "classement": 1,
+                    "score": 4
+                },
+                {
+                    "nom": "jordan",
+                    "prenom": "michael",
+                    "date_de_naissance": "18/05/1960",
+                    "genre": "homme",
+                    "classement": 2,
+                    "score": 3
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "genre": "homme",
+                    "classement": 3,
                     "score": 2
                 },
                 {
-                    "nom": "vandamme",
-                    "prenom": "jean-claude",
-                    "date_de_naissance": "25/12/1981",
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
                     "genre": "homme",
                     "classement": 4,
-                    "score": 2
-                },
-                {
-                    "nom": "enzo",
-                    "prenom": "ferrari",
-                    "date_de_naissance": "12/12/1945",
-                    "genre": "homme",
-                    "classement": 5,
                     "score": 2
                 },
                 {
@@ -54,7 +46,7 @@
                     "prenom": "lionel",
                     "date_de_naissance": "11/11/1990",
                     "genre": "homme",
-                    "classement": 8,
+                    "classement": 5,
                     "score": 2
                 },
                 {
@@ -62,42 +54,50 @@
                     "prenom": "alicia",
                     "date_de_naissance": "16/06/1990",
                     "genre": "femme",
-                    "classement": 2,
+                    "classement": 6,
+                    "score": 2
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "genre": "homme",
+                    "classement": 7,
                     "score": 1
                 },
                 {
-                    "nom": "jordan",
-                    "prenom": "michael",
-                    "date_de_naissance": "18/05/1960",
+                    "nom": "enzo",
+                    "prenom": "ferrari",
+                    "date_de_naissance": "12/12/1945",
                     "genre": "homme",
-                    "classement": 6,
+                    "classement": 8,
                     "score": 0
                 }
             ],
             "liste_de_rounds": [
                 {
                     "numero_round": 1,
-                    "date_debut": "04/02/2023 19:07:42",
-                    "date_fin": "04/02/2023 19:07:42",
+                    "date_debut": "05/02/2023 10:26:21",
+                    "date_fin": "05/02/2023 10:26:21",
                     "matchs": [
                         {
                             "joueur1": "ali",
-                            "joueur2": "enzo",
+                            "joueur2": "messi",
                             "score": "1 - 0"
                         },
                         {
-                            "joueur1": "tyson",
-                            "joueur2": "jordan",
+                            "joueur1": "jordan",
+                            "joueur2": "tyson",
+                            "score": "1 - 0"
+                        },
+                        {
+                            "joueur1": "keys",
+                            "joueur2": "vandamme",
                             "score": "1 - 0"
                         },
                         {
                             "joueur1": "lee",
-                            "joueur2": "keys",
-                            "score": "1 - 0"
-                        },
-                        {
-                            "joueur1": "vandamme",
-                            "joueur2": "messi",
+                            "joueur2": "enzo",
                             "score": "1 - 0"
                         }
                     ],
@@ -108,7 +108,7 @@
                         ],
                         [
                             "tyson",
-                            1
+                            0
                         ],
                         [
                             "ali",
@@ -116,7 +116,7 @@
                         ],
                         [
                             "vandamme",
-                            1
+                            0
                         ],
                         [
                             "enzo",
@@ -128,48 +128,48 @@
                         ],
                         [
                             "keys",
-                            0
+                            1
                         ],
                         [
                             "jordan",
-                            0
+                            1
                         ]
                     ]
                 },
                 {
                     "numero_round": 2,
-                    "date_debut": "05/02/2023 07:11:09",
-                    "date_fin": "05/02/2023 07:11:09",
+                    "date_debut": "05/02/2023 10:26:50",
+                    "date_fin": "05/02/2023 10:26:50",
                     "matchs": [
                         {
-                            "joueur1": "lee",
-                            "joueur2": "tyson",
-                            "score": "2 - 1"
-                        },
-                        {
                             "joueur1": "ali",
-                            "joueur2": "vandamme",
+                            "joueur2": "jordan",
                             "score": "2 - 1"
-                        },
-                        {
-                            "joueur1": "enzo",
-                            "joueur2": "messi",
-                            "score": "1 - 0"
                         },
                         {
                             "joueur1": "keys",
-                            "joueur2": "jordan",
+                            "joueur2": "lee",
+                            "score": "2 - 1"
+                        },
+                        {
+                            "joueur1": "messi",
+                            "joueur2": "tyson",
+                            "score": "1 - 0"
+                        },
+                        {
+                            "joueur1": "vandamme",
+                            "joueur2": "enzo",
                             "score": "1 - 0"
                         }
                     ],
                     "points": [
                         [
                             "lee",
-                            2
+                            1
                         ],
                         [
                             "tyson",
-                            1
+                            0
                         ],
                         [
                             "ali",
@@ -181,60 +181,60 @@
                         ],
                         [
                             "enzo",
-                            1
+                            0
                         ],
                         [
                             "messi",
-                            0
-                        ],
-                        [
-                            "keys",
                             1
                         ],
                         [
+                            "keys",
+                            2
+                        ],
+                        [
                             "jordan",
-                            0
+                            1
                         ]
                     ]
                 },
                 {
                     "numero_round": 3,
-                    "date_debut": "05/02/2023 07:11:14",
-                    "date_fin": "05/02/2023 07:11:14",
+                    "date_debut": "05/02/2023 10:26:59",
+                    "date_fin": "05/02/2023 10:26:59",
                     "matchs": [
                         {
-                            "joueur1": "lee",
-                            "joueur2": "ali",
+                            "joueur1": "ali",
+                            "joueur2": "keys",
                             "score": "3 - 2"
                         },
                         {
-                            "joueur1": "tyson",
-                            "joueur2": "vandamme",
-                            "score": "2 - 1"
-                        },
-                        {
-                            "joueur1": "enzo",
-                            "joueur2": "keys",
+                            "joueur1": "jordan",
+                            "joueur2": "lee",
                             "score": "2 - 1"
                         },
                         {
                             "joueur1": "messi",
-                            "joueur2": "jordan",
+                            "joueur2": "vandamme",
+                            "score": "2 - 1"
+                        },
+                        {
+                            "joueur1": "tyson",
+                            "joueur2": "enzo",
                             "score": "1 - 0"
                         }
                     ],
                     "points": [
                         [
                             "lee",
-                            3
+                            1
                         ],
                         [
                             "tyson",
-                            2
+                            1
                         ],
                         [
                             "ali",
-                            2
+                            3
                         ],
                         [
                             "vandamme",
@@ -242,68 +242,68 @@
                         ],
                         [
                             "enzo",
-                            2
+                            0
                         ],
                         [
                             "messi",
-                            1
+                            2
                         ],
                         [
                             "keys",
-                            1
+                            2
                         ],
                         [
                             "jordan",
-                            0
+                            2
                         ]
                     ]
                 },
                 {
                     "numero_round": 4,
-                    "date_debut": "05/02/2023 07:11:18",
-                    "date_fin": "05/02/2023 07:11:18",
+                    "date_debut": "05/02/2023 10:27:03",
+                    "date_fin": "05/02/2023 10:27:03",
                     "matchs": [
                         {
-                            "joueur1": "lee",
-                            "joueur2": "ali",
+                            "joueur1": "ali",
+                            "joueur2": "keys",
                             "score": "4 - 2"
+                        },
+                        {
+                            "joueur1": "jordan",
+                            "joueur2": "messi",
+                            "score": "3 - 2"
+                        },
+                        {
+                            "joueur1": "lee",
+                            "joueur2": "vandamme",
+                            "score": "2 - 1"
                         },
                         {
                             "joueur1": "tyson",
                             "joueur2": "enzo",
-                            "score": "3 - 2"
-                        },
-                        {
-                            "joueur1": "vandamme",
-                            "joueur2": "keys",
-                            "score": "2 - 1"
-                        },
-                        {
-                            "joueur1": "messi",
-                            "joueur2": "jordan",
                             "score": "2 - 0"
                         }
                     ],
                     "points": [
                         [
                             "lee",
-                            4
+                            2
                         ],
                         [
                             "tyson",
-                            3
+                            2
                         ],
                         [
                             "ali",
-                            2
+                            4
                         ],
                         [
                             "vandamme",
-                            2
+                            1
                         ],
                         [
                             "enzo",
-                            2
+                            0
                         ],
                         [
                             "messi",
@@ -311,11 +311,11 @@
                         ],
                         [
                             "keys",
-                            1
+                            2
                         ],
                         [
                             "jordan",
-                            0
+                            3
                         ]
                     ]
                 }

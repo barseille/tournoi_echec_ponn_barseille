@@ -5,39 +5,39 @@
             "prenom": "bruce",
             "date_de_naissance": "27/01/1981",
             "genre": "homme",
-            "classement": 7,
-            "score": 0
+            "classement": 3,
+            "score": 2
         },
         {
             "nom": "tyson",
             "prenom": "mike",
             "date_de_naissance": "27/02/1982",
             "genre": "homme",
-            "classement": 1,
-            "score": 0
+            "classement": 4,
+            "score": 2
         },
         {
             "nom": "ali",
             "prenom": "muhammed",
             "date_de_naissance": "23/12/1985",
             "genre": "homme",
-            "classement": 2,
-            "score": 0
+            "classement": 1,
+            "score": 4
         },
         {
             "nom": "vandamme",
             "prenom": "jean-claude",
             "date_de_naissance": "25/12/1981",
             "genre": "homme",
-            "classement": 8,
-            "score": 0
+            "classement": 7,
+            "score": 1
         },
         {
             "nom": "enzo",
             "prenom": "ferrari",
             "date_de_naissance": "12/12/1945",
             "genre": "homme",
-            "classement": 3,
+            "classement": 8,
             "score": 0
         },
         {
@@ -45,24 +45,24 @@
             "prenom": "lionel",
             "date_de_naissance": "11/11/1990",
             "genre": "homme",
-            "classement": 4,
-            "score": 0
+            "classement": 5,
+            "score": 2
         },
         {
             "nom": "keys",
             "prenom": "alicia",
             "date_de_naissance": "16/06/1990",
             "genre": "femme",
-            "classement": 5,
-            "score": 0
+            "classement": 6,
+            "score": 2
         },
         {
             "nom": "jordan",
             "prenom": "michael",
             "date_de_naissance": "18/05/1960",
             "genre": "homme",
-            "classement": 6,
-            "score": 0
+            "classement": 2,
+            "score": 3
         },
         {
             "nom": "bieber",
@@ -101,7 +101,7 @@
             "prenom": "raphael",
             "date_de_naissance": "15/01/2000",
             "genre": "homme",
-            "classement": 14,
+            "classement": 13,
             "score": 0
         },
         {
@@ -109,7 +109,7 @@
             "prenom": "james",
             "date_de_naissance": "26/05/1985",
             "genre": "homme",
-            "classement": 15,
+            "classement": 14,
             "score": 0
         },
         {
@@ -117,23 +117,7 @@
             "prenom": "kanye",
             "date_de_naissance": "18/05/1987",
             "genre": "homme",
-            "classement": 16,
-            "score": 0
-        },
-        {
-            "nom": "willis",
-            "prenom": "bruce",
-            "date_de_naissance": null,
-            "genre": "homme",
-            "classement": 17,
-            "score": 0
-        },
-        {
-            "nom": "balboa",
-            "prenom": "rocky",
-            "date_de_naissance": null,
-            "genre": "homme",
-            "classement": 18,
+            "classement": 15,
             "score": 0
         }
     ]

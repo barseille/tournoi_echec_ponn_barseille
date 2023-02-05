@@ -114,7 +114,7 @@ class ControllersApplication:
             tournoi_en_cours = self.tournoi_en_cours            
             self.ecrire_json(tournoi_en_cours, "historique_tournois.json")           
             self.mettre_a_jour_classement_historique_tournoi()
-            self.mettre_a_jour_classement_liste_joueurs()
+            self.mettre_a_jour_classement_score_liste_joueurs()
         
             print('-'*60)
             print("                -- Tournoi terminé -- ")
@@ -262,7 +262,7 @@ class ControllersApplication:
             
             
             
-    def mettre_a_jour_classement_liste_joueurs(self):
+    def mettre_a_jour_classement_score_liste_joueurs(self):
         
         with open("historique_tournois.json", "r") as f:
             historique_tournois = json.load(f)
@@ -274,6 +274,7 @@ class ControllersApplication:
                 for joueur_liste in liste_joueurs["liste_joueurs"]:
                     if joueur_tournoi["nom"] == joueur_liste["nom"] and joueur_tournoi["prenom"] == joueur_liste["prenom"]:
                         joueur_liste["classement"] = joueur_tournoi["classement"]
+                        joueur_liste["score"] = joueur_tournoi["score"]
 
         with open("liste_joueurs.json", "w") as f:
             json.dump(liste_joueurs, f, indent=4)  
