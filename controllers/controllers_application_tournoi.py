@@ -1,4 +1,4 @@
-from .controllers_application import ControllersApplication
+
 import json
 import random
 from datetime import datetime
@@ -119,37 +119,6 @@ class ControllersApplicationTournoi:
             print('-'*60)
             print("                -- Tournoi terminé -- ")
             print('-'*60)
-            
-            
-            
-            
-            
-    # def recuperer_match_termines(self):
-                
- 
-    #     liste_de_matchs_finis = []
-    #     paires_jouees = []
-    #     joueurs_disponibles = []
-        
-    #     # Récupérer les matchs finis
-    #     for round in self.tournoi_selectionne['liste_de_rounds']:
-    #         liste_de_matchs_finis.append(round["matchs"])
-        
-    #     # Enregistrer les paires de joueurs qui ont déjà joué    
-    #     for match in liste_de_matchs_finis[0]:
-    #         self.joueur1 = match['joueur1']
-    #         self.joueur2 = match['joueur2']
-    #         paires_jouees.append((self.joueur1, self.joueur2))
-        
-    #     # Trouver les paires de joueurs disponibles
-    #     for self.joueur1 in self.liste_des_joueurs:
-    #         for self.joueur2 in self.liste_des_joueurs:
-    #             if (self.joueur1, self.joueur2) not in paires_jouees and (self.joueur2, self.joueur1) not in paires_jouees:
-    #                 joueurs_disponibles.append((self.joueur1, self.joueur2))
-        
-    #     # Choisir aléatoirement une paire de joueurs disponibles et lancer un match  
-    #     self.joueur1, self.joueur2 = random.choice(joueurs_disponibles)
-    #     self.lancer_matchs()
         
         
     def lancer_matchs(self):

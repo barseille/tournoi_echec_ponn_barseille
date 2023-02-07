@@ -1,6 +1,5 @@
 from .controllers_tournois import ControllersTournois
 from .controllers_joueurs import ControllersJoueurs
-from models.match import Match
 import random
 import uuid
 import json
@@ -136,12 +135,13 @@ class ControllersApplication:
             self.joueur2 = self.liste_des_joueurs[i + 1]
             paire = (self.joueur1, self.joueur2)
             self.liste_de_paire.append(paire)
-            
     
         # Lancer chaque match de la liste
         for i, match in enumerate(self.liste_de_paire):
             self.joueur1 = match[0]
             self.joueur2 = match[1]
+            
+            
                 
             print('-'*60)
             print(f"Match n°{i + 1} : {self.joueur1['prenom']} {self.joueur1['nom']} (J1) VS {self.joueur2['prenom']} {self.joueur2['nom']} (J2) :")
@@ -195,6 +195,8 @@ class ControllersApplication:
                 score = joueur['score']
                 self.liste_de_matchs.append((nom, score))
                 print(f"Joueur {nom} = {score}")
+                
+
      
                 
     def tournois_inacheves(self):
@@ -274,7 +276,9 @@ class ControllersApplication:
                 for joueur_liste in liste_joueurs["liste_joueurs"]:
                     if joueur_tournoi["nom"] == joueur_liste["nom"] and joueur_tournoi["prenom"] == joueur_liste["prenom"]:
                         joueur_liste["classement"] = joueur_tournoi["classement"]
-                        joueur_liste["score"] = joueur_tournoi["score"]
+                        # joueur_liste["score"] = joueur_tournoi["score"]
 
         with open("liste_joueurs.json", "w") as f:
             json.dump(liste_joueurs, f, indent=4)  
+            
+            
