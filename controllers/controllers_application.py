@@ -111,7 +111,7 @@ class ControllersApplication:
             
             self.tournoi_en_cours.update(tournoi_dict)  
             tournoi_en_cours = self.tournoi_en_cours            
-            self.ecrire_json(tournoi_en_cours, "historique_tournois.json")           
+            self.ecrire_json(tournoi_en_cours, "data/historique_tournois.json")           
             self.mettre_a_jour_classement_historique_tournoi()
             self.mettre_a_jour_classement_score_liste_joueurs()
         
@@ -213,10 +213,10 @@ class ControllersApplication:
                                 "liste_de_rounds": self.liste_de_rounds}
     
         tournoi_inacheve = self.tournoi_inacheve
-        self.sauvegarde_tournois_inacheves(tournoi_inacheve, "tournois_inacheves.json")
+        self.sauvegarde_tournois_inacheves(tournoi_inacheve, "data/tournois_inacheves.json")
                     
                       
-    def sauvegarde_tournois_inacheves(self, tournoi_inacheve, dossier="tournois_inacheves.json"):
+    def sauvegarde_tournois_inacheves(self, tournoi_inacheve, dossier="data/tournois_inacheves.json"):
         """ Sérialisation du tournoi inachevé """
         
         with open(dossier, 'r+') as f :
@@ -227,7 +227,7 @@ class ControllersApplication:
 
         
 
-    def ecrire_json(self, tournoi_en_cours, dossier="historique_tournois.json"):
+    def ecrire_json(self, tournoi_en_cours, dossier="data/historique_tournois.json"):
         """ Sérialisation du tournoi choisi avec les joueurs choisis """
         
         with open(dossier, 'r+') as f :
@@ -240,7 +240,7 @@ class ControllersApplication:
             
     def mettre_a_jour_classement_historique_tournoi(self):
     
-        with open("historique_tournois.json", "r+") as f:
+        with open("data/historique_tournois.json", "r+") as f:
             tournois = json.load(f)
             self.tournoi_en_cours = tournois["liste_des_tournois_en_cours"][-1]
             joueurs = self.tournoi_en_cours["joueurs"]
@@ -259,16 +259,16 @@ class ControllersApplication:
             joueur["classement"] = i + 1
 
         # Enregistrer les modifications dans le fichier JSON
-        with open("historique_tournois.json", "w") as f:
+        with open("data/historique_tournois.json", "w") as f:
             json.dump(tournois, f, indent=4)
             
             
             
     def mettre_a_jour_classement_score_liste_joueurs(self):
         
-        with open("historique_tournois.json", "r") as f:
+        with open("data/historique_tournois.json", "r") as f:
             historique_tournois = json.load(f)
-        with open("liste_joueurs.json", "r") as f:
+        with open("data/liste_joueurs.json", "r") as f:
             liste_joueurs = json.load(f)
 
         for tournoi in historique_tournois["liste_des_tournois_en_cours"]:
@@ -278,7 +278,7 @@ class ControllersApplication:
                         joueur_liste["classement"] = joueur_tournoi["classement"]
                         # joueur_liste["score"] = joueur_tournoi["score"]
 
-        with open("liste_joueurs.json", "w") as f:
+        with open("data/liste_joueurs.json", "w") as f:
             json.dump(liste_joueurs, f, indent=4)  
             
             

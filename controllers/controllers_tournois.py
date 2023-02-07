@@ -29,7 +29,7 @@ class ControllersTournois:
                               self.mode_de_jeu)  
             
             tournoi_serialiser = tournoi.serialiser()
-            self.ecrire_json(tournoi_serialiser, "liste_tournois.json")   
+            self.ecrire_json(tournoi_serialiser, "data/liste_tournois.json")   
             
             autre_tournoi = ""  
             while True:      
@@ -47,7 +47,7 @@ class ControllersTournois:
                 break
                 
             
-    def ecrire_json(self, tournoi_serialiser, dossier ='liste_tournois.json'):
+    def ecrire_json(self, tournoi_serialiser, dossier ='data/liste_tournois.json'):
         
         """
         La méthode prend en premier argument un dictionnaire (tournoi_serialiser) 
@@ -75,7 +75,7 @@ class ControllersTournois:
         print('           -- Liste des tournois --')
         print('-'*60)
         
-        with open ("liste_tournois.json", "r") as f:
+        with open ("data/liste_tournois.json", "r") as f:
             liste_tournois = json.load(f)       
         
     
@@ -91,7 +91,7 @@ class ControllersTournois:
         """ afficher la liste des tournois"""
         
         # Charger le fichier JSON dans une variable
-        with open('liste_tournois.json', 'r') as f:
+        with open('data/liste_tournois.json', 'r') as f:
             tournois_data = json.load(f)
 
         # Récupérer la liste des tournois

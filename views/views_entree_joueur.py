@@ -66,7 +66,7 @@ def creation_joueur_genre():
 
 def creation_joueur_classement():
       
-    with open("liste_joueurs.json", "r") as f:
+    with open("data/liste_joueurs.json", "r") as f:
         data = json.load(f)
         
         classements_existants = []

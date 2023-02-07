@@ -9,7 +9,7 @@ class ControllersRapport:
         print('         -- Classement des joueurs par ordre alphabetique --')
         print('-'*70)
         
-        with open("liste_joueurs.json", "r") as f:
+        with open("data/liste_joueurs.json", "r") as f:
             joueurs_data = json.load(f)
         
         liste_joueurs = joueurs_data['liste_joueurs']
@@ -28,7 +28,7 @@ class ControllersRapport:
         print('                 -- Liste de tous les tournois --')
         print('-'*70)
         
-        with open("liste_tournois.json", "r") as f:
+        with open("data/liste_tournois.json", "r") as f:
             liste_tournois_data = json.load(f)
             
         self.liste_tournois = liste_tournois_data["liste_tournois"]
@@ -38,7 +38,7 @@ class ControllersRapport:
         for i, tournoi in enumerate(self.liste_tournois):
             nom = tournoi["nom"]
             dates = tournoi["dates"]
-            print(f"{i+1} - Nom du tournoi {nom} - date(s) : {dates}")
+            print(f"{i+1} - Nom du tournoi : {nom} - date(s) : {dates}")
             
         choix_tournoi = int(input("Choisissez un tournoi pour plus de détails : "))
         tournoi_selectionne = self.liste_tournois[choix_tournoi - 1]
@@ -61,7 +61,7 @@ class ControllersRapport:
         print('                 -- Liste des tournois terminés --')
         print('-'*60)
         
-        with open("historique_tournois.json", "r") as f:
+        with open("data/historique_tournois.json", "r") as f:
             tournoi = json.load(f)
         
         tournoi_termine = tournoi['liste_des_tournois_en_cours']

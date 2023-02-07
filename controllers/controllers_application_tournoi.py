@@ -9,7 +9,7 @@ class ControllersApplicationTournoi:
         
         self.liste_des_joueurs = []
         
-        with open("tournois_inacheves.json", "r") as f:
+        with open("data/tournois_inacheves.json", "r") as f:
             data = json.load(f)
             if not data["tournois_inacheves"]:
                 print("Il n'y a aucun tournoi !")
@@ -94,7 +94,7 @@ class ControllersApplicationTournoi:
                     
                     # print(self.tournoi_selectionne['liste_de_rounds'])
                     
-                    with open("tournois_inacheves.json", "r+") as f:
+                    with open("data/tournois_inacheves.json", "r+") as f:
                         tournoi_en_cours = json.load(f)
                         tournoi_en_cours["tournois_inacheves"].append(self.tournoi_selectionne)
                         f.seek(0)
@@ -108,7 +108,7 @@ class ControllersApplicationTournoi:
             # self.tournoi_selectionne['liste_de_rounds'].append(self.liste_de_rounds)
             
             
-            with open("historique_tournois.json", "r+") as f:
+            with open("data/historique_tournois.json", "r+") as f:
                 tournoi_fini = json.load(f)
                 tournoi_fini["liste_des_tournois_en_cours"].append(self.tournoi_selectionne)
                 f.seek(0)
@@ -199,7 +199,7 @@ class ControllersApplicationTournoi:
     def effacer_tournoi_termine(self):
         
         # Supprimer le tournoi terminé de la liste des tournois inachevés
-        with open("tournois_inacheves.json") as f:
+        with open("data/tournois_inacheves.json") as f:
             data = json.load(f)
             
         # Boucle pour trouver le tournoi
@@ -210,7 +210,7 @@ class ControllersApplicationTournoi:
                 del data["tournois_inacheves"][i]
                 break
 
-        with open("tournois_inacheves.json", "w") as f:
+        with open("data/tournois_inacheves.json", "w") as f:
             json.dump(data, f, indent=4)
             
             

@@ -101,7 +101,14 @@
             "nombres_de_rounds": 4,
             "description": "r",
             "mode_de_jeu": "bullet"
+        },
+        {
+            "nom": "street fighter",
+            "lieu": "bresil",
+            "dates": "26/03/2023",
+            "nombres_de_rounds": 4,
+            "description": "medaille d'or",
+            "mode_de_jeu": "blitz"
         }
-
     ]
 }

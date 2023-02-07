@@ -26,7 +26,7 @@ class ControllersJoueurs:
                             self.classement)
             
             joueur_serialiser = joueur.serialiser()
-            self.ecrire_json(joueur_serialiser, "liste_joueurs.json")  
+            self.ecrire_json(joueur_serialiser, "data/liste_joueurs.json")  
                    
 
             autre_joueur = ""
@@ -45,7 +45,7 @@ class ControllersJoueurs:
 
  
  
-    def ecrire_json(self, joueur_serialiser, dossier = 'liste_joueurs.json'):
+    def ecrire_json(self, joueur_serialiser, dossier = 'data/liste_joueurs.json'):
 
         """
         La méthode prend en premier argument un dictionnaire (tournoi_serialiser) 
@@ -73,7 +73,7 @@ class ControllersJoueurs:
         print('-'*60)
         
            
-        with open("liste_joueurs.json", "r") as f:        
+        with open("data/liste_joueurs.json", "r") as f:        
             liste_joueurs = json.load(f)
             
         for index, joueur in enumerate(liste_joueurs["liste_joueurs"]):
@@ -85,7 +85,7 @@ class ControllersJoueurs:
         
     def selectionner_participants(self):
   
-        with open("liste_joueurs.json", "r") as f:                
+        with open("data/liste_joueurs.json", "r") as f:                
             joueurs_data = json.load(f)
                 
             # Récupérer la liste des joueurs
@@ -131,7 +131,7 @@ class ControllersJoueurs:
         
     def trier_joueurs_par_score(self):
         
-        with open("liste_joueurs.json", "r") as f:        
+        with open("data/liste_joueurs.json", "r") as f:        
             liste_joueurs = json.load(f)
         
         liste_joueurs_triee = sorted(liste_joueurs["liste_joueurs"], key=lambda x: x["classement"]) 
