@@ -16,3 +16,18 @@ class ViewsAccueil:
         
         for elt in OPTIONS:
             print(OPTIONS.index(elt) + 1 , '-', elt)
+            
+            
+    def afficher_msg_erreur(self): 
+        print("Erreur ! Veuillez saisir le chiffre correspondant à l'index")
+  
+        
+    def retour_au_menu(self):   
+        input("Appuyez sur une touche pour revenir au menu")
+        
+    def selectionner_choix(self):
+         input("Faites votre choix : ") 
+        
+        
+        
+        

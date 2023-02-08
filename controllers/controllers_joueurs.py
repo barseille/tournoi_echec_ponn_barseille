@@ -1,4 +1,5 @@
 import views.views_entree_joueur as entree_joueur
+from views.views_menu_joueur import ViewsMenuJoueur
 from models.joueur import Joueur
 import json
 
@@ -8,9 +9,10 @@ class ControllersJoueurs:
     def recuperer_entree_joueur(self):
         """ sérialiser les entrées joueurs"""
         
-        print('-'*60)
-        print("                -- Création Joueur --")
-        print('-'*60)
+        creer_joueur = ViewsMenuJoueur()
+        creer_joueur.affichage_creation_joueur()
+        
+
         
         while True:                    
             self.nom = entree_joueur.creation_joueur_nom()
@@ -26,9 +28,10 @@ class ControllersJoueurs:
                             self.classement)
             
             joueur_serialiser = joueur.serialiser()
-            self.ecrire_json(joueur_serialiser, "data/liste_joueurs.json")  
-                   
-
+            self.ecrire_json(joueur_serialiser, "data/liste_joueurs.json") 
+            
+ 
+      
             autre_joueur = ""
             while True:
                 autre_joueur = input("Souhaitez vous créer un autre joueur ? (o/n) : ")
@@ -42,8 +45,8 @@ class ControllersJoueurs:
             if autre_joueur == "n":
                 print('Joueur créé avec succès !')
                 break
+            
 
- 
  
     def ecrire_json(self, joueur_serialiser, dossier = 'data/liste_joueurs.json'):
 
@@ -65,23 +68,6 @@ class ControllersJoueurs:
             json.dump(liste_joueurs, f, indent=4)       
  
  
-    def afficher_des_joueurs(self):
-        """ désérialisation la liste des joueurs """
-        
-        print('-'*60)
-        print('           -- Liste des joueurs --')
-        print('-'*60)
-        
-           
-        with open("data/liste_joueurs.json", "r") as f:        
-            liste_joueurs = json.load(f)
-            
-        for index, joueur in enumerate(liste_joueurs["liste_joueurs"]):
-            print(f" - Joueur n°{index + 1} : {joueur['prenom']} {joueur['nom']}")
-            print(f"                Date de naissance : {joueur['date_de_naissance']}")
-            print(f"                Genre : {joueur['genre']} - Classement : {joueur['classement']}")
-            print(f"                Classement : {joueur['classement']}")
-            
         
     def selectionner_participants(self):
   
@@ -129,19 +115,19 @@ class ControllersJoueurs:
             return self.joueurs_selectionnes
         
         
-    def trier_joueurs_par_score(self):
+    # def trier_joueurs_par_score(self):
         
-        with open("data/liste_joueurs.json", "r") as f:        
-            liste_joueurs = json.load(f)
+    #     with open("data/liste_joueurs.json", "r") as f:        
+    #         liste_joueurs = json.load(f)
         
-        liste_joueurs_triee = sorted(liste_joueurs["liste_joueurs"], key=lambda x: x["classement"]) 
+    #     liste_joueurs_triee = sorted(liste_joueurs["liste_joueurs"], key=lambda x: x["classement"]) 
         
-        print('-'*60)
-        print('              -- Classement par score -- ') 
-        print('-'*60) 
+    #     print('-'*60)
+    #     print('              -- Classement par score -- ') 
+    #     print('-'*60) 
          
-        for joueur in liste_joueurs_triee:
-            print(f"{joueur['classement']} - {joueur['prenom']} {joueur['nom']}")
+    #     for joueur in liste_joueurs_triee:
+    #         print(f"{joueur['classement']} - {joueur['prenom']} {joueur['nom']}")
             
 
 

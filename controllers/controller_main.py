@@ -20,142 +20,123 @@ class ControllerMain:
             accueil.accueil_principal()
             choix = input("Choisissez (1, 2, 3 ou 'q' pour quitter la partie): ")
 
-            if choix == "1":
+            if choix == "1":            
                 self.menu_principal_tournoi()
-            elif choix == "2":
+                
+            elif choix == "2":      
                 self.menu_principal_joueur()
-            elif choix == "3":
+                
+            elif choix == "3":         
                 self.menu_rapport()
-            elif choix == "q":
+                
+            elif choix == "q":           
                 sys.exit()
-            else:
-                print("Erreur ! Veuillez saisir un chiffre entre 1 et 3")
-
-            
+                
+            else:            
+                accueil.afficher_msg_erreur()         
         
     # Menu tournoi
     def menu_principal_tournoi(self):
         
-        while True:
+        while True:        
             menu_tournoi = ViewsMenuTournoi()
             menu_tournoi.afficher_menu_tournoi()
             entree = input("Faites votre choix : ")
 
-            if entree == "1":
-                self.creer_tournoi()
-            elif entree == "2":
-                self.lancer_nouveau_tournoi()
-            elif entree == "3":
-                self.lancer_tournoi_existant()
-            elif entree == "4":
-                self.accueil_principal()
+            if entree == "1":            
+                creation_tournoi = ControllersTournois()
+                creation_tournoi.recuperer_entree_tournoi()
+                creation_tournoi.afficher_les_tournois()
+                
+            elif entree == "2":             
+                tournoi = ControllersApplication()
+                tournoi.fusion_tournoi_avec_joueurs()
+                tournoi.afficher_tournoi_en_cours()
+                tournoi.lancer_nouveau_tournoi()
+                
+               
+            elif entree == "3":               
+                tournoi_existant = ControllersApplicationTournoi()
+                tournoi_existant.recuperation_tournois_existant()
+                
+            
+            elif entree == "4": 
+                break         
+                
             else:
-                print("Erreur ! Veuillez saisir un chiffre entre 1 et 4") 
-                
-                
+                accueil = ViewsAccueil()
+                accueil.afficher_msg_erreur()
+                           
                 
     # Menu joueur
     def menu_principal_joueur(self):
         
-        while True:
+        while True:    
             menu_joueur = ViewsMenuJoueur()
             menu_joueur.afficher_menu_joueur()
             
             entree = input("Faites votre choix : ")
             
-            # créer un joueur
-            if entree == "1":
-                self.creer_joueur()
-                input("Appuyez sur une touche pour revenir au menu")
+            # créer un joueur et afficher tous les joueurs
+            if entree == "1":          
+                creation_joueur = ControllersJoueurs()
+                creation_joueur.recuperer_entree_joueur()   
+                afficher = ViewsMenuJoueur()
+                afficher.afficher_des_joueurs()
+                retour = ViewsAccueil()
+                retour.retour_au_menu()
                 
             # classement des joueurs par score
-            elif entree == "2":
-                self.afficher_classement_joueurs()
-                input("Appuyez sur une touche pour revenir au menu")
+            elif entree == "2":          
+                classement_joueurs = ViewsMenuJoueur()
+                classement_joueurs.trier_joueurs_par_score()
+                retour = ViewsAccueil()
+                retour.retour_au_menu()
                 
             # retour à l'accueil
             elif entree == "3":
-                break           
+                break   
+                    
             else:
-                print("Erreur ! Veuillez saisir un chiffre entre 1 et 3")
-                
-                
+                accueil = ViewsAccueil()
+                accueil.afficher_msg_erreur()
+                             
                 
     def menu_rapport(self):
         
-        while True:
-        
+        while True:  
             rapport = ViewsRapportMenu()
-            rapport.afficher_menu_rapport()
-            
-            entree = input("Faites votre choix : ")   
+            rapport.afficher_menu_rapport()          
+            entree = input("Faites votre choix : ")
             
             # Liste de tous les joueurs par ordre alphabétique
-            if entree == "1":    
+            if entree == "1":                   
                 rapport_joueur = ControllersRapport()
-                rapport_joueur.affichage_joueur()
-                
-                input("Appuyer sur une touche pour revenir au menu")
-                self.menu_rapport()
+                rapport_joueur.affichage_joueur()            
+                retour = ViewsAccueil()
+                retour.retour_au_menu()
             
             # Liste de tous les tournois      
-            elif entree == "2":
+            elif entree == "2":            
                 rapport_tournoi = ControllersRapport()
-                rapport_tournoi.affichage_tournoi()
-                
-                input("Appuyer sur une touche pour revenir au menu")      
-                self.menu_rapport()
+                rapport_tournoi.affichage_tournoi()             
+                retour = ViewsAccueil()
+                retour.retour_au_menu()
             
             # Liste des tournois terminés       
-            elif entree == "3":
+            elif entree == "3":            
                 rapport_tournoi_termine = ControllersRapport()
-                rapport_tournoi_termine.afficher_details_tournoi()
-                
-                input("Appuyer sur une touche pour revenir au menu")
-                self.menu_rapport()
+                rapport_tournoi_termine.afficher_details_tournoi()            
+                retour = ViewsAccueil()
+                retour.retour_au_menu()
             
             # Retour        
             elif entree == "4":
-                self.accueil_principal()
+                break
                 
             else:
-                print("Erreur ! Veuillez saisir un chiffre entre 1 et 4")
+                accueil = ViewsAccueil()
+                accueil.afficher_msg_erreur()
  
-            
-    def creer_tournoi(self):
-        
-        creation_tournoi = ControllersTournois()
-        creation_tournoi.recuperer_entree_tournoi()
-        creation_tournoi.afficher_les_tournois()
-        
 
-    def lancer_nouveau_tournoi(self):
-        
-        tournoi = ControllersApplication()
-        tournoi.fusion_tournoi_avec_joueurs()
-        tournoi.afficher_tournoi_en_cours()
-        tournoi.lancer_nouveau_tournoi()
-       
-            
-    def lancer_tournoi_existant(self):
-        
-        tournoi_existant = ControllersApplicationTournoi()
-        tournoi_existant.recuperation_tournois_existant()
-        
-    
-    def creer_joueur(self):
-        
-        creation_joueur = ControllersJoueurs()
-        creation_joueur.recuperer_entree_joueur()
-        creation_joueur.afficher_des_joueurs()
-
-
-    def afficher_classement_joueurs(self):
-        
-        classement_joueurs = ControllersJoueurs()
-        classement_joueurs.trier_joueurs_par_score()
-          
-
-    
-    
     

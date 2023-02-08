@@ -89,23 +89,5 @@ def creation_joueur_classement():
             print('erreur - veuillez réessayer')
  
  
-# def creation_autre_joueur():
 
-#     try:           
-#         nouveau_joueur = input('Voulez vous créer un nouveau joueur? oui(o) / non(n)')
-        
-#         if nouveau_joueur == 'o':
-#             return True
-#         elif nouveau_joueur == 'n':
-#             return False
-#         else:
-#             print("Entrée non valide. Veuillez taper 'o' pour oui et 'n' pour non.")
-#             return creation_autre_joueur()
-          
-#     except ValueError:
-#         print('erreur - veuillez réessayer')
-
-
-
-            
 
