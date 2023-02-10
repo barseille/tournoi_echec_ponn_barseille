@@ -1,4 +1,5 @@
-from views.views_rapport_menu import ViewsRapportMenu
+# from views.views_rapport_menu import ViewsRapportMenu
+from views.views_menu_tournoi import ViewsMenuTournoi
 import json
 
 class ControllersRapport:
@@ -24,9 +25,12 @@ class ControllersRapport:
     
     def affichage_tournoi(self):
         
-        print('-'*70)
+        afficher_tournoi = ViewsMenuTournoi()
+        afficher_tournoi.afficher_les_tournois()
+        
+        print('-'*60)
         print('                 -- Liste de tous les tournois --')
-        print('-'*70)
+        print('-'*60)
         
         with open("data/liste_tournois.json", "r") as f:
             liste_tournois_data = json.load(f)

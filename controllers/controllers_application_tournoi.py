@@ -1,53 +1,33 @@
-
+from views.views_tournoi_existant import ViewsTournoiExistant
+from views.accueil import ViewsAccueil
 import json
 import random
 from datetime import datetime
 
 class ControllersApplicationTournoi:
-
+    
     def recuperation_tournois_existant(self):
-        
-        self.liste_des_joueurs = []
-        
-        with open("data/tournois_inacheves.json", "r") as f:
-            data = json.load(f)
-            if not data["tournois_inacheves"]:
-                print("Il n'y a aucun tournoi !")
-                return
-            i = 1
-            for i, tournoi in enumerate(data["tournois_inacheves"]):
-                print(f'{i + 1}. Nom du tournoi: {tournoi["nom"]} - Dates: {tournoi["dates"]}')
-                i += 1
 
         while True:
-                
-            choix_tournoi = int(input("Quel tournoi souhaitez-vous continuer (numéro index) ? ")) 
-            self.tournoi_selectionne = data["tournois_inacheves"][choix_tournoi-1]
-            
-            print('-'*60)
-            print("            -- Informations du tournoi --")
-            print('-'*60)   
-            print(f'Nom du tournoi : {self.tournoi_selectionne["nom"]}')
-            print(f'Lieu : {self.tournoi_selectionne["lieu"]}')
-            print(f'Dates : {self.tournoi_selectionne["dates"]}')
-            print(f'Description : {self.tournoi_selectionne["description"]}')
-            print(f'Mode de jeu : {self.tournoi_selectionne["mode_de_jeu"]}')     
-            print('-'*60)
-            print("                   -- Joueurs --")
-            print('-'*60)
+                      
+            tournoi = ViewsTournoiExistant()
+            tournoi.chercher_tournois_existant()
+            if not tournoi.tournoi_selectionne:
+                break
+            self.tournoi_selectionne = tournoi.tournoi_selectionne 
+           
+            self.liste_des_joueurs = []
             
             for joueur in self.tournoi_selectionne["joueurs"]:
-                print(f'{joueur["prenom"]} {joueur["nom"]}')
                 self.liste_des_joueurs.append(joueur)
                 
-            self.nb_rounds_effectues = len(self.tournoi_selectionne["liste_de_rounds"]) 
-            print(f"Nombre de rounds effectués : {self.nb_rounds_effectues} Round(s)")
-            
+            self.nb_rounds_effectues = len(self.tournoi_selectionne["liste_de_rounds"])         
             self.nombre_de_rounds_restants = self.tournoi_selectionne["nombres_de_rounds"] - self.nb_rounds_effectues
-            print(f"Nombre de rounds restants : {self.nombre_de_rounds_restants} Round(s)")
-            
+     
             choix = input("Souhaitez-vous continuer ce tournoi (o/n) ? ")
             if choix == "o":
+        
+            
                 self.continuer_tournoi()
                 break
             elif choix == "n":
@@ -61,16 +41,14 @@ class ControllersApplicationTournoi:
         
         self.liste_des_joueurs.sort(key=lambda x: x["score"], reverse=True)
    
-       
-        
+           
     def continuer_tournoi(self):
-        
-        # self.liste_de_rounds = []
         
         for i in range(self.nombre_de_rounds_restants):
             print(f"         -- ROUND {i + 1 + self.nb_rounds_effectues}/{self.tournoi_selectionne['nombres_de_rounds']} --")
             
             self.lancer_matchs()
+            
             date_debut = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             date_fin = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             
@@ -82,31 +60,23 @@ class ControllersApplicationTournoi:
                     "points": self.liste_de_matchs
                     }
     
-            # self.liste_de_rounds.append(round_info)
             self.tournoi_selectionne['liste_de_rounds'].append(self.liste_de_rounds)
             if i + 1 != self.nombre_de_rounds_restants:
                 
-                choix = input("Voulez vous passer au round suivant ? (o/n) : ")
+                choix = input("Voulez vous passer au round suivant ? o(oui) ou taper une touche pour quitter : ")
                 
                 if choix != "o":
-                    
-                    # self.tournoi_selectionne['liste_de_rounds'].append(self.liste_de_rounds)
-                    
-                    # print(self.tournoi_selectionne['liste_de_rounds'])
-                    
+
                     with open("data/tournois_inacheves.json", "r+") as f:
-                        tournoi_en_cours = json.load(f)
-                        tournoi_en_cours["tournois_inacheves"].append(self.tournoi_selectionne)
+                        tournoi_selectionne = json.load(f)
+                        tournoi_selectionne["tournois_inacheves"].append(self.tournoi_selectionne)
                         f.seek(0)
-                        json.dump(tournoi_en_cours, f, indent=4)
+                        json.dump(tournoi_selectionne, f, indent=4)
                         
                     self.effacer_tournoi_termine()
                     break
                 
         else:
-            
-            # self.tournoi_selectionne['liste_de_rounds'].append(self.liste_de_rounds)
-            
             
             with open("data/historique_tournois.json", "r+") as f:
                 tournoi_fini = json.load(f)
@@ -116,15 +86,17 @@ class ControllersApplicationTournoi:
  
             self.effacer_tournoi_termine()
             
-            print('-'*60)
-            print("                -- Tournoi terminé -- ")
-            print('-'*60)
+        tournoi_termine = ViewsAccueil()
+        tournoi_termine.affichage_tournoi_termine
+            
+       
         
         
     def lancer_matchs(self):
         
  
-        self.trier_les_joueurs_par_score()      
+        self.trier_les_joueurs_par_score()   
+      
         self.liste_de_paire = []
         self.liste_de_matchs_infos = []
 
@@ -185,15 +157,15 @@ class ControllersApplicationTournoi:
                 self.liste_de_matchs_infos.append(match_dict)
         
         
-            # Réinitialiser la liste "matchs" du tournoi
-            self.liste_de_matchs = []
-            
-            # Pour chaque joueur du tournoi, ajouter ses informations dans la liste "matchs"
-            for joueur in self.tournoi_selectionne['joueurs']:
-                nom = joueur['nom']
-                score = joueur['score']
-                self.liste_de_matchs.append((nom, score))
-                print(f"Joueur {nom} = {score}")
+        # Réinitialiser la liste "matchs" du tournoi
+        self.liste_de_matchs = []
+        
+        # Pour chaque joueur du tournoi, ajouter ses informations dans la liste "matchs"
+        for joueur in self.tournoi_selectionne['joueurs']:
+            nom = joueur['nom']
+            score = joueur['score']
+            self.liste_de_matchs.append((nom, score))
+            print(f"Joueur {nom} = {score}")
                 
                 
     def effacer_tournoi_termine(self):
@@ -214,13 +186,3 @@ class ControllersApplicationTournoi:
             json.dump(data, f, indent=4)
             
             
-            
-    # def sauvegarde_round_termine(self, tournoi_inacheve, dossier="tournois_inacheves.json"):
-    #     """ Sérialisation du tournoi inachevé """
-        
-    #     with open(dossier, 'r+') as f :
-    #         tournois_inacheves = json.load(f)
-    #         tournois_inacheves["tournois_inacheves"].append(tournoi_inacheve)
-    #         f.seek(0)
-    #         json.dump(tournois_inacheves, f, indent=4) 
-        

@@ -1,17 +1,15 @@
 from views.views_menu_joueur import ViewsMenuJoueur
 from views.accueil import ViewsAccueil
 from views.views_menu_tournoi import ViewsMenuTournoi
+from views.views_rapport_menu import ViewsRapportMenu
 from controllers.controllers_joueurs import ControllersJoueurs
 from controllers.controllers_tournois import ControllersTournois
-from views.views_rapport_menu import ViewsRapportMenu
 from controllers.controllers_application import ControllersApplication
 from controllers.controllers_application_tournoi import ControllersApplicationTournoi
-from controllers.controllers_rapport import ControllersRapport
 import sys
 
 
-class ControllerMain:
-    
+class ControllersMain:
     
     def accueil_principal(self):
         
@@ -43,21 +41,24 @@ class ControllerMain:
             menu_tournoi.afficher_menu_tournoi()
             entree = input("Faites votre choix : ")
 
+            # Créer tournoi et afficher les tournois
             if entree == "1":            
                 creation_tournoi = ControllersTournois()
                 creation_tournoi.recuperer_entree_tournoi()
-                creation_tournoi.afficher_les_tournois()
-                
+                afficher_tournois = ViewsMenuTournoi()
+                afficher_tournois.afficher_les_tournois()
+            
+            # Lancer un tournoi    
             elif entree == "2":             
                 tournoi = ControllersApplication()
                 tournoi.fusion_tournoi_avec_joueurs()
-                tournoi.afficher_tournoi_en_cours()
                 tournoi.lancer_nouveau_tournoi()
                 
                
-            elif entree == "3":               
-                tournoi_existant = ControllersApplicationTournoi()
-                tournoi_existant.recuperation_tournois_existant()
+            elif entree == "3":              
+                tournoi_trouve = ControllersApplicationTournoi()
+                tournoi_trouve.recuperation_tournois_existant()
+     
                 
             
             elif entree == "4": 
@@ -111,21 +112,21 @@ class ControllerMain:
             
             # Liste de tous les joueurs par ordre alphabétique
             if entree == "1":                   
-                rapport_joueur = ControllersRapport()
+                rapport_joueur = ViewsRapportMenu()
                 rapport_joueur.affichage_joueur()            
                 retour = ViewsAccueil()
                 retour.retour_au_menu()
             
             # Liste de tous les tournois      
             elif entree == "2":            
-                rapport_tournoi = ControllersRapport()
+                rapport_tournoi = ViewsRapportMenu()
                 rapport_tournoi.affichage_tournoi()             
                 retour = ViewsAccueil()
                 retour.retour_au_menu()
             
             # Liste des tournois terminés       
             elif entree == "3":            
-                rapport_tournoi_termine = ControllersRapport()
+                rapport_tournoi_termine = ViewsRapportMenu()
                 rapport_tournoi_termine.afficher_details_tournoi()            
                 retour = ViewsAccueil()
                 retour.retour_au_menu()

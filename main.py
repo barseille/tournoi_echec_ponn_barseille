@@ -1,9 +1,9 @@
-from controllers.controller_main import ControllerMain
+from controllers.controllers_main import ControllersMain
 
 
 def main():
     
-    demarrer = ControllerMain()
+    demarrer = ControllersMain()
     demarrer.accueil_principal()
     
 if __name__ == "__main__":

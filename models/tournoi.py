@@ -27,8 +27,7 @@ class Tournoi:
                               }
         return tournoi_serialiser
   
-    def affichage_tournoi_termine(self):
-        pass
+ 
 
 
 

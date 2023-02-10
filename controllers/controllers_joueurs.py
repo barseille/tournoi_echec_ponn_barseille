@@ -115,20 +115,6 @@ class ControllersJoueurs:
             return self.joueurs_selectionnes
         
         
-    # def trier_joueurs_par_score(self):
-        
-    #     with open("data/liste_joueurs.json", "r") as f:        
-    #         liste_joueurs = json.load(f)
-        
-    #     liste_joueurs_triee = sorted(liste_joueurs["liste_joueurs"], key=lambda x: x["classement"]) 
-        
-    #     print('-'*60)
-    #     print('              -- Classement par score -- ') 
-    #     print('-'*60) 
-         
-    #     for joueur in liste_joueurs_triee:
-    #         print(f"{joueur['classement']} - {joueur['prenom']} {joueur['nom']}")
-            
 
 
         
