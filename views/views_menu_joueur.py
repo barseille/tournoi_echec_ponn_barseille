@@ -25,6 +25,12 @@ class ViewsMenuJoueur:
         print('-'*60)
         print("                -- Création Joueur --")
         print('-'*60)
+        
+    def affichage_creation_joueur_reussi(self):     
+        print('Joueur créé avec succès !')
+        
+    def affichage_erreur_creation(self):     
+        print("Erreur : Veuillez entrer 'o' pour créer un autre joueur ou 'n' pour quitter.")
     
     
     def afficher_des_joueurs(self):

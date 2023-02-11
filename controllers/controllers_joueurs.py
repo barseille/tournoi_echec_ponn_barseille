@@ -5,47 +5,66 @@ import json
 
 class ControllersJoueurs:
     
-
     def recuperer_entree_joueur(self):
-        """ sérialiser les entrées joueurs"""
-        
+        """ Récupère les entrées utilisateur pour créer un nouveau joueur """
+
+        # Affiche le menu de création de joueur
         creer_joueur = ViewsMenuJoueur()
         creer_joueur.affichage_creation_joueur()
-        
 
-        
-        while True:                    
+        while True:
+
+            # Récupère les informations du joueur
             self.nom = entree_joueur.creation_joueur_nom()
             self.prenom = entree_joueur.creation_joueur_prenom()
             self.date_de_naissance = entree_joueur.creation_joueur_date_de_naissance()
             self.genre = entree_joueur.creation_joueur_genre()
             self.classement = entree_joueur.creation_joueur_classement()
-            
+
             joueur = Joueur(self.nom,
                             self.prenom,
                             self.date_de_naissance,
                             self.genre,
                             self.classement)
-            
+
+            # Récupère la liste des joueurs existants
+            try:
+                with open("data/liste_joueurs.json", "r") as f:
+                    joueurs = json.load(f)["liste_joueurs"]
+            except FileNotFoundError:
+                joueurs = []
+
+            """ 
+            On choisit la valeur de la clé indentifiant du dernier joueur
+            et on convertit en entier pour 'incrémenter de 1
+            """
+            if joueurs:
+                dernier_identifiant = int(joueurs[-1]["identifiant"][1:])
+                self.identifiant_joueur = f"j{dernier_identifiant + 1}"
+            else:
+                # S'il n'y a pas de joueurs enregistrés, alors l'id du 1er joueur sera j1.
+                self.identifiant_joueur = "j1"
+
+            # Sérialise les informations du joueur
             joueur_serialiser = joueur.serialiser()
+            joueur_serialiser["identifiant"] = self.identifiant_joueur
             self.ecrire_json(joueur_serialiser, "data/liste_joueurs.json") 
-            
- 
-      
+
+            # Demande si l'utilisateur souhaite créer un autre joueur
             autre_joueur = ""
             while True:
                 autre_joueur = input("Souhaitez vous créer un autre joueur ? (o/n) : ")
-                if autre_joueur in ["o", "n"]:      
+                if autre_joueur in ["o", "n"]:
                     break
                 else:
-                    print("Erreur : Veuillez entrer 'o' pour créer un autre joueur ou 'n' pour quitter.")
+                    msg_erreur = ViewsMenuJoueur()
+                    msg_erreur.affichage_erreur_creation()
 
-            if autre_joueur == "o":
-                print('Créer un nouveau joueur : ')
+            # Quitte la boucle si l'utilisateur ne souhaite pas créer un autre joueur
             if autre_joueur == "n":
-                print('Joueur créé avec succès !')
+                joueur_cree = ViewsMenuJoueur()
+                joueur_cree.affichage_creation_joueur_reussi()
                 break
-            
 
  
     def ecrire_json(self, joueur_serialiser, dossier = 'data/liste_joueurs.json'):

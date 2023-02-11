@@ -1,6 +1,8 @@
 
 class Joueur:
     
+  
+    
     def __init__(self, nom, prenom, date_de_naissance, genre, classement):
         
         self.nom = nom
@@ -14,6 +16,7 @@ class Joueur:
     def serialiser(self):
 
         joueur_serialiser = {
+            # "identifiant": 0,
             'nom': self.nom,
             'prenom': self.prenom,
             'date_de_naissance': self.date_de_naissance,
