@@ -107,24 +107,35 @@ class ViewsMenuJoueur:
         return self.liste_des_joueurs
     
     
-    
     def associer_joueurs(self):
   
         self.liste_de_paire = []
         self.liste_de_matchs_infos = []
+        self.rencontres = {}
        
         # Pour chaque paire de joueurs, lancer un match
         for i in range(0, len(self.liste_des_joueurs), 2):
-            self.joueur1 = self.liste_des_joueurs[i]
+            self.joueur1 = self.liste_des_joueurs[i]      
             self.joueur2 = self.liste_des_joueurs[i + 1]
             paire = (self.joueur1, self.joueur2)
             self.liste_de_paire.append(paire)
+
     
         # Lancer chaque match de la liste
         for i, match in enumerate(self.liste_de_paire):
             self.joueur1 = match[0]
             self.joueur2 = match[1] 
-                
+            id_joueur1 = self.joueur1["id"]
+            id_joueur2 = self.joueur2["id"]
+            self.rencontres[id_joueur1] = []
+            self.rencontres[id_joueur2] = []
+            self.rencontres[id_joueur1].append(id_joueur2)
+            self.rencontres[id_joueur2].append(id_joueur1)
+            
+            print(self.rencontres)
+            
+         
+    
             print('-'*60)
             print(f"Match n°{i + 1} : {self.joueur1['prenom']} {self.joueur1['nom']} (J1) VS {self.joueur2['prenom']} {self.joueur2['nom']} (J2) :")
             print('-'*60)
@@ -138,22 +149,23 @@ class ViewsMenuJoueur:
                 # Ajouter les informations sur le match à la liste de matchs
                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
                 self.liste_de_matchs_infos.append(match_dict)
-                  
+                
+                
             elif choix == "2":
                 self.joueur2["score"] += 1
                 print(f"Résultat du match : {self.joueur2['prenom']} {self.joueur2['nom']} a gagné !")
                 
-                 # Ajouter les informations sur le match à la liste de matchs
+                # Ajouter les informations sur le match à la liste de matchs
                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
                 self.liste_de_matchs_infos.append(match_dict)
-       
+    
                 
             elif choix == "3":
                 self.gagnant = random.choice([self.joueur1, self.joueur2])
                 self.gagnant["score"] += 1        
                 print(f"Résultat du match : {self.gagnant['prenom']} {self.gagnant['nom']} a gagné aléatoirement !")
 
-                 # Ajouter les informations sur le match à la liste de matchs
+                # Ajouter les informations sur le match à la liste de matchs
                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
                 self.liste_de_matchs_infos.append(match_dict)               
                                     
@@ -162,11 +174,19 @@ class ViewsMenuJoueur:
                 self.joueur2["score"] += 0.5
                 print("Match nul !")
                 
-                 # Ajouter les informations sur le match à la liste de matchs
+                # Ajouter les informations sur le match à la liste de matchs
                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
                 self.liste_de_matchs_infos.append(match_dict)
                 
+        print(self.rencontres)   
+                
         return self.liste_de_matchs_infos
+    
+    
+
+    
+    
+
         
         
         

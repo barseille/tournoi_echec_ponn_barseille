@@ -58,8 +58,7 @@ class ControllersMain:
             elif entree == "3":              
                 tournoi_trouve = ControllersApplicationTournoi()
                 tournoi_trouve.recuperation_tournois_existant()
-     
-                
+            
             
             elif entree == "4": 
                 break         

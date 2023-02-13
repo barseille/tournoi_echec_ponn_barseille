@@ -35,11 +35,11 @@ class ControllersJoueurs:
                 joueurs = []
 
             """ 
-            On choisit la valeur de la clé indentifiant du dernier joueur
+            On choisit la valeur de la clé identifiant du dernier joueur
             et on convertit en entier pour 'incrémenter de 1
             """
             if joueurs:
-                dernier_identifiant = int(joueurs[-1]["identifiant"][1:])
+                dernier_identifiant = int(joueurs[-1]["id"][1:])
                 self.identifiant_joueur = f"j{dernier_identifiant + 1}"
             else:
                 # S'il n'y a pas de joueurs enregistrés, alors l'id du 1er joueur sera j1.
@@ -47,7 +47,7 @@ class ControllersJoueurs:
 
             # Sérialise les informations du joueur
             joueur_serialiser = joueur.serialiser()
-            joueur_serialiser["identifiant"] = self.identifiant_joueur
+            joueur_serialiser["id"] = self.identifiant_joueur
             self.ecrire_json(joueur_serialiser, "data/liste_joueurs.json") 
 
             # Demande si l'utilisateur souhaite créer un autre joueur
