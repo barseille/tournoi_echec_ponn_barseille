@@ -1,5 +1,5 @@
 import json
-import random
+from .base_views import BaseViews
 
 JOUEUR_OPTIONS = (
     'Créer un joueur',
@@ -10,24 +10,25 @@ JOUEUR_OPTIONS = (
 
 class ViewsMenuJoueur:
     
-    liste_des_joueurs = [] 
+    liste_des_joueurs = []
+    rencontres = {} 
        
     def afficher_menu_joueur(self):
-        print("-"*60) 
-        print("                -- Menu Joueur --")  
-        print("-"*60) 
+        
+        titre = "                -- Menu Joueur --"
+        affiche = BaseViews()
+        affiche.presentation(titre)
 
         for elt in JOUEUR_OPTIONS:
             print(JOUEUR_OPTIONS.index(elt) + 1, '-', elt)
             
     def affichage_creation_joueur(self):
         
-        print('-'*60)
-        print("                -- Création Joueur --")
-        print('-'*60)
+        titre = "                -- Création Joueur --"
+        affiche = BaseViews()
+        affiche.presentation(titre)
         
-    def affichage_creation_joueur_reussi(self):     
-        print('Joueur créé avec succès !')
+
         
     def affichage_erreur_creation(self):     
         print("Erreur : Veuillez entrer 'o' pour créer un autre joueur ou 'n' pour quitter.")
@@ -36,9 +37,10 @@ class ViewsMenuJoueur:
     def afficher_des_joueurs(self):
         """ désérialisation la liste des joueurs """
         
-        print('-'*60)
-        print('               -- Liste des joueurs --')
-        print('-'*60)
+        
+        titre = "               -- Liste des joueurs --"
+        affiche = BaseViews()
+        affiche.presentation(titre)
         
            
         with open("data/liste_joueurs.json", "r") as f:        
@@ -47,8 +49,8 @@ class ViewsMenuJoueur:
         for index, joueur in enumerate(liste_joueurs["liste_joueurs"]):
             print(f" - Joueur n°{index + 1} : {joueur['prenom']} {joueur['nom']}")
             print(f"                Date de naissance : {joueur['date_de_naissance']}")
-            print(f"                Genre : {joueur['genre']} - Classement : {joueur['classement']}")
             print(f"                Classement : {joueur['classement']}")
+            print(f"                Identifiant : {joueur['id']}")
             
             
     def trier_joueurs_par_score(self):
@@ -58,9 +60,10 @@ class ViewsMenuJoueur:
         
         liste_joueurs_triee = sorted(liste_joueurs["liste_joueurs"], key=lambda x: x["classement"]) 
         
-        print('-'*60)
-        print('              -- Classement par score -- ') 
-        print('-'*60) 
+        titre = "              -- Classement par score -- "
+        affiche = BaseViews()
+        affiche.presentation(titre)
+
          
         for joueur in liste_joueurs_triee:
             print(f"{joueur['classement']} - {joueur['prenom']} {joueur['nom']}")
@@ -89,103 +92,30 @@ class ViewsMenuJoueur:
                     
                     # Vérifier si le joueur a déjà été sélectionné
                     if joueur_selectionne in self.liste_des_joueurs:
-                        print("Ce joueur a déjà été sélectionné. Veuillez en sélectionner un autre.")
+                        print("Ce joueur a déjà été sélectionné. Veuillez en sélectionner un autre joueur.")
                     else:
                         self.liste_des_joueurs.append(joueur_selectionne)
-                        print("Joueur ajouté !")
+                        print("Joueur ajouté avec succès !")
                         i += 1
                 except ValueError:
                     print("Veuillez entrer un nombre entier valide")
-                    
-            print('-'*60)
-            print("         -- Liste des joueurs sélectionnés --")
-            print('-'*60)
+                except IndexError:
+                        print("L'index choisi n'est pas valide")
+                        
+            titre = "         -- Liste des joueurs sélectionnés --"
+            affiche = BaseViews()
+            affiche.presentation(titre)                       
+
+
             
             for i, joueur in enumerate(self.liste_des_joueurs):
                 print(f"Joueur {i+1}: {joueur['nom']}")
                 
         return self.liste_des_joueurs
+        
     
     
-    def associer_joueurs(self):
-  
-        self.liste_de_paire = []
-        self.liste_de_matchs_infos = []
-        self.rencontres = {}
-       
-        # Pour chaque paire de joueurs, lancer un match
-        for i in range(0, len(self.liste_des_joueurs), 2):
-            self.joueur1 = self.liste_des_joueurs[i]      
-            self.joueur2 = self.liste_des_joueurs[i + 1]
-            paire = (self.joueur1, self.joueur2)
-            self.liste_de_paire.append(paire)
-
-    
-        # Lancer chaque match de la liste
-        for i, match in enumerate(self.liste_de_paire):
-            self.joueur1 = match[0]
-            self.joueur2 = match[1] 
-            id_joueur1 = self.joueur1["id"]
-            id_joueur2 = self.joueur2["id"]
-            self.rencontres[id_joueur1] = []
-            self.rencontres[id_joueur2] = []
-            self.rencontres[id_joueur1].append(id_joueur2)
-            self.rencontres[id_joueur2].append(id_joueur1)
-            
-            print(self.rencontres)
-            
-         
-    
-            print('-'*60)
-            print(f"Match n°{i + 1} : {self.joueur1['prenom']} {self.joueur1['nom']} (J1) VS {self.joueur2['prenom']} {self.joueur2['nom']} (J2) :")
-            print('-'*60)
-
-            choix = input("Choisissez le gagnant du match (1 pour J1, 2 pour J2, ENTREE pour égalité ou 3 pour aléatoire) : ") 
-
-            if choix == "1":
-                self.joueur1["score"] += 1
-                print(f"Résultat du match : {self.joueur1['prenom']} {self.joueur1['nom']} a gagné !")
-                
-                # Ajouter les informations sur le match à la liste de matchs
-                match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
-                self.liste_de_matchs_infos.append(match_dict)
-                
-                
-            elif choix == "2":
-                self.joueur2["score"] += 1
-                print(f"Résultat du match : {self.joueur2['prenom']} {self.joueur2['nom']} a gagné !")
-                
-                # Ajouter les informations sur le match à la liste de matchs
-                match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
-                self.liste_de_matchs_infos.append(match_dict)
-    
-                
-            elif choix == "3":
-                self.gagnant = random.choice([self.joueur1, self.joueur2])
-                self.gagnant["score"] += 1        
-                print(f"Résultat du match : {self.gagnant['prenom']} {self.gagnant['nom']} a gagné aléatoirement !")
-
-                # Ajouter les informations sur le match à la liste de matchs
-                match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
-                self.liste_de_matchs_infos.append(match_dict)               
-                                    
-            else:
-                self.joueur1["score"] += 0.5
-                self.joueur2["score"] += 0.5
-                print("Match nul !")
-                
-                # Ajouter les informations sur le match à la liste de matchs
-                match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
-                self.liste_de_matchs_infos.append(match_dict)
-                
-        print(self.rencontres)   
-                
-        return self.liste_de_matchs_infos
-    
-    
-
-    
-    
+ 
 
         
         

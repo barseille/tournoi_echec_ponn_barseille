@@ -87,7 +87,39 @@ def creation_joueur_classement():
                 
         except ValueError:
             print('erreur - veuillez réessayer')
- 
- 
+            
+def ajout_identifiant():
+    
+    with open("data/liste_joueurs.json", "r") as f:
+        data = json.load(f)
+        
+        id_existant = []
+        
+        for id in data['liste_joueurs']:
+            id_existant.append(id['id'])
+            
+    while True:
+        """
+        méthode isdigit() est une fonction Python qui s'applique à une chaîne de caractères 
+        et vérifie si tous les caractères de cette chaîne sont des chiffres.
+        Elle retourne True si la chaîne est constituée uniquement de chiffres, 
+        sinon elle retourne False
+        """
 
+        id = input("Entrez un nombre à 5 chiffres : ")
+        if id.isdigit() and len(id) == 5:
+            id = "AB" + id
+            if id not in id_existant:
+                return id
+            else:
+                print("Cet identifiant existe déjà. Veuillez en choisir un autre.")
+        else:
+            print("Erreur : Veuillez entrer exactement 5 chiffres.")
 
+ 
+    
+   
+    
+   
+
+ 

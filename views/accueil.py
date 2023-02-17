@@ -18,30 +18,30 @@ class ViewsAccueil:
             print(OPTIONS.index(elt) + 1 , '-', elt)
             
             
-    def afficher_msg_erreur(self): 
-        print("Erreur ! Veuillez saisir le chiffre correspondant à l'index")
+    # def afficher_msg_erreur(self): 
+    #     print("Erreur ! Veuillez saisir le chiffre correspondant à l'index")
   
         
-    def retour_au_menu(self):   
-        input("Appuyez sur une touche pour revenir au menu")
+    # def retour_au_menu(self):   
+    #     input("Appuyez sur une touche pour revenir au menu")
         
 
-    def affichage_accueil_tournoi(self):
+    # def affichage_accueil_tournoi(self):
         
-        print('-'*60)
-        print('        -- Liste des tournois -- ')
-        print('-'*60)
+    #     print('-'*60)
+    #     print('        -- Liste des tournois -- ')
+    #     print('-'*60)
         
-    def affichage_accueil_joueur(self):
+    # def affichage_accueil_joueur(self):
         
-        print('-'*60)
-        print('        -- Liste des joueurs -- ')
-        print('-'*60)
+    #     print('-'*60)
+    #     print('        -- Liste des joueurs -- ')
+    #     print('-'*60)
         
         
-    def affichage_tournoi_termine(self):
+    # def affichage_tournoi_termine(self):
          
-        print('                *** Tournoi terminé ***')
+    #     print('                *** Tournoi terminé ***')
         
  
      

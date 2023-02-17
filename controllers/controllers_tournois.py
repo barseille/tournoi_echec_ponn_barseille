@@ -2,9 +2,10 @@ import  views.views_entree_tournoi as entree_tournoi
 from views.views_menu_tournoi import ViewsMenuTournoi
 from models.tournoi import Tournoi
 import json
+from views.base_views import BaseViews
 
 
-class ControllersTournois: 
+class ControllersTournois(BaseViews): 
     
    
     def recuperer_entree_tournoi(self):
@@ -37,13 +38,21 @@ class ControllersTournois:
                 if autre_tournoi in ["o", "n"]:
                     break
                 else:
-                    print("Erreur : Veuillez entrer 'o' pour créer un autre tournoi ou 'n' pour quitter.")
+                    affiche = BaseViews()
+                    affiche.affichage_erreur()
                     
-            if autre_tournoi == "o":        
-                print('Créer un nouveau tournoi : ')
+                    
+            if autre_tournoi == "o": 
+                msg = "Créer un nouveau tournoi : "  
+                affiche = BaseViews()
+                affiche.afficher_msg(msg)    
+                
                 
             elif autre_tournoi == "n":
-                print('Tournoi sauvegarder avec succès !')
+                msg = "Tournoi sauvegarder avec succès !"  
+                affiche = BaseViews()
+                affiche.afficher_msg(msg)
+
                 break
                 
             

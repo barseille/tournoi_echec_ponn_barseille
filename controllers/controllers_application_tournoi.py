@@ -1,10 +1,12 @@
 from views.views_tournoi_existant import ViewsTournoiExistant
-from views.accueil import ViewsAccueil
 import json
 import random
 from datetime import datetime
+from views.base_views import BaseViews
 
-class ControllersApplicationTournoi:
+
+
+class ControllersApplicationTournoi():
     
     def recuperation_tournois_existant(self):
 
@@ -23,18 +25,26 @@ class ControllersApplicationTournoi:
                 
             self.nb_rounds_effectues = len(self.tournoi_selectionne["liste_de_rounds"])         
             self.nombre_de_rounds_restants = self.tournoi_selectionne["nombres_de_rounds"] - self.nb_rounds_effectues
-     
-            choix = input("Souhaitez-vous continuer ce tournoi (o/n) ? ")
-            if choix == "o":
-        
-            
-                self.continuer_tournoi()
-                break
-            elif choix == "n":
-                break
-            else:
-                print("Veuillez entrer 'oui' ou 'non'")
+
+            while True:
+                try:
+                    choix = input("Souhaitez-vous continuer ce tournoi (o/n) ? ")
+                    if choix == "o":    
+                        self.continuer_tournoi()
+                        break
+                    elif choix == "n":
+                        return
+                    else:
+                        affiche = BaseViews()
+                        affiche.affichage_erreur()
+                    
+                    
+                except IndexError:
+                    affiche = BaseViews()
+                    affiche.affichage_erreur_numero()
             break
+             
+                
        
        
     def trier_les_joueurs_par_score(self):
@@ -45,8 +55,12 @@ class ControllersApplicationTournoi:
     def continuer_tournoi(self):
         
         for i in range(self.nombre_de_rounds_restants):
-            print(f"         -- ROUND {i + 1 + self.nb_rounds_effectues}/{self.tournoi_selectionne['nombres_de_rounds']} --")
+            affiche_round = f"         -- ROUND {i + 1 + self.nb_rounds_effectues}/{self.tournoi_selectionne['nombres_de_rounds']} --"
+            affiche = BaseViews()
+            affiche.afficher_msg(affiche_round)
             
+            # lancer = ControllersApplication()
+            # lancer.lancer_matchs()
             self.lancer_matchs()
             
             date_debut = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
@@ -85,12 +99,11 @@ class ControllersApplicationTournoi:
                 json.dump(tournoi_fini, f, indent=4)
  
             self.effacer_tournoi_termine()
-            
-        tournoi_termine = ViewsAccueil()
-        tournoi_termine.affichage_tournoi_termine
-            
-       
+
         
+        termine = BaseViews()
+        termine.affichage_tournoi_termine()
+           
         
     def lancer_matchs(self):
         
@@ -108,21 +121,27 @@ class ControllersApplicationTournoi:
             paire = (self.joueur1, self.joueur2)
             self.liste_de_paire.append(paire)
             
+            
+            joueur1_gagne = f"Résultat du match : {self.joueur1['prenom']} {self.joueur1['nom']} a gagné !"
+            joueur2_gagne = f"Résultat du match : {self.joueur2['prenom']} {self.joueur2['nom']} a gagné !"         
+            match_nul = "Match nul !"
+            
     
         # Lancer chaque match de la liste
         for i, match in enumerate(self.liste_de_paire):
             self.joueur1 = match[0]
             self.joueur2 = match[1]
                 
-            print('-'*60)
-            print(f"Match n°{i + 1} : {self.joueur1['prenom']} {self.joueur1['nom']} (J1) VS {self.joueur2['prenom']} {self.joueur2['nom']} (J2) :")
-            print('-'*60)
+            affichage = f"Match n°{i + 1} : {self.joueur1['prenom']} {self.joueur1['nom']} (J1) VS {self.joueur2['prenom']} {self.joueur2['nom']} (J2) :"
+            affichage_joueur = BaseViews()
+            affichage_joueur.presentation(affichage)
 
             choix = input("Choisissez le gagnant du match (1 pour J1, 2 pour J2, ENTREE pour égalité ou 3 pour aléatoire) : ") 
 
             if choix == "1":
                 self.joueur1["score"] += 1
-                print(f"Résultat du match : {self.joueur1['prenom']} {self.joueur1['nom']} a gagné !")
+                affiche = BaseViews()
+                affiche.afficher_msg(joueur1_gagne)
                 
                 # Ajouter les informations sur le match à la liste de matchs
                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
@@ -130,7 +149,8 @@ class ControllersApplicationTournoi:
                 
             elif choix == "2":
                 self.joueur2["score"] += 1
-                print(f"Résultat du match : {self.joueur2['prenom']} {self.joueur2['nom']} a gagné !")
+                affiche = BaseViews()
+                affiche.afficher_msg(joueur2_gagne)
                 
                 # Ajouter les informations sur le match à la liste de matchs
                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
@@ -139,9 +159,12 @@ class ControllersApplicationTournoi:
                 
             elif choix == "3":
                 self.gagnant = random.choice([self.joueur1, self.joueur2])
-                self.gagnant["score"] += 1        
-                print(f"Résultat du match : {self.gagnant['prenom']} {self.gagnant['nom']} a gagné aléatoirement !")
-
+                self.gagnant["score"] += 1  
+                joueur_aleatoire = f"Résultat du match : {self.gagnant['prenom']} {self.gagnant['nom']} a gagné aléatoirement !"
+      
+                affiche = BaseViews()
+                affiche.afficher_msg(joueur_aleatoire)  
+                
                 # Ajouter les informations sur le match à la liste de matchs
                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
                 self.liste_de_matchs_infos.append(match_dict)               
@@ -150,7 +173,8 @@ class ControllersApplicationTournoi:
             else:
                 self.joueur1["score"] += 0.5
                 self.joueur2["score"] += 0.5
-                print("Match nul !")
+                affiche = BaseViews()
+                affiche.afficher_msg(match_nul)  
                 
                 # Ajouter les informations sur le match à la liste de matchs
                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
@@ -165,7 +189,9 @@ class ControllersApplicationTournoi:
             nom = joueur['nom']
             score = joueur['score']
             self.liste_de_matchs.append((nom, score))
-            print(f"Joueur {nom} = {score}")
+            msg = f"Joueur {nom} = {score}"
+            affichage_score = BaseViews()
+            affichage_score.afficher_msg(msg)
                 
                 
     def effacer_tournoi_termine(self):
