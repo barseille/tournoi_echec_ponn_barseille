@@ -29,8 +29,8 @@ class ControllersTournois(BaseViews):
                               self.description,
                               self.mode_de_jeu)  
             
-            tournoi_serialiser = tournoi.serialiser()
-            self.ecrire_json(tournoi_serialiser, "data/liste_tournois.json")   
+            tournoi_infos = tournoi.afficher_tournoi()
+            self.ecrire_json(tournoi_infos, "data/liste_tournois.json")   
             
             autre_tournoi = ""  
             while True:      
@@ -56,14 +56,14 @@ class ControllersTournois(BaseViews):
                 break
                 
             
-    def ecrire_json(self, tournoi_serialiser, dossier ='data/liste_tournois.json'):
+    def ecrire_json(self, tournoi_infos, dossier ='data/liste_tournois.json'):
         
         """
-        La méthode prend en premier argument un dictionnaire (tournoi_serialiser) 
+        La méthode prend en premier argument un dictionnaire (tournoi_infos) 
         et en second argument (optionnel) le fichier JSON où enregistrer les données du tournoi.
         Elle ouvre le fichier JSON en mode lecture/écriture ('r+').
         Elle charge les données du fichier JSON dans un dictionnaire (liste_tournois).
-        Elle ajoute tournoi_serialiser à liste_tournois.
+        Elle ajoute tournoi_infos à liste_tournois.
         Elle remet le curseur de fichier au début (f.seek(0)) 
         et écrit le dictionnaire modifié dans le fichier JSON en utilisant la fonction json.dump.
 
@@ -71,7 +71,7 @@ class ControllersTournois(BaseViews):
         
         with open(dossier,'r+') as f:    
             liste_tournois = json.load(f)
-            liste_tournois["liste_tournois"].append(tournoi_serialiser)        
+            liste_tournois["liste_tournois"].append(tournoi_infos)        
             f.seek(0)  
             json.dump(liste_tournois, f, indent=4)
 

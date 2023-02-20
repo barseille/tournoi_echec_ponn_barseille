@@ -85,9 +85,11 @@ class ControllersMain:
             # créer un joueur et afficher tous les joueurs
             if entree == "1":          
                 creation_joueur = ControllersJoueurs()
-                creation_joueur.recuperer_entree_joueur()   
-                afficher = ViewsMenuJoueur()
-                afficher.afficher_des_joueurs()
+                creation_joueur.recuperer_infos_joueur()   
+                # creation_joueur.afficher_infos_joueur()
+                # afficher = ViewsMenuJoueur()
+                # afficher.afficher_des_joueurs()
+                
                 retour = BaseViews()
                 retour.retour_au_menu()
                 
@@ -95,6 +97,7 @@ class ControllersMain:
             elif entree == "2":          
                 classement_joueurs = ViewsMenuJoueur()
                 classement_joueurs.trier_joueurs_par_score()
+                
                 retour = BaseViews()
                 retour.retour_au_menu()
                 
