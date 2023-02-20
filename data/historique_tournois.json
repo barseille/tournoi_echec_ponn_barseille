@@ -1,5 +1,325 @@
 {
     "liste_des_tournois_en_cours": [
-       
+        {
+            "nom": "festival disneyland",
+            "lieu": "dubai",
+            "dates": "12/12/2022",
+            "nombres_de_rounds": 4,
+            "description": "coupe",
+            "mode_de_jeu": "bullet",
+            "id": "ce6802aa-b6b3-4e7d-978d-6070a839c5a4",
+            "joueurs": [
+                {
+                    "nom": "jordan",
+                    "prenom": "michael",
+                    "date_de_naissance": "18/05/1960",
+                    "classement": 1,
+                    "score": 4,
+                    "id": "AB00008"
+                },
+                {
+                    "nom": "vandamme",
+                    "prenom": "jean-claude",
+                    "date_de_naissance": "25/12/1981",
+                    "classement": 2,
+                    "score": 3,
+                    "id": "AB00004"
+                },
+                {
+                    "nom": "messi",
+                    "prenom": "lionel",
+                    "date_de_naissance": "11/11/1990",
+                    "classement": 3,
+                    "score": 2,
+                    "id": "AB00006"
+                },
+                {
+                    "nom": "keys",
+                    "prenom": "alicia",
+                    "date_de_naissance": "16/06/1990",
+                    "classement": 4,
+                    "score": 2,
+                    "id": "AB00007"
+                },
+                {
+                    "nom": "enzo",
+                    "prenom": "ferrari",
+                    "date_de_naissance": "12/12/1945",
+                    "classement": 5,
+                    "score": 2,
+                    "id": "AB00005"
+                },
+                {
+                    "nom": "lee",
+                    "prenom": "bruce",
+                    "date_de_naissance": "27/01/1981",
+                    "classement": 6,
+                    "score": 2,
+                    "id": "AB00001"
+                },
+                {
+                    "nom": "tyson",
+                    "prenom": "mike",
+                    "date_de_naissance": "27/02/1982",
+                    "classement": 7,
+                    "score": 1,
+                    "id": "AB00002"
+                },
+                {
+                    "nom": "ali",
+                    "prenom": "mohammed",
+                    "date_de_naissance": "23/12/1985",
+                    "classement": 8,
+                    "score": 0,
+                    "id": "AB00003"
+                }
+            ],
+            "liste_de_rounds": [
+                {
+                    "numero_round": 1,
+                    "date_debut": "17/02/2023 18:40:06",
+                    "date_fin": "17/02/2023 18:40:06",
+                    "matchs": [
+                        {
+                            "joueur1": "jordan",
+                            "joueur2": "keys",
+                            "score": "1 - 0"
+                        },
+                        {
+                            "joueur1": "vandamme",
+                            "joueur2": "lee",
+                            "score": "1 - 0"
+                        },
+                        {
+                            "joueur1": "messi",
+                            "joueur2": "tyson",
+                            "score": "1 - 0"
+                        },
+                        {
+                            "joueur1": "enzo",
+                            "joueur2": "ali",
+                            "score": "1 - 0"
+                        }
+                    ],
+                    "points": [
+                        [
+                            "jordan",
+                            1
+                        ],
+                        [
+                            "keys",
+                            0
+                        ],
+                        [
+                            "vandamme",
+                            1
+                        ],
+                        [
+                            "lee",
+                            0
+                        ],
+                        [
+                            "messi",
+                            1
+                        ],
+                        [
+                            "tyson",
+                            0
+                        ],
+                        [
+                            "enzo",
+                            1
+                        ],
+                        [
+                            "ali",
+                            0
+                        ]
+                    ]
+                },
+                {
+                    "numero_round": 2,
+                    "date_debut": "17/02/2023 18:40:09",
+                    "date_fin": "17/02/2023 18:40:09",
+                    "matchs": [
+                        {
+                            "joueur1": "jordan",
+                            "joueur2": "vandamme",
+                            "score": "2 - 1"
+                        },
+                        {
+                            "joueur1": "messi",
+                            "joueur2": "enzo",
+                            "score": "2 - 1"
+                        },
+                        {
+                            "joueur1": "keys",
+                            "joueur2": "lee",
+                            "score": "1 - 0"
+                        },
+                        {
+                            "joueur1": "tyson",
+                            "joueur2": "ali",
+                            "score": "1 - 0"
+                        }
+                    ],
+                    "points": [
+                        [
+                            "jordan",
+                            2
+                        ],
+                        [
+                            "vandamme",
+                            1
+                        ],
+                        [
+                            "messi",
+                            2
+                        ],
+                        [
+                            "enzo",
+                            1
+                        ],
+                        [
+                            "keys",
+                            1
+                        ],
+                        [
+                            "lee",
+                            0
+                        ],
+                        [
+                            "tyson",
+                            1
+                        ],
+                        [
+                            "ali",
+                            0
+                        ]
+                    ]
+                },
+                {
+                    "numero_round": 3,
+                    "date_debut": "17/02/2023 18:40:12",
+                    "date_fin": "17/02/2023 18:40:12",
+                    "matchs": [
+                        {
+                            "joueur1": "jordan",
+                            "joueur2": "messi",
+                            "score": "3 - 2"
+                        },
+                        {
+                            "joueur1": "vandamme",
+                            "joueur2": "enzo",
+                            "score": "2 - 1"
+                        },
+                        {
+                            "joueur1": "keys",
+                            "joueur2": "tyson",
+                            "score": "2 - 1"
+                        },
+                        {
+                            "joueur1": "lee",
+                            "joueur2": "ali",
+                            "score": "1 - 0"
+                        }
+                    ],
+                    "points": [
+                        [
+                            "jordan",
+                            3
+                        ],
+                        [
+                            "messi",
+                            2
+                        ],
+                        [
+                            "vandamme",
+                            2
+                        ],
+                        [
+                            "enzo",
+                            1
+                        ],
+                        [
+                            "keys",
+                            2
+                        ],
+                        [
+                            "tyson",
+                            1
+                        ],
+                        [
+                            "lee",
+                            1
+                        ],
+                        [
+                            "ali",
+                            0
+                        ]
+                    ]
+                },
+                {
+                    "numero_round": 4,
+                    "date_debut": "17/02/2023 18:40:15",
+                    "date_fin": "17/02/2023 18:40:15",
+                    "matchs": [
+                        {
+                            "joueur1": "jordan",
+                            "joueur2": "messi",
+                            "score": "4 - 2"
+                        },
+                        {
+                            "joueur1": "vandamme",
+                            "joueur2": "keys",
+                            "score": "3 - 2"
+                        },
+                        {
+                            "joueur1": "enzo",
+                            "joueur2": "tyson",
+                            "score": "2 - 1"
+                        },
+                        {
+                            "joueur1": "lee",
+                            "joueur2": "ali",
+                            "score": "2 - 0"
+                        }
+                    ],
+                    "points": [
+                        [
+                            "jordan",
+                            4
+                        ],
+                        [
+                            "messi",
+                            2
+                        ],
+                        [
+                            "vandamme",
+                            3
+                        ],
+                        [
+                            "keys",
+                            2
+                        ],
+                        [
+                            "enzo",
+                            2
+                        ],
+                        [
+                            "tyson",
+                            1
+                        ],
+                        [
+                            "lee",
+                            2
+                        ],
+                        [
+                            "ali",
+                            0
+                        ]
+                    ]
+                }
+            ]
+        }
     ]
 }

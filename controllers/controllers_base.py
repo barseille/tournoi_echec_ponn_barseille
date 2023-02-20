@@ -8,7 +8,7 @@ from datetime import datetime
 from views.base_views import BaseViews
 
 
-class ControllersApplication():
+class ControllersBase():
     
 
         
@@ -23,7 +23,7 @@ class ControllersApplication():
         accueil_tournoi = "        -- Liste des tournois -- "
         affiche = BaseViews()
         affiche.presentation(accueil_tournoi)
-   
+
         tournoi = ViewsMenuTournoi()
         tournoi.selectionner_tournoi()
         self.tournoi_en_cours = tournoi.tournoi_selectionne
@@ -31,7 +31,7 @@ class ControllersApplication():
          # Affichage des joueurs et sélection des joueurs
         accueil_joueur = "        -- Liste des joueurs -- "
         affiche.presentation(accueil_joueur)
-   
+
         joueur = ViewsMenuJoueur()
         joueur.selectionner_participants()
         self.liste_des_joueurs = joueur.liste_des_joueurs
@@ -70,10 +70,7 @@ class ControllersApplication():
                 self.trier_les_joueurs_par_score()
                 
 
-            # Associer les joueurs et lancer le match
-            # associer_joueur = ViewsMenuJoueur()
-            # associer_joueur.associer_joueurs()
-            # self.liste_de_matchs_infos = associer_joueur.liste_de_matchs_infos
+ 
             self.lancer_matchs()
             
             date_debut = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
@@ -282,5 +279,30 @@ class ControllersApplication():
 
         with open("data/liste_joueurs.json", "w") as f:
             json.dump(liste_joueurs, f, indent=4)  
+            
+            
+import json
+
+def charger_et_ecrire_json(objet_json, chemin_fichier):
+    """ Chargement d'un objet JSON depuis un fichier, modification de l'objet,
+        puis écriture de l'objet modifié dans le même fichier """
+    try:
+        with open(chemin_fichier, 'r+') as f:
+            contenu_fichier = json.load(f)
+            
+    except FileNotFoundError:
+        # Si le fichier n'existe pas, on crée un objet JSON vide
+        contenu_fichier = {}
+
+    contenu_fichier.update(objet_json)
+
+    try:
+        with open(chemin_fichier, 'w') as f:
+            json.dump(contenu_fichier, f, indent=4)
+    except:
+        print("Erreur lors de l'écriture du fichier JSON")
+
+    return contenu_fichier
+            
             
             

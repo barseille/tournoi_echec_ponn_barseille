@@ -1,7 +1,11 @@
 import json
 import datetime
+from .base_views import BaseViews
 
 GENRE = ("homme", "femme")
+# erreur = ""
+# erreur = BaseViews()
+# erreur.affichage_erreur()
 
 
 def creation_joueur_nom():

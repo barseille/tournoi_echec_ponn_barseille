@@ -6,6 +6,8 @@ from controllers.controllers_joueurs import ControllersJoueurs
 from controllers.controllers_tournois import ControllersTournois
 from controllers.controllers_application import ControllersApplication
 from controllers.controllers_application_tournoi import ControllersApplicationTournoi
+from views.base_views import BaseViews
+from controllers.controllers_base import ControllersBase
 import sys
 
 
@@ -14,6 +16,7 @@ class ControllersMain:
     def accueil_principal(self):
         
         while True:
+            
             accueil = ViewsAccueil()
             accueil.accueil_principal()
             choix = input("Choisissez (1, 2, 3 ou 'q' pour quitter la partie): ")
@@ -30,8 +33,10 @@ class ControllersMain:
             elif choix == "q":           
                 sys.exit()
                 
-            else:            
-                accueil.afficher_msg_erreur()         
+            else: 
+                affiche = BaseViews()
+                affiche.affichage_erreur_numero()           
+          
         
     # Menu tournoi
     def menu_principal_tournoi(self):
@@ -50,7 +55,7 @@ class ControllersMain:
             
             # Lancer un tournoi    
             elif entree == "2":             
-                tournoi = ControllersApplication()
+                tournoi = ControllersBase()
                 tournoi.fusion_tournoi_avec_joueurs()
                 tournoi.lancer_nouveau_tournoi()
                 
@@ -64,8 +69,8 @@ class ControllersMain:
                 break         
                 
             else:
-                accueil = ViewsAccueil()
-                accueil.afficher_msg_erreur()
+                affiche = BaseViews()
+                affiche.affichage_erreur_numero()  
                            
                 
     # Menu joueur
@@ -83,14 +88,14 @@ class ControllersMain:
                 creation_joueur.recuperer_entree_joueur()   
                 afficher = ViewsMenuJoueur()
                 afficher.afficher_des_joueurs()
-                retour = ViewsAccueil()
+                retour = BaseViews()
                 retour.retour_au_menu()
                 
             # classement des joueurs par score
             elif entree == "2":          
                 classement_joueurs = ViewsMenuJoueur()
                 classement_joueurs.trier_joueurs_par_score()
-                retour = ViewsAccueil()
+                retour = BaseViews()
                 retour.retour_au_menu()
                 
             # retour à l'accueil
@@ -98,8 +103,8 @@ class ControllersMain:
                 break   
                     
             else:
-                accueil = ViewsAccueil()
-                accueil.afficher_msg_erreur()
+                affiche = BaseViews()
+                affiche.affichage_erreur_numero()  
                              
                 
     def menu_rapport(self):
@@ -113,21 +118,21 @@ class ControllersMain:
             if entree == "1":                   
                 rapport_joueur = ViewsRapportMenu()
                 rapport_joueur.affichage_joueur()            
-                retour = ViewsAccueil()
+                retour = BaseViews()
                 retour.retour_au_menu()
             
             # Liste de tous les tournois      
             elif entree == "2":            
                 rapport_tournoi = ViewsRapportMenu()
                 rapport_tournoi.affichage_tournoi()             
-                retour = ViewsAccueil()
+                retour = BaseViews()
                 retour.retour_au_menu()
             
             # Liste des tournois terminés       
             elif entree == "3":            
                 rapport_tournoi_termine = ViewsRapportMenu()
                 rapport_tournoi_termine.afficher_details_tournoi()            
-                retour = ViewsAccueil()
+                retour = BaseViews()
                 retour.retour_au_menu()
             
             # Retour        
@@ -135,8 +140,8 @@ class ControllersMain:
                 break
                 
             else:
-                accueil = ViewsAccueil()
-                accueil.afficher_msg_erreur()
+                affiche = BaseViews()
+                affiche.affichage_erreur_numero()  
  
 
     

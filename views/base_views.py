@@ -22,6 +22,9 @@ class BaseViews:
         
     def affichage_tournoi_termine(self):     
         print('                *** Tournoi terminé ***')
+        
+    def retour_au_menu(self):   
+        input("Appuyez sur ENTREE pour revenir au menu")
             
         
     
