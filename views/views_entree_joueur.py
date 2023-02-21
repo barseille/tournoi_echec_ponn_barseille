@@ -1,8 +1,10 @@
 import datetime
 from .base_views import BaseViews
+from models.joueur import Joueur
+from database.database import Database
 
 
-class ViewsEntreeJoueur:
+class ViewsEntreeJoueur(BaseViews):
 
     def creation_joueur_nom(self):       
         try:
@@ -11,14 +13,12 @@ class ViewsEntreeJoueur:
         except ValueError:
             print('erreur - veuillez réessayer')
 
-
     def creation_joueur_prenom(self):        
         try:
             prenom = input('Entrez votre prénom : ')
             return prenom
         except ValueError:
             print('erreur - veuillez réessayer')
-
 
     def creation_joueur_date_de_naissance(self):    
         try:
@@ -29,39 +29,32 @@ class ViewsEntreeJoueur:
             print("La date entrée n'est pas valide, veuillez la saisir au format jj/mm/aaaa.")
             return
 
-
     def creation_joueur_classement(self):  
         
         # Ouvrir le fichier liste_joueurs.json
-        data_joueur = BaseViews()
-        data = data_joueur.lire_fichier_json("data/liste_joueurs.json")
+        data = self.sauvegarde()
          
-        classements_existants = []
-        
+        classements_existants = []       
         for joueur in data['liste_joueurs']:
             classements_existants.append(joueur['classement'])     
                 
         while True:
             try:      
                 classement = int(input("Entrez le numéro du joueur dans le classement : "))
-            
                 if classement not in classements_existants:
                     return classement 
                 else:
                     print("Le numéro de classement existe déjà. Veuillez réessayer.")
-                    continue
-                    
+                    continue         
             except ValueError:
                 print('erreur - veuillez réessayer')
                 
-    def ajout_identifiant(self):  
-        
+    def ajout_identifiant(self):     
+     
         # Ouvrir le fichier liste_joueurs.json
-        data_joueur = BaseViews()
-        data = data_joueur.lire_fichier_json("data/liste_joueurs.json")
+        data = self.sauvegarde()
           
-        id_existant = []
-        
+        id_existant = [] 
         for id in data['liste_joueurs']:
             id_existant.append(id['id'])
                 
@@ -82,9 +75,30 @@ class ViewsEntreeJoueur:
                     print("Cet identifiant existe déjà. Veuillez en choisir un autre.")
             else:
                 print("Erreur : Veuillez entrer exactement 5 chiffres.")
+                
+    def sauvegarde(self):
+        
+        data_joueur = Database()
+        data = data_joueur.lire_database(chemin_fichier="data/liste_joueurs.json")
+        return data
+                
+    def infos_joueur(self):
+        """ Afficher les informations joueurs dans un dictionnaire """
+        
+        self.nom = self.creation_joueur_nom()
+        self.prenom = self.creation_joueur_prenom()
+        self.date_de_naissance = self.creation_joueur_date_de_naissance()
+        self.classement = self.creation_joueur_classement()
+        self.id_joueur = self.ajout_identifiant()
+           
+        joueur = Joueur(self.nom,
+                        self.prenom,
+                        self.date_de_naissance,
+                        self.classement,
+                        self.id_joueur)
 
- 
-    
+        self.joueur_creer = joueur.afficher_infos()
+        return self.joueur_creer
    
     
    

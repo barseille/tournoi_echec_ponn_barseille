@@ -1,39 +1,8 @@
 import json
 
-class BaseViews:
+class Database:
     
-    def afficher_msg(self, msg):   
-        print(msg)
-
-        
-    def presentation(self, affichage):       
-            print('-'*60)
-            print(affichage)
-            print('-'*60)
-        
-        
-    def affichage_erreur(self):     
-        print('Erreur! Veuillez saisir "o" pour oui ou "n" pour quitter.')
-   
-    
-    def  affichage_erreur_type(self):
-        print("Erreur ! Veuillez entrer un nombre entier valide")
-   
-        
-    def affichage_erreur_numero(self):
-        print("Erreur ! Veuillez saisir le numéro correspondant")
-    
-        
-    def affichage_tournoi_termine(self):     
-        print('                *** Terminé ! ***')
-    
-        
-    def retour_au_menu(self):   
-        input("Appuyez sur ENTREE pour revenir au menu")
-    
-        
-
-    def ecrire_json(self, infos, cle, fichier):
+    def ecrire_database(self, infos, cle, chemin_fichier):
         """
         Cette méthode prend :
         - en 1er argument les données à sauvergarder (infos), 
@@ -46,7 +15,7 @@ class BaseViews:
         puis réécrit le fichier avec les données mises à jour en utilisant
         la fonction json.dump. Enfin, elle retourne les données.
         """
-        with open(fichier, 'r+') as f:
+        with open(chemin_fichier, 'r+') as f:
             donnees = json.load(f)
             donnees[cle].append(infos)
             f.seek(0)
@@ -55,7 +24,7 @@ class BaseViews:
         
 
 
-    def lire_fichier_json(self, chemin_fichier):
+    def lire_database(self, chemin_fichier):
         """
         Lit un fichier JSON à partir d'un chemin de fichier donné 
         en entrée et renvoie les données sous forme de dictionnaire
@@ -63,12 +32,5 @@ class BaseViews:
         
         with open(chemin_fichier, "r") as f:
             data = json.load(f)
-        return data
-
-
-
-            
-        
+        return data   
     
-        
-        

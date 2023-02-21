@@ -1,4 +1,5 @@
 from .base_views import BaseViews
+from database.database import Database
 
 JOUEUR_OPTIONS = (
     'Créer un joueur',
@@ -8,24 +9,24 @@ JOUEUR_OPTIONS = (
 )
 
 
-class ViewsMenuJoueur:
+class ViewsMenuJoueur(BaseViews):
     
-    liste_des_joueurs = []
-    rencontres = {} 
+    def __init__(self):
+        self.liste_des_joueurs = []
+        self.rencontre = {}
        
     def afficher_menu_joueur(self):
         
         titre = "                -- Menu Joueur --"
-        self.presentatation(titre)
+        self.presentation(titre)
     
-
         for elt in JOUEUR_OPTIONS:
             print(JOUEUR_OPTIONS.index(elt) + 1, '-', elt)
             
     def affichage_creation_joueur(self):
         
         titre = "                -- Création Joueur --"
-        self.presentatation(titre)
+        self.presentation(titre)
         
         
     def affichage_erreur_creation(self):     
@@ -37,47 +38,44 @@ class ViewsMenuJoueur:
         """ Informations détaillées sur les joueurs """
         
         titre = "               -- Liste des joueurs --"
-        self.presentatation(titre)
+        self.presentation(titre)
         
         # Ouvrir le fichier liste_joueurs.json
-        data_joueur = BaseViews()
-        liste_joueurs = data_joueur.lire_fichier_json("data/liste_joueurs.json")
+        liste_joueurs = self.sauvegarde()
          
         for index, joueur in enumerate(liste_joueurs["liste_joueurs"]):
             print(f" - Joueur n°{index + 1} : {joueur['prenom']} {joueur['nom']}")
             print(f"                Date de naissance : {joueur['date_de_naissance']}")
             print(f"                Classement : {joueur['classement']}")
-            print(f"                Identifiant : {joueur['id']}")
+            print(f"                Identifiant : {joueur['id']}\n")
             
             
     def trier_joueurs_par_score(self):
         
         # Ouvrir le fichier liste_joueurs.json
-        data_joueur = BaseViews()
-        liste_joueurs = data_joueur.lire_fichier_json("data/liste_joueurs.json")
+        liste_joueurs = self.sauvegarde()
         
         liste_joueurs_triee = sorted(liste_joueurs["liste_joueurs"], key=lambda x: x["classement"]) 
         
         titre = "              -- Classement par score -- "
-        self.presentatation(titre)
-
+        self.presentation(titre)
          
         for joueur in liste_joueurs_triee:
             print(f"{joueur['classement']} - {joueur['prenom']} {joueur['nom']}")
             
  
     def selectionner_participants(self):
- 
-        data_joueur = BaseViews()
-        liste_joueurs = data_joueur.lire_fichier_json("data/liste_joueurs.json")
+        
+        # Ouvrir le fichier liste_joueurs.json
+        liste_joueurs = self.sauvegarde()
                 
-        # Récupérer la liste des joueurs
+        # Récupérer la clé liste des joueurs
         liste_joueurs = liste_joueurs['liste_joueurs']
         
         for i, joueur in enumerate(liste_joueurs):
             print(f"Joueur {i+1}: {joueur['nom']}")     
         
-        # Demander à l'utilisateur combien de joueurs il souhaite sélectionner
+        # L'utilisateur doit choisir 8 joueurs
         nombre_joueurs = 8
         print(f"Sélectionnez {nombre_joueurs} joueurs :")
         
@@ -100,7 +98,7 @@ class ViewsMenuJoueur:
                     print("L'index choisi n'est pas valide")
                     
         titre = "         -- Liste des joueurs sélectionnés --"
-        self.presentatation(titre)                     
+        self.presentation(titre)                     
  
         for i, joueur in enumerate(self.liste_des_joueurs):
             print(f"Joueur {i+1}: {joueur['nom']}")
@@ -108,17 +106,19 @@ class ViewsMenuJoueur:
         return self.liste_des_joueurs
     
     
-    def presentatation(self, titre):
+    def presentation(self, titre):
         affiche = BaseViews()
         affiche.presentation(titre)
         
-    # def lire_joueurs_json(self):
-    #     # Ouvrir le fichier liste_joueurs.json
-    #     data_joueur = BaseViews()
-    #     liste_joueurs = data_joueur.lire_fichier_json("data/liste_joueurs.json")
-        
-    
-    
+    def affichage_joueur_creer(self):
+        print("Joueur créé avec succès !")
+                
+    def sauvegarde(self):
+        data_joueur = Database()
+        data = data_joueur.lire_database(chemin_fichier="data/liste_joueurs.json")
+        return data
+            
+  
  
 
         
