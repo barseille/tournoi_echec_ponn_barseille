@@ -1,5 +1,5 @@
-import json
 import datetime
+from .base_views import BaseViews
 
 
 class ViewsEntreeJoueur:
@@ -31,13 +31,15 @@ class ViewsEntreeJoueur:
 
 
     def creation_joueur_classement(self):  
-        with open("data/liste_joueurs.json", "r") as f:
-            data = json.load(f)
-            
-            classements_existants = []
-            
-            for joueur in data['liste_joueurs']:
-                classements_existants.append(joueur['classement'])     
+        
+        # Ouvrir le fichier liste_joueurs.json
+        data_joueur = BaseViews()
+        data = data_joueur.lire_fichier_json("data/liste_joueurs.json")
+         
+        classements_existants = []
+        
+        for joueur in data['liste_joueurs']:
+            classements_existants.append(joueur['classement'])     
                 
         while True:
             try:      
@@ -52,14 +54,16 @@ class ViewsEntreeJoueur:
             except ValueError:
                 print('erreur - veuillez réessayer')
                 
-    def ajout_identifiant(self):      
-        with open("data/liste_joueurs.json", "r") as f:
-            data = json.load(f)
-            
-            id_existant = []
-            
-            for id in data['liste_joueurs']:
-                id_existant.append(id['id'])
+    def ajout_identifiant(self):  
+        
+        # Ouvrir le fichier liste_joueurs.json
+        data_joueur = BaseViews()
+        data = data_joueur.lire_fichier_json("data/liste_joueurs.json")
+          
+        id_existant = []
+        
+        for id in data['liste_joueurs']:
+            id_existant.append(id['id'])
                 
         while True:
             """

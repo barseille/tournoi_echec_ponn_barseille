@@ -35,11 +35,12 @@ class ControllersJoueurs:
         
         # sauvegarder les informations du joueur(données, clé, chemin)
         self.sauvergarde()
-        self.demande_autre_joueur()
         
-        # return self.joueur_infos
+        # Demande à l'utilisateur s'il veut créer un autre joueur
+        self.demande_autre_joueur()
  
     def demande_autre_joueur(self):
+        
             while True:
                 choix = input("Souhaitez vous créer un autre joueur ? (o/n) : ")
                 if choix == "o":
