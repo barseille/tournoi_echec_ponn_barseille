@@ -197,9 +197,9 @@ class ControllersApplication():
             nom = joueur['nom']
             score = joueur['score']
             self.liste_de_matchs.append((nom, score))
-            msg = f"Joueur {nom} = {score}"
-            affichage_score = BaseViews()
-            affichage_score.afficher_msg(msg)
+            # msg = f"Joueur {nom} = {score}"
+            # affichage_score = BaseViews()
+            # affichage_score.afficher_msg(msg)
             
                 
     def tournois_inacheves(self):

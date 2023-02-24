@@ -1,6 +1,6 @@
-import json
 
-
+from .base_views import BaseViews
+from database.database import Database
 
 TOURNOI_OPTIONS = (
     'Créer un nouveau tournoi',
@@ -9,67 +9,40 @@ TOURNOI_OPTIONS = (
     'Retour'
 )
 
-class ViewsMenuTournoi:
+class ViewsMenuTournoi(BaseViews):
     
     def afficher_menu_tournoi(self):
         
-        print("-"*60)
-        print("              -- Menu Tournoi --")
-        print("-"*60)
+        titre = "                -- Menu Tournoi --"
+        super().presentation(titre)
 
         print("Faites votre choix : ")
   
         for elt in TOURNOI_OPTIONS:
             print(TOURNOI_OPTIONS.index(elt) + 1, '-', elt)
             
-    
-    def selectionner_tournoi_existant(self):
-        try:
-            entree = int(input("Saisir le numéro du tournoi : "))
-            if entree > 0:
-                return entree
-            else:
-                print("Veuillez saisir le numéro correspondant ! ")
-        except ValueError:
-            print("Veuillez saisir le numéro correspondant !")
-  
             
     def affichage_creation_tournoi(self):
+        titre = "                -- Création Tournoi --"
+        super().presentation(titre)
         
-        print('-'*60)
-        print("                -- Création Tournoi --")
-        print('-'*60)
-     
         
     def afficher_les_tournois(self):
         """deserialiser la liste des tournois"""
         
-        print('-'*60)
-        print('                -- Liste des tournois --')
-        print('-'*60)
+        titre = "                -- Liste des tournois --"
+        super().presentation(titre)
         
-        with open ("data/liste_tournois.json", "r") as f:
-            self.liste_tournois = json.load(f)       
-    
-        # Accéder aux index, aux clés et aux valeurs d'un dictionnaire
-        for index, tournoi in enumerate(self.liste_tournois["liste_tournois"]):
-            print(f"Tournoi n°{index} : {tournoi['nom']}")
-            print(f"              Date(s) : {tournoi['dates']}")
-            print(f"              Lieu : {tournoi['lieu']}")
-            print(f"              Nombres de rounds : {tournoi['nombres_de_rounds']}")
-            print(f"              Description : {tournoi['description']}")
-            print(f"              Mode de jeu : {tournoi['mode_de_jeu']}\n")
-    
+        data = Database()
+        self.data_tournois = data.lire_database("data/liste_tournois.json")
+    #     self.selectionner_tournoi()
+      
             
-    def selectionner_tournoi(self):
+    # def selectionner_tournoi(self):
         """ afficher la liste des tournois"""
-        
-        # Charger le fichier JSON dans une variable
-        with open('data/liste_tournois.json', 'r') as f:
-            tournois_data = json.load(f)
-
-        # Récupérer la liste des tournois
-        self.liste_tournois = tournois_data['liste_tournois']
+  
+        # Accéder à la clé "liste_tournoi" dans database
+        self.liste_tournois = self.data_tournois['liste_tournois']
 
         # Afficher la liste des tournois
         for i, tournoi in enumerate(self.liste_tournois):
@@ -79,32 +52,51 @@ class ViewsMenuTournoi:
         while True:
             try:
                 choix_tournoi = int(input("Choisissez un tournoi par son index: "))
-                self.tournoi_selectionne = self.liste_tournois[choix_tournoi -1]
+                self.tournoi = self.liste_tournois[choix_tournoi -1]
                 break
             except ValueError:
-                print("Veuillez entrer un nombre entier valide")
+                super().affichage_erreur_type()
             except IndexError:
-                print("L'index choisi n'est pas valide")
+                super().affichage_erreur_numero()
+        
+        self.affichage_infos_tournoi()
+        
+        return self.tournoi
+    
 
+    
+    def affichage_infos_tournoi(self):
         
-        print('-'*60)
-        print("         -- Informations du Tournoi sélectionné --")
-        print('-'*60)
+        titre = "         -- Informations du Tournoi sélectionné --"
+        super().presentation(titre)
         
-        print(f"Nom du tournoi : {self.tournoi_selectionne['nom']}")
-        print(f"Lieu du tournoi : {self.tournoi_selectionne['lieu']}")
-        print(f"Date(s) du tournoi : {self.tournoi_selectionne['dates']}")
-        print(f"Nombres de rounds : {self.tournoi_selectionne['nombres_de_rounds']}")
-        print(f"Description : {self.tournoi_selectionne['description']}")
-        print(f"Mode de jeu : {self.tournoi_selectionne['mode_de_jeu']}")
-      
-        return self.tournoi_selectionne
+        print(f"Nom du tournoi : {self.tournoi['nom']}")
+        print(f"Lieu du tournoi : {self.tournoi['lieu']}")
+        print(f"Date(s) du tournoi : {self.tournoi['dates']}")
+        print(f"Nombres de rounds : {self.tournoi['nombres_de_rounds']}")
+        print(f"Description : {self.tournoi['description']}")
+        print(f"Mode de jeu : {self.tournoi['mode_de_jeu']}")
+  
+        
+    def selectionner_tournoi_existant(self):
+        try:
+            entree = int(input("Saisir le numéro du tournoi : "))
+            if entree > 0:
+                return entree
+            else:
+                super().affichage_erreur_numero()
+        except ValueError:
+            super().affichage_erreur_type()
 
 
 
     
  
-            
+    def affichage_resultats(self):
+        
+            joueur1 = f"Résultat du match : {joueur1['prenom']} {joueur1['nom']} a gagné !"
+            joueur2 = f"Résultat du match : {joueur2['prenom']} {joueur2['nom']} a gagné !"         
+            match_nul = "Match nul !"          
 
     
     

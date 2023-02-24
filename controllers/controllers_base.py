@@ -1,6 +1,11 @@
 from views.views_menu_tournoi import ViewsMenuTournoi
 from views.views_menu_joueur import ViewsMenuJoueur
-from views.accueil import ViewsAccueil
+from .controllers_joueurs import ControllersJoueurs
+from .controllers_tournois import ControllersTournois
+from models.tournoi import Tournoi
+from models.round import Round
+from models.match import Match
+
 import random
 import uuid
 import json
@@ -10,37 +15,153 @@ from views.base_views import BaseViews
 
 class ControllersBase():
     
-
+    def __init__(self):
+        self.joueur1 = None
+        self.joueur2 = None
+        self.controllers_joueurs = ControllersJoueurs()
+        self.controllers_tournois = ControllersTournois()
+        self.views_menu_joueur = ViewsMenuJoueur()
+        self.views_menu_tournoi = ViewsMenuTournoi()
+        self.paires_precedentes = []
+        self.match = Match(self.joueur1, self.joueur2)
+        self.match_info = []
+       
         
     def fusion_tournoi_avec_joueurs(self):
-        "sérialiser les tournois avec ses participants"
-        
-        
-        # Génération d'un identifiant unique
+        # Générer un identifiant unique pour le tournoi
         id_tournoi = str(uuid.uuid4())
+
+        # Demander à l'utilisateur de sélectionner un tournoi
+        views_tournoi = self.views_menu_tournoi
+        tournoi_selectionne = views_tournoi.afficher_les_tournois()
+
+        # Demander à l'utilisateur de sélectionner les joueurs
+        views_joueurs = self.views_menu_joueur
+        joueurs_selectionnes = views_joueurs.selectionner_participants()
         
-        # Affichage des tournois et sélection d'un tournoi
-        accueil_tournoi = "        -- Liste des tournois -- "
+        # Ajouter l'identifiant unique au tournoi sélectionné
+        tournoi_selectionne["id"] = id_tournoi
+
+        # Ajouter les joueurs sélectionnés au tournoi sélectionné
+        tournoi_selectionne["joueurs"] = joueurs_selectionnes
+
+        # Enregistrer le tournoi mis à jour dans la variable self.tournoi
+        self.tournoi = tournoi_selectionne
+        
+        self.joueur1 = self.tournoi["joueurs"][0]
+        self.joueur2 = self.tournoi["joueurs"][1]
+
+  
+    def lancer_round(self):
+        
+        rounds = Round(self.tournoi["nombres_de_rounds"])
+        
+        for i in range(self.tournoi["nombres_de_rounds"]):
+            msg = f"                   -- ROUND {i + 1}/{self.tournoi['nombres_de_rounds']} --"
+            titre = BaseViews()
+            titre.presentation(msg)
+
+            # rounds.temps_round()
+            if i == 0:
+                # Mélanger les joueurs pour le premier round
+                random.shuffle(self.tournoi["joueurs"])
+            else:
+                # Trier les joueurs par score et par ordre alphabétique 
+                self.tournoi["joueurs"].sort(key=lambda x: x["score"], reverse=True)
+                
+            self.lancer_match(self.tournoi["joueurs"])
+            
+            # Ajouter les résultats du round au dictionnaire resultats_round
+        #     resultats_round_i = []
+        #     for paire, resultat in zip(self.paires_precedentes, self.resultats_round):
+        #         joueur1 = f"{paire[0]['prenom']} {paire[0]['nom']}"
+        #         joueur2 = f"{paire[1]['prenom']} {paire[1]['nom']}"
+        #         resultat_j1, resultat_j2 = resultat
+        #         resultats_round_i.append(f"{joueur1} : {resultat_j1} VS {joueur2} : {resultat_j2}")
+                
+        #     self.resultats_round[f"Round {i+1}"] = resultats_round_i
+            
+        # print(resultats_round_i)
+        
+        
+    def lancer_match(self, joueurs):
+        # match = Match(self.joueur1, self.joueur2)
+        paire = self.match.generer_paire(joueurs)
+        self.match.melanger_joueurs(joueurs)
+        
+        while paire and paire in self.paires_precedentes:
+            self.match.melanger_joueurs(joueurs)
+            paire = self.match.generer_paire(joueurs)    
+            
+        self.paires_precedentes.append(paire)
+     
+        for i, j in enumerate(paire):
+            match_joueurs = f"Match n°{i+1} : {j[0]['prenom']} {j[0]['nom']} VS {j[1]['prenom']} {j[1]['nom']}"
+            self.affichage_msg(match_joueurs)
+            
+            while True:     
+                choix = input("Choisissez le gagnant du match (1 pour J1, 2 pour J2 et 3 pour égalité) : ")        
+                try:           
+                    if choix == "1":
+                        j[0]["score"] += 1
+                        self.affichage_msg(f"{j[0]['prenom']} {j[0]['nom']} a gagné\n")
+                        match_joueurs += f": {j[0]['score']} - {j[1]['score']}"
+                        self.match_info.append(match_joueurs)
+                        break
+                    
+                    elif choix == "2":
+                        j[1]["score"] += 1
+                        self.affichage_msg(f"{j[1]['prenom']} {j[1]['nom']} a gagné\n")
+                        match_joueurs += f": {j[0]['score']} - {j[1]['score']}"
+                        self.match_info.append(match_joueurs)
+                        break
+                    
+                    elif choix == "3":
+                        j[0]["score"] += 0.5
+                        j[1]["score"] += 0.5
+             
+                        self.affichage_msg("Match nul !\n")
+                        match_joueurs += f": {j[0]['score']} - {j[1]['score']}"
+                        self.match_info.append(match_joueurs)
+                        break
+                    
+                    else:
+                        self.affichage_msg("Choix invalide. Veuillez taper 1, 2, 3")          
+                except ValueError:
+                    self.affichage_msg("Choix invalide. Veuillez taper 1, 2, 3")
+                    
+        # # Réinitialiser la liste "matchs" du tournoi
+        self.liste_de_matchs = []
+        
+        # Pour chaque joueur du tournoi, ajouter ses informations dans la liste "matchs"
+        for joueur in self.tournoi["joueurs"]:
+            nom = joueur['nom']
+            score = joueur['score']
+            self.liste_de_matchs.append((nom, score))  
+            
+        print(self.match_info) 
+                    
+ 
+    def affichage_msg(self,msg): 
+        
+        # Afficher un message 
         affiche = BaseViews()
-        affiche.presentation(accueil_tournoi)
+        affiche.afficher_msg(msg)        
 
-        tournoi = ViewsMenuTournoi()
-        tournoi.selectionner_tournoi()
-        self.tournoi_en_cours = tournoi.tournoi_selectionne
-        
-         # Affichage des joueurs et sélection des joueurs
-        accueil_joueur = "        -- Liste des joueurs -- "
-        affiche.presentation(accueil_joueur)
 
-        joueur = ViewsMenuJoueur()
-        joueur.selectionner_participants()
-        self.liste_des_joueurs = joueur.liste_des_joueurs
-        
-        # Ajouter joueurs sélectionnés dans le tournoi sélectionné
-        self.tournoi_en_cours.update({ "id": id_tournoi, "joueurs": self.liste_des_joueurs})
-        
-        return self.tournoi_en_cours
-           
+
+
+
+
+
+
+
+
+
+
+
+
+       
         
     def lancer_nouveau_tournoi(self):
         
@@ -52,7 +173,7 @@ class ControllersBase():
         
     def recuperation_nb_de_rounds(self):
         
-        nombres_de_rounds = self.tournoi_en_cours['nombres_de_rounds']
+        nombres_de_rounds = self.tournoi['nombres_de_rounds']
         self.liste_de_rounds = []
         
         """ Afficher tous les rounds""" 
@@ -94,8 +215,8 @@ class ControllersBase():
             
         else:
             
-            self.tournoi_en_cours.update(tournoi_dict)  
-            tournoi_en_cours = self.tournoi_en_cours            
+            self.tournoi.update(tournoi_dict)  
+            tournoi_en_cours = self.tournoi            
             self.ecrire_json(tournoi_en_cours, "data/historique_tournois.json")           
             self.mettre_a_jour_classement_historique_tournoi()
             self.mettre_a_jour_classement_score_liste_joueurs()
@@ -190,7 +311,7 @@ class ControllersBase():
         self.liste_de_matchs = []
         
         # Pour chaque joueur du tournoi, ajouter ses informations dans la liste "matchs"
-        for joueur in self.tournoi_en_cours['joueurs']:
+        for joueur in self.tournoi['joueurs']:
             nom = joueur['nom']
             score = joueur['score']
             self.liste_de_matchs.append((nom, score))
@@ -201,14 +322,14 @@ class ControllersBase():
                 
     def tournois_inacheves(self):
                        
-        self.tournoi_inacheve = {"nom": self.tournoi_en_cours['nom'], 
-                                "lieu": self.tournoi_en_cours['lieu'], 
-                                "dates": self.tournoi_en_cours['dates'], 
-                                "nombres_de_rounds": self.tournoi_en_cours['nombres_de_rounds'], 
-                                "description": self.tournoi_en_cours['description'], 
-                                "mode_de_jeu": self.tournoi_en_cours['mode_de_jeu'], 
-                                "id": self.tournoi_en_cours['id'], 
-                                "joueurs": self.tournoi_en_cours['joueurs'], 
+        self.tournoi_inacheve = {"nom": self.tournoi['nom'], 
+                                "lieu": self.tournoi['lieu'], 
+                                "dates": self.tournoi['dates'], 
+                                "nombres_de_rounds": self.tournoi['nombres_de_rounds'], 
+                                "description": self.tournoi['description'], 
+                                "mode_de_jeu": self.tournoi['mode_de_jeu'], 
+                                "id": self.tournoi['id'], 
+                                "joueurs": self.tournoi['joueurs'], 
                                 "liste_de_rounds": self.liste_de_rounds}
     
         tournoi_inacheve = self.tournoi_inacheve
@@ -241,8 +362,8 @@ class ControllersBase():
     
         with open("data/historique_tournois.json", "r+") as f:
             tournois = json.load(f)
-            self.tournoi_en_cours = tournois["liste_des_tournois_en_cours"][-1]
-            joueurs = self.tournoi_en_cours["joueurs"]
+            self.tournoi = tournois["liste_des_tournois_en_cours"][-1]
+            joueurs = self.tournoi["joueurs"]
 
         """ 
         fonction lambda est utilisée pour définir une fonction 

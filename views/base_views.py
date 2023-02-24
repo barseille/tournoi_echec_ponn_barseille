@@ -4,16 +4,18 @@ class BaseViews:
     
     def afficher_msg(self, msg):   
         print(msg)
-
-        
+  
     def presentation(self, affichage):       
-            print('-'*60)
+            print('-'*60)        
             print(affichage)
             print('-'*60)
+            
+    def affichage_erreur_texte(self):
+        print("Erreur ! Veuillez saisir des lettres alphabétiques")
         
         
-    def affichage_erreur(self):     
-        print('Erreur! Veuillez saisir "o" pour oui ou "n" pour quitter.')
+    def affichage_erreur_choix(self):     
+        print('Erreur! Veuillez saisir "o" pour oui ou "n" pour quitter')
    
     
     def  affichage_erreur_type(self):
@@ -22,10 +24,13 @@ class BaseViews:
         
     def affichage_erreur_numero(self):
         print("Erreur ! Veuillez saisir le numéro correspondant")
-    
         
-    def affichage_tournoi_termine(self):     
-        print('                *** Terminé ! ***')
+    def affichage_erreur_date(self):
+        print("La date entrée n'est pas valide, veuillez la saisir au format jj/mm/aaaa.")
+        
+        
+    def affichage_termine(self):     
+        print('****************** Terminé ********************')
     
         
     def retour_au_menu(self):   

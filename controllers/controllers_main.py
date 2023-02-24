@@ -50,14 +50,16 @@ class ControllersMain:
             if entree == "1":            
                 creation_tournoi = ControllersTournois()
                 creation_tournoi.recuperer_entree_tournoi()
-                afficher_tournois = ViewsMenuTournoi()
-                afficher_tournois.afficher_les_tournois()
+                # afficher_tournois = ViewsMenuTournoi()
+                # afficher_tournois.afficher_les_tournois()
             
             # Lancer un tournoi    
             elif entree == "2":             
                 tournoi = ControllersBase()
                 tournoi.fusion_tournoi_avec_joueurs()
-                tournoi.lancer_nouveau_tournoi()
+                # tournoi.match()
+                # tournoi.jouer_match()
+                tournoi.lancer_round()
                 
                
             elif entree == "3":              
@@ -125,24 +127,20 @@ class ControllersMain:
                 rapport_joueur = ViewsRapportMenu()
                 rapport_joueur.affichage_joueur() 
                 self.retour_menu()           
-                # retour = BaseViews()
-                # retour.retour_au_menu()
+           
             
             # Liste de tous les tournois      
             elif entree == "2":            
                 rapport_tournoi = ViewsRapportMenu()
                 rapport_tournoi.affichage_tournoi()
                 self.retour_menu()              
-                # retour = BaseViews()
-                # retour.retour_au_menu()
+          
             
             # Liste des tournois terminés       
             elif entree == "3":            
                 rapport_tournoi_termine = ViewsRapportMenu()
                 rapport_tournoi_termine.afficher_details_tournoi()  
                 self.retour_menu()          
-                # retour = BaseViews()
-                # retour.retour_au_menu()
             
             # Retour        
             elif entree == "4":

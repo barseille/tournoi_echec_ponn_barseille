@@ -5,20 +5,31 @@ from database.database import Database
 
 
 class ViewsEntreeJoueur(BaseViews):
-
-    def creation_joueur_nom(self):       
-        try:
+ 
+    
+    def creation_joueur_nom(self):     
+        """  
+        La méthode isalpha() renvoie True 
+        si la chaîne de caractères ne contient que 
+        des lettres alphabétiques
+        """  
+        
+        while True:
             nom = input('Entrez votre nom : ')
-            return nom
-        except ValueError:
-            print('erreur - veuillez réessayer')
+            if nom.isalpha():
+                return nom
+            else:
+                super().affichage_erreur_texte()
+
+            
 
     def creation_joueur_prenom(self):        
-        try:
-            prenom = input('Entrez votre prénom : ')
-            return prenom
-        except ValueError:
-            print('erreur - veuillez réessayer')
+        while True:
+            prenom = input('Entrez votre prenom : ')
+            if prenom.isalpha():
+                return prenom
+            else:
+                super().affichage_erreur_texte()
 
     def creation_joueur_date_de_naissance(self):    
         try:
@@ -26,7 +37,7 @@ class ViewsEntreeJoueur(BaseViews):
             datetime.datetime.strptime(date_de_naissance, '%d/%m/%Y')
             return date_de_naissance
         except ValueError:
-            print("La date entrée n'est pas valide, veuillez la saisir au format jj/mm/aaaa.")
+            super().affichage_erreur_date()
             return
 
     def creation_joueur_classement(self):  
@@ -47,7 +58,7 @@ class ViewsEntreeJoueur(BaseViews):
                     print("Le numéro de classement existe déjà. Veuillez réessayer.")
                     continue         
             except ValueError:
-                print('erreur - veuillez réessayer')
+                super().affichage_erreur_type()
                 
     def ajout_identifiant(self):     
      
@@ -97,8 +108,8 @@ class ViewsEntreeJoueur(BaseViews):
                         self.classement,
                         self.id_joueur)
 
-        self.joueur_creer = joueur.afficher_infos()
-        return self.joueur_creer
+        self.joueur_cree = joueur.afficher_infos()
+        return self.joueur_cree
    
     
    
