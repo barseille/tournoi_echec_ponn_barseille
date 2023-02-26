@@ -4,10 +4,13 @@ from views.views_menu_tournoi import ViewsMenuTournoi
 from views.views_rapport_menu import ViewsRapportMenu
 from controllers.controllers_joueurs import ControllersJoueurs
 from controllers.controllers_tournois import ControllersTournois
-from controllers.controllers_application import ControllersApplication
-from controllers.controllers_application_tournoi import ControllersApplicationTournoi
+# from controllers.controllers_application import ControllersApplication
+# from controllers.controllers_application_tournoi import ControllersApplicationTournoi
 from views.base_views import BaseViews
 from controllers.controllers_base import ControllersBase
+# from controllers.controllers_reprise import ControllersReprise
+from views.views_reprise_tournoi import ViewsRepriseTournoi
+from controllers.controllers_reprise import ControllersReprise
 import sys
 
 
@@ -50,21 +53,19 @@ class ControllersMain:
             if entree == "1":            
                 creation_tournoi = ControllersTournois()
                 creation_tournoi.recuperer_entree_tournoi()
-                # afficher_tournois = ViewsMenuTournoi()
-                # afficher_tournois.afficher_les_tournois()
+
             
             # Lancer un tournoi    
-            elif entree == "2":             
-                tournoi = ControllersBase()
+            elif entree == "2":  
+                tournoi = ControllersBase()           
                 tournoi.fusion_tournoi_avec_joueurs()
-                # tournoi.match()
-                # tournoi.jouer_match()
                 tournoi.lancer_round()
                 
-               
-            elif entree == "3":              
-                tournoi_trouve = ControllersApplicationTournoi()
-                tournoi_trouve.recuperation_tournois_existant()
+            # Reprise d'un tournoi  
+            elif entree == "3":           
+      
+                t = ViewsRepriseTournoi()
+                t.reprendre_tournoi()
             
             
             elif entree == "4": 
@@ -116,39 +117,40 @@ class ControllersMain:
                              
                 
     def menu_rapport(self):
+        pass
         
-        while True:  
-            rapport = ViewsRapportMenu()
-            rapport.afficher_menu_rapport()          
-            entree = input("Faites votre choix : ")
+        # while True:  
+        #     rapport = ViewsRapportMenu()
+        #     rapport.afficher_menu_rapport()          
+        #     entree = input("Faites votre choix : ")
             
-            # Liste de tous les joueurs par ordre alphabétique
-            if entree == "1":                   
-                rapport_joueur = ViewsRapportMenu()
-                rapport_joueur.affichage_joueur() 
-                self.retour_menu()           
+        #     # Liste de tous les joueurs par ordre alphabétique
+        #     if entree == "1":                   
+        #         rapport_joueur = ViewsRapportMenu()
+        #         rapport_joueur.affichage_joueur() 
+        #         self.retour_menu()           
            
             
-            # Liste de tous les tournois      
-            elif entree == "2":            
-                rapport_tournoi = ViewsRapportMenu()
-                rapport_tournoi.affichage_tournoi()
-                self.retour_menu()              
+        #     # Liste de tous les tournois      
+        #     elif entree == "2":            
+        #         rapport_tournoi = ViewsRapportMenu()
+        #         rapport_tournoi.affichage_tournoi()
+        #         self.retour_menu()              
           
             
-            # Liste des tournois terminés       
-            elif entree == "3":            
-                rapport_tournoi_termine = ViewsRapportMenu()
-                rapport_tournoi_termine.afficher_details_tournoi()  
-                self.retour_menu()          
+        #     # Liste des tournois terminés       
+        #     elif entree == "3":            
+        #         rapport_tournoi_termine = ViewsRapportMenu()
+        #         rapport_tournoi_termine.afficher_details_tournoi()  
+        #         self.retour_menu()          
             
-            # Retour        
-            elif entree == "4":
-                break
+        #     # Retour        
+        #     elif entree == "4":
+        #         break
                 
-            else:
-                affiche = BaseViews()
-                affiche.affichage_erreur_numero()  
+        #     else:
+        #         affiche = BaseViews()
+        #         affiche.affichage_erreur_numero()  
      
                 
     def retour_menu(self):

@@ -7,377 +7,89 @@
       "nombres_de_rounds": 4,
       "description": "coupe",
       "mode_de_jeu": "bullet",
-      "id": "b90d2588-8908-4357-b56e-016311bdca92",
+      "id": "feaee8cc-e8fb-4f10-9d04-7bd490c24516",
       "joueurs": [
+        {
+          "nom": "tyson",
+          "prenom": "mike",
+          "date_de_naissance": "27/02/1982",
+          "classement": 1,
+          "score": 3.5,
+          "id": "AB00002"
+        },
         {
           "nom": "keys",
           "prenom": "alicia",
           "date_de_naissance": "16/06/1990",
-          "classement": 8,
-          "score": 2,
+          "classement": 2,
+          "score": 2.5,
           "id": "AB00007"
+        },
+        {
+          "nom": "messi",
+          "prenom": "lionel",
+          "date_de_naissance": "11/11/1990",
+          "classement": 3,
+          "score": 2.5,
+          "id": "AB00006"
         },
         {
           "nom": "vandamme",
           "prenom": "jean-claude",
           "date_de_naissance": "25/12/1981",
-          "classement": 7,
-          "score": 1,
+          "classement": 4,
+          "score": 2.5,
           "id": "AB00004"
         },
         {
           "nom": "lee",
           "prenom": "bruce",
           "date_de_naissance": "27/01/1981",
-          "classement": 3,
-          "score": 1,
+          "classement": 5,
+          "score": 1.5,
           "id": "AB00001"
         },
         {
-          "nom": "messi",
-          "prenom": "lionel",
-          "date_de_naissance": "11/11/1990",
-          "classement": 2,
-          "score": 0,
-          "id": "AB00006"
-        },
-        {
-          "nom": "enzo",
-          "prenom": "ferrari",
-          "date_de_naissance": "12/12/1945",
-          "classement": 5,
-          "score": 1,
-          "id": "AB00005"
-        },
-        {
-          "nom": "tyson",
-          "prenom": "mike",
-          "date_de_naissance": "27/02/1982",
-          "classement": 1,
-          "score": 0,
-          "id": "AB00002"
-        },
-        {
           "nom": "ali",
           "prenom": "mohammed",
           "date_de_naissance": "23/12/1985",
           "classement": 6,
-          "score": 1,
-          "id": "AB00003"
-        },
-        {
-          "nom": "jordan",
-          "prenom": "michael",
-          "date_de_naissance": "18/05/1960",
-          "classement": 4,
-          "score": 2,
-          "id": "AB00008"
-        }
-      ],
-      "resultats": [
-        {
-          "Round 1": {
-            "matchs": [
-              "Match 1 : jean-claude vandamme VS ferrari enzo: 1 - 0",
-              "Match 2 : bruce lee VS mike tyson: 1 - 0",
-              "Match 3 : michael jordan VS lionel messi: 1 - 0",
-              "Match 4 : alicia keys VS mohammed ali: 1 - 0"
-            ],
-            "debut": "24/02/2023 18:21:21",
-            "fin": "24/02/2023 18:21:23",
-            "scores_joueurs": [
-              [
-                "jordan",
-                1
-              ],
-              [
-                "ali",
-                0
-              ],
-              [
-                "vandamme",
-                1
-              ],
-              [
-                "messi",
-                0
-              ],
-              [
-                "keys",
-                1
-              ],
-              [
-                "lee",
-                1
-              ],
-              [
-                "enzo",
-                0
-              ],
-              [
-                "tyson",
-                0
-              ]
-            ]
-          },
-          "Round 2": {
-            "matchs": [
-              "Match 1 : michael jordan VS jean-claude vandamme: 2 - 1",
-              "Match 2 : alicia keys VS bruce lee: 2 - 1",
-              "Match 3 : mohammed ali VS lionel messi: 1 - 0",
-              "Match 4 : ferrari enzo VS mike tyson: 1 - 0"
-            ],
-            "debut": "24/02/2023 18:21:25",
-            "fin": "24/02/2023 18:21:28",
-            "scores_joueurs": [
-              [
-                "keys",
-                2
-              ],
-              [
-                "vandamme",
-                1
-              ],
-              [
-                "lee",
-                1
-              ],
-              [
-                "messi",
-                0
-              ],
-              [
-                "enzo",
-                1
-              ],
-              [
-                "tyson",
-                0
-              ],
-              [
-                "ali",
-                1
-              ],
-              [
-                "jordan",
-                2
-              ]
-            ]
-          }
-        }
-      ],
-      "statut": "tournoi non termine"
-    },
-    {
-      "nom": "festival disneyland",
-      "lieu": "dubai",
-      "dates": "12/12/2022",
-      "nombres_de_rounds": 4,
-      "description": "coupe",
-      "mode_de_jeu": "bullet",
-      "id": "45455a88-b615-4e60-8928-59002b7d65d8",
-      "joueurs": [
-        {
-          "nom": "messi",
-          "prenom": "lionel",
-          "date_de_naissance": "11/11/1990",
-          "classement": 2,
-          "score": 0,
-          "id": "AB00006"
-        },
-        {
-          "nom": "keys",
-          "prenom": "alicia",
-          "date_de_naissance": "16/06/1990",
-          "classement": 8,
-          "score": 1,
-          "id": "AB00007"
-        },
-        {
-          "nom": "ali",
-          "prenom": "mohammed",
-          "date_de_naissance": "23/12/1985",
-          "classement": 6,
-          "score": 0,
+          "score": 1.5,
           "id": "AB00003"
         },
         {
           "nom": "enzo",
           "prenom": "ferrari",
           "date_de_naissance": "12/12/1945",
-          "classement": 5,
-          "score": 1,
-          "id": "AB00005"
-        },
-        {
-          "nom": "vandamme",
-          "prenom": "jean-claude",
-          "date_de_naissance": "25/12/1981",
           "classement": 7,
-          "score": 0,
-          "id": "AB00004"
-        },
-        {
-          "nom": "jordan",
-          "prenom": "michael",
-          "date_de_naissance": "18/05/1960",
-          "classement": 4,
-          "score": 0,
-          "id": "AB00008"
-        },
-        {
-          "nom": "lee",
-          "prenom": "bruce",
-          "date_de_naissance": "27/01/1981",
-          "classement": 3,
-          "score": 1,
-          "id": "AB00001"
-        },
-        {
-          "nom": "tyson",
-          "prenom": "mike",
-          "date_de_naissance": "27/02/1982",
-          "classement": 1,
-          "score": 1,
-          "id": "AB00002"
-        }
-      ],
-      "resultats": [
-        {
-          "Round 1": {
-            "matchs": [
-              "Match 1 : ferrari enzo VS lionel messi: 1 - 0",
-              "Match 2 : alicia keys VS michael jordan: 1 - 0",
-              "Match 3 : bruce lee VS mohammed ali: 1 - 0",
-              "Match 4 : mike tyson VS jean-claude vandamme: 1 - 0"
-            ],
-            "debut": "24/02/2023 18:22:53",
-            "fin": "24/02/2023 18:24:51",
-            "scores_joueurs": [
-              [
-                "messi",
-                0
-              ],
-              [
-                "keys",
-                1
-              ],
-              [
-                "ali",
-                0
-              ],
-              [
-                "enzo",
-                1
-              ],
-              [
-                "vandamme",
-                0
-              ],
-              [
-                "jordan",
-                0
-              ],
-              [
-                "lee",
-                1
-              ],
-              [
-                "tyson",
-                1
-              ]
-            ]
-          }
-        }
-      ],
-      "statut": "tournoi non termine"
-    },
-    {
-      "nom": "festival disneyland",
-      "lieu": "dubai",
-      "dates": "12/12/2022",
-      "nombres_de_rounds": 4,
-      "description": "coupe",
-      "mode_de_jeu": "bullet",
-      "id": "515e928e-3131-479e-b2d3-fa5d3fbf2b15",
-      "joueurs": [
-        {
-          "nom": "vandamme",
-          "prenom": "jean-claude",
-          "date_de_naissance": "25/12/1981",
-          "classement": 7,
-          "score": 2,
-          "id": "AB00004"
-        },
-        {
-          "nom": "keys",
-          "prenom": "alicia",
-          "date_de_naissance": "16/06/1990",
-          "classement": 8,
-          "score": 2,
-          "id": "AB00007"
-        },
-        {
-          "nom": "jordan",
-          "prenom": "michael",
-          "date_de_naissance": "18/05/1960",
-          "classement": 4,
-          "score": 2,
-          "id": "AB00008"
-        },
-        {
-          "nom": "enzo",
-          "prenom": "ferrari",
-          "date_de_naissance": "12/12/1945",
-          "classement": 5,
-          "score": 1,
+          "score": 1.5,
           "id": "AB00005"
         },
         {
-          "nom": "tyson",
-          "prenom": "mike",
-          "date_de_naissance": "27/02/1982",
-          "classement": 1,
-          "score": 0,
-          "id": "AB00002"
-        },
-        {
-          "nom": "ali",
-          "prenom": "mohammed",
-          "date_de_naissance": "23/12/1985",
-          "classement": 6,
-          "score": 4,
-          "id": "AB00003"
-        },
-        {
-          "nom": "lee",
-          "prenom": "bruce",
-          "date_de_naissance": "27/01/1981",
-          "classement": 3,
-          "score": 2,
-          "id": "AB00001"
-        },
-        {
-          "nom": "messi",
-          "prenom": "lionel",
-          "date_de_naissance": "11/11/1990",
-          "classement": 2,
-          "score": 3,
-          "id": "AB00006"
+          "nom": "jordan",
+          "prenom": "michael",
+          "date_de_naissance": "18/05/1960",
+          "classement": 8,
+          "score": 0.5,
+          "id": "AB00008"
         }
       ],
       "resultats": [
         {
-          "Round 1": {
+          "Round 1/4": {
             "matchs": [
-              "Match 1 : jean-claude vandamme VS lionel messi: 1 - 0",
-              "Match 2 : alicia keys VS mike tyson: 1 - 0",
-              "Match 3 : ferrari enzo VS michael jordan: 1 - 0",
-              "Match 4 : mohammed ali VS bruce lee: 1 - 0"
+              "Match 1 : jean-claude vandamme VS michael jordan: 1 - 0",
+              "Match 2 : mohammed ali VS bruce lee: 1 - 0",
+              "Match 3 : alicia keys VS lionel messi: 1 - 0",
+              "Match 4 : mike tyson VS ferrari enzo: 1 - 0"
             ],
-            "debut": "24/02/2023 18:25:14",
-            "fin": "24/02/2023 18:25:17",
+            "debut": "26/02/2023 16:45:30",
+            "fin": "26/02/2023 16:45:33",
             "scores_joueurs": [
+              [
+                "enzo",
+                0
+              ],
               [
                 "ali",
                 1
@@ -387,11 +99,7 @@
                 0
               ],
               [
-                "enzo",
-                1
-              ],
-              [
-                "vandamme",
+                "keys",
                 1
               ],
               [
@@ -403,25 +111,33 @@
                 0
               ],
               [
-                "tyson",
-                0
+                "vandamme",
+                1
               ],
               [
-                "keys",
+                "tyson",
                 1
               ]
             ]
           },
-          "Round 2": {
+          "Round 2/4": {
             "matchs": [
-              "Match 1 : mohammed ali VS ferrari enzo: 2 - 1",
-              "Match 2 : jean-claude vandamme VS alicia keys: 2 - 1",
-              "Match 3 : bruce lee VS michael jordan: 1 - 0",
-              "Match 4 : lionel messi VS mike tyson: 1 - 0"
+              "Match 1 : mohammed ali VS alicia keys: 1 - 2",
+              "Match 2 : jean-claude vandamme VS mike tyson: 1 - 2",
+              "Match 3 : ferrari enzo VS bruce lee: 0 - 1",
+              "Match 4 : michael jordan VS lionel messi: 0 - 1"
             ],
-            "debut": "24/02/2023 18:25:18",
-            "fin": "24/02/2023 18:25:20",
+            "debut": "26/02/2023 16:45:35",
+            "fin": "26/02/2023 16:45:46",
             "scores_joueurs": [
+              [
+                "tyson",
+                2
+              ],
+              [
+                "vandamme",
+                1
+              ],
               [
                 "jordan",
                 0
@@ -431,246 +147,114 @@
                 1
               ],
               [
-                "enzo",
-                1
-              ],
-              [
-                "tyson",
-                0
-              ],
-              [
-                "keys",
-                1
-              ],
-              [
                 "lee",
                 1
               ],
               [
-                "ali",
+                "keys",
                 2
               ],
               [
-                "vandamme",
-                2
+                "ali",
+                1
+              ],
+              [
+                "enzo",
+                0
               ]
             ]
           },
-          "Round 3": {
+          "Round 3/4": {
             "matchs": [
-              "Match 1 : mohammed ali VS jean-claude vandamme: 3 - 2",
-              "Match 2 : lionel messi VS ferrari enzo: 2 - 1",
-              "Match 3 : alicia keys VS bruce lee: 2 - 1",
-              "Match 4 : michael jordan VS mike tyson: 1 - 0"
+              "Match 1 : mike tyson VS alicia keys: 2.5 - 2.5",
+              "Match 2 : jean-claude vandamme VS lionel messi: 1.5 - 1.5",
+              "Match 3 : bruce lee VS mohammed ali: 1.5 - 1.5",
+              "Match 4 : michael jordan VS ferrari enzo: 0.5 - 0.5"
             ],
-            "debut": "24/02/2023 18:25:22",
-            "fin": "24/02/2023 18:25:24",
+            "debut": "26/02/2023 16:45:47",
+            "fin": "26/02/2023 16:45:51",
             "scores_joueurs": [
               [
                 "vandamme",
-                2
+                1.5
               ],
               [
                 "lee",
-                1
-              ],
-              [
-                "tyson",
-                0
-              ],
-              [
-                "enzo",
-                1
-              ],
-              [
-                "jordan",
-                1
+                1.5
               ],
               [
                 "messi",
-                2
+                1.5
+              ],
+              [
+                "enzo",
+                0.5
+              ],
+              [
+                "tyson",
+                2.5
               ],
               [
                 "ali",
-                3
+                1.5
               ],
               [
                 "keys",
-                2
+                2.5
+              ],
+              [
+                "jordan",
+                0.5
               ]
             ]
           },
-          "Round 4": {
+          "Round 4/4": {
             "matchs": [
-              "Match 1 : mohammed ali VS jean-claude vandamme: 4 - 2",
-              "Match 2 : lionel messi VS alicia keys: 3 - 2",
-              "Match 3 : bruce lee VS ferrari enzo: 2 - 1",
-              "Match 4 : michael jordan VS mike tyson: 2 - 0"
+              "Match 1 : mike tyson VS alicia keys: 3.5 - 2.5",
+              "Match 2 : jean-claude vandamme VS bruce lee: 2.5 - 1.5",
+              "Match 3 : lionel messi VS mohammed ali: 2.5 - 1.5",
+              "Match 4 : ferrari enzo VS michael jordan: 1.5 - 0.5"
             ],
-            "debut": "24/02/2023 18:25:26",
-            "fin": "24/02/2023 18:25:29",
+            "debut": "26/02/2023 16:45:52",
+            "fin": "26/02/2023 16:45:55",
             "scores_joueurs": [
               [
-                "vandamme",
-                2
-              ],
-              [
                 "keys",
-                2
-              ],
-              [
-                "jordan",
-                2
-              ],
-              [
-                "enzo",
-                1
-              ],
-              [
-                "tyson",
-                0
-              ],
-              [
-                "ali",
-                4
-              ],
-              [
-                "lee",
-                2
+                2.5
               ],
               [
                 "messi",
-                3
+                2.5
+              ],
+              [
+                "lee",
+                1.5
+              ],
+              [
+                "ali",
+                1.5
+              ],
+              [
+                "tyson",
+                3.5
+              ],
+              [
+                "enzo",
+                1.5
+              ],
+              [
+                "vandamme",
+                2.5
+              ],
+              [
+                "jordan",
+                0.5
               ]
             ]
           }
         }
       ],
       "statut": "tournoi termine"
-    },
-    {
-      "nom": "festival disneyland",
-      "lieu": "dubai",
-      "dates": "12/12/2022",
-      "nombres_de_rounds": 4,
-      "description": "coupe",
-      "mode_de_jeu": "bullet",
-      "id": "0acff220-36f0-4203-89fa-b771352f930c",
-      "joueurs": [
-        {
-          "nom": "enzo",
-          "prenom": "ferrari",
-          "date_de_naissance": "12/12/1945",
-          "classement": 5,
-          "score": 1,
-          "id": "AB00005"
-        },
-        {
-          "nom": "vandamme",
-          "prenom": "jean-claude",
-          "date_de_naissance": "25/12/1981",
-          "classement": 7,
-          "score": 0,
-          "id": "AB00004"
-        },
-        {
-          "nom": "lee",
-          "prenom": "bruce",
-          "date_de_naissance": "27/01/1981",
-          "classement": 3,
-          "score": 0,
-          "id": "AB00001"
-        },
-        {
-          "nom": "tyson",
-          "prenom": "mike",
-          "date_de_naissance": "27/02/1982",
-          "classement": 1,
-          "score": 0,
-          "id": "AB00002"
-        },
-        {
-          "nom": "keys",
-          "prenom": "alicia",
-          "date_de_naissance": "16/06/1990",
-          "classement": 8,
-          "score": 1,
-          "id": "AB00007"
-        },
-        {
-          "nom": "ali",
-          "prenom": "mohammed",
-          "date_de_naissance": "23/12/1985",
-          "classement": 6,
-          "score": 0,
-          "id": "AB00003"
-        },
-        {
-          "nom": "messi",
-          "prenom": "lionel",
-          "date_de_naissance": "11/11/1990",
-          "classement": 2,
-          "score": 1,
-          "id": "AB00006"
-        },
-        {
-          "nom": "jordan",
-          "prenom": "michael",
-          "date_de_naissance": "18/05/1960",
-          "classement": 4,
-          "score": 1,
-          "id": "AB00008"
-        }
-      ],
-      "resultats": [
-        {
-          "Round 1": {
-            "matchs": [
-              "Match 1 : lionel messi VS jean-claude vandamme: 1 - 0",
-              "Match 2 : michael jordan VS mike tyson: 1 - 0",
-              "Match 3 : ferrari enzo VS mohammed ali: 1 - 0",
-              "Match 4 : alicia keys VS bruce lee: 1 - 0"
-            ],
-            "debut": "24/02/2023 18:26:09",
-            "fin": "24/02/2023 18:26:12",
-            "scores_joueurs": [
-              [
-                "enzo",
-                1
-              ],
-              [
-                "vandamme",
-                0
-              ],
-              [
-                "lee",
-                0
-              ],
-              [
-                "tyson",
-                0
-              ],
-              [
-                "keys",
-                1
-              ],
-              [
-                "ali",
-                0
-              ],
-              [
-                "messi",
-                1
-              ],
-              [
-                "jordan",
-                1
-              ]
-            ]
-          }
-        }
-      ],
-      "statut": "tournoi non termine"
     }
   ]
 }

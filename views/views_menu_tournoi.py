@@ -39,7 +39,7 @@ class ViewsMenuTournoi(BaseViews):
       
             
     # def selectionner_tournoi(self):
-        """ afficher la liste des tournois"""
+        # """ afficher la liste des tournois"""
   
         # Accéder à la clé "liste_tournoi" dans database
         self.liste_tournois = self.data_tournois['liste_tournois']

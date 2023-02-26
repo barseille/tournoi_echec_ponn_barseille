@@ -1,47 +1,50 @@
-from views.views_tournoi_existant import ViewsTournoiExistant
+from views.views_reprise_tournoi import ViewsRepriseTournoi
 import json
 import random
 from datetime import datetime
 from views.base_views import BaseViews
+from .controllers_base import ControllersBase
 
 
 
-class ControllersApplicationTournoi():
+class ControllersApplicationTournoi(ControllersBase):
     
     def recuperation_tournois_existant(self):
 
         while True:
                       
-            tournoi = ViewsTournoiExistant()
-            tournoi.chercher_tournois_existant()
-            if not tournoi.tournoi_selectionne:
-                break
-            self.tournoi_selectionne = tournoi.tournoi_selectionne 
-           
-            self.liste_des_joueurs = []
+            tournoi = ViewsRepriseTournoi()
+            tournoi.reprendre_tournoi()
             
-            for joueur in self.tournoi_selectionne["joueurs"]:
-                self.liste_des_joueurs.append(joueur)
+            
+            # if not tournoi.tournoi_selectionne:
+            #     break
+            # self.tournoi_selectionne = tournoi.tournoi_selectionne 
+           
+            # self.liste_des_joueurs = []
+            
+            # for joueur in self.tournoi_selectionne["joueurs"]:
+            #     self.liste_des_joueurs.append(joueur)
                 
-            self.nb_rounds_effectues = len(self.tournoi_selectionne["liste_de_rounds"])         
-            self.nombre_de_rounds_restants = self.tournoi_selectionne["nombres_de_rounds"] - self.nb_rounds_effectues
+            # self.nb_rounds_effectues = len(self.tournoi_selectionne["liste_de_rounds"])         
+            # self.nombre_de_rounds_restants = self.tournoi_selectionne["nombres_de_rounds"] - self.nb_rounds_effectues
 
-            while True:
-                try:
-                    choix = input("Souhaitez-vous continuer ce tournoi (o/n) ? ")
-                    if choix == "o":    
-                        self.continuer_tournoi()
-                        break
-                    elif choix == "n":
-                        return
-                    else:
-                        affiche = BaseViews()
-                        affiche.affichage_erreur()
+            # while True:
+            #     try:
+            #         choix = input("Souhaitez-vous continuer ce tournoi (o/n) ? ")
+            #         if choix == "o":    
+            #             self.continuer_tournoi()
+            #             break
+            #         elif choix == "n":
+            #             return
+            #         else:
+            #             affiche = BaseViews()
+            #             affiche.affichage_erreur()
                     
                     
-                except IndexError:
-                    affiche = BaseViews()
-                    affiche.affichage_erreur_numero()
+            #     except IndexError:
+            #         affiche = BaseViews()
+            #         affiche.affichage_erreur_numero()
             break
              
                 

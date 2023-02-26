@@ -4,7 +4,7 @@
             "nom": "lee",
             "prenom": "bruce",
             "date_de_naissance": "27/01/1981",
-            "classement": 3,
+            "classement": 1,
             "score": 0,
             "id": "AB00001"
         },
@@ -12,7 +12,7 @@
             "nom": "tyson",
             "prenom": "mike",
             "date_de_naissance": "27/02/1982",
-            "classement": 1,
+            "classement": 2,
             "score": 0,
             "id": "AB00002"
         },
@@ -20,7 +20,7 @@
             "nom": "ali",
             "prenom": "mohammed",
             "date_de_naissance": "23/12/1985",
-            "classement": 6,
+            "classement": 3,
             "score": 0,
             "id": "AB00003"
         },
@@ -28,7 +28,7 @@
             "nom": "vandamme",
             "prenom": "jean-claude",
             "date_de_naissance": "25/12/1981",
-            "classement": 7,
+            "classement": 4,
             "score": 0,
             "id": "AB00004"
         },
@@ -44,7 +44,7 @@
             "nom": "messi",
             "prenom": "lionel",
             "date_de_naissance": "11/11/1990",
-            "classement": 2,
+            "classement": 6,
             "score": 0,
             "id": "AB00006"
         },
@@ -52,7 +52,7 @@
             "nom": "keys",
             "prenom": "alicia",
             "date_de_naissance": "16/06/1990",
-            "classement": 8,
+            "classement": 7,
             "score": 0,
             "id": "AB00007"
         },
@@ -60,7 +60,7 @@
             "nom": "jordan",
             "prenom": "michael",
             "date_de_naissance": "18/05/1960",
-            "classement": 4,
+            "classement": 8,
             "score": 0,
             "id": "AB00008"
         },
