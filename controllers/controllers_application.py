@@ -117,126 +117,126 @@
 #         self.liste_de_matchs_infos = []
 #         self.rencontres = {}
                
-#     #     # Pour chaque paire de joueurs, lancer un match
-#     #     for i in range(0, len(self.liste_des_joueurs), 2):
-#     #         self.joueur1 = self.liste_des_joueurs[i]      
-#     #         self.joueur2 = self.liste_des_joueurs[i + 1]
-#     #         paire = (self.joueur1, self.joueur2)
-#     #         self.liste_de_paires.append(paire)
+#         # Pour chaque paire de joueurs, lancer un match
+#         for i in range(0, len(self.liste_des_joueurs), 2):
+#             self.joueur1 = self.liste_des_joueurs[i]      
+#             self.joueur2 = self.liste_des_joueurs[i + 1]
+#             paire = (self.joueur1, self.joueur2)
+#             self.liste_de_paires.append(paire)
    
-#     #     # Lancer chaque match de la liste
-#     #     for i, match in enumerate(self.liste_de_paires):
-#     #         self.joueur1 = match[0]
-#     #         self.joueur2 = match[1] 
-#     #         id_joueur1 = self.joueur1["id"]
-#     #         id_joueur2 = self.joueur2["id"] 
-#     #         self.rencontres[id_joueur1] = []
-#     #         self.rencontres[id_joueur2] = []     
-#     #         self.rencontres[id_joueur1].append(id_joueur2)
-#     #         self.rencontres[id_joueur2].append(id_joueur1)
+#         # Lancer chaque match de la liste
+#         for i, match in enumerate(self.liste_de_paires):
+#             self.joueur1 = match[0]
+#             self.joueur2 = match[1] 
+#             id_joueur1 = self.joueur1["id"]
+#             id_joueur2 = self.joueur2["id"] 
+#             self.rencontres[id_joueur1] = []
+#             self.rencontres[id_joueur2] = []     
+#             self.rencontres[id_joueur1].append(id_joueur2)
+#             self.rencontres[id_joueur2].append(id_joueur1)
             
-#     #         joueur1_gagne = f"Résultat du match : {self.joueur1['prenom']} {self.joueur1['nom']} a gagné !"
-#     #         joueur2_gagne = f"Résultat du match : {self.joueur2['prenom']} {self.joueur2['nom']} a gagné !"         
-#     #         match_nul = "Match nul !"
+#             joueur1_gagne = f"Résultat du match : {self.joueur1['prenom']} {self.joueur1['nom']} a gagné !"
+#             joueur2_gagne = f"Résultat du match : {self.joueur2['prenom']} {self.joueur2['nom']} a gagné !"         
+#             match_nul = "Match nul !"
             
   
-#     #         affichage = f"Match n°{i + 1} : {self.joueur1['prenom']} {self.joueur1['nom']} (J1) VS {self.joueur2['prenom']} {self.joueur2['nom']} (J2) :"
-#     #         affichage_joueur = BaseViews()
-#     #         affichage_joueur.presentation(affichage)
+#             affichage = f"Match n°{i + 1} : {self.joueur1['prenom']} {self.joueur1['nom']} (J1) VS {self.joueur2['prenom']} {self.joueur2['nom']} (J2) :"
+#             affichage_joueur = BaseViews()
+#             affichage_joueur.presentation(affichage)
 
-#     #         choix = input("Choisissez le gagnant du match (1 pour J1, 2 pour J2, ENTREE pour égalité ou 3 pour aléatoire) : ") 
+#             choix = input("Choisissez le gagnant du match (1 pour J1, 2 pour J2, ENTREE pour égalité ou 3 pour aléatoire) : ") 
 
-#     #         if choix == "1":
-#     #             self.joueur1["score"] += 1
-#     #             affiche = BaseViews()
-#     #             affiche.afficher_msg(joueur1_gagne)
+#             if choix == "1":
+#                 self.joueur1["score"] += 1
+#                 affiche = BaseViews()
+#                 affiche.afficher_msg(joueur1_gagne)
                 
-#     #             # Ajouter les informations sur le match à la liste de matchs
-#     #             match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
-#     #             self.liste_de_matchs_infos.append(match_dict)
+#                 # Ajouter les informations sur le match à la liste de matchs
+#                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
+#                 self.liste_de_matchs_infos.append(match_dict)
                 
                 
-#     #         elif choix == "2":
-#     #             self.joueur2["score"] += 1
-#     #             affiche = BaseViews()
-#     #             affiche.afficher_msg(joueur2_gagne)
+#             elif choix == "2":
+#                 self.joueur2["score"] += 1
+#                 affiche = BaseViews()
+#                 affiche.afficher_msg(joueur2_gagne)
                 
-#     #             # Ajouter les informations sur le match à la liste de matchs
-#     #             match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
-#     #             self.liste_de_matchs_infos.append(match_dict)
+#                 # Ajouter les informations sur le match à la liste de matchs
+#                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
+#                 self.liste_de_matchs_infos.append(match_dict)
     
                 
-#     #         elif choix == "3":
-#     #             self.gagnant = random.choice([self.joueur1, self.joueur2])
-#     #             self.gagnant["score"] += 1 
-#     #             joueur_aleatoire = f"Résultat du match : {self.gagnant['prenom']} {self.gagnant['nom']} a gagné aléatoirement !"
+#             elif choix == "3":
+#                 self.gagnant = random.choice([self.joueur1, self.joueur2])
+#                 self.gagnant["score"] += 1 
+#                 joueur_aleatoire = f"Résultat du match : {self.gagnant['prenom']} {self.gagnant['nom']} a gagné aléatoirement !"
                 
-#     #             affiche = BaseViews()
-#     #             affiche.afficher_msg(joueur_aleatoire)       
+#                 affiche = BaseViews()
+#                 affiche.afficher_msg(joueur_aleatoire)       
            
 
-#     #             # Ajouter les informations sur le match à la liste de matchs
-#     #             match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
-#     #             self.liste_de_matchs_infos.append(match_dict)               
+#                 # Ajouter les informations sur le match à la liste de matchs
+#                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
+#                 self.liste_de_matchs_infos.append(match_dict)               
                                     
-#     #         else:
-#     #             self.joueur1["score"] += 0.5
-#     #             self.joueur2["score"] += 0.5
-#     #             affiche = BaseViews()
-#     #             affiche.afficher_msg(match_nul)  
+#             else:
+#                 self.joueur1["score"] += 0.5
+#                 self.joueur2["score"] += 0.5
+#                 affiche = BaseViews()
+#                 affiche.afficher_msg(match_nul)  
                 
-#     #             # Ajouter les informations sur le match à la liste de matchs
-#     #             match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
-#     #             self.liste_de_matchs_infos.append(match_dict)
+#                 # Ajouter les informations sur le match à la liste de matchs
+#                 match_dict = {'joueur1': self.joueur1['nom'], 'joueur2': self.joueur2['nom'], 'score': f"{self.joueur1['score']} - {self.joueur2['score']}"}
+#                 self.liste_de_matchs_infos.append(match_dict)
 
-#     #     # Réinitialiser la liste "matchs" du tournoi
-#     #     self.liste_de_matchs = []
+#         # Réinitialiser la liste "matchs" du tournoi
+#         self.liste_de_matchs = []
         
-#     #     # Pour chaque joueur du tournoi, ajouter ses informations dans la liste "matchs"
-#     #     for joueur in self.tournoi_en_cours['joueurs']:
-#     #         nom = joueur['nom']
-#     #         score = joueur['score']
-#     #         self.liste_de_matchs.append((nom, score))
-#     #         # msg = f"Joueur {nom} = {score}"
-#     #         # affichage_score = BaseViews()
-#     #         # affichage_score.afficher_msg(msg)
+#         # Pour chaque joueur du tournoi, ajouter ses informations dans la liste "matchs"
+#         for joueur in self.tournoi_en_cours['joueurs']:
+#             nom = joueur['nom']
+#             score = joueur['score']
+#             self.liste_de_matchs.append((nom, score))
+#             # msg = f"Joueur {nom} = {score}"
+#             # affichage_score = BaseViews()
+#             # affichage_score.afficher_msg(msg)
             
                 
-#     # def tournois_inacheves(self):
+#     def tournois_inacheves(self):
                        
-#     #     self.tournoi_inacheve = {"nom": self.tournoi_en_cours['nom'], 
-#     #                             "lieu": self.tournoi_en_cours['lieu'], 
-#     #                             "dates": self.tournoi_en_cours['dates'], 
-#     #                             "nombres_de_rounds": self.tournoi_en_cours['nombres_de_rounds'], 
-#     #                             "description": self.tournoi_en_cours['description'], 
-#     #                             "mode_de_jeu": self.tournoi_en_cours['mode_de_jeu'], 
-#     #                             "id": self.tournoi_en_cours['id'], 
-#     #                             "joueurs": self.tournoi_en_cours['joueurs'], 
-#     #                             "liste_de_rounds": self.liste_de_rounds}
+#         self.tournoi_inacheve = {"nom": self.tournoi_en_cours['nom'], 
+#                                 "lieu": self.tournoi_en_cours['lieu'], 
+#                                 "dates": self.tournoi_en_cours['dates'], 
+#                                 "nombres_de_rounds": self.tournoi_en_cours['nombres_de_rounds'], 
+#                                 "description": self.tournoi_en_cours['description'], 
+#                                 "mode_de_jeu": self.tournoi_en_cours['mode_de_jeu'], 
+#                                 "id": self.tournoi_en_cours['id'], 
+#                                 "joueurs": self.tournoi_en_cours['joueurs'], 
+#                                 "liste_de_rounds": self.liste_de_rounds}
     
-#     #     tournoi_inacheve = self.tournoi_inacheve
-#     #     self.sauvegarde_tournois_inacheves(tournoi_inacheve, "data/tournois_inacheves.json")
+#         tournoi_inacheve = self.tournoi_inacheve
+#         self.sauvegarde_tournois_inacheves(tournoi_inacheve, "data/tournois_inacheves.json")
                     
                       
-#     # def sauvegarde_tournois_inacheves(self, tournoi_inacheve, dossier="data/tournois_inacheves.json"):
-#     #     """ Sérialisation du tournoi inachevé """
+#     def sauvegarde_tournois_inacheves(self, tournoi_inacheve, dossier="data/tournois_inacheves.json"):
+#         """ Sérialisation du tournoi inachevé """
         
-#     #     with open(dossier, 'r+') as f :
-#     #         tournois_inacheves = json.load(f)
-#     #         tournois_inacheves["tournois_inacheves"].append(tournoi_inacheve)
-#     #         f.seek(0)
-#     #         json.dump(tournois_inacheves, f, indent=4) 
+#         with open(dossier, 'r+') as f :
+#             tournois_inacheves = json.load(f)
+#             tournois_inacheves["tournois_inacheves"].append(tournoi_inacheve)
+#             f.seek(0)
+#             json.dump(tournois_inacheves, f, indent=4) 
 
         
 
-#     # def ecrire_json(self, tournoi_en_cours, dossier="data/historique_tournois.json"):
-#     #     """ Sérialisation du tournoi choisi avec les joueurs choisis """
+#     def ecrire_json(self, tournoi_en_cours, dossier="data/historique_tournois.json"):
+#         """ Sérialisation du tournoi choisi avec les joueurs choisis """
         
-#     #     with open(dossier, 'r+') as f :
-#     #         historique_tournois = json.load(f)
-#     #         historique_tournois["liste_des_tournois_en_cours"].append(tournoi_en_cours)
-#     #         f.seek(0)
-#     #         json.dump(historique_tournois, f, indent=4) 
+#         with open(dossier, 'r+') as f :
+#             historique_tournois = json.load(f)
+#             historique_tournois["liste_des_tournois_en_cours"].append(tournoi_en_cours)
+#             f.seek(0)
+#             json.dump(historique_tournois, f, indent=4) 
             
             
             

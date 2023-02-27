@@ -9,7 +9,7 @@ from controllers.controllers_tournois import ControllersTournois
 from views.base_views import BaseViews
 from controllers.controllers_base import ControllersBase
 # from controllers.controllers_reprise import ControllersReprise
-from views.views_reprise_tournoi import ViewsRepriseTournoi
+# from views.views_reprise_tournoi import ViewsRepriseTournoi
 from controllers.controllers_reprise import ControllersReprise
 import sys
 
@@ -64,8 +64,10 @@ class ControllersMain:
             # Reprise d'un tournoi  
             elif entree == "3":           
       
-                t = ViewsRepriseTournoi()
-                t.reprendre_tournoi()
+                reprise = ControllersReprise()
+                reprise.recuperation_rounds()
+                reprise.lancer_tournoi()
+          
             
             
             elif entree == "4": 

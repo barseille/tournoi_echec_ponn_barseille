@@ -4,23 +4,37 @@ from views.base_views import BaseViews
 
 class ViewsRepriseTournoi(BaseViews):
     
+   
+    
     def reprendre_tournoi(self):
+        
+
+        
         self.joueurs = []
         
-        data = Database()
-        data.lire_database("data/historique_tournois.json")
-        historique_tournois = data.lire_database("data/historique_tournois.json")
+        d = Database()
+        # data.lire_database("data/historique_tournois.json")
+        data = d.lire_database("data/historique_tournois.json")
+        
+        # self.rounds_totals = self.tournoi["nombres_de_rounds"]
+        # self.rounds_termines = self.tournoi["rounds_effectues"] 
+        # self.rounds_restants = self.rounds_totals - self.rounds_termines
+        
+        # print(self.rounds_totals)
+        # print(self.rounds_termines)
+        # print(self.rounds_restants)
+        
         
         tournois_non_termines = []
         
         # S'il n'y a aucuns tournois dans la base de données
-        if not historique_tournois["liste_des_tournois"]:
+        if not data["liste_des_tournois"]:
             msg = "Aucun tournoi dans la base de données !"
             super().afficher_msg(msg)
             return
         
         # Recherche des tournois inachevés
-        for tournoi in historique_tournois["liste_des_tournois"]:
+        for tournoi in data["liste_des_tournois"]:
             if tournoi["statut"] == "tournoi non termine":
                 tournois_non_termines.append(tournoi)
         
@@ -40,26 +54,28 @@ class ViewsRepriseTournoi(BaseViews):
             try:
                 
                 choix = int(input("Quel tournoi souhaitez-vous continuer (choisir son numéro) ? ")) 
-                self.tournoi_non_termine = tournois_non_termines[choix - 1]
+                self.tournoi = tournois_non_termines[choix - 1]
                 
                 super().presentation("            -- Informations du tournoi --")
-                print(f'Nom du tournoi : {self.tournoi_non_termine["nom"]}')
-                print(f'Lieu : {self.tournoi_non_termine["lieu"]}')
-                print(f'Dates : {self.tournoi_non_termine["dates"]}')
-                print(f'Description : {self.tournoi_non_termine["description"]}')
-                print(f'Mode de jeu : {self.tournoi_non_termine["mode_de_jeu"]}') 
+                print(f'Nom du tournoi : {self.tournoi["nom"]}')
+                print(f'Lieu : {self.tournoi["lieu"]}')
+                print(f'Dates : {self.tournoi["dates"]}')
+                print(f'Description : {self.tournoi["description"]}')
+                print(f'Mode de jeu : {self.tournoi["mode_de_jeu"]}') 
                 
                 super().presentation("                   -- Joueurs --")    
-                for i, joueur in enumerate(self.tournoi_non_termine["joueurs"]):
+                for i, joueur in enumerate(self.tournoi["joueurs"]):
                     print(f'{i + 1} - {joueur["prenom"]} {joueur["nom"]}')
                     self.joueurs.append(joueur)
+                    
+                    
                 
-                super().presentation("              -- Informations sur les rounds --")  
-                self.nb_rounds_termines = self.tournoi_non_termine["rounds_effectues"]
-                print(f"Nombre(s) de round(s) effectué(s) : {(self.nb_rounds_termines)} Round(s)")
+                # super().presentation("              -- Informations sur les rounds --")  
+                # self.nb_rounds_termines = self.tournoi["rounds_effectues"]
+                # print(f"Nombre(s) de round(s) effectué(s) : {(self.nb_rounds_termines)} Round(s)")
                 
-                self.nb_de_rounds_restants = self.tournoi_non_termine["nombres_de_rounds"] - self.tournoi_non_termine["rounds_effectues"]
-                print(f"Nombre(s) de round(s) restant(s) : {(self.nb_de_rounds_restants)} Round(s)")
+                # self.nb_de_rounds_restants = self.tournoi["nombres_de_rounds"] - self.tournoi["rounds_effectues"]
+                # print(f"Nombre(s) de round(s) restant(s) : {(self.nb_de_rounds_restants)} Round(s)")
                 break
  
             except ValueError:
@@ -70,4 +86,4 @@ class ViewsRepriseTournoi(BaseViews):
                 affiche = BaseViews()
                 affiche.affichage_erreur_numero()
                 
-        return self.tournoi_non_termine
+        return self.tournoi

@@ -7,132 +7,92 @@
       "nombres_de_rounds": 4,
       "description": "coupe",
       "mode_de_jeu": "bullet",
-      "id": "feaee8cc-e8fb-4f10-9d04-7bd490c24516",
+      "id": "e0e2fc77-78ed-4379-81d0-9ddbb1b43720",
       "joueurs": [
         {
-          "nom": "tyson",
-          "prenom": "mike",
-          "date_de_naissance": "27/02/1982",
+          "nom": "lee",
+          "prenom": "bruce",
+          "date_de_naissance": "27/01/1981",
           "classement": 1,
-          "score": 3.5,
-          "id": "AB00002"
-        },
-        {
-          "nom": "keys",
-          "prenom": "alicia",
-          "date_de_naissance": "16/06/1990",
-          "classement": 2,
-          "score": 2.5,
-          "id": "AB00007"
-        },
-        {
-          "nom": "messi",
-          "prenom": "lionel",
-          "date_de_naissance": "11/11/1990",
-          "classement": 3,
-          "score": 2.5,
-          "id": "AB00006"
+          "score": 1,
+          "id": "AB00001"
         },
         {
           "nom": "vandamme",
           "prenom": "jean-claude",
           "date_de_naissance": "25/12/1981",
-          "classement": 4,
-          "score": 2.5,
+          "classement": 2,
+          "score": 1,
           "id": "AB00004"
-        },
-        {
-          "nom": "lee",
-          "prenom": "bruce",
-          "date_de_naissance": "27/01/1981",
-          "classement": 5,
-          "score": 1.5,
-          "id": "AB00001"
         },
         {
           "nom": "ali",
           "prenom": "mohammed",
           "date_de_naissance": "23/12/1985",
-          "classement": 6,
-          "score": 1.5,
+          "classement": 3,
+          "score": 1,
           "id": "AB00003"
         },
         {
           "nom": "enzo",
           "prenom": "ferrari",
           "date_de_naissance": "12/12/1945",
-          "classement": 7,
-          "score": 1.5,
+          "classement": 4,
+          "score": 1,
           "id": "AB00005"
+        },
+        {
+          "nom": "keys",
+          "prenom": "alicia",
+          "date_de_naissance": "16/06/1990",
+          "classement": 5,
+          "score": 0,
+          "id": "AB00007"
         },
         {
           "nom": "jordan",
           "prenom": "michael",
           "date_de_naissance": "18/05/1960",
-          "classement": 8,
-          "score": 0.5,
+          "classement": 6,
+          "score": 0,
           "id": "AB00008"
+        },
+        {
+          "nom": "messi",
+          "prenom": "lionel",
+          "date_de_naissance": "11/11/1990",
+          "classement": 7,
+          "score": 0,
+          "id": "AB00006"
+        },
+        {
+          "nom": "tyson",
+          "prenom": "mike",
+          "date_de_naissance": "27/02/1982",
+          "classement": 8,
+          "score": 0,
+          "id": "AB00002"
         }
       ],
       "resultats": [
         {
           "Round 1/4": {
             "matchs": [
-              "Match 1 : jean-claude vandamme VS michael jordan: 1 - 0",
-              "Match 2 : mohammed ali VS bruce lee: 1 - 0",
-              "Match 3 : alicia keys VS lionel messi: 1 - 0",
-              "Match 4 : mike tyson VS ferrari enzo: 1 - 0"
+              "Match 1 : bruce lee VS mike tyson: 1 - 0",
+              "Match 2 : ferrari enzo VS lionel messi: 1 - 0",
+              "Match 3 : jean-claude vandamme VS alicia keys: 1 - 0",
+              "Match 4 : mohammed ali VS michael jordan: 1 - 0"
             ],
-            "debut": "26/02/2023 16:45:30",
-            "fin": "26/02/2023 16:45:33",
+            "debut": "27/02/2023 10:36:22",
+            "fin": "27/02/2023 10:36:25",
             "scores_joueurs": [
               [
-                "enzo",
+                "keys",
                 0
-              ],
-              [
-                "ali",
-                1
               ],
               [
                 "lee",
-                0
-              ],
-              [
-                "keys",
                 1
-              ],
-              [
-                "jordan",
-                0
-              ],
-              [
-                "messi",
-                0
-              ],
-              [
-                "vandamme",
-                1
-              ],
-              [
-                "tyson",
-                1
-              ]
-            ]
-          },
-          "Round 2/4": {
-            "matchs": [
-              "Match 1 : mohammed ali VS alicia keys: 1 - 2",
-              "Match 2 : jean-claude vandamme VS mike tyson: 1 - 2",
-              "Match 3 : ferrari enzo VS bruce lee: 0 - 1",
-              "Match 4 : michael jordan VS lionel messi: 0 - 1"
-            ],
-            "debut": "26/02/2023 16:45:35",
-            "fin": "26/02/2023 16:45:46",
-            "scores_joueurs": [
-              [
-                "tyson",
-                2
               ],
               [
                 "vandamme",
@@ -144,117 +104,26 @@
               ],
               [
                 "messi",
-                1
-              ],
-              [
-                "lee",
-                1
-              ],
-              [
-                "keys",
-                2
-              ],
-              [
-                "ali",
-                1
-              ],
-              [
-                "enzo",
                 0
-              ]
-            ]
-          },
-          "Round 3/4": {
-            "matchs": [
-              "Match 1 : mike tyson VS alicia keys: 2.5 - 2.5",
-              "Match 2 : jean-claude vandamme VS lionel messi: 1.5 - 1.5",
-              "Match 3 : bruce lee VS mohammed ali: 1.5 - 1.5",
-              "Match 4 : michael jordan VS ferrari enzo: 0.5 - 0.5"
-            ],
-            "debut": "26/02/2023 16:45:47",
-            "fin": "26/02/2023 16:45:51",
-            "scores_joueurs": [
-              [
-                "vandamme",
-                1.5
-              ],
-              [
-                "lee",
-                1.5
-              ],
-              [
-                "messi",
-                1.5
-              ],
-              [
-                "enzo",
-                0.5
-              ],
-              [
-                "tyson",
-                2.5
               ],
               [
                 "ali",
-                1.5
-              ],
-              [
-                "keys",
-                2.5
-              ],
-              [
-                "jordan",
-                0.5
-              ]
-            ]
-          },
-          "Round 4/4": {
-            "matchs": [
-              "Match 1 : mike tyson VS alicia keys: 3.5 - 2.5",
-              "Match 2 : jean-claude vandamme VS bruce lee: 2.5 - 1.5",
-              "Match 3 : lionel messi VS mohammed ali: 2.5 - 1.5",
-              "Match 4 : ferrari enzo VS michael jordan: 1.5 - 0.5"
-            ],
-            "debut": "26/02/2023 16:45:52",
-            "fin": "26/02/2023 16:45:55",
-            "scores_joueurs": [
-              [
-                "keys",
-                2.5
-              ],
-              [
-                "messi",
-                2.5
-              ],
-              [
-                "lee",
-                1.5
-              ],
-              [
-                "ali",
-                1.5
+                1
               ],
               [
                 "tyson",
-                3.5
+                0
               ],
               [
                 "enzo",
-                1.5
-              ],
-              [
-                "vandamme",
-                2.5
-              ],
-              [
-                "jordan",
-                0.5
+                1
               ]
             ]
           }
         }
       ],
-      "statut": "tournoi termine"
+      "statut": "tournoi non termine",
+      "round_en_cours": 1
     }
   ]
 }
