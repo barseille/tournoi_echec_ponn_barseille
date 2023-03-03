@@ -1,5 +1,7 @@
 import random
 from views.base_views import BaseViews
+from .joueur import Joueur
+from dataclasses import dataclass
 
 class Match:
     def __init__(self, joueur1, joueur2):
@@ -10,8 +12,87 @@ class Match:
         self.score = 0
         self.matchs_joues = []
         self.paires_precedentes = []
-    
-        
+
+
+# class joueurScore:
+#     """ Représente le joueur avec son score """
+
+#     def __init__(self, joueur: Joueur, score: int = 0) -> None:
+#         self.joueur = joueur
+#         self.score = score
+
+#     @property
+#     def score(self):
+#         return self._score
+
+#     @score.setter
+#     def score(self, value: int):
+#         self._score = value
+#         self.joueur.score += value
+
+#     def __str__(self) -> str:
+#         return f"Joueur : {self.joueur.nom}, score : {self.score}"
+
+#     def __lt__(self, autre_joueur: "joueurScore"):
+#         return self.score < autre_joueur.score
+
+
+   
+# # match = ([P1, score], [P2, score])
+# @dataclass
+# class Match:
+#     """Represente un match entre 2 joueurs"""
+
+#     joueur1: joueurScore
+#     joueur_score2: joueurScore
+
+#     @property
+#     def j1_nom_complet(self):
+#         """Retourne nom et prenom du joueur 1"""
+#         return self.joueur1.joueur.nom_complet
+
+#     @property
+#     def j2_nom_complet(self):
+#         """Retourne nom et prenom du joueur 2"""
+#         return self.joueur_score2.joueur.nom_complet
+
+#     def __str__(self) -> str:
+#         msg = f"{self.j1_nom_complet} : {self.joueur1.score} VS {self.j2_nom_complet} : {self.joueur_score2.score}"
+#         return msg
+
+#     def serialize(self) -> list[tuple, tuple]:
+#         """Retourne une liste de tuple avec l'id et le score pour le joueur."""
+#         # [(idjoueur1, 0), (idjoueur2, 0)]
+#         joueur1 = (self.joueur1.joueur.id, self.joueur1.score)
+#         joueur_score2 = (self.joueur_score2.joueur.id, self.joueur_score2.score)
+#         return [joueur1, joueur_score2]
+#         # [(1, 0.5), (2, 0.5)]
+
+#     @classmethod
+#     def create_from_document(cls, data: list) -> "Match":
+#         """Return a Match object from a list"""
+
+#         matches: list[Match] = []
+#         # chaque élément de data est une liste de 2 list : [[1, 1], [5, 0]]
+#         # le premier élément de chaque liste est l'identifiant du joueur, le second le score.
+#         for element in data:
+#             # First: Get the joueur
+#             id1 = element[0][0]
+#             id2 = element[1][0]
+#             joueur1 = Joueur.get_from_cache(id=id1)
+#             joueur2 = Joueur.get_from_cache(id=id2)
+
+#             # Second: Create the joueurScore
+#             score_p1 = element[0][1]
+#             score_p2 = element[1][1]
+#             ps1 = joueurScore(joueur1, score_p1)
+#             ps2 = joueurScore(joueur2, score_p2)
+
+#             # create the Match object and add it to the list
+#             matches.append(cls(ps1, ps2))
+
+        # return matches
+
     def melanger_joueurs(self, joueurs):
         random.shuffle(joueurs)
  
@@ -23,6 +104,7 @@ class Match:
             joueur2 = joueurs[i + 1]
             paires.append((joueur1, joueur2))
         return paires
+
    
     
     def faire_match(self, joueurs):

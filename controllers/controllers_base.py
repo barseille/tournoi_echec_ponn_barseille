@@ -26,13 +26,14 @@ class ControllersBase():
         self.views_menu_joueur = ViewsMenuJoueur()
         self.views_menu_tournoi = ViewsMenuTournoi()
         self.views_reprise_tournoi = ViewsRepriseTournoi()
-        self.views_base_views = BaseViews()
+        self.base_views = BaseViews()
         self.paires_precedentes = []
         self.match = Match(self.joueur1, self.joueur2)
         self.match_info = []
         self.resultats_round = {}
         self.liste_matchs = []
         self.rounds_restants = 0
+        self.tournoi_inacheve = {}
        
         
     def fusion_tournoi_avec_joueurs(self):
@@ -60,16 +61,19 @@ class ControllersBase():
     def enregistrer_temps_round(self):
         temps_round = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
         return temps_round
- 
+
+   
+       
+
     def lancer_round(self):
         
         self.tournoi["resultats"] = []
-        recup_round = 0
+        self.recup_round = 0
         for i in range(self.tournoi["nombres_de_rounds"]):
             msg = f"                   -- ROUND {i + 1}/{self.tournoi['nombres_de_rounds']} --"
             titre = BaseViews()
             titre.presentation(msg)
-            recup_round +=1
+            self.recup_round +=1
    
             # # Ajouter le temps de début du round
             debut_round = self.enregistrer_temps_round()
@@ -78,8 +82,11 @@ class ControllersBase():
             if i == 0: 
                 random.shuffle(self.tournoi["joueurs"])
             # Trier les joueurs par score et par ordre alphabétique
-            else:    
+            else: 
+                # self.trier()   
                 self.tournoi["joueurs"].sort(key=lambda x: x["score"], reverse=True)
+            #     self.tournoi["joueurs"].sort(key=lambda x: (x["nom"], x["score"]), reverse=True)
+
             
             # Lancer les matchs pour le round    
             self.lancer_match(self.tournoi["joueurs"])
@@ -90,12 +97,21 @@ class ControllersBase():
             self.liste_matchs = self.creer_liste_scores_joueurs(self.tournoi["joueurs"])
             self.tournoi["resultats"] = []
             
-            # Ajouter les résultats du round au dictionnaire resultats_round
+            # self.resultats_round= {"round_en_cours" :self.recup_round,
+            #                         "matchs": self.match_info.copy(),
+            #                         "debut": debut_round,
+            #                         "fin": fin_round,
+            #                         "scores_joueurs": self.liste_matchs.copy()}
+
+            
+            # # Ajouter les résultats du round au dictionnaire resultats_round
             self.resultats_round[f"Round {i+1}/{self.tournoi['nombres_de_rounds']}"] = {"matchs": self.match_info.copy(),
                                                                                         "debut": debut_round,
                                                                                         "fin": fin_round,
                                                                                         "scores_joueurs": self.liste_matchs.copy()}
             
+           
+           
             # Vider la liste des matchs pour le prochain round
             self.vider_listes_matchs()   
             
@@ -106,32 +122,34 @@ class ControllersBase():
                     if reponse == "o":
                         break
                     elif reponse == "n":
-                        self.tournoi["resultats"].append(self.resultats_round)                 
-                        self.tournoi["statut"] = "tournoi non termine"
-                        self.tournoi["round_en_cours"] = recup_round
-
-                        self.views_base_views.affichage_termine()
+                        # self.tournoi["resultats"].append(self.resultats_round)                 
+                        # self.tournoi["statut"] = "tournoi non termine"
+                        # self.tournoi["round_termine"] = self.recup_round
+                       
+                        # self.base_views.affichage_termine()
                         
-                        self.mise_a_jour_classement_joueur(self.tournoi)
-                        self.sauvergarde()
+                        # # self.mise_a_jour_classement_joueur(self.tournoi)
+                        self.recup_tournoi_inacheve()
                         return
                     else: 
-                        self.views_base_views.affichage_erreur_choix()              
+                        self.base_views.affichage_erreur_choix()              
                         
         self.tournoi["resultats"].append(self.resultats_round)      
         self.tournoi["statut"] = "tournoi termine" 
-        self.tournoi["round_en_cours"] = recup_round
+        self.tournoi["round_termine"] = self.recup_round
         
-        self.mise_a_jour_classement_joueur(self.tournoi)
+        # self.mise_a_jour_classement_joueur(self.tournoi)
         self.sauvergarde()
         
         self.affichage_tournoi_termine(self.tournoi)
+        
+        return self.resultats_round
    
         
     def affichage_tournoi_termine(self,tournoi):  
         
         if tournoi["nombres_de_rounds"] :  
-            self.views_base_views.affichage_termine()
+            self.base_views.affichage_termine()
         
 
     def lancer_match(self, joueurs):
@@ -147,21 +165,21 @@ class ControllersBase():
      
         for i, j in enumerate(paire):
             match_joueurs = f"Match {i+1} : {j[0]['prenom']} {j[0]['nom']} VS {j[1]['prenom']} {j[1]['nom']}"
-            self.views_base_views.afficher_msg(match_joueurs)
+            self.base_views.afficher_msg(match_joueurs)
             
             while True:     
                 choix = input("Choisissez le gagnant du match (1 pour J1, 2 pour J2 et 3 pour égalité) : ")        
                 try:           
                     if choix == "1":
                         j[0]["score"] += 1
-                        self.views_base_views.afficher_msg(f"{j[0]['prenom']} {j[0]['nom']} a gagné\n")
+                        self.base_views.afficher_msg(f"{j[0]['prenom']} {j[0]['nom']} a gagné\n")
                         match_joueurs += f": {j[0]['score']} - {j[1]['score']}"
                         self.match_info.append(match_joueurs)
                         break
                     
                     elif choix == "2":
                         j[1]["score"] += 1
-                        self.views_base_views.afficher_msg(f"{j[1]['prenom']} {j[1]['nom']} a gagné\n")
+                        self.base_views.afficher_msg(f"{j[1]['prenom']} {j[1]['nom']} a gagné\n")
                         match_joueurs += f": {j[0]['score']} - {j[1]['score']}"
                         self.match_info.append(match_joueurs)
                         break
@@ -169,15 +187,15 @@ class ControllersBase():
                     elif choix == "3":
                         j[0]["score"] += 0.5
                         j[1]["score"] += 0.5    
-                        self.views_base_views.afficher_msg("Match nul !\n")
+                        self.base_views.afficher_msg("Match nul !\n")
                         match_joueurs += f": {j[0]['score']} - {j[1]['score']}"
                         self.match_info.append(match_joueurs)
                         break
                     
                     else:
-                        self.views_base_views.afficher_msg("Choix invalide. Veuillez taper 1, 2, 3")        
+                        self.base_views.afficher_msg("Choix invalide. Veuillez taper 1, 2, 3")        
                 except ValueError:
-                    self.views_base_views.afficher_msg("Choix invalide. Veuillez taper 1, 2, 3")
+                    self.base_views.afficher_msg("Choix invalide. Veuillez taper 1, 2, 3")
        
 
     def creer_liste_scores_joueurs(self, joueurs):
@@ -193,7 +211,7 @@ class ControllersBase():
         # Afficher un message 
         affiche = BaseViews()
         affiche.afficher_msg(msg)  
-        self.views_base_views.afficher_msg(msg)
+        self.base_views.afficher_msg(msg)
  
         
     def sauvergarde(self):
@@ -202,7 +220,8 @@ class ControllersBase():
 
       
     def mise_a_jour_classement_joueur(self, tournoi):
-        tournoi["joueurs"].sort(key=lambda x: x["score"], reverse=True)
+        # tournoi["joueurs"].sort(key=lambda x: x["score"], reverse=True)
+        tournoi["joueurs"].sort(key=lambda x: (x["score"], x["nom"]), reverse=True)
         for i, joueur in enumerate(tournoi["joueurs"]):
             joueur["classement"] = i + 1
 
@@ -210,7 +229,29 @@ class ControllersBase():
     def vider_listes_matchs(self):
         self.match_info.clear()
         self.liste_matchs.clear()
-
+        
+    def recup_tournoi_inacheve(self):
+                     
+        self.tournoi_inacheve = {"nom": self.tournoi['nom'], 
+                                "lieu": self.tournoi['lieu'], 
+                                "dates": self.tournoi['dates'], 
+                                "nombres_de_rounds": self.tournoi['nombres_de_rounds'], 
+                                "description": self.tournoi['description'], 
+                                "mode_de_jeu": self.tournoi['mode_de_jeu'], 
+                                "id": self.tournoi['id'], 
+                                "joueurs": self.tournoi['joueurs'], 
+                                "resultats": self.resultats_round,
+                                "statut":"tournoi non termine",
+                                "round_termine":self.recup_round}
+        
+ 
+        # self.mise_a_jour_classement_joueur(self.tournoi_inacheve)  
+        data = Database()
+        data.ecrire_database(self.tournoi_inacheve, "non_termines", chemin_fichier="data/non_termines.json")
+   
+        return self.tournoi_inacheve
+    
+    
 
 
 

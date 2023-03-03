@@ -40,7 +40,7 @@ class Database:
             donnees = json.load(f)
             donnees[cle].append(infos)
             f.seek(0)
-            json.dump(donnees, f, indent=2)
+            json.dump(donnees, f, indent=4)
             return donnees
         
 

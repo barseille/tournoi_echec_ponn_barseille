@@ -108,8 +108,8 @@ class ViewsEntreeJoueur(BaseViews):
                         self.classement,
                         self.id_joueur)
 
-        self.joueur_cree = joueur.afficher_infos()
-        return self.joueur_cree
+        self.joueur = joueur.afficher_infos()
+        return self.joueur
    
     
    

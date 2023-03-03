@@ -28,7 +28,7 @@ class ControllersJoueurs:
             if choix in ["o", "n"]:
                 break
             else:
-                self.views_menu_joueur.affichage_erreur_creation()
+                self.views_menu_joueur.affichage_creation_joueur()
                 
         if choix == "o":
             self.recuperer_infos_joueur()

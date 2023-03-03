@@ -21,6 +21,10 @@ class Joueur:
         }
         return joueur_infos
     
+    def nom_complet(self):
+        return f"Joueur {self.prenom} {self.nom}"
+        
+    
 
     
 

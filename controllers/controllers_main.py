@@ -60,13 +60,17 @@ class ControllersMain:
                 tournoi = ControllersBase()           
                 tournoi.fusion_tournoi_avec_joueurs()
                 tournoi.lancer_round()
+               
                 
             # Reprise d'un tournoi  
             elif entree == "3":           
       
                 reprise = ControllersReprise()
-                reprise.recuperation_rounds()
-                reprise.lancer_tournoi()
+                # reprise.recuperation_rounds()
+                # reprise.lancer_tournoi()
+                reprise.reprendre_tournoi()
+                # reprise.recup_tournoi_en_cours()
+                # reprise.lancer_tournoi()
           
             
             
