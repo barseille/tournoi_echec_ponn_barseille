@@ -3,7 +3,6 @@ from database.database import Database
 
 JOUEUR_OPTIONS = (
     'Créer un joueur',
-    'Classement des joueurs par score',
     'Informations sur les joueurs',
     'Retour'
 )
@@ -11,9 +10,12 @@ JOUEUR_OPTIONS = (
 
 class ViewsMenuJoueur(BaseViews):
     
+    
+    
     def __init__(self):
         self.liste_des_joueurs = []
         self.rencontre = {}
+        self.nombre_joueurs = 8
        
     def afficher_menu_joueur(self):
         
@@ -27,18 +29,16 @@ class ViewsMenuJoueur(BaseViews):
         
         titre = "                -- Création Joueur --"
         super().presentation(titre)
-        
-        
-    # def affichage_erreur_creation(self):   
-    #     super().affichage_erreur_choix()       
+          
  
+    # Sélectionner participants pour le tournoi
     def selectionner_participants(self):
         
         titre = "               -- Liste des joueurs --"
         super().presentation(titre)
         
         # Ouvrir le fichier liste_joueurs.json
-        liste_joueurs = self.ouvrir_database()
+        liste_joueurs = self.lire_database()
                 
         # Récupérer la clé liste des joueurs
         self.liste_joueurs = liste_joueurs['liste_joueurs']
@@ -47,11 +47,10 @@ class ViewsMenuJoueur(BaseViews):
             print(f"Joueur {i+1}: {joueur['prenom']} {joueur['nom']}")     
         
         # L'utilisateur doit choisir 8 joueurs
-        nombre_joueurs = 8
-        print(f"Sélectionnez {nombre_joueurs} joueurs :")
+        print(f"Sélectionnez {self.nombre_joueurs} joueurs :")
         
         i = 1
-        while i <= nombre_joueurs:
+        while i <= self.nombre_joueurs:
             try:
                 choix_joueur = int(input("Choisissez un joueur par son numéro : "))
                 joueur_selectionne = self.liste_joueurs[choix_joueur - 1]
@@ -91,29 +90,17 @@ class ViewsMenuJoueur(BaseViews):
         super().presentation(titre)
         
         # Ouvrir le fichier liste_joueurs.json
-        liste_joueurs = self.ouvrir_database()
+        liste_joueurs = self.lire_database()
          
         for index, joueur in enumerate(liste_joueurs["liste_joueurs"]):
-            print(f" - Joueur n°{index + 1} : {joueur['prenom']} {joueur['nom']}")
-            print(f"                Date de naissance : {joueur['date_de_naissance']}")
-            print(f"                Classement : {joueur['classement']}")
-            print(f"                Identifiant : {joueur['id']}\n")
+            print(f"Joueur n°{index + 1} : ")
+            print(f"{joueur['prenom']} {joueur['nom']}")
+            print(f"Date de naissance : {joueur['date_de_naissance']}")
+            print(f"Classement : {joueur['classement']}")
+            print(f"Identifiant : {joueur['id']}\n")
             
-            
-    def trier_joueurs_par_score(self):
-        
-        # Ouvrir le fichier liste_joueurs.json
-        liste_joueurs = self.ouvrir_database()
-        
-        liste_joueurs_triee = sorted(liste_joueurs["liste_joueurs"], key=lambda x: x["classement"]) 
-        
-        titre = "              -- Classement par score -- "
-        super().presentation(titre)
-         
-        for joueur in liste_joueurs_triee:
-            print(f"{joueur['classement']} - {joueur['prenom']} {joueur['nom']}")
                 
-    def ouvrir_database(self):
+    def lire_database(self):
         data_joueur = Database()
         data = data_joueur.lire_database(chemin_fichier="data/liste_joueurs.json")
         return data

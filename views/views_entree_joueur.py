@@ -8,13 +8,14 @@ class ViewsEntreeJoueur(BaseViews):
  
     
     def creation_joueur_nom(self):     
-        """  
-        La méthode isalpha() renvoie True 
-        si la chaîne de caractères ne contient que 
-        des lettres alphabétiques
-        """  
+ 
         
         while True:
+            """ 
+            Méthode isalpha() permet de vérifier 
+            si une chaîne de caractères contient 
+            uniquement des lettres alphabétiques.
+            """
             nom = input('Entrez votre nom : ')
             if nom.isalpha():
                 return nom
@@ -31,6 +32,7 @@ class ViewsEntreeJoueur(BaseViews):
             else:
                 super().affichage_erreur_texte()
 
+
     def creation_joueur_date_de_naissance(self):    
         try:
             date_de_naissance = input('Entrez votre date de naissance au format jj/mm/aaaa : ')
@@ -43,12 +45,15 @@ class ViewsEntreeJoueur(BaseViews):
     def creation_joueur_classement(self):  
         
         # Ouvrir le fichier liste_joueurs.json
-        data = self.sauvegarde()
+        data = self.lire_database()
          
-        classements_existants = []       
+        classements_existants = []   
+        
+            
         for joueur in data['liste_joueurs']:
             classements_existants.append(joueur['classement'])     
-                
+        
+        """ On vérifie si le numéro du classement existe """        
         while True:
             try:      
                 classement = int(input("Entrez le numéro du joueur dans le classement : "))
@@ -59,11 +64,12 @@ class ViewsEntreeJoueur(BaseViews):
                     continue         
             except ValueError:
                 super().affichage_erreur_type()
+    
                 
     def ajout_identifiant(self):     
      
         # Ouvrir le fichier liste_joueurs.json
-        data = self.sauvegarde()
+        data = self.lire_database()
           
         id_existant = [] 
         for id in data['liste_joueurs']:
@@ -71,12 +77,11 @@ class ViewsEntreeJoueur(BaseViews):
                 
         while True:
             """
-            méthode isdigit() est une fonction Python qui s'applique à une chaîne de caractères 
-            et vérifie si tous les caractères de cette chaîne sont des chiffres.
-            Elle retourne True si la chaîne est constituée uniquement de chiffres, 
-            sinon elle retourne False
+            méthode isdigit() vérifie si tous les caractères 
+            de cette chaîne sont des chiffres.
             """
 
+            # Création d'Id commençant par AB suite de 5 chiffres
             id = input("Entrez un nombre à 5 chiffres : ")
             if id.isdigit() and len(id) == 5:
                 id = "AB" + id
@@ -86,15 +91,17 @@ class ViewsEntreeJoueur(BaseViews):
                     print("Cet identifiant existe déjà. Veuillez en choisir un autre.")
             else:
                 print("Erreur : Veuillez entrer exactement 5 chiffres.")
+  
                 
-    def sauvegarde(self):
+    def lire_database(self):
         
         data_joueur = Database()
         data = data_joueur.lire_database(chemin_fichier="data/liste_joueurs.json")
         return data
+  
                 
     def infos_joueur(self):
-        """ Afficher les informations joueurs dans un dictionnaire """
+        """ Sérialiser les informations joueurs dans un dictionnaire """
         
         self.nom = self.creation_joueur_nom()
         self.prenom = self.creation_joueur_prenom()

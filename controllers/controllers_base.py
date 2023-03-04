@@ -1,15 +1,10 @@
 from views.views_menu_tournoi import ViewsMenuTournoi
 from views.views_menu_joueur import ViewsMenuJoueur
-from views.views_reprise_tournoi import ViewsRepriseTournoi
 from views.base_views import BaseViews
-
 from .controllers_joueurs import ControllersJoueurs
 from .controllers_tournois import ControllersTournois
-
 from models.match import Match
-
 from database.database import Database
-
 from datetime import datetime
 import random
 import uuid
@@ -25,7 +20,6 @@ class ControllersBase():
         self.controllers_tournois = ControllersTournois()
         self.views_menu_joueur = ViewsMenuJoueur()
         self.views_menu_tournoi = ViewsMenuTournoi()
-        self.views_reprise_tournoi = ViewsRepriseTournoi()
         self.base_views = BaseViews()
         self.paires_precedentes = []
         self.match = Match(self.joueur1, self.joueur2)
@@ -82,10 +76,9 @@ class ControllersBase():
             if i == 0: 
                 random.shuffle(self.tournoi["joueurs"])
             # Trier les joueurs par score et par ordre alphabétique
-            else: 
-                # self.trier()   
+            else:  
                 self.tournoi["joueurs"].sort(key=lambda x: x["score"], reverse=True)
-            #     self.tournoi["joueurs"].sort(key=lambda x: (x["nom"], x["score"]), reverse=True)
+           
 
             
             # Lancer les matchs pour le round    
@@ -96,13 +89,6 @@ class ControllersBase():
             
             self.liste_matchs = self.creer_liste_scores_joueurs(self.tournoi["joueurs"])
             self.tournoi["resultats"] = []
-            
-            # self.resultats_round= {"round_en_cours" :self.recup_round,
-            #                         "matchs": self.match_info.copy(),
-            #                         "debut": debut_round,
-            #                         "fin": fin_round,
-            #                         "scores_joueurs": self.liste_matchs.copy()}
-
             
             # # Ajouter les résultats du round au dictionnaire resultats_round
             self.resultats_round[f"Round {i+1}/{self.tournoi['nombres_de_rounds']}"] = {"matchs": self.match_info.copy(),
@@ -122,13 +108,6 @@ class ControllersBase():
                     if reponse == "o":
                         break
                     elif reponse == "n":
-                        # self.tournoi["resultats"].append(self.resultats_round)                 
-                        # self.tournoi["statut"] = "tournoi non termine"
-                        # self.tournoi["round_termine"] = self.recup_round
-                       
-                        # self.base_views.affichage_termine()
-                        
-                        # # self.mise_a_jour_classement_joueur(self.tournoi)
                         self.recup_tournoi_inacheve()
                         return
                     else: 
@@ -207,26 +186,29 @@ class ControllersBase():
         return liste_scores_joueurs
        
 
-    def affichage_msg(self, msg):         
+    def affichage_msg(self, msg):  
+               
         # Afficher un message 
         affiche = BaseViews()
         affiche.afficher_msg(msg)  
         self.base_views.afficher_msg(msg)
  
-        
+       
     def sauvergarde(self):
+        
         data = Database()
         data.ecrire_database(self.tournoi, "liste_des_tournois", chemin_fichier="data/historique_tournois.json")
 
       
     def mise_a_jour_classement_joueur(self, tournoi):
-        # tournoi["joueurs"].sort(key=lambda x: x["score"], reverse=True)
+        
         tournoi["joueurs"].sort(key=lambda x: (x["score"], x["nom"]), reverse=True)
         for i, joueur in enumerate(tournoi["joueurs"]):
             joueur["classement"] = i + 1
 
 
     def vider_listes_matchs(self):
+        
         self.match_info.clear()
         self.liste_matchs.clear()
         
@@ -244,8 +226,6 @@ class ControllersBase():
                                 "statut":"tournoi non termine",
                                 "round_termine":self.recup_round}
         
- 
-        # self.mise_a_jour_classement_joueur(self.tournoi_inacheve)  
         data = Database()
         data.ecrire_database(self.tournoi_inacheve, "non_termines", chemin_fichier="data/non_termines.json")
    

@@ -1,7 +1,8 @@
-from views.views_reprise_tournoi import ViewsRepriseTournoi
 from views.base_views import BaseViews
 from .controllers_base import ControllersBase
 from models.match import Match
+from database.database import Database
+from views.views_menu_tournoi import ViewsMenuTournoi
 from database.database import Database
 import json
 
@@ -9,8 +10,8 @@ import json
 class ControllersReprise(ControllersBase):
     def __init__(self):
         super().__init__()
-        self.views_reprise_tournoi = ViewsRepriseTournoi()
-        # self.controllers_base = ControllersBase()
+        self.views_menu_tournoi = ViewsMenuTournoi()
+        self.database = Database()
         self.joueur1 = None
         self.joueur2 = None
         self.match = Match(self.joueur1, self.joueur2)
@@ -52,34 +53,40 @@ class ControllersReprise(ControllersBase):
             for i, tournoi in enumerate(self.tournois_non_termines):
                 liste = f'{i + 1}. Nom du tournoi : {tournoi["nom"]} - Dates: {tournoi["dates"]}'
                 self.base_views.afficher_msg(liste)     
-                i += 1
-                
-            while True:
-                try:            
-                    choix = int(input("Quel tournoi souhaitez-vous continuer (choisir son numéro) ? ")) 
-                    self.tournoi = self.tournois_non_termines[choix - 1]
-                    
-                    self.base_views.presentation("            -- Informations du tournoi --")
-                    self.views_reprise_tournoi.affichage_tournoi(self.tournoi)
-                    
-                    self.base_views.presentation("                   -- Joueurs --") 
-                    self.views_reprise_tournoi.affichage_joueurs(self.tournoi) 
-                    
-                    self.lancer_tournoi()                
-                    break
-    
-                except ValueError:
-                    affiche = BaseViews()
-                    affiche.affichage_erreur_type()
-                    
-                except IndexError:
-                    affiche = BaseViews()
-                    affiche.affichage_erreur_numero()         
-            break
+                # i += 1       
             
+            try:            
+                choix = int(input("Quel tournoi souhaitez-vous continuer (choisir son numéro) ? ")) 
+                self.tournoi = self.tournois_non_termines[choix - 1]
                 
-     
+                # Information du tournoi
+                self.base_views.presentation("            -- Informations du tournoi --")
+                self.views_menu_tournoi.affichage_infos_tournoi(self.tournoi)
+                
+                # Information des joueurs du tournoi
+                self.base_views.presentation("                   -- Joueurs --") 
+                self.views_menu_tournoi.affichage_joueurs(self.tournoi) 
+                
+                # Historique des rounds du tournoi
+                msg = "            -- Historique des rounds --"
+                self.base_views.presentation(msg)
+                
+                self.recup_tournoi_en_cours()
+                self.historique_rounds() 
+                self.continuer_tournoi()
+                          
+                break
 
+            except ValueError:
+                affiche = BaseViews()
+                affiche.affichage_erreur_type()
+                
+            except IndexError:
+                affiche = BaseViews()
+                affiche.affichage_erreur_numero()  
+            break       
+            
+            
 
     def recup_tournoi_en_cours(self):
         
@@ -95,26 +102,37 @@ class ControllersReprise(ControllersBase):
                             "statut":self.tournoi.get("statut", ""),
                             "round_termine": self.tournoi.get("round_termine", [])
                             }
-       
+     
         return self.data_tournoi
-    
-    
+
+    def historique_rounds(self):
         
+        self.rounds_totals = self.data_tournoi["nombres_de_rounds"]
+        self.round_termine = self.data_tournoi["round_termine"] 
+        self.rounds_restants = self.rounds_totals - self.round_termine
+ 
+        
+        self.base_views.afficher_msg(f'Nombres totals de rounds : {self.rounds_totals}')
+        self.base_views.afficher_msg(f'Round(s) terminé(s) : {self.round_termine}')
+        self.base_views.afficher_msg(f'Round(s) restant(s) : {self.rounds_restants}')
+        
+    def continuer_tournoi(self):
+        
+        while True:
+            reponse = input("Voulez-vous continuer le tournoi ? (o/n) : ")
+            if reponse == "o":
+                self.lancer_tournoi()
+            elif reponse == "n":
+                self.base_views.affichage_termine()
+                return False
+            else: 
+                self.base_views.affichage_erreur_choix()
+
+    
     def lancer_tournoi(self):
-        
-        self.recup_tournoi_en_cours()
-        
-       
-        rounds_totals = self.data_tournoi["nombres_de_rounds"]
-        round_termine = self.data_tournoi["round_termine"] 
-        rounds_restants = rounds_totals - round_termine
               
-        # if rounds_restants <= 0:
-        #     print("Le tournoi est déjà terminé.")
-        #     return
-            
-        for i in range (rounds_restants):
-            msg = f"                   -- ROUND {round_termine + 1 + i}/{rounds_totals} --"
+        for i in range (self.rounds_restants):
+            msg = f"                   -- ROUND {self.round_termine + 1 + i}/{self.rounds_totals} --"
             self.base_views.presentation(msg)
    
             # Ajouter le temps de début du round
@@ -133,7 +151,7 @@ class ControllersReprise(ControllersBase):
            
             
             # Ajouter les résultats du round au dictionnaire resultats_round
-            self.resultats_round[f"Round {round_termine + i + 1}/{rounds_totals}"] = {"matchs": self.match_info.copy(),
+            self.resultats_round[f"Round {self.round_termine + i + 1}/{self.rounds_totals}"] = {"matchs": self.match_info.copy(),
                                                                                             "debut": debut_round,
                                                                                             "fin": fin_round,
                                                                                             "scores_joueurs": self.liste_matchs.copy()}
@@ -142,7 +160,7 @@ class ControllersReprise(ControllersBase):
             # Vider la liste des matchs pour le prochain round
             self.vider_listes_matchs() 
             
-            if i + 1 < rounds_restants:
+            if i + 1 < self.rounds_restants:
                 while True:
                     reponse = input("Voulez_vous continuer le prochain round ? (o/n) : ")
                     if reponse == "o":
@@ -151,7 +169,7 @@ class ControllersReprise(ControllersBase):
                         
                         self.data_tournoi["resultats"].update(self.resultats_round)          
                         self.data_tournoi["statut"] = "tournoi non termine"
-                        self.data_tournoi["round_termine"] = round_termine + i + 1
+                        self.data_tournoi["round_termine"] = self.round_termine + i + 1
                                      
                         self.base_views.affichage_termine()
                              
@@ -163,7 +181,7 @@ class ControllersReprise(ControllersBase):
                         
         self.data_tournoi["resultats"].update(self.resultats_round)     
         self.data_tournoi["statut"] = "tournoi termine" 
-        self.data_tournoi["round_termine"] = round_termine + i + 1
+        self.data_tournoi["round_termine"] = self.round_termine + i + 1
         
         
         self.sauvegarde_tournoi_termines()
@@ -186,15 +204,14 @@ class ControllersReprise(ControllersBase):
                     del data["non_termines"][i]
                 break
 
- 
-    def sauvegarde_tournoi_non_termines(self):
-        sauvegarde = Database()
-        sauvegarde.ecrire_database(self.data_tournoi,"non_termines", chemin_fichier="data/non_termines.json")
-   
-    def sauvegarde_tournoi_termines(self):
-        sauvegarde = Database()
-        sauvegarde.ecrire_database(self.data_tournoi,"liste_des_tournois", chemin_fichier="data/historique_tournois.json")
-   
+    def sauvegarde_tournoi_non_termines(self):       
+        self.database.ecrire_database(self.data_tournoi, cle="non_termines", chemin_fichier="data/non_termines.json")
+        
+    def sauvegarde_tournoi_termines(self): 
+        self.database.ecrire_database(self.data_tournoi, cle="liste_des_tournois", chemin_fichier="data/historique_tournois.json")  
+       
+
+
 
 
     def effacer_tournoi(self):
@@ -208,3 +225,8 @@ class ControllersReprise(ControllersBase):
                 
         with open("data/non_termines.json", "w") as f:
             json.dump(data, f, indent=4)
+            
+            
+
+                
+        

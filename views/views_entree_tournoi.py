@@ -5,12 +5,13 @@ from models.tournoi import Tournoi
 class ViewsEntreeTournoi(BaseViews):
 
     def demander_nom_tournoi(self):
-        """ 
-        la méthode isalpha() renvoie True
-        si la chaîne de caractères ne contient que 
-        des lettres alphabétiques
-        """
+
         while True:
+            """ 
+            Méthode isalpha() permet de vérifier 
+            si une chaîne de caractères contient 
+            uniquement des lettres alphabétiques.
+            """
             nom = input('Entrez le nom du tournoi : ')
             if nom.isalpha():
                 return nom
@@ -67,10 +68,9 @@ class ViewsEntreeTournoi(BaseViews):
 
     def demander_rounds(self):
         
-        """ 
-        La méthode isdigit() est une méthode de l'objet str (chaîne de caractères) en Python. 
-        Elle permet de vérifier si tous les caractères d'une chaîne sont des chiffres. 
-        Elle renvoie True si tous les caractères sont des chiffres, et False sinon.
+        """
+        méthode isdigit() vérifie si tous les caractères 
+        de cette chaîne sont des chiffres.
         """
         
         rounds = input("Combien de rounds souhaitez-vous jouer ? (4 par défaut) ")
@@ -109,7 +109,7 @@ class ViewsEntreeTournoi(BaseViews):
         return mode_de_jeu[entree - 1]
     
     def infos_tournoi(self):
-        """ Afficher les informations du tournoi dans un dictionnaire """
+        """ Serialiser les informations du tournoi dans un dictionnaire """
         
         self.nom = self.demander_nom_tournoi()
         self.lieu = self.demander_lieu_tournoi()
@@ -124,8 +124,8 @@ class ViewsEntreeTournoi(BaseViews):
                             self.nombres_de_rounds,
                             self.description,
                             self.mode_de_jeu)  
-        self.tournoi_cree = tournoi.afficher_tournoi()
-        return self.tournoi_cree
+        self.tournoi = tournoi.afficher_tournoi()
+        return self.tournoi
         
 
 

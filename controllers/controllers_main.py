@@ -4,12 +4,8 @@ from views.views_menu_tournoi import ViewsMenuTournoi
 from views.views_rapport_menu import ViewsRapportMenu
 from controllers.controllers_joueurs import ControllersJoueurs
 from controllers.controllers_tournois import ControllersTournois
-# from controllers.controllers_application import ControllersApplication
-# from controllers.controllers_application_tournoi import ControllersApplicationTournoi
 from views.base_views import BaseViews
 from controllers.controllers_base import ControllersBase
-# from controllers.controllers_reprise import ControllersReprise
-# from views.views_reprise_tournoi import ViewsRepriseTournoi
 from controllers.controllers_reprise import ControllersReprise
 import sys
 
@@ -64,16 +60,10 @@ class ControllersMain:
                 
             # Reprise d'un tournoi  
             elif entree == "3":           
-      
                 reprise = ControllersReprise()
-                # reprise.recuperation_rounds()
-                # reprise.lancer_tournoi()
                 reprise.reprendre_tournoi()
-                # reprise.recup_tournoi_en_cours()
-                # reprise.lancer_tournoi()
-          
             
-            
+     
             elif entree == "4": 
                 break         
                 
@@ -95,26 +85,16 @@ class ControllersMain:
             if entree == "1":          
                 creation_joueur = ControllersJoueurs()
                 creation_joueur.recuperer_infos_joueur() 
-                
-   
                 self.retour_menu()   
           
-                
-            # classement des joueurs par score
-            elif entree == "2":          
-                classement_joueurs = ViewsMenuJoueur()
-                classement_joueurs.trier_joueurs_par_score()
-                self.retour_menu() 
-                
-            
-                
             # Informations sur les joueurs
-            elif entree == "3":
+            elif entree == "2":
                 afficher_joueurs = ViewsMenuJoueur()
                 afficher_joueurs.afficher_infos_joueurs()
+                self.retour_menu()
                 
             # retour à l'accueil   
-            elif entree == "4":
+            elif entree == "3":
                 break   
                     
             else:
@@ -123,40 +103,39 @@ class ControllersMain:
                              
                 
     def menu_rapport(self):
-        pass
         
-        # while True:  
-        #     rapport = ViewsRapportMenu()
-        #     rapport.afficher_menu_rapport()          
-        #     entree = input("Faites votre choix : ")
+        while True:  
+            rapport = ViewsRapportMenu()
+            rapport.afficher_menu_rapport()          
+            entree = input("Faites votre choix : ")
             
-        #     # Liste de tous les joueurs par ordre alphabétique
-        #     if entree == "1":                   
-        #         rapport_joueur = ViewsRapportMenu()
-        #         rapport_joueur.affichage_joueur() 
-        #         self.retour_menu()           
+            # Liste de tous les joueurs par ordre alphabétique
+            if entree == "1":                   
+                rapport_joueur = ViewsRapportMenu()
+                rapport_joueur.affichage_joueur() 
+                self.retour_menu()           
            
             
-        #     # Liste de tous les tournois      
-        #     elif entree == "2":            
-        #         rapport_tournoi = ViewsRapportMenu()
-        #         rapport_tournoi.affichage_tournoi()
-        #         self.retour_menu()              
+            # Liste de tous les tournois      
+            elif entree == "2":            
+                rapport_tournoi = ViewsRapportMenu()
+                rapport_tournoi.affichage_tournoi()
+                self.retour_menu()              
           
             
-        #     # Liste des tournois terminés       
-        #     elif entree == "3":            
-        #         rapport_tournoi_termine = ViewsRapportMenu()
-        #         rapport_tournoi_termine.afficher_details_tournoi()  
-        #         self.retour_menu()          
+            # Liste des tournois terminés       
+            elif entree == "3":            
+                rapport_tournoi_termine = ViewsRapportMenu()
+                rapport_tournoi_termine.afficher_details_tournoi()  
+                self.retour_menu()          
             
-        #     # Retour        
-        #     elif entree == "4":
-        #         break
+            # Retour        
+            elif entree == "4":
+                break
                 
-        #     else:
-        #         affiche = BaseViews()
-        #         affiche.affichage_erreur_numero()  
+            else:
+                affiche = BaseViews()
+                affiche.affichage_erreur_numero()  
      
                 
     def retour_menu(self):
