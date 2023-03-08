@@ -1,113 +1,91 @@
 from .base_views import BaseViews
 from database.database import Database
 
-JOUEUR_OPTIONS = (
-    'Créer un joueur',
-    'Informations sur les joueurs',
-    'Retour'
-)
+JOUEUR_OPTIONS = ("Créer un joueur", "Informations sur les joueurs", "Retour")
 
 
 class ViewsMenuJoueur(BaseViews):
-    
-    
-    
     def __init__(self):
         self.liste_des_joueurs = []
         self.rencontre = {}
         self.nombre_joueurs = 8
-       
+
     def afficher_menu_joueur(self):
-        
         titre = "                -- Menu Joueur --"
         super().presentation(titre)
-    
+
         for elt in JOUEUR_OPTIONS:
-            print(JOUEUR_OPTIONS.index(elt) + 1, '-', elt)
-            
+            print(JOUEUR_OPTIONS.index(elt) + 1, "-", elt)
+
     def affichage_creation_joueur(self):
-        
         titre = "                -- Création Joueur --"
         super().presentation(titre)
-          
- 
+
     # Sélectionner participants pour le tournoi
     def selectionner_participants(self):
-        
         titre = "               -- Liste des joueurs --"
         super().presentation(titre)
-        
+
         # Ouvrir le fichier liste_joueurs.json
         liste_joueurs = self.lire_database()
-                
+
         # Récupérer la clé liste des joueurs
-        self.liste_joueurs = liste_joueurs['liste_joueurs']
-        
+        self.liste_joueurs = liste_joueurs["liste_joueurs"]
+
         for i, joueur in enumerate(self.liste_joueurs):
-            print(f"Joueur {i+1}: {joueur['prenom']} {joueur['nom']}")     
-        
+            print(f"Joueur {i+1}: {joueur['prenom']} {joueur['nom']}")
+        print("")
+
         # L'utilisateur doit choisir 8 joueurs
-        print(f"Sélectionnez {self.nombre_joueurs} joueurs :")
-        
+        print(f"Sélectionnez {self.nombre_joueurs} joueurs dans la liste ci-dessus\n")
+
         i = 1
         while i <= self.nombre_joueurs:
             try:
-                choix_joueur = int(input("Choisissez un joueur par son numéro : "))
+                choix_joueur = int(input("Saisir un joueur par son index : "))
                 joueur_selectionne = self.liste_joueurs[choix_joueur - 1]
-                
+
                 # Vérifier si le joueur a déjà été sélectionné
                 if joueur_selectionne in self.liste_des_joueurs:
-                    print("Ce joueur a déjà été sélectionné. Veuillez en sélectionner un autre joueur.")
+                    print("Saisir un autre joueur.\n")
                 else:
                     self.liste_des_joueurs.append(joueur_selectionne)
-                    print("Joueur ajouté avec succès !")
+                    print("Joueur ajouté avec succès !\n")
                     i += 1
             except ValueError:
                 super().affichage_erreur_type()
-               
+
             except IndexError:
                 super().affichage_erreur_numero()
-                    
-        titre = "         -- Liste des joueurs sélectionnés --"
-        super().presentation(titre)                    
- 
+
+        titre = "       -- Liste des joueurs sélectionnés --"
+        super().presentation(titre)
+
         for i, joueur in enumerate(self.liste_des_joueurs):
             print(f"Joueur {i+1}: {joueur['nom']}")
-                
-        return self.liste_des_joueurs
-    
-    
+        print("")
 
-        
+        return self.liste_des_joueurs
+
     def affichage_joueur_cree(self):
-        print("Joueur créé avec succès !")
-        
-        
+        print("********Joueur créé avec succès !********\n")
+
     def afficher_infos_joueurs(self):
-        """ Informations détaillées sur les joueurs """
-        
+        """Informations détaillées sur les joueurs"""
+
         titre = "               -- Liste des joueurs --"
         super().presentation(titre)
-        
+
         # Ouvrir le fichier liste_joueurs.json
         liste_joueurs = self.lire_database()
-         
+
         for index, joueur in enumerate(liste_joueurs["liste_joueurs"]):
             print(f"Joueur n°{index + 1} : ")
             print(f"{joueur['prenom']} {joueur['nom']}")
             print(f"Date de naissance : {joueur['date_de_naissance']}")
-            print(f"Classement : {joueur['classement']}")
             print(f"Identifiant : {joueur['id']}\n")
-            
-                
+
     def lire_database(self):
         data_joueur = Database()
-        data = data_joueur.lire_database(chemin_fichier="data/liste_joueurs.json")
+        data = data_joueur.lire_database("data/liste_joueurs.json")
         return data
-            
-  
- 
-
-        
-        
-        
