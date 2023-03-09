@@ -109,6 +109,17 @@
             "nombres_de_rounds": 4,
             "description": "medaille d'or",
             "mode_de_jeu": "blitz"
+        },
+        {
+            "nom": "fff ddd",
+            "lieu": "dd sss",
+            "dates": [
+                "12/02/2000",
+                "14/02/2020"
+            ],
+            "nombres_de_rounds": 6,
+            "description": "ffffff fffff 222",
+            "mode_de_jeu": "fast"
         }
     ]
 }

@@ -1,4 +1,5 @@
 # éléments communs
+
 class BaseViews:
     def afficher_msg(self, msg):
         print(msg)
@@ -9,7 +10,7 @@ class BaseViews:
         print("-" * 60)
 
     def affichage_erreur_texte(self):
-        print("Erreur ! Veuillez saisir des lettres alphabétiques")
+        print("Erreur ! Vous avez dépassé la limite de caractères autorisée")
 
     def affichage_erreur_choix(self):
         print('Erreur! Veuillez saisir "o" pour continuer ou "n" pour quitter')

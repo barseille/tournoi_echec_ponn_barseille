@@ -1,10 +1,10 @@
 from .base_views import BaseViews
-from database.database import Database
 
 JOUEUR_OPTIONS = ("Créer un joueur", "Informations sur les joueurs", "Retour")
 
 
 class ViewsMenuJoueur(BaseViews):
+
     def __init__(self):
         self.liste_des_joueurs = []
         self.rencontre = {}
@@ -17,17 +17,15 @@ class ViewsMenuJoueur(BaseViews):
         for elt in JOUEUR_OPTIONS:
             print(JOUEUR_OPTIONS.index(elt) + 1, "-", elt)
 
+    # Titre
     def affichage_creation_joueur(self):
         titre = "                -- Création Joueur --"
         super().presentation(titre)
 
     # Sélectionner participants pour le tournoi
-    def selectionner_participants(self):
+    def selectionner_participants(self, liste_joueurs):
         titre = "               -- Liste des joueurs --"
         super().presentation(titre)
-
-        # Ouvrir le fichier liste_joueurs.json
-        liste_joueurs = self.lire_database()
 
         # Récupérer la clé liste des joueurs
         self.liste_joueurs = liste_joueurs["liste_joueurs"]
@@ -68,24 +66,16 @@ class ViewsMenuJoueur(BaseViews):
         return self.liste_des_joueurs
 
     def affichage_joueur_cree(self):
-        print("********Joueur créé avec succès !********\n")
+        print("******** Joueur créé avec succès ! ********\n")
 
-    def afficher_infos_joueurs(self):
+    def afficher_infos_joueurs(self, joueurs):
         """Informations détaillées sur les joueurs"""
 
         titre = "               -- Liste des joueurs --"
         super().presentation(titre)
 
-        # Ouvrir le fichier liste_joueurs.json
-        liste_joueurs = self.lire_database()
-
-        for index, joueur in enumerate(liste_joueurs["liste_joueurs"]):
+        for index, joueur in enumerate(joueurs["liste_joueurs"]):
             print(f"Joueur n°{index + 1} : ")
             print(f"{joueur['prenom']} {joueur['nom']}")
             print(f"Date de naissance : {joueur['date_de_naissance']}")
             print(f"Identifiant : {joueur['id']}\n")
-
-    def lire_database(self):
-        data_joueur = Database()
-        data = data_joueur.lire_database("data/liste_joueurs.json")
-        return data

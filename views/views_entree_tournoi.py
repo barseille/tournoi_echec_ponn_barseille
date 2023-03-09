@@ -6,14 +6,8 @@ from models.tournoi import Tournoi
 class ViewsEntreeTournoi(BaseViews):
     def demander_nom_tournoi(self):
         while True:
-            """
-            Méthode isalpha() permet de vérifier
-            si une chaîne de caractères contient
-            uniquement des lettres alphabétiques.
-            """
-
             nom = input("Entrez le nom du tournoi : ")
-            if nom.isalpha():
+            if len(nom) <= 50:
                 return nom
             else:
                 super().affichage_erreur_texte()
@@ -21,7 +15,7 @@ class ViewsEntreeTournoi(BaseViews):
     def demander_lieu_tournoi(self):
         while True:
             lieu = input("Entrez le lieu du tournoi : ")
-            if lieu.isalpha():
+            if len(lieu) <= 100:
                 return lieu
             else:
                 super().affichage_erreur_texte()
@@ -90,8 +84,12 @@ class ViewsEntreeTournoi(BaseViews):
         return rounds
 
     def demander_description(self):
-        description = input("Entrez la description : ")
-        return description
+        while True:
+            description = input("Entrez la description : ")
+            if len(description) <= 1000:
+                return description
+            else:
+                super().affichage_erreur_texte()
 
     def demander_mode_de_jeu(self):
         mode_de_jeu = ["bullet", "blitz", "fast"]
@@ -109,24 +107,24 @@ class ViewsEntreeTournoi(BaseViews):
 
         return mode_de_jeu[entree - 1]
 
-    def infos_tournoi(self):
-        """Serialiser les informations du tournoi dans un dictionnaire"""
+    # def infos_tournoi(self):
+    #     """Serialiser les informations du tournoi dans un dictionnaire"""
 
-        self.nom = self.demander_nom_tournoi()
-        self.lieu = self.demander_lieu_tournoi()
-        self.dates = self.demander_dates_tournoi()
-        self.nombres_de_rounds = self.demander_rounds()
-        self.description = self.demander_description()
-        self.mode_de_jeu = self.demander_mode_de_jeu()
+    #     self.nom = self.demander_nom_tournoi()
+    #     self.lieu = self.demander_lieu_tournoi()
+    #     self.dates = self.demander_dates_tournoi()
+    #     self.nombres_de_rounds = self.demander_rounds()
+    #     self.description = self.demander_description()
+    #     self.mode_de_jeu = self.demander_mode_de_jeu()
 
-        tournoi = Tournoi(
-            self.nom,
-            self.lieu,
-            self.dates,
-            self.nombres_de_rounds,
-            self.description,
-            self.mode_de_jeu,
-        )
+    #     tournoi = Tournoi(
+    #         self.nom,
+    #         self.lieu,
+    #         self.dates,
+    #         self.nombres_de_rounds,
+    #         self.description,
+    #         self.mode_de_jeu,
+    #     )
 
-        self.tournoi = tournoi.afficher_tournoi()
-        return self.tournoi
+    #     self.tournoi = tournoi.afficher_tournoi()
+    #     return self.tournoi

@@ -18,6 +18,7 @@ class ControllersBase:
         self.controllers_tournois = ControllersTournois()
         self.views_menu_joueur = ViewsMenuJoueur()
         self.views_menu_tournoi = ViewsMenuTournoi()
+        self.database = Database()
         self.base_views = BaseViews()
         self.paires_precedentes = []
         self.match = Match(self.joueur1, self.joueur2)
@@ -25,19 +26,21 @@ class ControllersBase:
         self.resultats_round = {}
         self.liste_matchs = []
         self.rounds_restants = 0
-        self.tournoi_inacheve = {}
+        # self.tournoi_inacheve = {}
 
     def fusion_tournoi_avec_joueurs(self):
         # Générer un identifiant unique pour le tournoi
         id_tournoi = str(uuid.uuid4())
 
         # Demander à l'utilisateur de sélectionner un tournoi
+        tournoi = self.database.lire_database("data/liste_tournois.json")
         views_tournoi = self.views_menu_tournoi
-        tournoi_selectionne = views_tournoi.afficher_les_tournois()
+        tournoi_selectionne = views_tournoi.afficher_les_tournois(tournoi)
 
         # Demander à l'utilisateur de sélectionner les joueurs
+        joueur = self.database.lire_database("data/liste_joueurs.json")
         views_joueurs = self.views_menu_joueur
-        joueurs_selectionnes = views_joueurs.selectionner_participants()
+        joueurs_selectionnes = views_joueurs.selectionner_participants(joueur)
 
         # Ajouter l'identifiant unique au tournoi sélectionné
         tournoi_selectionne["id"] = id_tournoi
@@ -53,7 +56,7 @@ class ControllersBase:
         return temps_round
 
     def lancer_round(self):
-        self.tournoi["resultats"] = []
+        self.tournoi["resultats"] = {}
         self.round_termine = 0
         for i in range(self.tournoi["nombres_de_rounds"]):
             msg = f"                        -- ROUND {i + 1}/{self.tournoi['nombres_de_rounds']} --"
@@ -106,7 +109,7 @@ class ControllersBase:
                     else:
                         self.base_views.affichage_erreur_choix()
 
-        self.tournoi["resultats"].append(self.resultats_round)
+        self.tournoi["resultats"].update(self.resultats_round)
         self.tournoi["statut"] = "tournoi termine"
         self.tournoi["round_termine"] = self.round_termine
 

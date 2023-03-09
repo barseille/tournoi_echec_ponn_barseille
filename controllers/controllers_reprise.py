@@ -8,7 +8,7 @@ import json
 
 class ControllersReprise(ControllersBase):
     def __init__(self):
-        super().__init__()
+        # super().__init__()
         self.views_menu_tournoi = ViewsMenuTournoi()
         self.database = Database()
         self.joueur1 = None
@@ -21,7 +21,7 @@ class ControllersReprise(ControllersBase):
         self.resultats_round = {}
         self.joueurs = []
         self.tournois_non_termines = []
-        self.data_tournoi["resultats"] = []
+        # self.data_tournoi["resultats"] = {}
 
     def reprendre_tournoi(self):
         d = Database()

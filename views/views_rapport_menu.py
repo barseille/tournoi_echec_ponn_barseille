@@ -1,6 +1,5 @@
 from .views_menu_tournoi import ViewsMenuTournoi
 from .base_views import BaseViews
-from database.database import Database
 
 
 RAPPORT_OPTIONS = (
@@ -13,7 +12,6 @@ RAPPORT_OPTIONS = (
 
 class ViewsRapportMenu(BaseViews):
     def __init__(self):
-        self.database = Database()
         self.views_menu_tournoi = ViewsMenuTournoi()
         self.joueurs = []
 
@@ -24,13 +22,11 @@ class ViewsRapportMenu(BaseViews):
         for elt in RAPPORT_OPTIONS:
             print(RAPPORT_OPTIONS.index(elt) + 1, "-", elt)
 
-    def affichage_joueur(self):
+    def affichage_joueur(self, joueur):
         msg = "         -- Classement des joueurs par ordre alphabetique --"
         super().presentation(msg)
 
-        joueurs_data = self.database.lire_database("data/liste_joueurs.json")
-
-        self.liste_joueurs = joueurs_data["liste_joueurs"]
+        self.liste_joueurs = joueur["liste_joueurs"]
         self.liste_joueurs.sort(key=lambda joueur: joueur["nom"])
 
         if not self.liste_joueurs:
@@ -58,15 +54,10 @@ class ViewsRapportMenu(BaseViews):
         print(f"Date de naissance : {joueur_info['date_de_naissance']}")
         print(f"Identifiant : {joueur_info['id']}\n")
 
-    def affichage_tournoi(self):
-        afficher_tournoi = ViewsMenuTournoi()
-        afficher_tournoi.afficher_les_tournois()
-
-    def afficher_details_tournoi(self):
+    # Informations complète sur les tournois terminés
+    def afficher_details_tournoi(self, tournoi):
         msg = "             -- Liste des tournois terminés --"
         super().presentation(msg)
-
-        tournoi = self.database.lire_database("data/historique_tournois.json")
 
         tournoi_termine = tournoi["liste_des_tournois"]
 
@@ -92,7 +83,8 @@ class ViewsRapportMenu(BaseViews):
         # Afficher les informations du tournoi
         self.views_menu_tournoi.affichage_infos_tournoi(self.tournoi)
 
-        self.infos_rounds()
+        # Afficher les matchs de chaque rounds
+        # self.infos_rounds()
 
         msg = "-- Classement des joueurs du tournoi par score --"
         super().presentation(msg)
@@ -106,6 +98,7 @@ class ViewsRapportMenu(BaseViews):
             print(
                 f"Joueur {i+1} : {joueur['prenom']} {joueur['nom']} - Score : {joueur['score']}"
             )
+        print("")
 
     # Informations détaillées de chaque round
     def infos_rounds(self):
@@ -125,7 +118,7 @@ class ViewsRapportMenu(BaseViews):
             print(f"Fin du round: {infos['fin']}\n")
 
     def affichage_scores_joueurs(self, liste_joueurs):
-        msg = "               -- Liste des joueurs --"
+        msg = "          -- Liste des joueurs --"
         super().presentation(msg)
 
         # Afficher les joueurs du tournoi

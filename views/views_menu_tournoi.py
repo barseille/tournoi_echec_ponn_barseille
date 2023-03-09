@@ -1,5 +1,4 @@
 from .base_views import BaseViews
-from database.database import Database
 
 TOURNOI_OPTIONS = (
     "Créer un nouveau tournoi",
@@ -26,17 +25,14 @@ class ViewsMenuTournoi(BaseViews):
         titre = "                -- Création Tournoi --"
         super().presentation(titre)
 
-    def afficher_les_tournois(self):
+    def afficher_les_tournois(self, tournoi_data):
         """deserialiser la liste des tournois"""
 
         titre = "                -- Liste des tournois --"
         super().presentation(titre)
 
-        data = Database()
-        self.data_tournois = data.lire_database("data/liste_tournois.json")
-
         # Accéder à la clé "liste_tournoi" dans database
-        self.liste_tournois = self.data_tournois["liste_tournois"]
+        self.liste_tournois = tournoi_data["liste_tournois"]
 
         # Afficher la liste des tournois
         for i, tournoi in enumerate(self.liste_tournois):
@@ -75,7 +71,7 @@ class ViewsMenuTournoi(BaseViews):
         print(f'Lieu : {tournoi["lieu"]}')
         print(f'Date(s) : {tournoi["dates"]}')
         print(f'Description : {tournoi["description"]}')
-        print(f'Mode de jeu : {tournoi["mode_de_jeu"]}')
+        print(f'Mode de jeu : {tournoi["mode_de_jeu"]}\n')
 
     def affichage_joueurs(self, tournoi):
         for i, joueur in enumerate(tournoi["joueurs"]):
