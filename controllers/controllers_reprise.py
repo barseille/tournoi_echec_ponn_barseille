@@ -8,7 +8,6 @@ import json
 
 class ControllersReprise(ControllersBase):
     def __init__(self):
-        # super().__init__()
         self.views_menu_tournoi = ViewsMenuTournoi()
         self.database = Database()
         self.joueur1 = None
@@ -21,11 +20,9 @@ class ControllersReprise(ControllersBase):
         self.resultats_round = {}
         self.joueurs = []
         self.tournois_non_termines = []
-        # self.data_tournoi["resultats"] = {}
 
     def reprendre_tournoi(self):
-        d = Database()
-        data = d.lire_database("data/non_termines.json")
+        data = self.database.lire_database("data/non_termines.json")
 
         while True:
             # S'il n'y a aucuns tournois dans la base de données
@@ -73,20 +70,24 @@ class ControllersReprise(ControllersBase):
                 msg = "            -- Historique des rounds --"
                 self.base_views.presentation(msg)
 
+                # Récupération du tournoi précédent
                 self.recup_tournoi_en_cours()
+
+                # Informations des rounds restants
                 self.historique_rounds()
+
+                # Reprendre le tournoi en cours
                 self.continuer_tournoi()
                 break
 
             except ValueError:
-                affiche = BaseViews()
-                affiche.affichage_erreur_type()
+                self.base_views.affichage_erreur_type()
 
             except IndexError:
-                affiche = BaseViews()
-                affiche.affichage_erreur_numero()
+                self.base_views.affichage_erreur_numero()
             break
 
+    # Récupération des données du tournoi en cours
     def recup_tournoi_en_cours(self):
         self.data_tournoi = {
             "nom": self.tournoi.get("nom", ""),
@@ -104,6 +105,7 @@ class ControllersReprise(ControllersBase):
 
         return self.data_tournoi
 
+    # Informations des rounds du tournoi en cours
     def historique_rounds(self):
         self.rounds_totals = self.data_tournoi.get("nombres_de_rounds", "")
         self.round_termine = self.data_tournoi.get("round_termine", "")
@@ -113,6 +115,7 @@ class ControllersReprise(ControllersBase):
         self.base_views.afficher_msg(f"Round(s) terminé(s) : {self.round_termine}")
         self.base_views.afficher_msg(f"Round(s) restant(s) : {self.rounds_restants}\n")
 
+    # Reprise du tournoi
     def continuer_tournoi(self):
         while True:
             reponse = input("Voulez-vous continuer le tournoi ? (o/n) : ")
@@ -123,10 +126,11 @@ class ControllersReprise(ControllersBase):
                 return False
             else:
                 self.base_views.affichage_erreur_choix()
-
             break
 
+    # Démarrage du tournoi
     def lancer_tournoi(self):
+        # Boucle sur les rounds restants
         for i in range(self.rounds_restants):
             msg = f"                   -- ROUND {self.round_termine + 1 + i}/{self.rounds_totals} --"
             self.base_views.presentation(msg)
@@ -134,9 +138,13 @@ class ControllersReprise(ControllersBase):
             # Ajouter le temps de début du round
             debut_round = self.enregistrer_temps_round()
 
+            # Trier les joueurs par score en ordre décroissant
             self.data_tournoi["joueurs"].sort(key=lambda x: x["score"], reverse=True)
 
+            # Lancer les matchs pour chaque round
             self.lancer_match(self.data_tournoi["joueurs"])
+
+            # Mise à joueur du classement en fonction des scores
             self.mise_a_jour_classement_joueur(self.data_tournoi)
 
             # Ajouter le temps de fin du round
@@ -158,6 +166,7 @@ class ControllersReprise(ControllersBase):
             # Vider la liste des matchs pour le prochain round
             self.vider_listes_matchs()
 
+            # Tant qu'il reste des rounds, demander à l'utilisateur s'il veut continuer
             if i + 1 < self.rounds_restants:
                 while True:
                     reponse = input(
@@ -166,38 +175,45 @@ class ControllersReprise(ControllersBase):
                     if reponse == "o":
                         break
                     elif reponse == "n":
+                        # Ajout du dict contenant les matchs au dict "resultats"
                         self.data_tournoi["resultats"].update(self.resultats_round)
+
+                        # Ajout du statut "tournoi non termine"
                         self.data_tournoi["statut"] = "tournoi non termine"
+
+                        # Informations des rounds terminés
                         self.data_tournoi["round_termine"] = self.round_termine + i + 1
 
+                        # "Terminé"
                         self.base_views.affichage_termine()
+
+                        # Sauvegarder data
                         self.sauvegarde_tournoi_non_termines()
+
+                        # Effacer les données avec le même id
                         self.effacer_tournoi()
 
                         return
                     else:
                         self.base_views.affichage_erreur_choix()
 
+        # Ajout du dict contenant les matchs au dict "resultats"
         self.data_tournoi["resultats"].update(self.resultats_round)
+
+        # Ajout du statut "tournoi non termine"
         self.data_tournoi["statut"] = "tournoi termine"
+
+        # Informations des rounds terminés
         self.data_tournoi["round_termine"] = self.round_termine + i + 1
 
+        # Sauvegarder data
         self.sauvegarde_tournoi_termines()
+
+        # Effacer les données avec le même id
         self.effacer_tournoi()
+
+        # "Terminé"
         self.affichage_tournoi_termine(self.data_tournoi)
-
-    def effacer_tournoi_precedent(self):
-        # Supprimer le tournoi terminé de la liste des tournois inachevés
-        with open("data/non_termines.json") as f:
-            data = json.load(f)
-
-        # Boucle pour trouver le tournoi
-        for i, tournoi in enumerate(data["non_termines"]):
-            if tournoi["id"] == self.data_tournoi["id"]:
-                if tournoi["round_termine"] > self.data_tournoi["round_termine"]:
-                    # Supprimer le tournoi de la liste
-                    del data["non_termines"][i]
-                break
 
     def sauvegarde_tournoi_non_termines(self):
         self.database.ecrire_database(
@@ -214,6 +230,12 @@ class ControllersReprise(ControllersBase):
         )
 
     def effacer_tournoi(self):
+        """
+        Supprimer le tournoi non terminé
+        dans la liste "non_termines",
+        en supprimant le tournoi correspondant à l'Id
+        et en sauvegardant la nouvelle liste de tournois non terminés dans le fichier.
+        """
         with open("data/non_termines.json", "r") as f:
             data = json.load(f)
 

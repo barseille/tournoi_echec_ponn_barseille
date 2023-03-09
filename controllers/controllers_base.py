@@ -25,7 +25,6 @@ class ControllersBase:
         self.match_info = []
         self.resultats_round = {}
         self.liste_matchs = []
-        self.rounds_restants = 0
 
     def fusion_tournoi_avec_joueurs(self):
         # Générer un identifiant unique pour le tournoi
@@ -68,7 +67,7 @@ class ControllersBase:
                 # Mélanger les joueurs pour le premier round
                 random.shuffle(self.tournoi["joueurs"])
             else:
-                # Trier les joueurs par score et par ordre alphabétique
+                # Trier les joueurs par score en ordre décroissant
                 self.tournoi["joueurs"].sort(key=lambda x: x["score"], reverse=True)
 
             # Lancer les matchs pour chaque round
@@ -115,7 +114,7 @@ class ControllersBase:
         # Ajout du statut "tournoi termine"
         self.tournoi["statut"] = "tournoi termine"
 
-        # Ajout des rounds terminés
+        # Informations des rounds terminés
         self.tournoi["round_termine"] = self.round_termine
 
         # Ajout du tournoi dans base de données
@@ -126,7 +125,7 @@ class ControllersBase:
 
         return self.resultats_round
 
-    # Affiche à l'utilisateur : "Terminé"
+    # "Terminé"
     def affichage_tournoi_termine(self, tournoi):
         if tournoi["nombres_de_rounds"]:
             self.base_views.affichage_termine()
