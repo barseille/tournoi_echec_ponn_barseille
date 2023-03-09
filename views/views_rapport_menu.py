@@ -84,7 +84,7 @@ class ViewsRapportMenu(BaseViews):
         self.views_menu_tournoi.affichage_infos_tournoi(self.tournoi)
 
         # Afficher les matchs de chaque rounds
-        # self.infos_rounds()
+        self.infos_rounds()
 
         msg = "-- Classement des joueurs du tournoi par score --"
         super().presentation(msg)
