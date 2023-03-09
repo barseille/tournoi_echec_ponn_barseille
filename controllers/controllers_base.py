@@ -26,7 +26,6 @@ class ControllersBase:
         self.resultats_round = {}
         self.liste_matchs = []
         self.rounds_restants = 0
-        # self.tournoi_inacheve = {}
 
     def fusion_tournoi_avec_joueurs(self):
         # Générer un identifiant unique pour le tournoi
@@ -34,13 +33,11 @@ class ControllersBase:
 
         # Demander à l'utilisateur de sélectionner un tournoi
         tournoi = self.database.lire_database("data/liste_tournois.json")
-        views_tournoi = self.views_menu_tournoi
-        tournoi_selectionne = views_tournoi.afficher_les_tournois(tournoi)
+        tournoi_selectionne = self.views_menu_tournoi.afficher_les_tournois(tournoi)
 
         # Demander à l'utilisateur de sélectionner les joueurs
         joueur = self.database.lire_database("data/liste_joueurs.json")
-        views_joueurs = self.views_menu_joueur
-        joueurs_selectionnes = views_joueurs.selectionner_participants(joueur)
+        joueurs_selectionnes = self.views_menu_joueur.selectionner_participants(joueur)
 
         # Ajouter l'identifiant unique au tournoi sélectionné
         tournoi_selectionne["id"] = id_tournoi
@@ -67,24 +64,26 @@ class ControllersBase:
             # Ajouter le temps de début du round
             debut_round = self.enregistrer_temps_round()
 
-            # Mélanger les joueurs pour le premier round
             if i == 0:
+                # Mélanger les joueurs pour le premier round
                 random.shuffle(self.tournoi["joueurs"])
-            # Trier les joueurs par score et par ordre alphabétique
             else:
+                # Trier les joueurs par score et par ordre alphabétique
                 self.tournoi["joueurs"].sort(key=lambda x: x["score"], reverse=True)
 
-            # Lancer les matchs pour le round
+            # Lancer les matchs pour chaque round
             self.lancer_match(self.tournoi["joueurs"])
+
+            # Mise à joueur du classement en fonction des scores
             self.mise_a_jour_classement_joueur(self.tournoi["joueurs"])
 
             # Ajouter le temps de fin du round
             fin_round = self.enregistrer_temps_round()
 
-            # Liste de joueurs et scores
+            # Récupération des tuples (joueur, score)
             self.liste_matchs = self.score_joueur(self.tournoi["joueurs"])
 
-            # Ajouter les résultats du round au dictionnaire resultats_round
+            # Récupération des données des matchs
             self.resultats_round[f"Round {i+1}/{self.tournoi['nombres_de_rounds']}"] = {
                 "matchs": self.match_info.copy(),
                 "debut": debut_round,
@@ -95,7 +94,7 @@ class ControllersBase:
             # Vider la liste des matchs pour le prochain round
             self.vider_listes_matchs()
 
-            # Demander à l'utilisateur s'il veut continuer
+            # Tant qu'il reste des rounds, demander à l'utilisateur s'il veut continuer
             if i < self.tournoi["nombres_de_rounds"] - 1:
                 while True:
                     reponse = input(
@@ -104,36 +103,61 @@ class ControllersBase:
                     if reponse == "o":
                         break
                     elif reponse == "n":
+                        # Récupération  et sauvegarde du tournoi dans un dict
                         self.recup_tournoi_inacheve()
                         return
                     else:
                         self.base_views.affichage_erreur_choix()
 
+        # Ajout du dict contenant les matchs au dict "resultats"
         self.tournoi["resultats"].update(self.resultats_round)
+
+        # Ajout du statut "tournoi termine"
         self.tournoi["statut"] = "tournoi termine"
+
+        # Ajout des rounds terminés
         self.tournoi["round_termine"] = self.round_termine
 
-        self.sauvergarde()
+        # Ajout du tournoi dans base de données
+        self.database.ecrire_database(self.tournoi, "liste_des_tournois", "data/historique_tournois.json")
+
+        # Si on atteint le nombre total de rounds, on affiche le msg
         self.affichage_tournoi_termine(self.tournoi)
 
         return self.resultats_round
 
+    # Affiche à l'utilisateur : "Terminé"
     def affichage_tournoi_termine(self, tournoi):
         if tournoi["nombres_de_rounds"]:
             self.base_views.affichage_termine()
 
     def lancer_match(self, joueurs):
+        # Création de paire de joueurs
         paire = self.match.generer_paire(joueurs)
+
+        # Mélanger aléatoirement les joueurs
         self.match.melanger_joueurs(joueurs)
 
+        """
+        Vérifiez si la paire de joueurs générée est identique à l'une des paires précédentes
+        en vérifiant si elle est présente dans "self.paires_precedentes".
+        Si la paire de joueurs est identique, vous mélangez à nouveau les joueurs
+        et générez une nouvelle paire.
+        """
         while paire and paire in self.paires_precedentes:
             self.match.melanger_joueurs(joueurs)
             paire = self.match.generer_paire(joueurs)
 
+        """
+        Ajoutez ensuite la paire de joueurs générée à "self.paires_precedentes"
+        pour maintenir un historique des paires de joueurs précédentes.
+        """
         self.paires_precedentes.append(paire)
+
+        # Paire de joueurs générée pour saisir les scores du match
         self.match_info = self.match.saisir_scores(paire)
 
-    # [(joueur, score),(joueur, score)]
+    # [(joueur, score)]
     def score_joueur(self, joueurs):
         liste_scores_joueurs = []
         for joueur in joueurs:
@@ -147,12 +171,6 @@ class ControllersBase:
         affiche = BaseViews()
         affiche.afficher_msg(msg)
         self.base_views.afficher_msg(msg)
-
-    def sauvergarde(self):
-        data = Database()
-        data.ecrire_database(
-            self.tournoi, "liste_des_tournois", "data/historique_tournois.json"
-        )
 
     # Mise à jour du classement en fonction du score lors d'un tournoi
     def mise_a_jour_classement_joueur(self, joueurs):
@@ -169,10 +187,12 @@ class ControllersBase:
         # Mettre à jour la liste des joueurs dans le tournoi avec la liste triée
         self.tournoi["joueurs"] = joueurs_tries
 
+    # Effacer toutes les informations des matchs précédents et remettre à zéro
     def vider_listes_matchs(self):
         self.match_info.clear()
         self.liste_matchs.clear()
 
+    # Récupération du tournoi dans database, si l'utilisateur décide de na poursuivre le tournoi
     def recup_tournoi_inacheve(self):
         self.tournoi_inacheve = {
             "nom": self.tournoi["nom"],
