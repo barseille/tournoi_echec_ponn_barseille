@@ -44,3 +44,15 @@ pip install -r requirements.txt
 ```
 python main.py
 ```
+
+- Installation flake8 :
+
+```
+pip install flake8-html
+```
+
+- Générer fichier HTML par flake8 :
+
+```
+flake8 --format=html --htmldir=flake-report
+```
