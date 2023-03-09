@@ -6,9 +6,7 @@ from models.joueur import Joueur
 
 
 class ControllersJoueurs:
-
     def __init__(self):
-
         self.views_entree_joueur = ViewsEntreeJoueur()
         self.views_menu_joueur = ViewsMenuJoueur()
         self.database = Database()
@@ -19,7 +17,9 @@ class ControllersJoueurs:
 
         self.nom = self.views_entree_joueur.creation_joueur_nom()
         self.prenom = self.views_entree_joueur.creation_joueur_prenom()
-        self.date_de_naissance = self.views_entree_joueur.creation_joueur_date_de_naissance()
+        self.date_de_naissance = (
+            self.views_entree_joueur.creation_joueur_date_de_naissance()
+        )
         self.classement = self.creation_joueur_classement()
         self.id_joueur = self.ajout_identifiant()
 
@@ -35,7 +35,6 @@ class ControllersJoueurs:
         return self.joueur
 
     def creation_joueur_classement(self):
-
         # Ouvrir le fichier liste_joueurs.json
         data = self.database.lire_database("data/liste_joueurs.json")
 
@@ -52,7 +51,9 @@ class ControllersJoueurs:
                     if 1 <= classement <= 3000:
                         return classement
                     else:
-                        msg = "Le numéro de classement doit être entre 1 et 3000 inclus !"
+                        msg = (
+                            "Le numéro de classement doit être entre 1 et 3000 inclus !"
+                        )
                         self.base_views.afficher_msg(msg)
                 else:
                     msg = "Le numéro de classement existe déjà !"
@@ -62,7 +63,6 @@ class ControllersJoueurs:
                 self.base_views.affichage_erreur_type()
 
     def ajout_identifiant(self):
-
         data = self.database.lire_database("data/liste_joueurs.json")
 
         id_existant = []
@@ -99,7 +99,9 @@ class ControllersJoueurs:
         self.joueur = self.infos_joueur()
 
         # sauvegarder les informations du joueur(données, clé, chemin)
-        self.database.ecrire_database(self.joueur, "liste_joueurs", "data/liste_joueurs.json")
+        self.database.ecrire_database(
+            self.joueur, "liste_joueurs", "data/liste_joueurs.json"
+        )
 
         # Demande à l'utilisateur s'il veut créer un autre joueur
         choix = ""

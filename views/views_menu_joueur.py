@@ -4,7 +4,6 @@ JOUEUR_OPTIONS = ("Créer un joueur", "Informations sur les joueurs", "Retour")
 
 
 class ViewsMenuJoueur(BaseViews):
-
     def __init__(self):
         self.liste_des_joueurs = []
         self.rencontre = {}

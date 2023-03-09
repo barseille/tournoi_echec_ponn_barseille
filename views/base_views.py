@@ -1,5 +1,6 @@
 # éléments communs
 
+
 class BaseViews:
     def afficher_msg(self, msg):
         print(msg)

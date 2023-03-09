@@ -118,7 +118,9 @@ class ControllersBase:
         self.tournoi["round_termine"] = self.round_termine
 
         # Ajout du tournoi dans base de données
-        self.database.ecrire_database(self.tournoi, "liste_des_tournois", "data/historique_tournois.json")
+        self.database.ecrire_database(
+            self.tournoi, "liste_des_tournois", "data/historique_tournois.json"
+        )
 
         # Si on atteint le nombre total de rounds, on affiche le msg
         self.affichage_tournoi_termine(self.tournoi)

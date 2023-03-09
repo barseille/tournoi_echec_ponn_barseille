@@ -12,7 +12,6 @@ import sys
 
 
 class ControllersMain:
-
     def __init__(self):
         self.database = Database()
 
