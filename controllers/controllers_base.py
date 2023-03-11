@@ -133,8 +133,8 @@ class ControllersBase:
         paire = self.match.generer_paire(joueurs)
 
         """
-        Vérifiez si la paire de joueurs générée est identique à l'une des paires précédentes
-        en vérifiant si elle est présente dans "self.paires_precedentes".
+        Vérifiez si la paire de joueurs générée est identique à la paire
+        dans la liste "self.paires_precedentes".
         Si la paire de joueurs est identique, vous mélangez à nouveau les joueurs
         et générez une nouvelle paire.
         """

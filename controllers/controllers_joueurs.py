@@ -23,6 +23,7 @@ class ControllersJoueurs:
         self.classement = self.creation_joueur_classement()
         self.id_joueur = self.ajout_identifiant()
 
+        # Initialise objet joueur
         joueur = Joueur(
             self.nom,
             self.prenom,

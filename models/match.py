@@ -43,6 +43,7 @@ class Match:
                             f"{j[0]['prenom']} {j[0]['nom']} a gagné\n"
                         )
 
+                        # Récupération liste de 2 tuples pour chacun des joueurs
                         self.match_tuple = (
                             [j[0]["nom"], j[0]["score"]],
                             [j[1]["nom"], j[1]["score"]],

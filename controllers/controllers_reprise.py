@@ -136,19 +136,19 @@ class ControllersReprise(ControllersBase):
             self.base_views.presentation(msg)
 
             # Ajouter le temps de début du round
-            debut_round = self.enregistrer_temps_round()
+            debut_round = super().enregistrer_temps_round()
 
             # Trier les joueurs par score en ordre décroissant
             self.data_tournoi["joueurs"].sort(key=lambda x: x["score"], reverse=True)
 
             # Lancer les matchs pour chaque round
-            self.lancer_match(self.data_tournoi["joueurs"])
+            super().lancer_match(self.data_tournoi["joueurs"])
 
             # Mise à joueur du classement en fonction des scores
             self.mise_a_jour_classement_joueur(self.data_tournoi)
 
             # Ajouter le temps de fin du round
-            fin_round = self.enregistrer_temps_round()
+            fin_round = super().enregistrer_temps_round()
 
             # Ajouter les résultats du round au dictionnaire resultats_round
             self.resultats_round[
@@ -157,11 +157,10 @@ class ControllersReprise(ControllersBase):
                 "matchs": self.match_info.copy(),
                 "debut": debut_round,
                 "fin": fin_round,
-                # "scores_joueurs": self.liste_matchs.copy(),
             }
 
             # Vider la liste des matchs pour le prochain round
-            self.vider_listes_matchs()
+            super().vider_listes_matchs()
 
             # Tant qu'il reste des rounds, demander à l'utilisateur s'il veut continuer
             if i + 1 < self.rounds_restants:
