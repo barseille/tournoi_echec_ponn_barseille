@@ -42,8 +42,9 @@ class Match:
                         afficher.afficher_msg(
                             f"{j[0]['prenom']} {j[0]['nom']} a gagné\n"
                         )
-                        self.match_joueurs += f": {j[0]['score']} - {j[1]['score']}"
-                        self.match_info.append(self.match_joueurs)
+
+                        self.match_tuple = ([j[0]['nom'], j[0]['score']], [j[1]['nom'], j[1]['score']])
+                        self.match_info.append(self.match_tuple)
                         break
 
                     elif choix == "2":
@@ -52,8 +53,9 @@ class Match:
                         afficher.afficher_msg(
                             f"{j[1]['prenom']} {j[1]['nom']} a gagné\n"
                         )
-                        self.match_joueurs += f": {j[0]['score']} - {j[1]['score']}"
-                        self.match_info.append(self.match_joueurs)
+
+                        self.match_tuple = ([j[0]['nom'], j[0]['score']], [j[1]['nom'], j[1]['score']])
+                        self.match_info.append(self.match_tuple)
                         break
 
                     elif choix == "3":
@@ -61,8 +63,9 @@ class Match:
                         j[1]["score"] += 0.5
 
                         afficher.afficher_msg("Match nul !\n")
-                        self.match_joueurs += f": {j[0]['score']} - {j[1]['score']}"
-                        self.match_info.append(self.match_joueurs)
+
+                        self.match_tuple = ([j[0]['nom'], j[0]['score']], [j[1]['nom'], j[1]['score']])
+                        self.match_info.append(self.match_tuple)
                         break
 
                     else:

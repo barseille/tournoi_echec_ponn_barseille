@@ -100,7 +100,7 @@ class ViewsRapportMenu(BaseViews):
             )
         print("")
 
-    # Informations détaillées de chaque round
+    # Informations détaillées de chaque match de chaque round
     def infos_rounds(self):
         msg = "               -- Résultats des matchs par rounds --"
         super().presentation(msg)
@@ -112,7 +112,9 @@ class ViewsRapportMenu(BaseViews):
 
             matchs = infos["matchs"]
             for match in matchs:
-                print(f"{match}")
+                joueur1, score1 = match[0][0], match[0][1]
+                joueur2, score2 = match[1][0], match[1][1]
+                print(f"{joueur1} VS {joueur2} = {score1} - {score2}")
 
             print(f"Début du round: {infos['debut']}")
             print(f"Fin du round: {infos['fin']}\n")

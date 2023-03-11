@@ -10,15 +10,15 @@ class Tournoi:
         self.nombres_de_rounds = nombres_de_rounds
         self.description = description
         self.mode_de_jeu = mode_de_jeu
-        self.joueur1 = None
-        self.joueur2 = None
-        self.paires_precedentes = []
-        self.match = Match(self.joueur1, self.joueur2)
-        self.match_info = []
-        self.resultats_round = {}
-        self.liste_matchs = []
-        self.rounds_restants = 0
-        self.tournoi_inacheve = {}
+        # self.joueur1 = None
+        # self.joueur2 = None
+        # self.paires_precedentes = []
+        # self.match = Match(self.joueur1, self.joueur2)
+        # self.match_info = []
+        # self.resultats_round = {}
+        # self.liste_matchs = []
+        # self.rounds_restants = 0
+        # self.tournoi_inacheve = {}
 
     def afficher_tournoi(self):
         tournoi_infos = {

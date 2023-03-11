@@ -150,9 +150,6 @@ class ControllersReprise(ControllersBase):
             # Ajouter le temps de fin du round
             fin_round = self.enregistrer_temps_round()
 
-            # Récuperer les scores dans un tuple par joueur
-            self.liste_matchs = self.score_joueur(self.data_tournoi["joueurs"])
-
             # Ajouter les résultats du round au dictionnaire resultats_round
             self.resultats_round[
                 f"Round {self.round_termine + i + 1}/{self.rounds_totals}"
@@ -160,7 +157,7 @@ class ControllersReprise(ControllersBase):
                 "matchs": self.match_info.copy(),
                 "debut": debut_round,
                 "fin": fin_round,
-                "scores_joueurs": self.liste_matchs.copy(),
+                # "scores_joueurs": self.liste_matchs.copy(),
             }
 
             # Vider la liste des matchs pour le prochain round

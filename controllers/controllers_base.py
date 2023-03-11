@@ -79,15 +79,11 @@ class ControllersBase:
             # Ajouter le temps de fin du round
             fin_round = self.enregistrer_temps_round()
 
-            # Récupération des tuples (joueur, score)
-            self.liste_matchs = self.score_joueur(self.tournoi["joueurs"])
-
             # Récupération des données des matchs
             self.resultats_round[f"Round {i+1}/{self.tournoi['nombres_de_rounds']}"] = {
                 "matchs": self.match_info.copy(),
                 "debut": debut_round,
-                "fin": fin_round,
-                "scores_joueurs": self.liste_matchs.copy(),
+                "fin": fin_round
             }
 
             # Vider la liste des matchs pour le prochain round
@@ -158,15 +154,6 @@ class ControllersBase:
         # Paire de joueurs générée pour saisir les scores du match
         self.match_info = self.match.saisir_scores(paire)
 
-    # [(joueur, score)]
-    def score_joueur(self, joueurs):
-        liste_scores_joueurs = []
-        for joueur in joueurs:
-            nom = joueur["nom"]
-            score = joueur["score"]
-            liste_scores_joueurs.append((nom, score))
-        return liste_scores_joueurs
-
     # Afficher un message
     def affichage_msg(self, msg):
         affiche = BaseViews()
@@ -191,7 +178,7 @@ class ControllersBase:
     # Effacer toutes les informations des matchs précédents et remettre à zéro
     def vider_listes_matchs(self):
         self.match_info.clear()
-        self.liste_matchs.clear()
+        # self.liste_matchs.clear()
 
     # Récupération du tournoi dans database, si l'utilisateur décide de na poursuivre le tournoi
     def recup_tournoi_inacheve(self):
