@@ -132,9 +132,6 @@ class ControllersBase:
         # Création de paire de joueurs
         paire = self.match.generer_paire(joueurs)
 
-        # Mélanger aléatoirement les joueurs
-        self.match.melanger_joueurs(joueurs)
-
         """
         Vérifiez si la paire de joueurs générée est identique à l'une des paires précédentes
         en vérifiant si elle est présente dans "self.paires_precedentes".

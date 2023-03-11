@@ -66,13 +66,22 @@ class ViewsRapportMenu(BaseViews):
             return
 
         # Afficher tous les tournois terminés
-        i = 1
+        # i = 1
         for i, tournoi in enumerate(tournoi_termine):
             nom = tournoi["nom"]
             dates = tournoi["dates"]
             print(f"{i+1} - Nom du tournoi {nom} - date(s) : {dates}")
 
-        choix_tournoi = int(input("Saisir un tournoi pour plus de détails : "))
+        choix_tournoi = None
+        while not choix_tournoi:
+            try:
+                choix_tournoi = int(input("Saisir un tournoi pour plus de détails : "))
+                if choix_tournoi <= 0 or choix_tournoi > len(tournoi_termine):
+                    print("Le numéro de tournoi saisi n'est pas valide.")
+                    choix_tournoi = None
+            except ValueError:
+                print("Le numéro de tournoi saisi n'est pas valide.")
+                choix_tournoi = None
 
         # Détails du tournoi sélectionné
         self.tournoi = tournoi_termine[choix_tournoi - 1]

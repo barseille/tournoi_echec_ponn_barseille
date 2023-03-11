@@ -114,8 +114,6 @@ class ControllersMain:
                 tournoi = self.database.lire_database("data/liste_tournois.json")
                 rapport_tournoi = ViewsMenuTournoi()
                 rapport_tournoi.afficher_les_tournois(tournoi)
-                # rapport_tournoi = ViewsRapportMenu()
-                # rapport_tournoi.affichage_tournoi()
                 self.retour_menu()
 
             # Liste des tournois terminés
@@ -123,7 +121,6 @@ class ControllersMain:
                 tournoi = self.database.lire_database("data/historique_tournois.json")
                 rapport_tournoi_termine = ViewsRapportMenu()
                 rapport_tournoi_termine.afficher_details_tournoi(tournoi)
-                # rapport_tournoi_termine.infos_rounds()
                 self.retour_menu()
 
             # Retour
