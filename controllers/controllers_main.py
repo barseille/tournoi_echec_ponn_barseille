@@ -83,9 +83,10 @@ class ControllersMain:
 
             # Informations détaillées sur les joueurs
             elif entree == "2":
-                joueur = self.database.lire_database("data/liste_joueurs.json")
+                joueurs = self.database.lire_database("data/liste_joueurs.json")
+                # joueurs.sort(key=lambda joueur: joueur["nom"])
                 afficher_joueurs = ViewsMenuJoueur()
-                afficher_joueurs.afficher_infos_joueurs(joueur)
+                afficher_joueurs.afficher_infos_joueurs(joueurs)
                 self.retour_menu()
 
             # retour à l'accueil

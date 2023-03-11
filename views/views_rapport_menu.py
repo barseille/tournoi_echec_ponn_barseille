@@ -95,18 +95,16 @@ class ViewsRapportMenu(BaseViews):
         # Afficher les matchs de chaque rounds
         self.infos_rounds()
 
-        msg = "-- Classement des joueurs du tournoi par score --"
+        msg = "-- Classement des joueurs du tournoi par ordre aphabétique --"
         super().presentation(msg)
 
         # Joueurs rangés par ordre alphabétique
         self.liste_joueurs = self.tournoi["joueurs"]
-        self.liste_joueurs.sort(key=lambda joueur: joueur["score"], reverse=True)
+        self.liste_joueurs.sort(key=lambda joueur: joueur["nom"])
 
         # Afficher les joueurs du tournoi
         for i, joueur in enumerate(self.liste_joueurs):
-            print(
-                f"Joueur {i+1} : {joueur['prenom']} {joueur['nom']} - Score : {joueur['score']}"
-            )
+            print(f"Joueur {i+1} : {joueur['nom']} - Score : {joueur['score']}")
         print("")
 
     # Informations détaillées de chaque match de chaque round

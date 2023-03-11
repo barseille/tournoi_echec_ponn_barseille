@@ -37,7 +37,9 @@ class Joueur:
             self._date_de_naissance = value
 
         except ValueError:
-            raise ValueError("date de naissance doit être une chaîne de caractère au format(jj/mm/aaaa)")
+            raise ValueError(
+                "date de naissance doit être une chaîne de caractère au format(jj/mm/aaaa)"
+            )
 
     @property
     def id(self):

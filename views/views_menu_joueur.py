@@ -70,11 +70,12 @@ class ViewsMenuJoueur(BaseViews):
     def afficher_infos_joueurs(self, joueurs):
         """Informations détaillées sur les joueurs"""
 
-        titre = "               -- Liste des joueurs --"
+        titre = "  -- Liste des joueurs triés par ordre alphabetique --"
         super().presentation(titre)
 
-        for index, joueur in enumerate(joueurs["liste_joueurs"]):
-            print(f"Joueur n°{index + 1} : ")
+        joueurs["liste_joueurs"].sort(key=lambda joueur: joueur["nom"])
+
+        for joueur in joueurs["liste_joueurs"]:
             print(f"{joueur['prenom']} {joueur['nom']}")
             print(f"Date de naissance : {joueur['date_de_naissance']}")
             print(f"Identifiant : {joueur['id']}\n")

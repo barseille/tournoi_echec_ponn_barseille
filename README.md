@@ -54,5 +54,5 @@ pip install flake8-html
 - Générer fichier HTML par flake8 :
 
 ```
-flake8 --format=html --htmldir=flake-report
+flake8 --format=html --htmldir=flake8_rapport
 ```

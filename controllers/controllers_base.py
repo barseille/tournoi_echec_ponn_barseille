@@ -83,7 +83,7 @@ class ControllersBase:
             self.resultats_round[f"Round {i+1}/{self.tournoi['nombres_de_rounds']}"] = {
                 "matchs": self.match_info.copy(),
                 "debut": debut_round,
-                "fin": fin_round
+                "fin": fin_round,
             }
 
             # Vider la liste des matchs pour le prochain round

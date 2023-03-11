@@ -43,7 +43,10 @@ class Match:
                             f"{j[0]['prenom']} {j[0]['nom']} a gagné\n"
                         )
 
-                        self.match_tuple = ([j[0]['nom'], j[0]['score']], [j[1]['nom'], j[1]['score']])
+                        self.match_tuple = (
+                            [j[0]["nom"], j[0]["score"]],
+                            [j[1]["nom"], j[1]["score"]],
+                        )
                         self.match_info.append(self.match_tuple)
                         break
 
@@ -54,7 +57,10 @@ class Match:
                             f"{j[1]['prenom']} {j[1]['nom']} a gagné\n"
                         )
 
-                        self.match_tuple = ([j[0]['nom'], j[0]['score']], [j[1]['nom'], j[1]['score']])
+                        self.match_tuple = (
+                            [j[0]["nom"], j[0]["score"]],
+                            [j[1]["nom"], j[1]["score"]],
+                        )
                         self.match_info.append(self.match_tuple)
                         break
 
@@ -64,7 +70,10 @@ class Match:
 
                         afficher.afficher_msg("Match nul !\n")
 
-                        self.match_tuple = ([j[0]['nom'], j[0]['score']], [j[1]['nom'], j[1]['score']])
+                        self.match_tuple = (
+                            [j[0]["nom"], j[0]["score"]],
+                            [j[1]["nom"], j[1]["score"]],
+                        )
                         self.match_info.append(self.match_tuple)
                         break
 
